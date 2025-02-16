@@ -6,6 +6,7 @@ interface SocialButtonProps {
   className?: string;
   children: React.ReactNode;
   srOnly: string;
+  onClick?: () => void;
 }
 
 export const SocialButton: React.FC<SocialButtonProps> = ({
@@ -13,6 +14,7 @@ export const SocialButton: React.FC<SocialButtonProps> = ({
   className = "",
   srOnly,
   children,
+  onClick,
 }) => {
   return (
     <Link
@@ -24,8 +26,10 @@ export const SocialButton: React.FC<SocialButtonProps> = ({
         className
       )}
     >
-      {children}
-      <span className="sr-only">{srOnly}</span>
+      <button onClick={onClick}>
+        {children}
+        <span className="sr-only">{srOnly}</span>
+      </button>
     </Link>
   );
 };

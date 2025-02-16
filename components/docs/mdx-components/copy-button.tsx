@@ -4,10 +4,10 @@ import * as React from "react";
 import { DropdownMenuTriggerProps } from "@radix-ui/react-dropdown-menu";
 import { CheckIcon, ClipboardIcon } from "lucide-react";
 import { NpmCommands } from "@/types/unist";
-
 import { useTrackEvent } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import { Button, ButtonProps } from "@/components/ui/button";
+import { usePlausible } from "next-plausible";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,13 +26,10 @@ interface CopyMeta {
   properties?: Record<string, any>;
 }
 
-//TODO: Fix this
+//TODO: Fix this, maybe use VA?
+//Check later probably useless now
 export async function copyToClipboardWithMeta(value: string, meta?: CopyMeta) {
   navigator.clipboard.writeText(value);
-
-  if (meta) {
-    console.log(`Tracking event: ${meta.name}`, meta.properties);
-  }
 }
 
 export function CopyButton({
@@ -43,8 +40,8 @@ export function CopyButton({
   event,
   ...props
 }: CopyButtonProps) {
+  const plausible = usePlausible();
   const [hasCopied, setHasCopied] = React.useState(false);
-  const trackEvent = useTrackEvent();
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -63,10 +60,9 @@ export function CopyButton({
       onClick={() => {
         copyToClipboardWithMeta(value);
         setHasCopied(true);
-        trackEvent("copy_code", {
-          component: event || "unknown",
-          code: value,
-        });
+        if (event === "component-source") {
+          plausible("Copied Component Source");
+        }
       }}
       {...props}
     >

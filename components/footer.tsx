@@ -1,7 +1,10 @@
+//TODO: All pages...
+
 import Link from "next/link";
 import { LargeLogo } from "@/components/logo";
 import * as React from "react";
 import NewsletterForm from "@/components/newsletter/subscribe-form";
+import { TrackedLink } from "@/components/tracked-links";
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
 
@@ -18,39 +21,57 @@ interface LinkSectionProps {
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-const LinkSection: React.FC<LinkSectionProps> = ({ title, links }) => (
-  <nav
-    aria-label={title}
-    itemScope
-    itemType="https://schema.org/SiteNavigationElement"
-  >
-    <div className="flex flex-col md:text-sm">
-      <h3 className="font-medium text-foreground mb-6" itemProp="name">
-        {title}
-      </h3>
-      <ul className="space-y-3 text-muted-foreground">
-        {links.map((link) => (
-          <li key={link.href}>
-            <Link
-              href={link.href}
-              className="text-muted-foreground hover:text-foreground transition-colors duration-200"
-              itemProp="url"
-            >
-              <span itemProp="name">{link.label}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </nav>
-);
+const LinkSection: React.FC<LinkSectionProps> = ({ title, links }) => {
+  return (
+    <nav
+      aria-label={title}
+      itemScope
+      itemType="https://schema.org/SiteNavigationElement"
+    >
+      <div className="flex flex-col md:text-sm">
+        <h3 className="font-medium text-foreground mb-6" itemProp="name">
+          {title}
+        </h3>
+        <ul className="space-y-3 text-muted-foreground">
+          {links.map(({ href, label }) => {
+            const isTracked =
+              href === "https://github.com/badtzx0/badtz-ui" ||
+              href === "https://pro.badtz-ui.com" ||
+              href === "https://x.com/badtz_ui";
+
+            return (
+              <li key={href}>
+                {isTracked ? (
+                  <TrackedLink
+                    href={href}
+                    label={label}
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  />
+                ) : (
+                  <Link
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  >
+                    {label}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </nav>
+  );
+};
 
 const FOOTER_SECTIONS: { title: string; links: LinkType[] }[] = [
   {
     title: "Products",
     links: [
-      { href: "/components", label: "Components" },
-      { href: "/changelog", label: "Changelog" },
+      { href: "/docs", label: "Components" },
+      { href: "#changelog", label: "Changelog" },
       { href: "#templates", label: "Templates" },
       { href: "#sections", label: "Sections" },
       { href: "/blog", label: "Blog" },
@@ -68,11 +89,7 @@ const FOOTER_SECTIONS: { title: string; links: LinkType[] }[] = [
     title: "Community",
     links: [
       { href: "https://discord.com/invite/SV2y7vz6Es", label: "Discord" },
-      {
-        href: "https://x.com/badtz_ui",
-        label: "Twitter",
-        itemProp: "sameAs",
-      },
+      { href: "https://x.com/badtz_ui", label: "Twitter" },
       { href: "/newsletter", label: "Newsletter" },
     ],
   },
@@ -145,32 +162,16 @@ export default function Footer() {
               <meta itemProp="url" content={baseUrl} />
             </div>
           </div>
-
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 w-full md:w-auto">
             {FOOTER_SECTIONS.map((section) => (
               <LinkSection
                 key={section.title}
                 title={section.title}
-                links={section.links.map((link) => {
-                  const isExternal =
-                    link.href.startsWith("http") &&
-                    !link.href.includes("badtz-ui.com");
-                  const isBadtzUIPro = link.href === "https://pro.badtz-ui.com";
-                  return {
-                    ...link,
-                    itemProp: isExternal ? "sameAs" : undefined,
-                    target: isExternal || isBadtzUIPro ? "_blank" : undefined,
-                    rel:
-                      isExternal && !isBadtzUIPro
-                        ? "noopener noreferrer"
-                        : undefined,
-                  };
-                })}
+                links={section.links}
               />
             ))}
           </div>
         </div>
-
         <p
           className="text-xs text-muted-foreground mt-10"
           itemScope

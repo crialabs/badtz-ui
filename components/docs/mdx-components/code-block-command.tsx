@@ -9,6 +9,7 @@ import { copyToClipboardWithMeta } from "@/components/docs/mdx-components/copy-b
 import { Tabs } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { usePlausible } from "next-plausible";
 
 export function CodeBlockCommand({
   __npmCommand__,
@@ -16,6 +17,7 @@ export function CodeBlockCommand({
   __pnpmCommand__,
   __bunCommand__,
 }: React.ComponentProps<"pre"> & NpmCommands) {
+  const plausible = usePlausible();
   const [config, setConfig] = useConfig();
   const [hasCopied, setHasCopied] = React.useState(false);
 
@@ -44,13 +46,14 @@ export function CodeBlockCommand({
     }
 
     copyToClipboardWithMeta(command, {
-      name: "copy_npm_command",
+      name: "npm-command",
       properties: {
         command,
         pm: packageManager,
       },
     });
     setHasCopied(true);
+    plausible("Copied PM Command");
   }, [packageManager, tabs]);
 
   return (
