@@ -45,6 +45,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <PlausibleProvider domain="badtz-ui.com" taggedEvents />
+
         <script
           defer
           data-domain="badtz-ui.com"
