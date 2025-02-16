@@ -30,7 +30,7 @@ export default async function Home() {
     <>
       {/*
       //TODO: TESTS -> We're probably losing conversion rate, but the design is too ugly.
-      <Marketing href="https://pro.badtz-ui.com">
+      <Marketing href="https://pro.badtz-ui.com" plausibleEvent="Clicked on Pro">
         Coming Soon! Badtz UI Pro +70 expected templates, blocks, and much more!
       </Marketing>
       */}
