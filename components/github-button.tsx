@@ -1,10 +1,29 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { Separator } from "@/components/ui/separator";
 
 export function GithubButton() {
+  const [stars, setStars] = useState<number | null>(null);
+
+  useEffect(() => {
+    async function fetchStars() {
+      try {
+        const response = await fetch(
+          "https://api.github.com/repos/badtzx0/badtz-ui"
+        );
+        const data = await response.json();
+        setStars(data.stargazers_count);
+      } catch (error) {
+        console.error("Error fetching GitHub stars:", error);
+      }
+    }
+
+    fetchStars();
+  }, []);
+
   return (
     <Button
       aria-label="GitHub Button"
@@ -16,7 +35,9 @@ export function GithubButton() {
         orientation="vertical"
         className="dark:bg-white/20 bg-black/10 h-5 mx-0.5"
       />
-      <span className="font-mono text-sm">2,561</span>
+      <span className="font-mono text-sm">
+        {stars !== null ? stars.toLocaleString() : "_"}
+      </span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
