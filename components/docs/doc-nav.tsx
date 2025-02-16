@@ -30,7 +30,7 @@ import { Logo } from "@/components/logo";
 import * as React from "react";
 import { Icons } from "@/components/icons";
 import { SocialButton } from "@/components/ui/social-button";
-import { DiscordLogoIcon } from "@radix-ui/react-icons";
+import { usePlausible } from "next-plausible";
 import { useBreakpoint } from "@/hooks/use-brakpoints";
 
 type Item = {
@@ -53,6 +53,7 @@ type DocsSidebarNavItemsProps = {
 };
 
 export function DocNav({ items }: DocNavProps) {
+  const plausible = usePlausible();
   const { setOpenMobile } = useSidebar();
   const pathname = usePathname();
   const closeSidebar = () => setOpenMobile(false);
@@ -147,6 +148,7 @@ export function DocNav({ items }: DocNavProps) {
                 srOnly="Discord Link"
                 src="https://discord.gg/SV2y7vz6Es"
                 className="border-sidebar-border"
+                onClick={() => plausible("Clicked on GitHub Button")}
               >
                 <Icons.discord />
               </SocialButton>

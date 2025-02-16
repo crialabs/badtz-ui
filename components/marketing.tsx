@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -21,9 +23,7 @@ export default function Marketing({
         className
       )}
     >
-      <span className={cn("text-foreground text-sm text-balance font-light")}>
-        {children}
-      </span>
+      <span>{children}</span>
     </Link>
   );
 }

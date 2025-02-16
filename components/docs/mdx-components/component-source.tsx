@@ -126,6 +126,7 @@ export function ComponentSource({
                   ? codeBlocks.typescript.text
                   : codeBlocks.javascript.text
               }
+              event="component-source"
             />
           </div>
         </div>
