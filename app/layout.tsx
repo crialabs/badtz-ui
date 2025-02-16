@@ -44,6 +44,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <PlausibleProvider domain="badtz-ui.com" taggedEvents />
+
         <script
           defer
           data-domain="badtz-ui.com"
@@ -66,9 +68,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <PlausibleProvider domain="badtz-ui.com">
-            {children}
-          </PlausibleProvider>
+          {children}
           <Toaster />
         </ThemeProvider>
       </body>
