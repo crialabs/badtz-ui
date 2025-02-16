@@ -10,16 +10,17 @@ export const metadata: Metadata = {
   title: "BadtzUI • UI Components for React JS",
   description:
     "An expanding collection of 70+ free UI components. Production-grade animations with Framer Motion. Weekly updates. Open source. React, Tailwind, TypeScript & JavaScript.",
+  metadataBase: new URL("https://badtz-ui.com"),
   openGraph: {
     title: "BadtzUI - Modern React Components",
-    images: "/og-image.png",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "BadtzUI - UI Components for React JS",
     description:
       "An expanding collection of 70+ free UI components. Production-grade animations with Framer Motion. Weekly updates. Open source. React, Tailwind, TypeScript & JavaScript.",
-    images: "/twitter-image.png",
+    images: [{ url: "/twitter-image.png", width: 1200, height: 675 }],
     site: "@badtz_ui",
   },
 };

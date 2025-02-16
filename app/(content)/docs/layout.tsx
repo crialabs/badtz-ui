@@ -14,6 +14,7 @@ export default function DocsLayout({
       <Marketing
         className="dark:bg-secondary bg-sidebar"
         href="https://x.com/badtz_ui"
+        plausibleEvent="Clicked on Twitter"
       >
         Soon: New UI components daily! Follow us on X for updates.
       </Marketing>
