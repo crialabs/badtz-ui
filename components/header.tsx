@@ -35,10 +35,6 @@ const links: Link[] = [
     label: "Changelog",
   },
   {
-    href: "/test",
-    label: "testdata",
-  },
-  {
     href: "https://pro.badtz-ui.com",
     label: "Templates",
     external: true,
