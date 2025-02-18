@@ -26,7 +26,7 @@ type ScaleValueParams = [number, number];
 export const scaleValue = function (
   value: number,
   from: ScaleValueParams,
-  to: ScaleValueParams
+  to: ScaleValueParams,
 ): number {
   const scale = (to[1] - to[0]) / (from[1] - from[0]);
   const capped = Math.min(from[1], Math.max(from[0], value)) - from[0];
@@ -105,7 +105,7 @@ export function DockIcon({
         onMouseMove={handleIconHover}
         className={cn(
           "icon h-[var(--icon-size)] w-[var(--icon-size)] px-[calc(var(--icon-size)*0.075)] group/li cursor-pointer hover:w-[calc(var(--icon-size)*1.5)] hover:h-[calc(var(--icon-size)*1.5)] hover:-mt-[calc(var(--icon-size)/2)] [&_img]:object-contain flex items-center justify-center",
-          className
+          className,
         )}
       >
         <a
@@ -148,17 +148,17 @@ export function Dock({
     const offsetPixels = scaleValue(
       cursorDistance,
       [0, 1],
-      [maxAdditionalSize * -1, maxAdditionalSize]
+      [maxAdditionalSize * -1, maxAdditionalSize],
     );
 
     dockRef.current.style.setProperty(
       "--dock-offset-left",
-      `${offsetPixels * -1}px`
+      `${offsetPixels * -1}px`,
     );
 
     dockRef.current.style.setProperty(
       "--dock-offset-right",
-      `${offsetPixels}px`
+      `${offsetPixels}px`,
     );
   };
 
@@ -167,7 +167,7 @@ export function Dock({
       <ul
         className={cn(
           "flex items-center bg-gradient-to-t from-neutral-50 dark:from-zinc-950 to-white dark:to-zinc-900 border border-gray-100 dark:border-zinc-900 p-1 rounded-xl ",
-          className
+          className,
         )}
       >
         {React.Children.map(children, (child) =>
@@ -176,7 +176,7 @@ export function Dock({
                 handleIconHover,
                 iconSize,
               })
-            : child
+            : child,
         )}
       </ul>
     </nav>

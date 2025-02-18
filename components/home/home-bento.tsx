@@ -63,7 +63,7 @@ export default function HomeBento() {
               className={cn(
                 index === 1 || index === 2 ? "md:col-span-3" : "",
                 index === 1 ? "overflow-visible" : "",
-                "max-md:max-w-[400px] w-full"
+                "max-md:max-w-[400px] w-full",
               )}
             />
           ))}

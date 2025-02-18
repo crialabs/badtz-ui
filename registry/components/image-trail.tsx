@@ -30,7 +30,7 @@ export function ImageTrail({
   useEffect(() => {
     if (contentRef.current) {
       imagesRef.current = Array.from(
-        contentRef.current.querySelectorAll("img")
+        contentRef.current.querySelectorAll("img"),
       );
     }
 
@@ -81,12 +81,12 @@ export function ImageTrail({
     cacheMousePos.current.x = lerp(
       cacheMousePos.current.x,
       mousePos.current.x,
-      0.1
+      0.1,
     );
     cacheMousePos.current.y = lerp(
       cacheMousePos.current.y,
       mousePos.current.y,
-      0.1
+      0.1,
     );
 
     if (distance > threshold) {
@@ -129,7 +129,7 @@ export function ImageTrail({
           ease: Power1.easeOut,
           opacity: 0,
         },
-        0.4
+        0.4,
       )
       .to(
         img,
@@ -138,7 +138,7 @@ export function ImageTrail({
           ease: Quint.easeInOut,
           y: `+=${parentSize.current.height + rect.height / 2}`,
         },
-        0.4
+        0.4,
       );
   };
 

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function AuthorPage() {
   const articles = allPosts.filter((post) =>
-    post.authors.some((author) => author.trim() === "badtz")
+    post.authors.some((author) => author.trim() === "badtz"),
   );
 
   return (

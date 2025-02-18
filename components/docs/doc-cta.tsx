@@ -9,7 +9,7 @@ export default function DocsCta({ className }: { className?: string }) {
       target="_blank"
       className={cn(
         "p-4 border border-sidebar-border dark:border-border bg-background rounded-lg flex max-w-[240px] group/cta",
-        className
+        className,
       )}
     >
       <div className="">

@@ -157,7 +157,7 @@ export function ImageSplitExample({
         0,
         0,
         pieceWidth,
-        pieceHeight
+        pieceHeight,
       );
       newImagePieces.push(canvas.toDataURL());
     }
@@ -190,7 +190,7 @@ export function ImageSplitExample({
             {
               "rounded-l-[inherit]": index === 0,
               "rounded-r-[inherit]": index === imagePieces.length - 1,
-            }
+            },
           )}
           style={{
             width: `${100 / sections}%`,
@@ -216,7 +216,7 @@ export default function ImageSplitDemo() {
   const [borderOpacity, setBorderOpacity] = useState(0.3);
   const [borderColor, setBorderColor] = useState("#FFFFFF");
   const [imageSrc, setImageSrc] = useState(
-    "/images/components/image-split/badtz-ui-documentation-dark.webp"
+    "/images/components/image-split/badtz-ui-documentation-dark.webp",
   );
 
   useEffect(() => {
@@ -225,7 +225,7 @@ export default function ImageSplitDemo() {
     setImageSrc(
       theme === "dark"
         ? "/images/components/image-split/badtz-ui-documentation-dark.webp"
-        : "/images/components/image-split/badtz-ui-documentation-light.webp"
+        : "/images/components/image-split/badtz-ui-documentation-light.webp",
     );
   }, [theme]);
 

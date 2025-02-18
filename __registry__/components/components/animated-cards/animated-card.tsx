@@ -11,7 +11,7 @@ export function AnimatedCard({ className, ...props }: CardProps) {
       aria-describedby="card-description"
       className={cn(
         "relative rounded-xl w-[356px] border overflow-hidden group/animated-card dark:border-zinc-900 border-zinc-200 dark:bg-black bg-white shadow-sm",
-        className
+        className,
       )}
       {...props}
     />
@@ -24,7 +24,7 @@ export function CardBody({ className, ...props }: CardProps) {
       role="group"
       className={cn(
         "flex flex-col space-y-1.5 p-4 border-t dark:border-zinc-900 border-zinc-200",
-        className
+        className,
       )}
       {...props}
     />
@@ -38,7 +38,7 @@ export function CardTitle({ className, ...props }: CardTitleProps) {
     <h3
       className={cn(
         "text-lg dark:text-white text-black font-semibold leading-none tracking-tight",
-        className
+        className,
       )}
       {...props}
     />
@@ -53,7 +53,7 @@ export function CardDescription({ className, ...props }: CardDescriptionProps) {
     <p
       className={cn(
         "text-sm text-neutral-500 dark:text-neutral-400",
-        className
+        className,
       )}
       {...props}
     />

@@ -78,7 +78,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
   };
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (
-    event
+    event,
   ) => {
     event.preventDefault();
     setIsLoading(true);
@@ -145,7 +145,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
         aria-busy={isLoading}
         className={cn(
           "aspect-square flex-items-center justify-center rounded absolute inset-y-1.5 right-1.5 bg-gradient-to-t from-orange-600 to-orange-500 shadow-[0_0px_8px_rgba(245,_73,_0,_0.7)] text-white flex items-center before:absolute before:inset-0 before:shadow-[0_0px_20px_rgba(245,_73,_0,_0.5)] before:opacity-0 transition-opacity duration-300 hover:before:opacity-100 before:rounded-[inherit] before:pointer-events-none before:transition-opacity before:duration-300 before:will-change-opacity after:inset-0 after:absolute after:shadow-[rgba(255,_255,_255,_0.2)_0px_1px_0px_inset] after:rounded-[inherit] [&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0",
-          isLoading && "cursor-not-allowed"
+          isLoading && "cursor-not-allowed",
         )}
       >
         {isLoading ? (

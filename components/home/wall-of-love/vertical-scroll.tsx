@@ -17,7 +17,7 @@ export function VerticalScroll({
       {...props}
       className={cn(
         "group flex overflow-hidden [--duration:40s] [--gap:1.25rem] [gap:var(--gap)] flex-col",
-        className
+        className,
       )}
     >
       {Array(repeat)

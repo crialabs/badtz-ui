@@ -26,7 +26,7 @@ export function DashboardTableOfContents({ toc }: TocProps) {
             .filter(Boolean)
             .map((id) => id?.split("#")[1])
         : [],
-    [toc]
+    [toc],
   );
   const activeHeading = useActiveItem(itemIds);
   const mounted = useMounted();
@@ -55,7 +55,7 @@ function useActiveItem(itemIds: string[]) {
           }
         });
       },
-      { rootMargin: `0% 0% -80% 0%` }
+      { rootMargin: `0% 0% -80% 0%` },
     );
 
     itemIds?.forEach((id) => {
@@ -100,7 +100,7 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
                 <CollapsibleTrigger
                   className={cn(
                     "flex items-start gap-2 font-medium transition text-muted-foreground hover:text-foreground text-left",
-                    isActiveParent && "text-foreground font-semibold" // Highlight si actif
+                    isActiveParent && "text-foreground font-semibold", // Highlight si actif
                   )}
                 >
                   {item.title}
@@ -116,7 +116,7 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
                             "inline-block no-underline transition-colors hover:text-foreground pt-2",
                             subItem.url === `#${activeItem}`
                               ? "font-medium text-foreground"
-                              : "text-muted-foreground"
+                              : "text-muted-foreground",
                           )}
                         >
                           {subItem.title}
@@ -133,7 +133,7 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
                   "inline-block no-underline transition-colors hover:text-foreground",
                   item.url === `#${activeItem}`
                     ? "font-medium text-foreground"
-                    : "text-muted-foreground"
+                    : "text-muted-foreground",
                 )}
               >
                 {item.title}

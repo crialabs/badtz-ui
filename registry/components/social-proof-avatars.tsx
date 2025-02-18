@@ -30,7 +30,7 @@ export function SocialProofAvatars({
             aria-hidden
             className={cn(
               "w-12 h-12 border-4 overflow-hidden border-white dark:border-neutral-900 shrink-0 rounded-full relative shadow-sm bg-neutral-100 dark:bg-neutral-950",
-              className
+              className,
             )}
             key={i}
           >

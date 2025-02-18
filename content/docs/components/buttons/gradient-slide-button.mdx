@@ -139,11 +139,11 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 interface GradientSlideButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
-  className?: string;
-  colorFrom?: string;
-  colorTo?: string;
+extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+children: React.ReactNode;
+className?: string;
+colorFrom?: string;
+colorTo?: string;
 }
 
 export function GradientSlideButton({
@@ -192,20 +192,16 @@ import { GradientSlideButton } from "@components/ui/gradient-slide-button";
 ```
 
 ```tsx
-<GradientSlideButton className="rounded-3xl">
-  Hover me
-</GradientSlideButton>
+<GradientSlideButton className="rounded-3xl">Hover me</GradientSlideButton>
 ```
 
 ## Props
 
 `gradient-slide-button` props.
 
-| Prop       | Type                                      | Description                                                     | Default      |
-|------------|-------------------------------------------|-----------------------------------------------------------------|--------------|
-| children   | React.ReactNode                          | The content inside the button.                                  | **(required)** |
-| className  | string                                   | Additional custom classes for styling.                          | -            |
-| colorFrom  | string                                   | The starting color of the gradient effect.                      | `"#F54900"`  |
-| colorTo    | string                                   | The ending color of the gradient effect.                        | `"#FF8904"`  |
-
-
+| Prop      | Type            | Description                                | Default        |
+| --------- | --------------- | ------------------------------------------ | -------------- |
+| children  | React.ReactNode | The content inside the button.             | **(required)** |
+| className | string          | Additional custom classes for styling.     | -              |
+| colorFrom | string          | The starting color of the gradient effect. | `"#F54900"`    |
+| colorTo   | string          | The ending color of the gradient effect.   | `"#FF8904"`    |

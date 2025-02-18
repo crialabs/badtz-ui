@@ -75,7 +75,7 @@ function generateRegistryIndex() {
     subcategory: "${obj.subcategory}",
     chunks: ${JSON.stringify(obj.chunks, null, 2)}
   }
-  `.trim()
+  `.trim(),
     )
     .join(",");
 
@@ -102,7 +102,7 @@ export const Index: Record<string, RegistryItem> = {
 
   fs.writeFileSync(REGISTRY_INDEX_FILE, content);
   console.log(
-    "✅ `__registry__/index.tsx` successfully updated with React.lazy() inside the object!"
+    "✅ `__registry__/index.tsx` successfully updated with React.lazy() inside the object!",
   );
 }
 

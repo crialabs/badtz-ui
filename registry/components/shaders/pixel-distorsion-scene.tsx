@@ -48,7 +48,7 @@ export default function PixelDistorsionScene({
   useEffect(() => {
     updateDimensions();
     const observer = new ResizeObserver(() =>
-      requestAnimationFrame(updateDimensions)
+      requestAnimationFrame(updateDimensions),
     );
     window.addEventListener("resize", updateDimensions);
 

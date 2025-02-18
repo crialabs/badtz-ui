@@ -52,7 +52,7 @@ export function ComponentPreview({
         extractedText += child;
       } else if (React.isValidElement(child) && child.props.children) {
         extractedText += extractTextFromChildren(
-          React.Children.toArray(child.props.children)
+          React.Children.toArray(child.props.children),
         );
       }
     });
@@ -63,10 +63,10 @@ export function ComponentPreview({
   const codeBlocks = React.useMemo(() => {
     const parsedChildren = React.Children.toArray(children);
     const jsCode = parsedChildren.find(
-      (child) => (child as any)?.props?.slot === "javascript"
+      (child) => (child as any)?.props?.slot === "javascript",
     );
     const tsCode = parsedChildren.find(
-      (child) => (child as any)?.props?.slot === "typescript"
+      (child) => (child as any)?.props?.slot === "typescript",
     );
 
     return {
@@ -132,7 +132,7 @@ export function ComponentPreview({
                 "items-start": align === "start",
                 "items-end": align === "end",
               },
-              className
+              className,
             )}
           >
             {replayable && (

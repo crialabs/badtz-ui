@@ -65,7 +65,7 @@ export default function MouseWave({
 
     const pointer = new THREE.Vector2(
       (event.clientX / window.innerWidth) * 2 - 1,
-      -(event.clientY / window.innerHeight) * 2 + 1
+      -(event.clientY / window.innerHeight) * 2 + 1,
     );
 
     raycaster.setFromCamera(pointer, camera);
@@ -78,7 +78,7 @@ export default function MouseWave({
       if (uv) {
         (obj.material as THREE.ShaderMaterial).uniforms.uHover.value.set(
           uv.x,
-          uv.y
+          uv.y,
         );
       }
     }

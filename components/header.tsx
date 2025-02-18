@@ -64,7 +64,7 @@ function MobileLink({
       }}
       className={cn(
         "text-base w-min whitespace-nowrap text-foreground font-light",
-        className
+        className,
       )}
       {...props}
     >
@@ -110,7 +110,7 @@ export default function Header(): JSX.Element {
                     "transition-colors text-muted-foreground hover:text-foreground font-normal",
                     pathname?.startsWith(link.href)
                       ? "text-foreground"
-                      : "text-muted-foreground"
+                      : "text-muted-foreground",
                   )}
                 >
                   {link.label}

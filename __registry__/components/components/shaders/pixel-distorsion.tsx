@@ -50,7 +50,7 @@ export default function PixelDistorsion({
       grid,
       grid,
       THREE.RGBAFormat,
-      THREE.FloatType
+      THREE.FloatType,
     );
     dataTexture.needsUpdate = true;
     dataTexture.minFilter = THREE.NearestFilter;

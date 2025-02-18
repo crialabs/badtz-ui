@@ -56,7 +56,7 @@ export default function PulseShader({
     if (!plane.current) return;
     const pointer = new THREE.Vector2(
       (event.clientX / window.innerWidth) * 2 - 1,
-      -(event.clientY / window.innerHeight) * 2 + 1
+      -(event.clientY / window.innerHeight) * 2 + 1,
     );
 
     const raycaster = new THREE.Raycaster();
@@ -67,7 +67,7 @@ export default function PulseShader({
       const obj = intersects[0].object as THREE.Mesh;
       (obj.material as THREE.ShaderMaterial).uniforms.uHover.value.set(
         intersects[0].uv!.x,
-        intersects[0].uv!.y
+        intersects[0].uv!.y,
       );
     }
   };

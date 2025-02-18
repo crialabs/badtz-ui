@@ -57,7 +57,7 @@ export function ImageSplit({
   const animationFrameRef = useRef<number>();
   const borderRgb = useMemo(
     () => hexToRgb(borderColor) || "255, 255, 255",
-    [borderColor]
+    [borderColor],
   );
 
   useEffect(() => {
@@ -183,7 +183,7 @@ export function ImageSplit({
         0,
         0,
         pieceWidth,
-        pieceHeight
+        pieceHeight,
       );
       newImagePieces.push(canvas.toDataURL());
     }
@@ -216,7 +216,7 @@ export function ImageSplit({
             {
               "rounded-l-[inherit]": index === 0,
               "rounded-r-[inherit]": index === imagePieces.length - 1,
-            }
+            },
           )}
           style={{
             flex: "1 0 auto",

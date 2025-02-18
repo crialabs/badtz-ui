@@ -59,7 +59,7 @@ export function DocsPager({ doc }: { doc: Doc }) {
     <div
       className={cn(
         "flex flex-row items-center justify-between gap-4",
-        !pager?.prev?.href && "justify-end"
+        !pager?.prev?.href && "justify-end",
       )}
     >
       {pager?.prev?.href && (
@@ -118,7 +118,7 @@ export function DocsPager({ doc }: { doc: Doc }) {
               },
             },
             null,
-            2
+            2,
           ),
         }}
       />
@@ -133,7 +133,7 @@ export function getPagerForDoc(doc: Doc): Pager {
     null,
   ];
   const activeIndex = flattenedLinks.findIndex(
-    (link) => doc.slug === link?.href
+    (link) => doc.slug === link?.href,
   );
 
   const prev = activeIndex !== 0 ? flattenedLinks[activeIndex - 1] : null;

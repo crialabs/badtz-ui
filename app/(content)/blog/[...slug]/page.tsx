@@ -265,7 +265,7 @@ export default async function PostPage({ params }: { params: Params }) {
                       </div>
                     </div>
                   </div>
-                ) : null
+                ) : null,
               )}
             </div>
           ) : null}

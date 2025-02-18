@@ -66,14 +66,14 @@ function hexToRgb(hex: string): string {
 export function Cell1Visual() {
   const { theme } = useTheme();
   const [imageSrc, setImageSrc] = useState(
-    "/images/home-bento/cell-elipse-dark.webp"
+    "/images/home-bento/cell-elipse-dark.webp",
   );
 
   useEffect(() => {
     setImageSrc(
       theme === "dark"
         ? "/images/home-bento/cell-elipse-dark.webp"
-        : "/images/home-bento/cell-elipse-light.webp"
+        : "/images/home-bento/cell-elipse-light.webp",
     );
   }, [theme]);
 
@@ -97,14 +97,14 @@ export function Cell2Visual() {
   const { theme } = useTheme();
   const [spotlightColor, setSpotlightColor] = useState("#b4adcc");
   const [imageSrc, setImageSrc] = useState(
-    "/images/home-bento/keyboard-dark-x3.webp"
+    "/images/home-bento/keyboard-dark-x3.webp",
   );
 
   useEffect(() => {
     setImageSrc(
       theme === "dark"
         ? "/images/home-bento/keyboard-dark-x3.webp"
-        : "/images/home-bento/keyboard-light-x3.webp"
+        : "/images/home-bento/keyboard-light-x3.webp",
     );
     setSpotlightColor(theme === "dark" ? "#f2fcff" : "#b4adcc");
   }, [theme]);
@@ -257,7 +257,7 @@ export function Cell4Visual() {
                 ? "border border-border dark:border-secondary-border/50 bg-background dark:bg-[#21222550] backdrop-blur-lg"
                 : "",
               index === 12 &&
-                "flex flex-col items-center justify-center text-foreground"
+                "flex flex-col items-center justify-center text-foreground",
             )}
           >
             {index === 6 && <Part1 />}
@@ -378,7 +378,7 @@ const ScrollingIcons: React.FC<{ className?: string }> = memo(
       <div
         className={cn(
           "absolute z-10 inset-x-0 bottom-1/2 -translate-y-1/2",
-          className
+          className,
         )}
       >
         <div>
@@ -389,7 +389,7 @@ const ScrollingIcons: React.FC<{ className?: string }> = memo(
                   "px-2 transition-transform duration-500 ease-[cubic-bezier(0.6, 0.6, 0, 1)]",
                   currentIndex === index - 2 && "scale-[150%] px-4",
                   (currentIndex === index - 1 || currentIndex === index - 3) &&
-                    "scale-[120%]"
+                    "scale-[120%]",
                 )}
                 key={index}
                 style={{ transformOrigin: "center" }}
@@ -420,7 +420,7 @@ const ScrollingIcons: React.FC<{ className?: string }> = memo(
         </div>
       </div>
     );
-  }
+  },
 );
 
 function Chart({
@@ -646,7 +646,7 @@ const SvgChart: React.FC<LayerProps> = ({ color, hovered }) => {
     <div
       className={cn(
         "w-[606px] h-[306px] absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.6, 0.6, 0, 1)] z-[8] dark:text-neutral-800 text-[#FAFAFC]",
-        hovered && "scale-[125%] translate-y-6"
+        hovered && "scale-[125%] translate-y-6",
       )}
     >
       <svg width="606" height="306" xmlns="http://www.w3.org/2000/svg">

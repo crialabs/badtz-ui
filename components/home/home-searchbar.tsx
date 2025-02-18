@@ -70,7 +70,7 @@ export function HomeSearchbar(props: HomeSearchbarProps) {
     <>
       <button
         className={cn(
-          "h-8 w-8 dark:hover:bg-muted/70 hover:bg-muted/20 border border-transparent hover:border-secondary-border transition-colors flex items-center justify-center rounded-md [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 text-foreground bg-transparent"
+          "h-8 w-8 dark:hover:bg-muted/70 hover:bg-muted/20 border border-transparent hover:border-secondary-border transition-colors flex items-center justify-center rounded-md [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 text-foreground bg-transparent",
         )}
         onClick={handleButtonClick}
         {...props}
