@@ -32,7 +32,7 @@ export async function POST(req: Request) {
             "Retry-After": "300",
             "X-RateLimit-Reset": new Date(Date.now() + 300000).toISOString(),
           },
-        }
+        },
       );
     }
 
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
     if (!validation.success) {
       return new Response(
         JSON.stringify({ error: validation.error.errors[0].message }),
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -55,7 +55,7 @@ export async function POST(req: Request) {
     } else {
       return new Response(
         JSON.stringify({ error: "This email is already registered." }),
-        { status: 409 }
+        { status: 409 },
       );
     }
 
@@ -73,19 +73,19 @@ export async function POST(req: Request) {
     const unsubscribeLink = `${process.env.NEXT_PUBLIC_APP_URL}/newsletter/unsubscribe?token=${unsubscribeToken}`;
     const emailHtml = await render(
       <NewsletterWelcome unsubscribeLink={unsubscribeLink} />,
-      { pretty: true }
+      { pretty: true },
     );
 
     const emailResponse = await sendEmail(
       email,
       "Welcome to Badtz Newsletter!",
-      emailHtml
+      emailHtml,
     );
 
     if (!emailResponse.success) {
       return NextResponse.json(
         { error: "Failed to send confirmation email" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -93,13 +93,13 @@ export async function POST(req: Request) {
       JSON.stringify({ message: "Successful registration!" }),
       {
         status: 200,
-      }
+      },
     );
   } catch (error) {
     console.error("Erreur d'inscription:", error);
     return new Response(
       JSON.stringify({ error: "Internal error. Please try again." }),
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

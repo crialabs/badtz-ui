@@ -13,26 +13,26 @@ description: A component that displays user avatars with optional extra count an
 import SocialProofAvatars from "@/components/ui/social-proof-avatars";
 
 const avatars = [
-  {
-    alt: "Avatar 1",
-    src: "/images/components/avatar-proof/avatar-1.webp",
-  },
-  {
-    alt: "Avatar 2",
-    src: "/images/components/avatar-proof/avatar-2.webp",
-  },
-  {
-    alt: "Avatar 3",
-    src: "/images/components/avatar-proof/avatar-3.webp",
-  },
-  {
-    alt: "Avatar 4",
-    src: "/images/components/avatar-proof/avatar-4.webp",
-  },
-  {
-    alt: "Avatar 5",
-    src: "/images/components/avatar-proof/avatar-5.webp",
-  },
+{
+alt: "Avatar 1",
+src: "/images/components/avatar-proof/avatar-1.webp",
+},
+{
+alt: "Avatar 2",
+src: "/images/components/avatar-proof/avatar-2.webp",
+},
+{
+alt: "Avatar 3",
+src: "/images/components/avatar-proof/avatar-3.webp",
+},
+{
+alt: "Avatar 4",
+src: "/images/components/avatar-proof/avatar-4.webp",
+},
+{
+alt: "Avatar 5",
+src: "/images/components/avatar-proof/avatar-5.webp",
+},
 ];
 
 export default function SocialProofAvatarsDemo() {
@@ -51,26 +51,26 @@ export default function SocialProofAvatarsDemo() {
 import SocialProofAvatars from "@/components/ui/social-proof-avatars";
 
 const avatars = [
-  {
-    alt: "Avatar 1",
-    src: "/images/components/avatar-proof/avatar-1.webp",
-  },
-  {
-    alt: "Avatar 2",
-    src: "/images/components/avatar-proof/avatar-2.webp",
-  },
-  {
-    alt: "Avatar 3",
-    src: "/images/components/avatar-proof/avatar-3.webp",
-  },
-  {
-    alt: "Avatar 4",
-    src: "/images/components/avatar-proof/avatar-4.webp",
-  },
-  {
-    alt: "Avatar 5",
-    src: "/images/components/avatar-proof/avatar-5.webp",
-  },
+{
+alt: "Avatar 1",
+src: "/images/components/avatar-proof/avatar-1.webp",
+},
+{
+alt: "Avatar 2",
+src: "/images/components/avatar-proof/avatar-2.webp",
+},
+{
+alt: "Avatar 3",
+src: "/images/components/avatar-proof/avatar-3.webp",
+},
+{
+alt: "Avatar 4",
+src: "/images/components/avatar-proof/avatar-4.webp",
+},
+{
+alt: "Avatar 5",
+src: "/images/components/avatar-proof/avatar-5.webp",
+},
 ];
 
 export default function SocialProofAvatarsDemo() {
@@ -217,16 +217,16 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 interface Avatar {
-  src: string;
-  alt: string;
+src: string;
+alt: string;
 }
 
 interface SocialProofAvatarsProps extends React.HTMLAttributes<HTMLDivElement> {
-  extraCount?: number;
-  avatars: Avatar[];
-  className?: string;
-  stars?: boolean;
-  children?: React.ReactNode;
+extraCount?: number;
+avatars: Avatar[];
+className?: string;
+stars?: boolean;
+children?: React.ReactNode;
 }
 
 export function SocialProofAvatars({
@@ -334,20 +334,20 @@ const avatars = [
 
 `social-proof-avatars` props.
 
-| Prop        | Type                                      | Description                                                     | Default |
-|-------------|-------------------------------------------|-----------------------------------------------------------------|---------|
-| avatars     | Avatar[]                                  | Array of avatar objects containing `src` and `alt` properties.  | -       |
-| extraCount  | number                                    | Number of extra avatars, displayed as a "+X" count.            | -       |
-| className   | string                                    | Additional custom classes.                                      | -       |
-| stars       | boolean                                   | Whether to display star ratings (default is `true`).            | true    |
-| children    | React.ReactNode                           | Any child elements to be rendered within the component.         | -       |
-| props       | React.HTMLAttributes&lt;HTMLDivElement&gt; | Additional HTML attributes for the wrapping `div`.              | -       |
-
+| Prop       | Type                                       | Description                                                    | Default |
+| ---------- | ------------------------------------------ | -------------------------------------------------------------- | ------- |
+| avatars    | Avatar[]                                   | Array of avatar objects containing `src` and `alt` properties. | -       |
+| extraCount | number                                     | Number of extra avatars, displayed as a "+X" count.            | -       |
+| className  | string                                     | Additional custom classes.                                     | -       |
+| stars      | boolean                                    | Whether to display star ratings (default is `true`).           | true    |
+| children   | React.ReactNode                            | Any child elements to be rendered within the component.        | -       |
+| props      | React.HTMLAttributes&lt;HTMLDivElement&gt; | Additional HTML attributes for the wrapping `div`.             | -       |
 
 ## Credits
 
-
-<li className="text-sm text-muted-foreground mt-4">The images are from <MdxLink href="https://dribbble.com/shots/14587125-Free-Memoji-Avatars">Spline.One</MdxLink></li>
-
-
-
+<li className="text-sm text-muted-foreground mt-4">
+  The images are from{" "}
+  <MdxLink href="https://dribbble.com/shots/14587125-Free-Memoji-Avatars">
+    Spline.One
+  </MdxLink>
+</li>

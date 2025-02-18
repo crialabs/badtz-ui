@@ -10,7 +10,7 @@ const MouseWaveScene = dynamic(
         {/* Skeleton loader */}
       </div>
     ),
-  }
+  },
 );
 
 export default function MouseWaveDemo() {

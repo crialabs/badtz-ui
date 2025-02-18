@@ -27,7 +27,7 @@ export function BorderBeam({
       const div = pathRef.current;
       div.style.setProperty(
         "--path",
-        `path("M 0 0 H ${div.offsetWidth} V ${div.offsetHeight} H 0 V 0")`
+        `path("M 0 0 H ${div.offsetWidth} V ${div.offsetHeight} H 0 V 0")`,
       );
     }
   };
@@ -59,7 +59,7 @@ export function BorderBeam({
         "![mask-composite:intersect] [mask:linear-gradient(transparent,transparent),linear-gradient(red,red)]",
 
         `before:border-black/10 dark:before:border-white/10 before:absolute before:inset-0 before:rounded-[inherit] before:z-[-1] before:border-[length:var(--border-width)]`,
-        className
+        className,
       )}
       {...props}
     >

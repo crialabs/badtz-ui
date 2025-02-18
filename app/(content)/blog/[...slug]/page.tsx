@@ -188,7 +188,7 @@ export default async function PostPage({ params }: { params: Params }) {
                 {post.title}
               </h1>
             </div>
-            <p className="text-muted-foreground text-balance mt-4">
+            <p className="text-muted-foreground text-balance mt-6">
               {post.description}
             </p>
             {post.image && (
@@ -197,7 +197,7 @@ export default async function PostPage({ params }: { params: Params }) {
                 alt={post.title}
                 width={760}
                 height={400}
-                className="bg-secondary border border-border rounded-lg aspect-video object-cover w-full my-6"
+                className="bg-secondary border border-border rounded-lg aspect-video object-cover w-full mb-6 mt-10"
                 priority
               />
             )}

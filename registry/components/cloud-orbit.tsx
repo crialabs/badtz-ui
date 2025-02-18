@@ -62,7 +62,7 @@ export function CloudOrbit({
       }
       className={cn(
         "relative h-[--size] w-[--size] select-none rounded-full flex items-center justify-center",
-        className
+        className,
       )}
       {...props}
     >
@@ -85,10 +85,10 @@ export function CloudOrbit({
                   }}
                   className={cn(
                     "absolute h-[--size] w-[--size] z-10 rounded-[inherit] bg-gradient-to-t from-neutral-100 dark:from-zinc-900 to-white dark:to-zinc-800 dark:shadow-[rgba(255,_255,_255,_0.3)_0px_1px_0px_inset] shadow-[rgba(0,_0,_0,_0.05)_0px_1px_0px_inset] border border-gray-100 dark:border-zinc-900",
-                    className
+                    className,
                   )}
                 />
-              )
+              ),
           )}
       </AnimatePresence>
       {children}
@@ -156,7 +156,7 @@ export function OrbitingImage({
       }
       className={cn(
         "absolute pointer-events-none h-[--size] w-[--size] z-[5] transform-gpu animate-cloud-orbit items-center justify-center rounded-full ",
-        className
+        className,
       )}
       {...props}
     >
@@ -183,7 +183,7 @@ export function OrbitingImage({
                   }}
                   className={cn(
                     "rounded-full bg-gradient-to-t from-neutral-100 dark:from-zinc-900 to-white dark:to-zinc-800 dark:shadow-[rgba(255,_255,_255,_0.3)_0px_1px_0px_inset] shadow-[rgba(0,_0,_0,_0.05)_0px_1px_0px_inset] border border-gray-100 dark:border-zinc-900 p-[15%]",
-                    className
+                    className,
                   )}
                 >
                   <img
@@ -192,7 +192,7 @@ export function OrbitingImage({
                     className="h-full w-full flex items-center justify-center rounded-full object-contain"
                   />
                 </motion.div>
-              )
+              ),
           )}
       </AnimatePresence>
     </div>

@@ -38,7 +38,7 @@ export function UtilsSource({
         extractedText += child;
       } else if (React.isValidElement(child) && child.props.children) {
         extractedText += extractTextFromChildren(
-          React.Children.toArray(child.props.children)
+          React.Children.toArray(child.props.children),
         );
       }
     });
@@ -48,10 +48,10 @@ export function UtilsSource({
   const codeBlocks = React.useMemo(() => {
     const parsedChildren = React.Children.toArray(children);
     const jsCode = parsedChildren.find(
-      (child) => (child as any)?.props?.slot === "javascript"
+      (child) => (child as any)?.props?.slot === "javascript",
     );
     const tsCode = parsedChildren.find(
-      (child) => (child as any)?.props?.slot === "typescript"
+      (child) => (child as any)?.props?.slot === "typescript",
     );
 
     return {

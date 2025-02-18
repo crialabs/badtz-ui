@@ -22,7 +22,7 @@ export const Index: Record<string, RegistryItem> = {
       () =>
         import(
           "@/__registry__/components/components/animated-cards/animated-card"
-        )
+        ),
     ),
     source: "",
     files: [
@@ -38,7 +38,7 @@ export const Index: Record<string, RegistryItem> = {
     registryDependencies: undefined,
     component: React.lazy(
       () =>
-        import("@/__registry__/components/components/animated-cards/visual-1")
+        import("@/__registry__/components/components/animated-cards/visual-1"),
     ),
     source: "",
     files: ["__registry__/components/components/animated-cards/visual-1.js"],
@@ -52,7 +52,7 @@ export const Index: Record<string, RegistryItem> = {
     registryDependencies: undefined,
     component: React.lazy(
       () =>
-        import("@/__registry__/components/components/animated-cards/visual-2")
+        import("@/__registry__/components/components/animated-cards/visual-2"),
     ),
     source: "",
     files: ["__registry__/components/components/animated-cards/visual-2.js"],
@@ -66,7 +66,7 @@ export const Index: Record<string, RegistryItem> = {
     registryDependencies: undefined,
     component: React.lazy(
       () =>
-        import("@/__registry__/components/components/animated-cards/visual-3")
+        import("@/__registry__/components/components/animated-cards/visual-3"),
     ),
     source: "",
     files: ["__registry__/components/components/animated-cards/visual-3.js"],
@@ -82,7 +82,7 @@ export const Index: Record<string, RegistryItem> = {
       () =>
         import(
           "@/__registry__/components/components/backgrounds/stripe-animated-gradient"
-        )
+        ),
     ),
     source: "",
     files: [
@@ -97,7 +97,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/components/border-beam")
+      () => import("@/__registry__/components/components/border-beam"),
     ),
     source: "",
     files: ["__registry__/components/components/border-beam.js"],
@@ -111,7 +111,7 @@ export const Index: Record<string, RegistryItem> = {
     registryDependencies: undefined,
     component: React.lazy(
       () =>
-        import("@/__registry__/components/components/buttons/confetti-button")
+        import("@/__registry__/components/components/buttons/confetti-button"),
     ),
     source: "",
     files: ["__registry__/components/components/buttons/confetti-button.js"],
@@ -127,7 +127,7 @@ export const Index: Record<string, RegistryItem> = {
       () =>
         import(
           "@/__registry__/components/components/buttons/gradient-slide-button"
-        )
+        ),
     ),
     source: "",
     files: [
@@ -142,7 +142,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/components/buttons/star-button")
+      () => import("@/__registry__/components/components/buttons/star-button"),
     ),
     source: "",
     files: ["__registry__/components/components/buttons/star-button.js"],
@@ -155,7 +155,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/components/cloud-orbit")
+      () => import("@/__registry__/components/components/cloud-orbit"),
     ),
     source: "",
     files: ["__registry__/components/components/cloud-orbit.js"],
@@ -168,7 +168,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/components/dock")
+      () => import("@/__registry__/components/components/dock"),
     ),
     source: "",
     files: ["__registry__/components/components/dock.js"],
@@ -181,7 +181,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/components/expandable-card")
+      () => import("@/__registry__/components/components/expandable-card"),
     ),
     source: "",
     files: ["__registry__/components/components/expandable-card.js"],
@@ -194,7 +194,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/components/image-split")
+      () => import("@/__registry__/components/components/image-split"),
     ),
     source: "",
     files: ["__registry__/components/components/image-split.js"],
@@ -207,7 +207,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/components/image-trail")
+      () => import("@/__registry__/components/components/image-trail"),
     ),
     source: "",
     files: ["__registry__/components/components/image-trail.js"],
@@ -220,7 +220,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/components/infinite-ribbon")
+      () => import("@/__registry__/components/components/infinite-ribbon"),
     ),
     source: "",
     files: ["__registry__/components/components/infinite-ribbon.js"],
@@ -234,7 +234,7 @@ export const Index: Record<string, RegistryItem> = {
     registryDependencies: undefined,
     component: React.lazy(
       () =>
-        import("@/__registry__/components/components/shaders/mouse-wave-scene")
+        import("@/__registry__/components/components/shaders/mouse-wave-scene"),
     ),
     source: "",
     files: ["__registry__/components/components/shaders/mouse-wave-scene.js"],
@@ -248,7 +248,9 @@ export const Index: Record<string, RegistryItem> = {
     registryDependencies: undefined,
     component: React.lazy(
       () =>
-        import("@/__registry__/components/components/shaders/mouse-wave-shader")
+        import(
+          "@/__registry__/components/components/shaders/mouse-wave-shader"
+        ),
     ),
     source: "",
     files: ["__registry__/components/components/shaders/mouse-wave-shader.js"],
@@ -261,7 +263,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/components/shaders/mouse-wave")
+      () => import("@/__registry__/components/components/shaders/mouse-wave"),
     ),
     source: "",
     files: ["__registry__/components/components/shaders/mouse-wave.js"],
@@ -277,7 +279,7 @@ export const Index: Record<string, RegistryItem> = {
       () =>
         import(
           "@/__registry__/components/components/shaders/pixel-distorsion-scene"
-        )
+        ),
     ),
     source: "",
     files: [
@@ -295,7 +297,7 @@ export const Index: Record<string, RegistryItem> = {
       () =>
         import(
           "@/__registry__/components/components/shaders/pixel-distorsion-shader"
-        )
+        ),
     ),
     source: "",
     files: [
@@ -311,7 +313,7 @@ export const Index: Record<string, RegistryItem> = {
     registryDependencies: undefined,
     component: React.lazy(
       () =>
-        import("@/__registry__/components/components/shaders/pixel-distorsion")
+        import("@/__registry__/components/components/shaders/pixel-distorsion"),
     ),
     source: "",
     files: ["__registry__/components/components/shaders/pixel-distorsion.js"],
@@ -327,7 +329,7 @@ export const Index: Record<string, RegistryItem> = {
       () =>
         import(
           "@/__registry__/components/components/shaders/pulse-shader-scene"
-        )
+        ),
     ),
     source: "",
     files: ["__registry__/components/components/shaders/pulse-shader-scene.js"],
@@ -343,7 +345,7 @@ export const Index: Record<string, RegistryItem> = {
       () =>
         import(
           "@/__registry__/components/components/shaders/pulse-shader-shader"
-        )
+        ),
     ),
     source: "",
     files: [
@@ -358,7 +360,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/components/shaders/pulse-shader")
+      () => import("@/__registry__/components/components/shaders/pulse-shader"),
     ),
     source: "",
     files: ["__registry__/components/components/shaders/pulse-shader.js"],
@@ -371,7 +373,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/components/social-proof-avatars")
+      () => import("@/__registry__/components/components/social-proof-avatars"),
     ),
     source: "",
     files: ["__registry__/components/components/social-proof-avatars.js"],
@@ -387,7 +389,7 @@ export const Index: Record<string, RegistryItem> = {
       () =>
         import(
           "@/__registry__/components/components/text-animations/blur-reveal"
-        )
+        ),
     ),
     source: "",
     files: [
@@ -402,7 +404,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/animated-card-1-demo")
+      () => import("@/__registry__/components/demos/animated-card-1-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/animated-card-1-demo.js"],
@@ -415,7 +417,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/animated-card-2-demo")
+      () => import("@/__registry__/components/demos/animated-card-2-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/animated-card-2-demo.js"],
@@ -428,7 +430,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/animated-card-3-demo")
+      () => import("@/__registry__/components/demos/animated-card-3-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/animated-card-3-demo.js"],
@@ -441,7 +443,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/blur-reveal-demo")
+      () => import("@/__registry__/components/demos/blur-reveal-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/blur-reveal-demo.js"],
@@ -454,7 +456,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/border-beam-demo")
+      () => import("@/__registry__/components/demos/border-beam-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/border-beam-demo.js"],
@@ -467,7 +469,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/cloud-orbit-demo")
+      () => import("@/__registry__/components/demos/cloud-orbit-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/cloud-orbit-demo.js"],
@@ -480,7 +482,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/confetti-button-demo")
+      () => import("@/__registry__/components/demos/confetti-button-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/confetti-button-demo.js"],
@@ -493,7 +495,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/dock-demo")
+      () => import("@/__registry__/components/demos/dock-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/dock-demo.js"],
@@ -506,7 +508,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/expandable-card-demo")
+      () => import("@/__registry__/components/demos/expandable-card-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/expandable-card-demo.js"],
@@ -519,7 +521,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/gradient-slide-demo")
+      () => import("@/__registry__/components/demos/gradient-slide-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/gradient-slide-demo.js"],
@@ -532,7 +534,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/image-split-demo")
+      () => import("@/__registry__/components/demos/image-split-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/image-split-demo.js"],
@@ -545,7 +547,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/image-trail-demo")
+      () => import("@/__registry__/components/demos/image-trail-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/image-trail-demo.js"],
@@ -558,7 +560,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/infinite-ribbon-demo-bis")
+      () => import("@/__registry__/components/demos/infinite-ribbon-demo-bis"),
     ),
     source: "",
     files: ["__registry__/components/demos/infinite-ribbon-demo-bis.js"],
@@ -571,7 +573,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/infinite-ribbon-demo")
+      () => import("@/__registry__/components/demos/infinite-ribbon-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/infinite-ribbon-demo.js"],
@@ -584,7 +586,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/mouse-wave-demo")
+      () => import("@/__registry__/components/demos/mouse-wave-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/mouse-wave-demo.js"],
@@ -597,7 +599,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/pixel-distorsion-demo")
+      () => import("@/__registry__/components/demos/pixel-distorsion-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/pixel-distorsion-demo.js"],
@@ -610,7 +612,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/pulse-shader-demo")
+      () => import("@/__registry__/components/demos/pulse-shader-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/pulse-shader-demo.js"],
@@ -623,7 +625,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/social-proof-avatars-demo")
+      () => import("@/__registry__/components/demos/social-proof-avatars-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/social-proof-avatars-demo.js"],
@@ -636,7 +638,7 @@ export const Index: Record<string, RegistryItem> = {
     type: "components:ui",
     registryDependencies: undefined,
     component: React.lazy(
-      () => import("@/__registry__/components/demos/star-button-demo")
+      () => import("@/__registry__/components/demos/star-button-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/star-button-demo.js"],
@@ -650,7 +652,7 @@ export const Index: Record<string, RegistryItem> = {
     registryDependencies: undefined,
     component: React.lazy(
       () =>
-        import("@/__registry__/components/demos/stripe-animated-gradient-demo")
+        import("@/__registry__/components/demos/stripe-animated-gradient-demo"),
     ),
     source: "",
     files: ["__registry__/components/demos/stripe-animated-gradient-demo.js"],

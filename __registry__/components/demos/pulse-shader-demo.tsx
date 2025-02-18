@@ -10,7 +10,7 @@ const PulseShaderScene = dynamic(
         {/* Skeleton loader */}
       </div>
     ),
-  }
+  },
 );
 
 export default function MouseWaveDemo() {

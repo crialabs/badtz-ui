@@ -114,7 +114,9 @@ You can extract the `stripe-shader.js` file from the zip and place it inside you
 
 <DownloadButton />
 
-<Step>Copy and paste the `stripe-animated-gradient` code into your project.</Step>
+<Step>
+  Copy and paste the `stripe-animated-gradient` code into your project.
+</Step>
 
 <ComponentSource
   name="stripe-animated-gradient"
@@ -134,27 +136,28 @@ export function AnimatedGradient({
 }) {
   const canvasRef = useRef(null);
 
-  useEffect(() => {
-    const gradient = new Gradient();
-    if (canvasRef.current) {
-      gradient.initGradient(canvasRef.current);
-    }
-  }, [color1, color2, color3, color4]);
+useEffect(() => {
+const gradient = new Gradient();
+if (canvasRef.current) {
+gradient.initGradient(canvasRef.current);
+}
+}, [color1, color2, color3, color4]);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      style={{
+return (
+<canvas
+ref={canvasRef}
+style={{
         "--gradient-color-1": color1,
         "--gradient-color-2": color2,
         "--gradient-color-3": color3,
         "--gradient-color-4": color4,
       }}
-      className="inset-0 w-full h-full absolute z-0 rounded-[inherit]"
-    />
-  );
+className="inset-0 w-full h-full absolute z-0 rounded-[inherit]"
+/>
+);
 }
-```
+
+````
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -204,7 +207,8 @@ export function AnimatedGradient({
     />
   );
 }
-```
+````
+
 </Highlighter>
 </ComponentSource>
 
@@ -239,20 +243,22 @@ import { AnimatedGradient } from "@/components/ui/stripe-animated-gradient";
 
 `AnimatedGradient` props.
 
-| Prop    | Type     | Description                                      | Default    |
-|---------|---------|--------------------------------------------------|------------|
-| color1  | string  | First color of the gradient.                    | `#a960ee`  |
-| color2  | string  | Second color of the gradient.                   | `#ff333d`  |
-| color3  | string  | Third color of the gradient.                    | `#90e0ff`  |
-| color4  | string  | Fourth color of the gradient.                   | `#ffcb57`  |
-
-
+| Prop   | Type   | Description                   | Default   |
+| ------ | ------ | ----------------------------- | --------- |
+| color1 | string | First color of the gradient.  | `#a960ee` |
+| color2 | string | Second color of the gradient. | `#ff333d` |
+| color3 | string | Third color of the gradient.  | `#90e0ff` |
+| color4 | string | Fourth color of the gradient. | `#ffcb57` |
 
 ## Credits
 
-<li className="text-sm text-muted-foreground mt-4">I didn't create the original effect; I simply adapted it to work with React. Full credit goes to:</li>
-<li className="text-sm text-muted-foreground mt-4"><MdxLink href="https://stripe.com/jp">Stripe</MdxLink></li>
-<li className="text-sm text-muted-foreground mt-4"><MdxLink href="https://kevinhufnagl.com/">@kevinhufnagl</MdxLink></li>
-
-
-
+<li className="text-sm text-muted-foreground mt-4">
+  I didn't create the original effect; I simply adapted it to work with React.
+  Full credit goes to:
+</li>
+<li className="text-sm text-muted-foreground mt-4">
+  <MdxLink href="https://stripe.com/jp">Stripe</MdxLink>
+</li>
+<li className="text-sm text-muted-foreground mt-4">
+  <MdxLink href="https://kevinhufnagl.com/">@kevinhufnagl</MdxLink>
+</li>

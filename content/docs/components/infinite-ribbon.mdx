@@ -171,28 +171,27 @@ export function InfiniteRibbon({
     ? "animate-infinite-ribbon-reverse"
     : "animate-infinite-ribbon";
 
-  return (
-    <div
-      className={cn(
-        "overflow-hidden max-w-full bg-zinc-100 dark:bg-zinc-800 text-black dark:text-white py-1 text-lg",
-        className
-      )}
-      style={{ transform: `rotate(${rotation}deg)` }}
-    >
-      <div
-        className={cn("whitespace-nowrap flex", animationClass)}
-        style={{ "--ribbon-duration": `${duration}s` }}
-      >
-        {Array.from({ length: repeat }, (_, index) => (
-          <span key={index} className="inline-block mr-8 select-none">
-            {children}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
+return (
+<div
+className={cn(
+"overflow-hidden max-w-full bg-zinc-100 dark:bg-zinc-800 text-black dark:text-white py-1 text-lg",
+className
+)}
+style={{ transform: `rotate(${rotation}deg)` }} >
+<div
+className={cn("whitespace-nowrap flex", animationClass)}
+style={{ "--ribbon-duration": `${duration}s` }} >
+{Array.from({ length: repeat }, (\_, index) => (
+<span key={index} className="inline-block mr-8 select-none">
+{children}
+</span>
+))}
+</div>
+</div>
+);
 }
-```
+
+````
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -241,7 +240,8 @@ export function InfiniteRibbon({
     </div>
   );
 }
-```
+````
+
 </Highlighter>
 </ComponentSource>
 
@@ -274,7 +274,7 @@ module.exports = {
       },
     },
   },
-}
+};
 ```
 
 </Steps>
@@ -291,8 +291,8 @@ import { InfiniteRibbon } from "@/components/ui/infinite-ribbon";
 
 ```tsx
 <InfiniteRibbon>
-  Build fast, responsive, and beautiful interfaces with ready-to-use
-  components. Designed for developers who demand the best.
+  Build fast, responsive, and beautiful interfaces with ready-to-use components.
+  Designed for developers who demand the best.
 </InfiniteRibbon>
 ```
 
@@ -300,14 +300,11 @@ import { InfiniteRibbon } from "@/components/ui/infinite-ribbon";
 
 `infinite-ribbon` props.
 
-| Prop      | Type                  | Description                                                    | Default |
-|----------|----------------------|----------------------------------------------------------------|---------|
-| repeat   | number               | Number of times the content is repeated in the ribbon.        | 5       |
-| duration | number               | Duration of the animation in seconds.                         | 10      |
-| reverse  | boolean              | Whether the ribbon animation should play in reverse.          | false   |
-| rotation | number               | Rotation angle of the ribbon in degrees.                      | 0       |
-| children | React.ReactNode      | The content inside the ribbon.                                | -       |
-| className | string              | Additional custom classes for styling the ribbon.             | -       |
-
-
-
+| Prop      | Type            | Description                                            | Default |
+| --------- | --------------- | ------------------------------------------------------ | ------- |
+| repeat    | number          | Number of times the content is repeated in the ribbon. | 5       |
+| duration  | number          | Duration of the animation in seconds.                  | 10      |
+| reverse   | boolean         | Whether the ribbon animation should play in reverse.   | false   |
+| rotation  | number          | Rotation angle of the ribbon in degrees.               | 0       |
+| children  | React.ReactNode | The content inside the ribbon.                         | -       |
+| className | string          | Additional custom classes for styling the ribbon.      | -       |

@@ -28,14 +28,14 @@ export async function POST(req: Request) {
             "Retry-After": "300",
             "X-RateLimit-Reset": new Date(Date.now() + 300000).toISOString(),
           },
-        }
+        },
       );
     }
 
     if (!token) {
       return new Response(
         JSON.stringify({ error: "Missing unsubscribe token" }),
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -72,14 +72,14 @@ export async function POST(req: Request) {
       await sendEmail(
         unsubscribeToken.subscriber.email,
         "New Unsubscribe Link",
-        `Your unsubscribe token has expired. Here is a new one: <a href="${unsubscribeLink}">${unsubscribeLink}</a>`
+        `Your unsubscribe token has expired. Here is a new one: <a href="${unsubscribeLink}">${unsubscribeLink}</a>`,
       );
 
       return new Response(
         JSON.stringify({
           error: "Token expired. A new one has been sent to your email.",
         }),
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -98,7 +98,7 @@ export async function POST(req: Request) {
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to process request" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

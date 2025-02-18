@@ -134,19 +134,19 @@ export function BlurReveal({ className, children, delay = 0, duration = 1 }) {
   const spanRef = React.useRef(null);
   const isInView = useInView(spanRef, { once: true });
 
-  return (
-    <motion.span
-      ref={spanRef}
-      initial={{ opacity: 0, filter: "blur(10px)", y: "20%" }}
-      animate={isInView ? { opacity: 1, filter: "blur(0px)", y: "0%" } : {}}
-      transition={{ duration: duration, delay: delay }}
-      className={cn("inline-block", className)}
-    >
-      {children}
-    </motion.span>
-  );
+return (
+<motion.span
+ref={spanRef}
+initial={{ opacity: 0, filter: "blur(10px)", y: "20%" }}
+animate={isInView ? { opacity: 1, filter: "blur(0px)", y: "0%" } : {}}
+transition={{ duration: duration, delay: delay }}
+className={cn("inline-block", className)} >
+{children}
+</motion.span>
+);
 }
-```
+
+````
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -184,7 +184,8 @@ export function BlurReveal({
     </motion.span>
   );
 }
-```
+````
+
 </Highlighter>
 </ComponentSource>
 
@@ -205,24 +206,20 @@ import { BlurReveal } from "@/components/ui/blur-reveal";
 <BlurReveal>This is a title</BlurReveal>
 ```
 
-
 ## Props
 
 `BlurReveal` props.
 
-| Prop       | Type                  | Description                                               | Default |
-|------------|-----------------------|-----------------------------------------------------------|---------|
-| className  | string                 | Additional custom classes for styling.                   | -       |
-| children   | React.ReactNode        | Child elements to be rendered inside the component.      | -       |
-| delay      | number                 | Delay before the animation starts, in seconds.           | 0       |
-| duration   | number                 | Duration of the animation effect, in seconds.            | 1       |
-
-
+| Prop      | Type            | Description                                         | Default |
+| --------- | --------------- | --------------------------------------------------- | ------- |
+| className | string          | Additional custom classes for styling.              | -       |
+| children  | React.ReactNode | Child elements to be rendered inside the component. | -       |
+| delay     | number          | Delay before the animation starts, in seconds.      | 0       |
+| duration  | number          | Duration of the animation effect, in seconds.       | 1       |
 
 ## Credits
 
-
-<li className="text-sm text-muted-foreground mt-4">This component is inspired by <MdxLink href="https://linear.app/">Linear</MdxLink></li>
-
-
-
+<li className="text-sm text-muted-foreground mt-4">
+  This component is inspired by{" "}
+  <MdxLink href="https://linear.app/">Linear</MdxLink>
+</li>

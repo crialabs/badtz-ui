@@ -105,40 +105,40 @@ export function ConfettiButton({
 }) {
   const buttonRef = useRef(null);
 
-  const handleClick = (event) => {
-    if (buttonRef.current) {
-      const rect = buttonRef.current.getBoundingClientRect();
-      confetti({
-        particleCount,
-        startVelocity,
-        angle,
-        spread,
-        origin: {
-          x: (rect.left + rect.width / 2) / window.innerWidth,
-          y: (rect.top + rect.height / 2) / window.innerHeight,
-        },
-      });
-    }
-    if (onClick) {
-      onClick(event);
-    }
-  };
-
-  return (
-    <button
-      ref={buttonRef}
-      onClick={handleClick}
-      className={cn(
-        "bg-neutral-100 hover:bg-neutral-200 text-black dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-white h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors duration-300 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </button>
-  );
+const handleClick = (event) => {
+if (buttonRef.current) {
+const rect = buttonRef.current.getBoundingClientRect();
+confetti({
+particleCount,
+startVelocity,
+angle,
+spread,
+origin: {
+x: (rect.left + rect.width / 2) / window.innerWidth,
+y: (rect.top + rect.height / 2) / window.innerHeight,
+},
+});
 }
-```
+if (onClick) {
+onClick(event);
+}
+};
+
+return (
+<button
+ref={buttonRef}
+onClick={handleClick}
+className={cn(
+"bg-neutral-100 hover:bg-neutral-200 text-black dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-white h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors duration-300 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+className
+)}
+{...props} >
+{children}
+</button>
+);
+}
+
+````
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -204,7 +204,8 @@ export function ConfettiButton({
     </button>
   );
 }
-```
+````
+
 </Highlighter>
 </ComponentSource>
 
@@ -230,12 +231,11 @@ import { ConfettiButton } from "@/components/ui/confetti-button";
 
 `confetti-button` props.
 
-| Prop           | Type                                      | Description                                                              | Default    |
-|---------------|-------------------------------------------|--------------------------------------------------------------------------|------------|
-| children      | React.ReactNode                          | The content inside the button.                                           | **(required)** |
-| className     | string                                   | Additional custom classes for styling.                                   | -          |
-| angle         | number                                   | The direction in which the confetti is fired, in degrees.                | `90`       |
-| particleCount | number                                   | The number of confetti particles emitted on click.                       | `75`       |
-| startVelocity | number                                   | The initial velocity of the confetti particles.                          | `35`       |
-| spread        | number                                   | The spread angle of the confetti explosion.                              | `70`       |
-
+| Prop          | Type            | Description                                               | Default        |
+| ------------- | --------------- | --------------------------------------------------------- | -------------- |
+| children      | React.ReactNode | The content inside the button.                            | **(required)** |
+| className     | string          | Additional custom classes for styling.                    | -              |
+| angle         | number          | The direction in which the confetti is fired, in degrees. | `90`           |
+| particleCount | number          | The number of confetti particles emitted on click.        | `75`           |
+| startVelocity | number          | The initial velocity of the confetti particles.           | `35`           |
+| spread        | number          | The spread angle of the confetti explosion.               | `70`           |
