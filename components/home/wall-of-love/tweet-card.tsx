@@ -54,7 +54,7 @@ export const TweetSkeleton = ({
   <div
     className={cn(
       "flex size-full max-h-max min-w-72 flex-col gap-2 rounded-xl border p-4",
-      className,
+      className
     )}
     {...props}
   >
@@ -76,7 +76,7 @@ export const TweetNotFound = ({
   <div
     className={cn(
       "flex size-full flex-col items-center justify-center gap-2 rounded-lg border p-4",
-      className,
+      className
     )}
     {...props}
   >
@@ -217,8 +217,8 @@ export const WOLTweet = ({
       role="group"
       aria-label="Tweet Card"
       className={cn(
-        "relative flex w-full h-auto bg-secondary max-w-lg flex-col gap-2 overflow-hidden rounded-xl border p-4 backdrop-blur-md",
-        className,
+        "relative flex w-full h-auto bg-background dark:bg-secondary shadow-sm max-w-lg flex-col gap-2 overflow-hidden rounded-xl border p-4 backdrop-blur-md",
+        className
       )}
       {...props}
     >
