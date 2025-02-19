@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   return (
-    <>
+    <div>
       {/*
       //TODO: TESTS -> We're probably losing conversion rate, but the design is too ugly.
       <Marketing href="https://pro.badtz-ui.com" plausibleEvent="Clicked on Pro">
@@ -42,6 +42,6 @@ export default async function Home() {
         <CallToAction />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

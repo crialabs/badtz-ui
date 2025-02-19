@@ -57,7 +57,7 @@ export function ImageSplit({
   const animationFrameRef = useRef<number>();
   const borderRgb = useMemo(
     () => hexToRgb(borderColor) || "255, 255, 255",
-    [borderColor],
+    [borderColor]
   );
 
   useEffect(() => {
@@ -183,7 +183,7 @@ export function ImageSplit({
         0,
         0,
         pieceWidth,
-        pieceHeight,
+        pieceHeight
       );
       newImagePieces.push(canvas.toDataURL());
     }
@@ -198,7 +198,10 @@ export function ImageSplit({
   return (
     <div
       ref={parentRef}
-      className={cn("flex relative w-full rounded-[inherit]", className)}
+      className={cn(
+        "flex relative w-full rounded-[inherit] border-r",
+        className
+      )}
       {...props}
     >
       <canvas ref={canvasRef} className="hidden" />
@@ -212,11 +215,11 @@ export function ImageSplit({
             imgRefs.current[index] = el;
           }}
           className={cn(
-            "object-contain transition-transform duration-300 ease-out",
+            "object-contain transition-transform duration-300 ease-out border-t",
             {
-              "rounded-l-[inherit]": index === 0,
+              "rounded-l-[inherit] border-l": index === 0,
               "rounded-r-[inherit]": index === imagePieces.length - 1,
-            },
+            }
           )}
           style={{
             flex: "1 0 auto",
@@ -228,7 +231,6 @@ export function ImageSplit({
                 : "none",
             marginRight:
               enableBorder && index !== imagePieces.length - 1 ? "-1px" : "0",
-            boxSizing: "border-box",
           }}
         />
       ))}
