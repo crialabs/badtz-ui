@@ -11,6 +11,7 @@ import DocsCta from "@/components/docs/doc-cta";
 import { DashboardTableOfContents } from "@/components/docs/article-toc";
 import { getTableOfContents } from "@/lib/toc";
 import { Icons } from "@/components/icons";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
 
 type Params = {
   slug: string[];
@@ -280,7 +281,7 @@ export default async function PostPage({ params }: { params: Params }) {
           </div>
         </div>
         <div className="hidden text-sm xl:block">
-          <div className="sticky top-20 -mt-6 h-[calc(100vh-3.5rem)] pt-4">
+          <div className="sticky top-20 -mt-6 max-h-[calc(100vh-3.5rem)] pt-4 overflow-y-auto">
             <DocsCta className="border-border dark:border-border" />
             <div className="h-full overflow-auto pb-10 pt-8">
               {toc && <DashboardTableOfContents toc={toc} />}

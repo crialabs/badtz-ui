@@ -13,14 +13,14 @@ export const metadata: Metadata = {
     "An expanding collection of 70+ free UI components. Production-grade animations with Framer Motion. Weekly updates. Open source. React, Tailwind, TypeScript & JavaScript.",
   openGraph: {
     title: "BadtzUI - Modern React Components",
-    images: "/og-image.png",
+    images: "/opengraph-image.jpg",
   },
   twitter: {
     card: "summary_large_image",
     title: "BadtzUI - UI Components for React JS",
     description:
       "An expanding collection of 70+ free UI components. Production-grade animations with Framer Motion. Weekly updates. Open source. React, Tailwind, TypeScript & JavaScript.",
-    images: "/twitter-image.png",
+    images: "/twitter-image.jpg",
     site: "@badtz_ui",
   },
 };
@@ -41,6 +41,7 @@ export default async function Home() {
         <WallOfLove />
         <CallToAction />
       </main>
+
       <Footer />
     </>
   );

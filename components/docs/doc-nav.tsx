@@ -136,7 +136,8 @@ export function DocNav({ items }: DocNavProps) {
 
         <SidebarGroup className="p-3 border-t border-sidebar-border mt-auto">
           <SidebarGroupContent className="flex items-center justify-between">
-            <div className="flex justify-center gap-2 ml-auto">
+            <DocDropdown />
+            <div className="flex justify-center gap-2">
               <SocialButton
                 className="border-sidebar-border"
                 srOnly="Twitter Link"

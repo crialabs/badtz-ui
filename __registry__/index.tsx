@@ -1,3 +1,4 @@
+
 // @ts-nocheck
 import * as React from "react";
 
@@ -18,646 +19,579 @@ export const Index: Record<string, RegistryItem> = {
     name: "animated-card",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () =>
-        import(
-          "@/__registry__/components/components/animated-cards/animated-card"
-        ),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/animated-cards/animated-card")),
     source: "",
     files: [
-      "__registry__/components/components/animated-cards/animated-card.js",
-    ],
+  "__registry__/components/components/animated-cards/animated-card.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "visual-1": {
+    chunks: []
+  },"visual-1": {
     name: "visual-1",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () =>
-        import("@/__registry__/components/components/animated-cards/visual-1"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/animated-cards/visual-1")),
     source: "",
-    files: ["__registry__/components/components/animated-cards/visual-1.js"],
+    files: [
+  "__registry__/components/components/animated-cards/visual-1.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "visual-2": {
+    chunks: []
+  },"visual-2": {
     name: "visual-2",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () =>
-        import("@/__registry__/components/components/animated-cards/visual-2"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/animated-cards/visual-2")),
     source: "",
-    files: ["__registry__/components/components/animated-cards/visual-2.js"],
+    files: [
+  "__registry__/components/components/animated-cards/visual-2.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "visual-3": {
+    chunks: []
+  },"visual-3": {
     name: "visual-3",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () =>
-        import("@/__registry__/components/components/animated-cards/visual-3"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/animated-cards/visual-3")),
     source: "",
-    files: ["__registry__/components/components/animated-cards/visual-3.js"],
+    files: [
+  "__registry__/components/components/animated-cards/visual-3.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "stripe-animated-gradient": {
+    chunks: []
+  },"stripe-animated-gradient": {
     name: "stripe-animated-gradient",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () =>
-        import(
-          "@/__registry__/components/components/backgrounds/stripe-animated-gradient"
-        ),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/backgrounds/stripe-animated-gradient")),
     source: "",
     files: [
-      "__registry__/components/components/backgrounds/stripe-animated-gradient.js",
-    ],
+  "__registry__/components/components/backgrounds/stripe-animated-gradient.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "border-beam": {
+    chunks: []
+  },"border-beam": {
     name: "border-beam",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/components/border-beam"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/border-beam")),
     source: "",
-    files: ["__registry__/components/components/border-beam.js"],
+    files: [
+  "__registry__/components/components/border-beam.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "confetti-button": {
+    chunks: []
+  },"confetti-button": {
     name: "confetti-button",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () =>
-        import("@/__registry__/components/components/buttons/confetti-button"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/buttons/confetti-button")),
     source: "",
-    files: ["__registry__/components/components/buttons/confetti-button.js"],
+    files: [
+  "__registry__/components/components/buttons/confetti-button.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "gradient-slide-button": {
+    chunks: []
+  },"gradient-slide-button": {
     name: "gradient-slide-button",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () =>
-        import(
-          "@/__registry__/components/components/buttons/gradient-slide-button"
-        ),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/buttons/gradient-slide-button")),
     source: "",
     files: [
-      "__registry__/components/components/buttons/gradient-slide-button.js",
-    ],
+  "__registry__/components/components/buttons/gradient-slide-button.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "star-button": {
+    chunks: []
+  },"shuffle-button": {
+    name: "shuffle-button",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/components/buttons/shuffle-button")),
+    source: "",
+    files: [
+  "__registry__/components/components/buttons/shuffle-button.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"star-button": {
     name: "star-button",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/components/buttons/star-button"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/buttons/star-button")),
     source: "",
-    files: ["__registry__/components/components/buttons/star-button.js"],
+    files: [
+  "__registry__/components/components/buttons/star-button.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "cloud-orbit": {
+    chunks: []
+  },"cloud-orbit": {
     name: "cloud-orbit",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/components/cloud-orbit"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/cloud-orbit")),
     source: "",
-    files: ["__registry__/components/components/cloud-orbit.js"],
+    files: [
+  "__registry__/components/components/cloud-orbit.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  dock: {
+    chunks: []
+  },"dock": {
     name: "dock",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/components/dock"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/dock")),
     source: "",
-    files: ["__registry__/components/components/dock.js"],
+    files: [
+  "__registry__/components/components/dock.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "expandable-card": {
+    chunks: []
+  },"expandable-card": {
     name: "expandable-card",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/components/expandable-card"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/expandable-card")),
     source: "",
-    files: ["__registry__/components/components/expandable-card.js"],
+    files: [
+  "__registry__/components/components/expandable-card.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "image-split": {
+    chunks: []
+  },"image-split": {
     name: "image-split",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/components/image-split"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/image-split")),
     source: "",
-    files: ["__registry__/components/components/image-split.js"],
+    files: [
+  "__registry__/components/components/image-split.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "image-trail": {
+    chunks: []
+  },"image-trail": {
     name: "image-trail",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/components/image-trail"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/image-trail")),
     source: "",
-    files: ["__registry__/components/components/image-trail.js"],
+    files: [
+  "__registry__/components/components/image-trail.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "infinite-ribbon": {
+    chunks: []
+  },"infinite-ribbon": {
     name: "infinite-ribbon",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/components/infinite-ribbon"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/infinite-ribbon")),
     source: "",
-    files: ["__registry__/components/components/infinite-ribbon.js"],
+    files: [
+  "__registry__/components/components/infinite-ribbon.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "mouse-wave-scene": {
+    chunks: []
+  },"mouse-wave-scene": {
     name: "mouse-wave-scene",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () =>
-        import("@/__registry__/components/components/shaders/mouse-wave-scene"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/shaders/mouse-wave-scene")),
     source: "",
-    files: ["__registry__/components/components/shaders/mouse-wave-scene.js"],
+    files: [
+  "__registry__/components/components/shaders/mouse-wave-scene.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "mouse-wave-shader": {
+    chunks: []
+  },"mouse-wave-shader": {
     name: "mouse-wave-shader",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () =>
-        import(
-          "@/__registry__/components/components/shaders/mouse-wave-shader"
-        ),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/shaders/mouse-wave-shader")),
     source: "",
-    files: ["__registry__/components/components/shaders/mouse-wave-shader.js"],
+    files: [
+  "__registry__/components/components/shaders/mouse-wave-shader.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "mouse-wave": {
+    chunks: []
+  },"mouse-wave": {
     name: "mouse-wave",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/components/shaders/mouse-wave"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/shaders/mouse-wave")),
     source: "",
-    files: ["__registry__/components/components/shaders/mouse-wave.js"],
+    files: [
+  "__registry__/components/components/shaders/mouse-wave.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "pixel-distorsion-scene": {
+    chunks: []
+  },"pixel-distorsion-scene": {
     name: "pixel-distorsion-scene",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () =>
-        import(
-          "@/__registry__/components/components/shaders/pixel-distorsion-scene"
-        ),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/shaders/pixel-distorsion-scene")),
     source: "",
     files: [
-      "__registry__/components/components/shaders/pixel-distorsion-scene.js",
-    ],
+  "__registry__/components/components/shaders/pixel-distorsion-scene.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "pixel-distorsion-shader": {
+    chunks: []
+  },"pixel-distorsion-shader": {
     name: "pixel-distorsion-shader",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () =>
-        import(
-          "@/__registry__/components/components/shaders/pixel-distorsion-shader"
-        ),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/shaders/pixel-distorsion-shader")),
     source: "",
     files: [
-      "__registry__/components/components/shaders/pixel-distorsion-shader.js",
-    ],
+  "__registry__/components/components/shaders/pixel-distorsion-shader.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "pixel-distorsion": {
+    chunks: []
+  },"pixel-distorsion": {
     name: "pixel-distorsion",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () =>
-        import("@/__registry__/components/components/shaders/pixel-distorsion"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/shaders/pixel-distorsion")),
     source: "",
-    files: ["__registry__/components/components/shaders/pixel-distorsion.js"],
+    files: [
+  "__registry__/components/components/shaders/pixel-distorsion.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "pulse-shader-scene": {
+    chunks: []
+  },"pulse-shader-scene": {
     name: "pulse-shader-scene",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () =>
-        import(
-          "@/__registry__/components/components/shaders/pulse-shader-scene"
-        ),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/shaders/pulse-shader-scene")),
     source: "",
-    files: ["__registry__/components/components/shaders/pulse-shader-scene.js"],
+    files: [
+  "__registry__/components/components/shaders/pulse-shader-scene.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "pulse-shader-shader": {
+    chunks: []
+  },"pulse-shader-shader": {
     name: "pulse-shader-shader",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () =>
-        import(
-          "@/__registry__/components/components/shaders/pulse-shader-shader"
-        ),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/shaders/pulse-shader-shader")),
     source: "",
     files: [
-      "__registry__/components/components/shaders/pulse-shader-shader.js",
-    ],
+  "__registry__/components/components/shaders/pulse-shader-shader.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "pulse-shader": {
+    chunks: []
+  },"pulse-shader": {
     name: "pulse-shader",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/components/shaders/pulse-shader"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/shaders/pulse-shader")),
     source: "",
-    files: ["__registry__/components/components/shaders/pulse-shader.js"],
+    files: [
+  "__registry__/components/components/shaders/pulse-shader.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "social-proof-avatars": {
+    chunks: []
+  },"social-proof-avatars": {
     name: "social-proof-avatars",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/components/social-proof-avatars"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/social-proof-avatars")),
     source: "",
-    files: ["__registry__/components/components/social-proof-avatars.js"],
+    files: [
+  "__registry__/components/components/social-proof-avatars.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "blur-reveal": {
+    chunks: []
+  },"blur-reveal": {
     name: "blur-reveal",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () =>
-        import(
-          "@/__registry__/components/components/text-animations/blur-reveal"
-        ),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/components/text-animations/blur-reveal")),
     source: "",
     files: [
-      "__registry__/components/components/text-animations/blur-reveal.js",
-    ],
+  "__registry__/components/components/text-animations/blur-reveal.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "animated-card-1-demo": {
+    chunks: []
+  },"animated-card-1-demo": {
     name: "animated-card-1-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/animated-card-1-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/animated-card-1-demo")),
     source: "",
-    files: ["__registry__/components/demos/animated-card-1-demo.js"],
+    files: [
+  "__registry__/components/demos/animated-card-1-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "animated-card-2-demo": {
+    chunks: []
+  },"animated-card-2-demo": {
     name: "animated-card-2-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/animated-card-2-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/animated-card-2-demo")),
     source: "",
-    files: ["__registry__/components/demos/animated-card-2-demo.js"],
+    files: [
+  "__registry__/components/demos/animated-card-2-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "animated-card-3-demo": {
+    chunks: []
+  },"animated-card-3-demo": {
     name: "animated-card-3-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/animated-card-3-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/animated-card-3-demo")),
     source: "",
-    files: ["__registry__/components/demos/animated-card-3-demo.js"],
+    files: [
+  "__registry__/components/demos/animated-card-3-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "blur-reveal-demo": {
+    chunks: []
+  },"blur-reveal-demo": {
     name: "blur-reveal-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/blur-reveal-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/blur-reveal-demo")),
     source: "",
-    files: ["__registry__/components/demos/blur-reveal-demo.js"],
+    files: [
+  "__registry__/components/demos/blur-reveal-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "border-beam-demo": {
+    chunks: []
+  },"border-beam-demo": {
     name: "border-beam-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/border-beam-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/border-beam-demo")),
     source: "",
-    files: ["__registry__/components/demos/border-beam-demo.js"],
+    files: [
+  "__registry__/components/demos/border-beam-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "cloud-orbit-demo": {
+    chunks: []
+  },"cloud-orbit-demo": {
     name: "cloud-orbit-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/cloud-orbit-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/cloud-orbit-demo")),
     source: "",
-    files: ["__registry__/components/demos/cloud-orbit-demo.js"],
+    files: [
+  "__registry__/components/demos/cloud-orbit-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "confetti-button-demo": {
+    chunks: []
+  },"confetti-button-demo": {
     name: "confetti-button-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/confetti-button-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/confetti-button-demo")),
     source: "",
-    files: ["__registry__/components/demos/confetti-button-demo.js"],
+    files: [
+  "__registry__/components/demos/confetti-button-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "dock-demo": {
+    chunks: []
+  },"dock-demo": {
     name: "dock-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/dock-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/dock-demo")),
     source: "",
-    files: ["__registry__/components/demos/dock-demo.js"],
+    files: [
+  "__registry__/components/demos/dock-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "expandable-card-demo": {
+    chunks: []
+  },"expandable-card-demo": {
     name: "expandable-card-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/expandable-card-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/expandable-card-demo")),
     source: "",
-    files: ["__registry__/components/demos/expandable-card-demo.js"],
+    files: [
+  "__registry__/components/demos/expandable-card-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "gradient-slide-demo": {
+    chunks: []
+  },"gradient-slide-demo": {
     name: "gradient-slide-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/gradient-slide-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/gradient-slide-demo")),
     source: "",
-    files: ["__registry__/components/demos/gradient-slide-demo.js"],
+    files: [
+  "__registry__/components/demos/gradient-slide-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "image-split-demo": {
+    chunks: []
+  },"image-split-demo": {
     name: "image-split-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/image-split-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/image-split-demo")),
     source: "",
-    files: ["__registry__/components/demos/image-split-demo.js"],
+    files: [
+  "__registry__/components/demos/image-split-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "image-trail-demo": {
+    chunks: []
+  },"image-trail-demo": {
     name: "image-trail-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/image-trail-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/image-trail-demo")),
     source: "",
-    files: ["__registry__/components/demos/image-trail-demo.js"],
+    files: [
+  "__registry__/components/demos/image-trail-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "infinite-ribbon-demo-bis": {
+    chunks: []
+  },"infinite-ribbon-demo-bis": {
     name: "infinite-ribbon-demo-bis",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/infinite-ribbon-demo-bis"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/infinite-ribbon-demo-bis")),
     source: "",
-    files: ["__registry__/components/demos/infinite-ribbon-demo-bis.js"],
+    files: [
+  "__registry__/components/demos/infinite-ribbon-demo-bis.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "infinite-ribbon-demo": {
+    chunks: []
+  },"infinite-ribbon-demo": {
     name: "infinite-ribbon-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/infinite-ribbon-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/infinite-ribbon-demo")),
     source: "",
-    files: ["__registry__/components/demos/infinite-ribbon-demo.js"],
+    files: [
+  "__registry__/components/demos/infinite-ribbon-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "mouse-wave-demo": {
+    chunks: []
+  },"mouse-wave-demo": {
     name: "mouse-wave-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/mouse-wave-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/mouse-wave-demo")),
     source: "",
-    files: ["__registry__/components/demos/mouse-wave-demo.js"],
+    files: [
+  "__registry__/components/demos/mouse-wave-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "pixel-distorsion-demo": {
+    chunks: []
+  },"pixel-distorsion-demo": {
     name: "pixel-distorsion-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/pixel-distorsion-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/pixel-distorsion-demo")),
     source: "",
-    files: ["__registry__/components/demos/pixel-distorsion-demo.js"],
+    files: [
+  "__registry__/components/demos/pixel-distorsion-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "pulse-shader-demo": {
+    chunks: []
+  },"pulse-shader-demo": {
     name: "pulse-shader-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/pulse-shader-demo"),
-    ),
+
+    component: React.lazy(() => import("@/__registry__/components/demos/pulse-shader-demo")),
     source: "",
-    files: ["__registry__/components/demos/pulse-shader-demo.js"],
+    files: [
+  "__registry__/components/demos/pulse-shader-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "social-proof-avatars-demo": {
+    chunks: []
+  },"shuffle-button-demo": {
+    name: "shuffle-button-demo",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/shuffle-button-demo")),
+    source: "",
+    files: [
+  "__registry__/components/demos/shuffle-button-demo.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"social-proof-avatars-demo": {
     name: "social-proof-avatars-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/social-proof-avatars-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/social-proof-avatars-demo")),
     source: "",
-    files: ["__registry__/components/demos/social-proof-avatars-demo.js"],
+    files: [
+  "__registry__/components/demos/social-proof-avatars-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "star-button-demo": {
+    chunks: []
+  },"star-button-demo": {
     name: "star-button-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () => import("@/__registry__/components/demos/star-button-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/star-button-demo")),
     source: "",
-    files: ["__registry__/components/demos/star-button-demo.js"],
+    files: [
+  "__registry__/components/demos/star-button-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
-  "stripe-animated-gradient-demo": {
+    chunks: []
+  },"stripe-animated-gradient-demo": {
     name: "stripe-animated-gradient-demo",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(
-      () =>
-        import("@/__registry__/components/demos/stripe-animated-gradient-demo"),
-    ),
+    component: React.lazy(() => import("@/__registry__/components/demos/stripe-animated-gradient-demo")),
     source: "",
-    files: ["__registry__/components/demos/stripe-animated-gradient-demo.js"],
+    files: [
+  "__registry__/components/demos/stripe-animated-gradient-demo.js"
+],
     category: "undefined",
     subcategory: "undefined",
-    chunks: [],
-  },
+    chunks: []
+  }
 };
+  

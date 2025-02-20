@@ -36,7 +36,7 @@ export function HeroImage() {
       ) : (
         <div
           className={cn(
-            "absolute inset-0 lg:left-0  md:left-10 md:h-[600px] md:w-[960px] h-[400px] w-[760px] pointer-events-none bg-background dark:bg-secondary"
+            "absolute inset-0 lg:left-0 md:left-10 edge-t md:h-[600px] md:w-[960px] h-[400px] w-[760px] pointer-events-none bg-background dark:bg-secondary"
           )}
         >
           <Image
