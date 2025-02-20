@@ -331,7 +331,6 @@ export const docsConfig: DocCategory[] = [
       {
         title: "Shuffle Button",
         href: "/docs/components/buttons/shuffle-button",
-        label: "soon",
         items: [],
       },
       {

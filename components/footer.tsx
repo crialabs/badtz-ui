@@ -105,7 +105,7 @@ const FOOTER_SECTIONS: { title: string; links: LinkType[] }[] = [
 export default function Footer() {
   return (
     <footer
-      className="border-t border-border w-full bg-secondary"
+      className="border-t border-border w-full bg-background"
       aria-label="Footer"
       itemScope
       itemType="https://schema.org/WPFooter"

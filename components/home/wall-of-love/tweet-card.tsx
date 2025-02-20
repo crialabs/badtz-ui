@@ -211,7 +211,7 @@ export const WOLTweet = ({
   return (
     <div
       className={cn(
-        "relative cell4-bg flex w-full h-auto bg-secondary max-w-lg flex-col gap-2 overflow-hidden rounded-lg border dark:border-border border-border/70 p-3 pb-2 backdrop-blur-md",
+        "relative cell4-bg flex w-full h-auto bg-secondary max-w-lg flex-col gap-2 overflow-hidden edge-t rounded-lg border dark:border-border border-border/70 p-3 pb-2 backdrop-blur-md",
         className
       )}
       {...props}

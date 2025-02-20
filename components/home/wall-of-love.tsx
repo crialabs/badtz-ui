@@ -25,7 +25,7 @@ export default function HomeBento() {
   return (
     <section aria-label="Wall of Love" className="w-full h-full py-16 sm:py-28">
       <div className="px-6 lg:px-8 max-w-[400px] md:max-w-3xl lg:max-w-5xl mx-auto flex flex-col items-center justify-center md:items-start">
-        <div className="-mb-6">
+        <div className="-mb-8">
           <h2
             id="wall-of-love-heading"
             className="text-4xl sm:text-5xl font-semibold tracking-tighter text-foreground text-balance max-w-[605px] font-gilroy text-center md:text-left"

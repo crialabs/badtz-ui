@@ -7,7 +7,7 @@ import { PlausibleButton } from "@/components/plausible-button";
 export default function CallToAction() {
   return (
     <section className="px-6 lg:px-8 mt-24 sm:mt-16 md:max-w-3xl lg:max-w-5xl mx-auto h-[400px] sm:h-[420px] w-full ">
-      <div className="border border-border h-full w-full bg-white dark:bg-secondary border-b-0 rounded-t-xl relative overflow-hidden flex items-center justify-center flex-col">
+      <div className="border border-border edge-t h-full w-full bg-white dark:bg-secondary border-b-0 rounded-t-xl relative overflow-hidden flex items-center justify-center flex-col">
         <CTAImage />
         <div className="relative z-10 mb-4">
           <div className="[&_svg]:size-16 flex justify-center">

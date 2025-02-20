@@ -168,6 +168,50 @@
   }
 }
 
+/* Radiant Edge T */
+
+.edge-t {
+  position: relative;
+}
+
+.edge-t::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  z-index: 1;
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.edge-t::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background-image: radial-gradient(
+    ellipse at center,
+    white,
+    transparent,
+    transparent
+  );
+  opacity: 0.025;
+  pointer-events: none;
+}
+
 /* Gradient Blur */
 .gradient-blur {
   position: absolute;
