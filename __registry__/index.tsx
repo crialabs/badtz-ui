@@ -63,18 +63,6 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
-  },"hyperspace-background": {
-    name: "hyperspace-background",
-    type: "components:ui",
-    registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/components/backgrounds/hyperspace-background")),
-    source: "",
-    files: [
-  "__registry__/components/components/backgrounds/hyperspace-background.js"
-],
-    category: "undefined",
-    subcategory: "undefined",
-    chunks: []
   },"stripe-animated-gradient": {
     name: "stripe-animated-gradient",
     type: "components:ui",
@@ -123,18 +111,6 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
-  },"like-button": {
-    name: "like-button",
-    type: "components:ui",
-    registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/components/buttons/like-button")),
-    source: "",
-    files: [
-  "__registry__/components/components/buttons/like-button.js"
-],
-    category: "undefined",
-    subcategory: "undefined",
-    chunks: []
   },"shuffle-button": {
     name: "shuffle-button",
     type: "components:ui",
@@ -143,18 +119,6 @@ export const Index: Record<string, RegistryItem> = {
     source: "",
     files: [
   "__registry__/components/components/buttons/shuffle-button.js"
-],
-    category: "undefined",
-    subcategory: "undefined",
-    chunks: []
-  },"stagger-button": {
-    name: "stagger-button",
-    type: "components:ui",
-    registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/components/buttons/stagger-button")),
-    source: "",
-    files: [
-  "__registry__/components/components/buttons/stagger-button.js"
 ],
     category: "undefined",
     subcategory: "undefined",
@@ -239,30 +203,6 @@ export const Index: Record<string, RegistryItem> = {
     source: "",
     files: [
   "__registry__/components/components/infinite-ribbon.js"
-],
-    category: "undefined",
-    subcategory: "undefined",
-    chunks: []
-  },"layer1": {
-    name: "layer1",
-    type: "components:ui",
-    registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/components/layer1")),
-    source: "",
-    files: [
-  "__registry__/components/components/layer1.js"
-],
-    category: "undefined",
-    subcategory: "undefined",
-    chunks: []
-  },"layer2": {
-    name: "layer2",
-    type: "components:ui",
-    registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/components/layer2")),
-    source: "",
-    files: [
-  "__registry__/components/components/layer2.js"
 ],
     category: "undefined",
     subcategory: "undefined",
@@ -399,18 +339,6 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
-  },"wrapper-3d": {
-    name: "wrapper-3d",
-    type: "components:ui",
-    registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/components/wrapper-3d")),
-    source: "",
-    files: [
-  "__registry__/components/components/wrapper-3d.js"
-],
-    category: "undefined",
-    subcategory: "undefined",
-    chunks: []
   },"animated-card-1-demo": {
     name: "animated-card-1-demo",
     type: "components:ui",
@@ -531,18 +459,6 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
-  },"hyperspace-background-demo": {
-    name: "hyperspace-background-demo",
-    type: "components:ui",
-    registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/demos/hyperspace-background-demo")),
-    source: "",
-    files: [
-  "__registry__/components/demos/hyperspace-background-demo.js"
-],
-    category: "undefined",
-    subcategory: "undefined",
-    chunks: []
   },"image-split-demo": {
     name: "image-split-demo",
     type: "components:ui",
@@ -587,18 +503,6 @@ export const Index: Record<string, RegistryItem> = {
     source: "",
     files: [
   "__registry__/components/demos/infinite-ribbon-demo.js"
-],
-    category: "undefined",
-    subcategory: "undefined",
-    chunks: []
-  },"like-button-demo": {
-    name: "like-button-demo",
-    type: "components:ui",
-    registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/demos/like-button-demo")),
-    source: "",
-    files: [
-  "__registry__/components/demos/like-button-demo.js"
 ],
     category: "undefined",
     subcategory: "undefined",
@@ -664,18 +568,6 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
-  },"stagger-button-demo": {
-    name: "stagger-button-demo",
-    type: "components:ui",
-    registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/demos/stagger-button-demo")),
-    source: "",
-    files: [
-  "__registry__/components/demos/stagger-button-demo.js"
-],
-    category: "undefined",
-    subcategory: "undefined",
-    chunks: []
   },"star-button-demo": {
     name: "star-button-demo",
     type: "components:ui",
@@ -696,18 +588,6 @@ export const Index: Record<string, RegistryItem> = {
     source: "",
     files: [
   "__registry__/components/demos/stripe-animated-gradient-demo.js"
-],
-    category: "undefined",
-    subcategory: "undefined",
-    chunks: []
-  },"wrapper-3d-demo": {
-    name: "wrapper-3d-demo",
-    type: "components:ui",
-    registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/demos/wrapper-3d-demo")),
-    source: "",
-    files: [
-  "__registry__/components/demos/wrapper-3d-demo.js"
 ],
     category: "undefined",
     subcategory: "undefined",
