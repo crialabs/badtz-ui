@@ -54,7 +54,7 @@ export function StarButton({
       const div = pathRef.current;
       div.style.setProperty(
         "--path",
-        `path('M 0 0 H ${div.offsetWidth} V ${div.offsetHeight} H 0 V 0')`,
+        `path('M 0 0 H ${div.offsetWidth} V ${div.offsetHeight} H 0 V 0')`
       );
     }
   }, []);
@@ -73,7 +73,7 @@ export function StarButton({
       ref={pathRef}
       className={cn(
         "relative z-[3] overflow-hidden h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-3xl text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 group/star-button",
-        className,
+        className
       )}
       {...props}
     >

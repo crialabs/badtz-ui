@@ -11,11 +11,22 @@ description: The StarButton is a visually striking button that features a radial
 <Highlighter slot="javascript">
 ```jsx
 import { StarButton } from "@/components/ui/star-button";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
 export default function StarButtonDemo() {
+  const { theme } = useTheme();
+  const [lightColor, setLightColor] = useState("#FAFAFA");
+
+  useEffect(() => {
+    setLightColor(theme === "dark" ? "#FAFAFA" : "#FF2056");
+  }, [theme]);
+
   return (
     <div>
-      <StarButton className="rounded-3xl">Hover me</StarButton>
+      <StarButton lightColor={lightColor} className="rounded-3xl">
+        Hover me
+      </StarButton>
     </div>
   );
 }
@@ -24,11 +35,22 @@ export default function StarButtonDemo() {
 <Highlighter slot="typescript">
 ```tsx
 import { StarButton } from "@/components/ui/star-button";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
 export default function StarButtonDemo() {
+  const { theme } = useTheme();
+  const [lightColor, setLightColor] = useState("#FAFAFA");
+
+  useEffect(() => {
+    setLightColor(theme === "dark" ? "#FAFAFA" : "#FF2056");
+  }, [theme]);
+
   return (
     <div>
-      <StarButton className="rounded-3xl">Hover me</StarButton>
+      <StarButton lightColor={lightColor} className="rounded-3xl">
+        Hover me
+      </StarButton>
     </div>
   );
 }
