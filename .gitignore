@@ -18,6 +18,9 @@
 # dev page
 /app/(dev)/dev/
 
+# cursor rules
+.cursorrules
+
 # misc
 .DS_Store
 *.pem

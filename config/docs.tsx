@@ -132,9 +132,8 @@ export const docsConfig: DocCategory[] = [
         items: [],
       },
       {
-        title: "Showcase",
-        href: "/docs/components/showcase",
-        label: "soon",
+        title: "3D Wrapper",
+        href: "/docs/components/wrapper-3d",
         items: [],
       },
     ],
@@ -258,8 +257,7 @@ export const docsConfig: DocCategory[] = [
       },
       {
         title: "Hyperspace Background",
-        href: "/docs/components/backgrounds/hyperspace",
-        label: "soon",
+        href: "/docs/components/backgrounds/hyperspace-background",
         items: [],
       },
     ],
@@ -282,7 +280,7 @@ export const docsConfig: DocCategory[] = [
       </svg>
     ),
     items: [
-      /*https://www.youtube.com/watch?v=zqPy1bHUjrg
+      /*
       {
         title: "Scroll-text-reveal--",
         href: "/docs/components/wave-shader",
@@ -334,23 +332,23 @@ export const docsConfig: DocCategory[] = [
         items: [],
       },
       {
-        title: "Gradient Button",
-        href: "/docs/components/buttons/gradient-button",
-        label: "soon",
-        items: [],
-      },
-      {
         title: "Stagger Button",
         href: "/docs/components/buttons/stagger-button",
-        label: "soon",
         items: [],
       },
       {
         title: "Like Button",
         href: "/docs/components/buttons/like-button",
+        items: [],
+      },
+      /*
+      {
+        title: "Gradient Button",
+        href: "/docs/components/buttons/gradient-button",
         label: "soon",
         items: [],
       },
+      */
     ],
   },
 ];
