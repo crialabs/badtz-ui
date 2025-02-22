@@ -182,7 +182,7 @@ export function DocsSidebarNavItems({
               "group flex w-full text-sm items-center focus:outline-transparent outline-none px-2 text-balance h-8 transition-colors rounded-md duration-200 ",
               pathname === item.href
                 ? "text-foreground dark:bg-muted bg-sidebar-accent"
-                : "text-muted-foreground dark:hover:bg-muted hover:bg-sidebar-accent"
+                : "text-muted-foreground dark:hover:bg-muted hover:bg-sidebar-accent",
             )}
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
@@ -194,7 +194,7 @@ export function DocsSidebarNavItems({
           <span
             key={index}
             className={cn(
-              "flex w-full text-sm outline-none focus:outline-transparent items-center px-2 h-8 text-muted-foreground cursor-not-allowed text-balance "
+              "flex w-full text-sm outline-none focus:outline-transparent items-center px-2 h-8 text-muted-foreground cursor-not-allowed text-balance ",
             )}
           >
             {item.title}

@@ -631,6 +631,7 @@ export const Index: Record<string, RegistryItem> = {
     name: "pulse-shader-demo",
     type: "components:ui",
     registryDependencies: undefined,
+
     component: React.lazy(() => import("@/__registry__/components/demos/pulse-shader-demo")),
     source: "",
     files: [
