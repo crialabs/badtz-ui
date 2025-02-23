@@ -7,6 +7,7 @@ description: An interactive icon dock that smoothly scales icons/images on hover
   name="dock-demo"
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
   description="An interactive icon dock"
+  v0Link="https://badtz-ui.com/r/dock.json"
 >
 <Highlighter slot="javascript">
 ```jsx
@@ -51,21 +52,21 @@ export default function DockDemo() {
     },
   ];
 
-return (
-<Dock>
-{dockItems.map((item, index) => (
-<DockIcon
+  return (
+    <Dock>
+      {dockItems.map((item, index) => (
+        <DockIcon
           key={index}
           src={item.src}
           name={item.name}
           href={item.href}
         />
-))}
-</Dock>
-);
+      ))}
+    </Dock>
+  );
 }
 
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -123,7 +124,7 @@ export default function DockDemo() {
     </Dock>
   );
 }
-````
+```
 
 </Highlighter>
 </ComponentPreview>
@@ -140,7 +141,7 @@ export default function DockDemo() {
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add to-setup
+npx shadcn@latest add https://badtz-ui.com/r/dock.json
 ```
 
 </TabsContent>
@@ -210,60 +211,39 @@ export function DockIcon({
 }) {
   const ref = useRef(null);
 
-return (
-<>
-<style jsx>
-{`
-.icon:hover + .icon {
-width: calc(
-var(--icon-size) _ 1.33 + var(--dock-offset-right, 0px)
-);
-height: calc(
-var(--icon-size) _ 1.33 + var(--dock-offset-right, 0px)
-);
-margin-top: calc(
-var(--icon-size) _ -0.33 + var(--dock-offset-right, 0) _ -1
-);
-}
+  return (
+    <>
+      <style jsx>
+        {`
+          .icon:hover + .icon {
+            width: calc(var(--icon-size) * 1.33 + var(--dock-offset-right, 0px));
+            height: calc(var(--icon-size) * 1.33 + var(--dock-offset-right, 0px));
+            margin-top: calc(var(--icon-size) * -0.33 + var(--dock-offset-right, 0) * -1);
+          }
 
           .icon:hover + .icon + .icon {
-            width: calc(
-              var(--icon-size) * 1.17 + var(--dock-offset-right, 0px)
-            );
-            height: calc(
-              var(--icon-size) * 1.17 + var(--dock-offset-right, 0px)
-            );
-            margin-top: calc(
-              var(--icon-size) * -0.17 + var(--dock-offset-right, 0) * -1
-            );
+            width: calc(var(--icon-size) * 1.17 + var(--dock-offset-right, 0px));
+            height: calc(var(--icon-size) * 1.17 + var(--dock-offset-right, 0px));
+            margin-top: calc(var(--icon-size) * -0.17 + var(--dock-offset-right, 0) * -1);
           }
 
           .icon:has(+ .icon:hover) {
             width: calc(var(--icon-size) * 1.33 + var(--dock-offset-left, 0px));
-            height: calc(
-              var(--icon-size) * 1.33 + var(--dock-offset-left, 0px)
-            );
-            margin-top: calc(
-              var(--icon-size) * -0.33 + var(--dock-offset-left, 0) * -1
-            );
+            height: calc(var(--icon-size) * 1.33 + var(--dock-offset-left, 0px));
+            margin-top: calc(var(--icon-size) * -0.33 + var(--dock-offset-left, 0) * -1);
           }
 
           .icon:has(+ .icon + .icon:hover) {
             width: calc(var(--icon-size) * 1.17 + var(--dock-offset-left, 0px));
-            height: calc(
-              var(--icon-size) * 1.17 + var(--dock-offset-left, 0px)
-            );
-            margin-top: calc(
-              var(--icon-size) * -0.17 + var(--dock-offset-left, 0) * -1
-            );
+            height: calc(var(--icon-size) * 1.17 + var(--dock-offset-left, 0px));
+            margin-top: calc(var(--icon-size) * -0.17 + var(--dock-offset-left, 0) * -1);
           }
         `}
       </style>
       <li
         ref={ref}
         style={{
-          transition:
-            "width, height, margin-top, cubic-bezier(0.25, 1, 0.5, 1) 150ms",
+          transition: "width, height, margin-top, cubic-bezier(0.25, 1, 0.5, 1) 150ms",
           "--icon-size": `${iconSize}px`,
         }}
         onMouseMove={handleIconHover}
@@ -291,8 +271,7 @@ var(--icon-size) _ -0.33 + var(--dock-offset-right, 0) _ -1
         </a>
       </li>
     </>
-
-);
+  );
 }
 
 export function Dock({
@@ -303,11 +282,11 @@ export function Dock({
 }) {
   const dockRef = useRef(null);
 
-const handleIconHover = (e) => {
-if (!dockRef.current) return;
-const mousePos = e.clientX;
-const iconPosLeft = e.currentTarget.getBoundingClientRect().left;
-const iconWidth = e.currentTarget.getBoundingClientRect().width;
+  const handleIconHover = (e) => {
+    if (!dockRef.current) return;
+    const mousePos = e.clientX;
+    const iconPosLeft = e.currentTarget.getBoundingClientRect().left;
+    const iconWidth = e.currentTarget.getBoundingClientRect().width;
 
     const cursorDistance = (mousePos - iconPosLeft) / iconWidth;
     const offsetPixels = scaleValue(
@@ -325,30 +304,30 @@ const iconWidth = e.currentTarget.getBoundingClientRect().width;
       "--dock-offset-right",
       `${offsetPixels}px`
     );
+  };
 
-};
-
-return (
-<nav ref={dockRef} role="navigation" aria-label="Main Dock">
-<ul
-className={cn(
-"flex items-center bg-gradient-to-t from-neutral-50 dark:from-zinc-950 to-white dark:to-zinc-900 border border-gray-100 dark:border-zinc-900 p-1 rounded-xl ",
-className
-)} >
-{React.Children.map(children, (child) =>
-React.isValidElement(child)
-? React.cloneElement(child, {
-handleIconHover,
-iconSize,
-})
-: child
-)}
-</ul>
-</nav>
-);
+  return (
+    <nav ref={dockRef} role="navigation" aria-label="Main Dock">
+      <ul
+        className={cn(
+          "flex items-center bg-gradient-to-t from-neutral-50 dark:from-zinc-950 to-white dark:to-zinc-900 border border-gray-100 dark:border-zinc-900 p-1 rounded-xl ",
+          className
+        )}
+      >
+        {React.Children.map(children, (child) =>
+          React.isValidElement(child)
+            ? React.cloneElement(child, {
+                handleIconHover,
+                iconSize,
+              })
+            : child
+        )}
+      </ul>
+    </nav>
+  );
 }
 
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -536,7 +515,7 @@ export function Dock({
     </nav>
   );
 }
-````
+```
 
 </Highlighter>
 </ComponentSource>

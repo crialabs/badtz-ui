@@ -7,6 +7,7 @@ description: Image Trail adds a dynamic, interactive trail of images that follow
   name="image-trail-demo"
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%] m-0 p-0 overflow-hidden"
   description="Adds an interactive trail of images that follows the cursor."
+  v0Link="https://badtz-ui.com/r/image-trail.json"
 >
 <Highlighter slot="javascript">
 ```jsx
@@ -70,7 +71,7 @@ export default function ImageTrailDemo() {
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add to-setup
+npx shadcn@latest add https://badtz-ui.com/r/image-trail.json
 ```
 
 </TabsContent>
@@ -138,12 +139,10 @@ export function ImageTrail({
   const imgPosition = useRef(0);
   const parentSize = useRef({ width: 0, height: 0 });
 
-useEffect(() => {
-if (contentRef.current) {
-imagesRef.current = Array.from(
-contentRef.current.querySelectorAll("img")
-);
-}
+  useEffect(() => {
+    if (contentRef.current) {
+      imagesRef.current = Array.from(contentRef.current.querySelectorAll("img"));
+    }
 
     const handleMouseMove = (e) => {
       const rect = contentRef.current?.getBoundingClientRect();
@@ -169,53 +168,42 @@ contentRef.current.querySelectorAll("img")
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", calcParentSize);
     };
+  }, []);
 
-}, []);
+  const calcParentSize = () => {
+    const rect = contentRef.current?.getBoundingClientRect();
+    if (rect) {
+      parentSize.current = { width: rect.width, height: rect.height };
+    }
+  };
 
-const calcParentSize = () => {
-const rect = contentRef.current?.getBoundingClientRect();
-if (rect) {
-parentSize.current = { width: rect.width, height: rect.height };
-}
-};
+  const lerp = (a, b, n) => (1 - n) * a + n * b;
 
-const lerp = (a, b, n) => (1 - n) _ a + n _ b;
+  const getMouseDistance = () => {
+    const dx = mousePos.current.x - lastMousePos.current.x;
+    const dy = mousePos.current.y - lastMousePos.current.y;
+    return Math.hypot(dx, dy);
+  };
 
-const getMouseDistance = () => {
-const dx = mousePos.current.x - lastMousePos.current.x;
-const dy = mousePos.current.y - lastMousePos.current.y;
-return Math.hypot(dx, dy);
-};
+  const renderImages = () => {
+    const distance = getMouseDistance();
 
-const renderImages = () => {
-const distance = getMouseDistance();
-
-    cacheMousePos.current.x = lerp(
-      cacheMousePos.current.x,
-      mousePos.current.x,
-      0.1
-    );
-    cacheMousePos.current.y = lerp(
-      cacheMousePos.current.y,
-      mousePos.current.y,
-      0.1
-    );
+    cacheMousePos.current.x = lerp(cacheMousePos.current.x, mousePos.current.x, 0.1);
+    cacheMousePos.current.y = lerp(cacheMousePos.current.y, mousePos.current.y, 0.1);
 
     if (distance > threshold) {
       showNextImage();
       zIndexVal.current += 1;
-      imgPosition.current =
-        (imgPosition.current + 1) % imagesRef.current.length;
+      imgPosition.current = (imgPosition.current + 1) % imagesRef.current.length;
       lastMousePos.current = { ...mousePos.current };
     }
 
     requestAnimationFrame(renderImages);
+  };
 
-};
-
-const showNextImage = () => {
-const img = imagesRef.current[imgPosition.current];
-if (!img) return;
+  const showNextImage = () => {
+    const img = imagesRef.current[imgPosition.current];
+    if (!img) return;
 
     const rect = img.getBoundingClientRect();
     gsap.killTweensOf(img);
@@ -253,30 +241,29 @@ if (!img) return;
         },
         0.4
       );
+  };
 
-};
-
-return (
-<div
-style={{
+  return (
+    <div
+      style={{
         "--image-width": `${imageWidth}px`,
         "--image-height": `${imageHeight}px`,
       }}
-className="h-full w-full relative flex justify-center items-center isolate overflow-hidden z-0"
-ref={contentRef} >
-{images.map((url, index) => (
-<img
-key={index}
-className="absolute opacity-0 will-change-transform left-0 top-0 h-[var(--image-height)] w-[var(--image-width)] object-cover pointer-events-none"
-src={url}
-alt={`Image ${index + 1}`}
-/>
-))}
-</div>
-);
+      className="h-full w-full relative flex justify-center items-center isolate overflow-hidden z-0"
+      ref={contentRef}
+    >
+      {images.map((url, index) => (
+        <img
+          key={index}
+          className="absolute opacity-0 will-change-transform left-0 top-0 h-[var(--image-height)] w-[var(--image-width)] object-cover pointer-events-none"
+          src={url}
+          alt={`Image ${index + 1}`}
+        />
+      ))}
+    </div>
+  );
 }
-
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -449,8 +436,7 @@ export function ImageTrail({
     </div>
   );
 }
-````
-
+```
 </Highlighter>
 </ComponentSource>
 

@@ -18,6 +18,7 @@ import { Icons } from "@/components/icons";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SiJavascript, SiTypescript } from "react-icons/si";
 import { RefreshCcw } from "lucide-react";
+import { OpenInV0Button } from "../v0-button";
 
 const ComponentPreviewContext = React.createContext(false);
 
@@ -30,6 +31,7 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   replayable?: boolean;
   description?: string;
   align?: "center" | "start" | "end";
+  v0Link?: string;
 }
 
 export function ComponentPreview({
@@ -39,6 +41,7 @@ export function ComponentPreview({
   align = "center",
   replayable = false,
   description,
+  v0Link,
   ...props
 }: ComponentPreviewProps) {
   const [key, setKey] = React.useState(0);
@@ -52,7 +55,7 @@ export function ComponentPreview({
         extractedText += child;
       } else if (React.isValidElement(child) && child.props.children) {
         extractedText += extractTextFromChildren(
-          React.Children.toArray(child.props.children),
+          React.Children.toArray(child.props.children)
         );
       }
     });
@@ -63,10 +66,10 @@ export function ComponentPreview({
   const codeBlocks = React.useMemo(() => {
     const parsedChildren = React.Children.toArray(children);
     const jsCode = parsedChildren.find(
-      (child) => (child as any)?.props?.slot === "javascript",
+      (child) => (child as any)?.props?.slot === "javascript"
     );
     const tsCode = parsedChildren.find(
-      (child) => (child as any)?.props?.slot === "typescript",
+      (child) => (child as any)?.props?.slot === "typescript"
     );
 
     return {
@@ -132,17 +135,20 @@ export function ComponentPreview({
                 "items-start": align === "start",
                 "items-end": align === "end",
               },
-              className,
+              className
             )}
           >
-            {replayable && (
-              <button
-                onClick={() => setKey((prev) => prev + 1)}
-                className="absolute flex items-center justify-center top-4 right-4 rounded-lg z-10 h-6 w-6 text-muted-foreground hover:text-foreground bg-muted/50 [&_svg]:h-3 [&_svg]:w-3"
-              >
-                <RefreshCcw strokeWidth={2} />
-              </button>
-            )}
+            <div className="absolute top-4 right-4 z-20 flex gap-2.5 items-center">
+              {replayable && (
+                <button
+                  onClick={() => setKey((prev) => prev + 1)}
+                  className="flex items-center justify-center rounded-lg z-10 h-6 w-6 text-muted-foreground hover:text-foreground bg-muted/50 [&_svg]:h-3 [&_svg]:w-3"
+                >
+                  <RefreshCcw strokeWidth={2} />
+                </button>
+              )}
+              {v0Link && <OpenInV0Button url={v0Link} />}
+            </div>
             <React.Suspense
               fallback={
                 <div className="flex w-full items-center justify-center text-sm text-muted-foreground">

@@ -21,6 +21,9 @@
 # cursor rules
 .cursorrules
 
+# cursor ignore
+.cursorignore
+
 # misc
 .DS_Store
 *.pem

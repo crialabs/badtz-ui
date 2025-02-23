@@ -7,6 +7,7 @@ description: A fun and interactive button that triggers a confetti explosion eff
   name="confetti-button-demo"
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
   description="An interactive button that triggers a confetti explosion effect on click."
+  v0Link="https://badtz-ui.com/r/confetti-button.json"
 >
 <Highlighter slot="javascript">
 ```jsx
@@ -40,7 +41,7 @@ export default function ConfettiButtonDemo() {
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add to-setup
+npx shadcn@latest add https://badtz-ui.com/r/confetti-button.json
 ```
 
 </TabsContent>
@@ -105,40 +106,41 @@ export function ConfettiButton({
 }) {
   const buttonRef = useRef(null);
 
-const handleClick = (event) => {
-if (buttonRef.current) {
-const rect = buttonRef.current.getBoundingClientRect();
-confetti({
-particleCount,
-startVelocity,
-angle,
-spread,
-origin: {
-x: (rect.left + rect.width / 2) / window.innerWidth,
-y: (rect.top + rect.height / 2) / window.innerHeight,
-},
-});
-}
-if (onClick) {
-onClick(event);
-}
-};
+  const handleClick = (event) => {
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      confetti({
+        particleCount,
+        startVelocity,
+        angle,
+        spread,
+        origin: {
+          x: (rect.left + rect.width / 2) / window.innerWidth,
+          y: (rect.top + rect.height / 2) / window.innerHeight,
+        },
+      });
+    }
+    if (onClick) {
+      onClick(event);
+    }
+  };
 
-return (
-<button
-ref={buttonRef}
-onClick={handleClick}
-className={cn(
-"bg-neutral-100 hover:bg-neutral-200 text-black dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-white h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors duration-300 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
-className
-)}
-{...props} >
-{children}
-</button>
-);
+  return (
+    <button
+      ref={buttonRef}
+      onClick={handleClick}
+      className={cn(
+        "bg-neutral-100 hover:bg-neutral-200 text-black dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-white h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors duration-300 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </button>
+  );
 }
 
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -204,7 +206,7 @@ export function ConfettiButton({
     </button>
   );
 }
-````
+```
 
 </Highlighter>
 </ComponentSource>

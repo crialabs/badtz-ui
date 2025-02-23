@@ -3,7 +3,7 @@ export const siteConfig = {
   url: "https://badtz-ui.com",
   ogImage: "https://badtz-ui.com/opengraph-image.jpg",
   description:
-    "An expanding collection of 70+ free UI components. Production-grade animations with Framer Motion. Weekly updates. Open source. React, Tailwind, TypeScript & JavaScript.",
+    "An expanding collection of 70+ free UI components. Production-grade animations with Framer Motion. Daily updates. Open source. React, Tailwind, TypeScript & JavaScript.",
   links: {
     twitter: "https://x.com/badtz_ui",
   },
