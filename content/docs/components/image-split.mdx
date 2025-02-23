@@ -7,11 +7,12 @@ description: This component provides a dynamic and visually captivating way to d
   name="image-split-demo"
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%] m-0 p-0 overflow-hidden"
   description="This component provides a dynamic and visually captivating way to display images split into multiple sections."
+  v0Link="https://badtz-ui.com/r/image-split.json"
 >
 <Highlighter slot="javascript">
 ```jsx
 import { ImageSplit } from "@/components/ui/image-split";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
 export default function ImageSplitDemo() {
@@ -22,37 +23,37 @@ export default function ImageSplitDemo() {
     "/images/components/image-split/badtz-ui-documentation-dark.webp"
   );
 
-useEffect(() => {
-setBorderColor(theme === "dark" ? "#FFFFFF" : "#000000");
-setBorderOpacity(theme === "dark" ? 0.2 : 0.1);
-setImageSrc(
-theme === "dark"
-? "/images/components/image-split/badtz-ui-documentation-dark.webp"
-: "/images/components/image-split/badtz-ui-documentation-light.webp"
-);
-}, [theme]);
+  useEffect(() => {
+    setBorderColor(theme === "dark" ? "#FFFFFF" : "#000000");
+    setBorderOpacity(theme === "dark" ? 0.2 : 0.1);
+    setImageSrc(
+      theme === "dark"
+        ? "/images/components/image-split/badtz-ui-documentation-dark.webp"
+        : "/images/components/image-split/badtz-ui-documentation-light.webp"
+    );
+  }, [theme]);
 
-return (
-<div className="overflow-y-auto h-full w-full max-h-[450px] relative">
-<div className="h-[450px] inset-x-0 top-0 absolute flex items-center justify-center gap-2">
-<span className="font-gilroy text-3xl text-foreground">
-Scroll to reveal
-</span>
-</div>
-<div className="pt-[450px] px-6 sm:px-8 pb-6 sm:pb-8">
-<ImageSplit
+  return (
+    <div className="overflow-y-auto h-full w-full max-h-[450px] relative">
+      <div className="h-[450px] inset-x-0 top-0 absolute flex items-center justify-center gap-2">
+        <span className="font-gilroy text-3xl text-foreground">
+          Scroll to reveal
+        </span>
+      </div>
+      <div className="pt-[450px] px-6 sm:px-8 pb-6 sm:pb-8">
+        <ImageSplit
           src={imageSrc}
           className="rounded"
           borderColor={borderColor}
           initialBorderOpacity={borderOpacity}
           sections={9}
         />
-</div>
-</div>
-);
+      </div>
+    </div>
+  );
 }
 
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -97,7 +98,7 @@ export default function ImageSplitDemo() {
     </div>
   );
 }
-````
+```
 
 </Highlighter>
 </ComponentPreview>
@@ -114,7 +115,7 @@ export default function ImageSplitDemo() {
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add to-setup
+npx shadcn@latest add https://badtz-ui.com/r/image-split.json
 ```
 
 </TabsContent>
@@ -372,7 +373,7 @@ className={cn("flex relative w-full rounded-[inherit]", className)}
 );
 }
 
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -595,7 +596,7 @@ const setupScrollListener = () => {
     </div>
   );
 }
-````
+```
 
 </Highlighter>
 </ComponentSource>

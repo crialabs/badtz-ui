@@ -6,8 +6,8 @@ description: An interactive and customizable component that creates a dynamic wa
 <ComponentPreview
   name="mouse-wave-demo"
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An interactive and customizable wave shader
-  ."
+  description="An interactive and customizable wave shader."
+  v0Link="https://badtz-ui.com/r/mouse-wave.json"
 >
 <Highlighter slot="javascript">
 ```jsx
@@ -71,7 +71,7 @@ export default function MouseWaveDemo() {
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add to-setup
+npx shadcn@latest add https://badtz-ui.com/r/mouse-wave.json
 ```
 
 </TabsContent>
@@ -202,7 +202,7 @@ gl_FragColor.rgb += 0.0035\*vec3(vNoise);
 }
 `;
 
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -316,7 +316,7 @@ export const fragment = `
     gl_FragColor.rgb += 0.0035*vec3(vNoise);
   }
 `;
-````
+```
 
 </Highlighter>
 </ComponentSource>
@@ -330,7 +330,7 @@ export const fragment = `
 ```jsx
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import {
   fragment,
   vertex,
@@ -345,29 +345,29 @@ export default function MouseWave({ imageSrc, canvasWidth, canvasHeight }) {
   const texture = useTexture(imageSrc);
   const { raycaster, camera } = useThree();
 
-const uniforms = useRef({
-uTexture: { value: texture },
-uTime: { value: 0 },
-uHover: { value: new THREE.Vector2(0.5, 0.5) },
-uHoverState: { value: 0 },
-});
+  const uniforms = useRef({
+    uTexture: { value: texture },
+    uTime: { value: 0 },
+    uHover: { value: new THREE.Vector2(0.5, 0.5) },
+    uHoverState: { value: 0 },
+  });
 
-useFrame((state) => {
-if (plane.current) {
-const material = plane.current.material;
-material.uniforms.uTime.value = state.clock.elapsedTime;
-}
-});
+  useFrame((state) => {
+    if (plane.current) {
+      const material = plane.current.material;
+      material.uniforms.uTime.value = state.clock.elapsedTime;
+    }
+  });
 
-useEffect(() => {
-if (camera instanceof THREE.PerspectiveCamera) {
-camera.aspect = canvasWidth / canvasHeight;
-camera.updateProjectionMatrix();
-}
-}, [canvasWidth, canvasHeight, camera]);
+  useEffect(() => {
+    if (camera instanceof THREE.PerspectiveCamera) {
+      camera.aspect = canvasWidth / canvasHeight;
+      camera.updateProjectionMatrix();
+    }
+  }, [canvasWidth, canvasHeight, camera]);
 
-const handlePointerMove = (event) => {
-if (!plane.current) return;
+  const handlePointerMove = (event) => {
+    if (!plane.current) return;
 
     const pointer = new THREE.Vector2(
       (event.clientX / window.innerWidth) * 2 - 1,
@@ -385,42 +385,42 @@ if (!plane.current) return;
         obj.material.uniforms.uHover.value.set(uv.x, uv.y);
       }
     }
+  };
 
-};
+  const handlePointerEnter = () => {
+    gsap.to(uniforms.current.uHoverState, {
+      duration: 1,
+      value: 1,
+    });
+  };
 
-const handlePointerEnter = () => {
-gsap.to(uniforms.current.uHoverState, {
-duration: 1,
-value: 1,
-});
-};
+  const handlePointerLeave = () => {
+    gsap.to(uniforms.current.uHoverState, {
+      duration: 1,
+      value: 0,
+    });
+  };
 
-const handlePointerLeave = () => {
-gsap.to(uniforms.current.uHoverState, {
-duration: 1,
-value: 0,
-});
-};
-
-return (
-<mesh
-ref={plane}
-onPointerMove={handlePointerMove}
-onPointerEnter={handlePointerEnter}
-onPointerLeave={handlePointerLeave}
-position={[0, 0, 0]} >
-<planeGeometry args={[canvasWidth, canvasHeight, 45, 45]} />
-<shaderMaterial
+  return (
+    <mesh
+      ref={plane}
+      onPointerMove={handlePointerMove}
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
+      position={[0, 0, 0]}
+    >
+      <planeGeometry args={[canvasWidth, canvasHeight, 45, 45]} />
+      <shaderMaterial
         side={THREE.DoubleSide}
         vertexShader={vertex}
         fragmentShader={fragment}
         uniforms={uniforms.current}
       />
-</mesh>
-);
+    </mesh>
+  );
 }
 
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -542,7 +542,7 @@ export default function MouseWave({
     </mesh>
   );
 }
-````
+```
 
 </Highlighter>
 </ComponentSource>
@@ -567,8 +567,8 @@ export default function MouseWaveScene({ imageSrc, alt, marginFactor = 1.05 }) {
     height: 0,
   });
 
-const updateDimensions = useCallback(() => {
-if (!containerRef.current) return;
+  const updateDimensions = useCallback(() => {
+    if (!containerRef.current) return;
 
     const parentWidth = containerRef.current.clientWidth;
     setIsMobile(window.innerWidth < 640);
@@ -591,14 +591,13 @@ if (!containerRef.current) return;
         }
       }
     };
+  }, [imageSrc]);
 
-}, [imageSrc]);
-
-useEffect(() => {
-updateDimensions();
-const observer = new ResizeObserver(() => {
-requestAnimationFrame(updateDimensions);
-});
+  useEffect(() => {
+    updateDimensions();
+    const observer = new ResizeObserver(() => {
+      requestAnimationFrame(updateDimensions);
+    });
 
     window.addEventListener("resize", updateDimensions);
 
@@ -607,22 +606,22 @@ requestAnimationFrame(updateDimensions);
       observer.disconnect();
       window.removeEventListener("resize", updateDimensions);
     };
+  }, [updateDimensions]);
 
-}, [updateDimensions]);
-
-return (
-<div
-ref={containerRef}
-style={{ width: "100%", height: dimensions.height }} >
-{isMobile ? (
-<img
-src={imageSrc}
-alt={alt || "Shader preview"}
-style={{ width: "100%", height: "100%", objectFit: "cover" }}
-/>
-) : (
-<Canvas
-camera={{
+  return (
+    <div
+      ref={containerRef}
+      style={{ width: "100%", height: dimensions.height }}
+    >
+      {isMobile ? (
+        <img
+          src={imageSrc}
+          alt={alt || "Shader preview"}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      ) : (
+        <Canvas
+          camera={{
             fov: 45,
             aspect: dimensions.width / dimensions.height,
             near: 0.1,
@@ -633,22 +632,22 @@ camera={{
               dimensions.height / 2 / Math.tan((45 * Math.PI) / 360),
             ],
           }}
-onCreated={({ camera }) => {
-cameraRef.current = camera;
-}}
-style={{ width: "100%", height: "100%" }} >
-<MouseWave
+          onCreated={({ camera }) => {
+            cameraRef.current = camera;
+          }}
+          style={{ width: "100%", height: "100%" }}
+        >
+          <MouseWave
             imageSrc={imageSrc}
             canvasWidth={dimensions.width}
             canvasHeight={dimensions.height}
           />
-</Canvas>
-)}
-</div>
-);
+        </Canvas>
+      )}
+    </div>
+  );
 }
-
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -756,7 +755,7 @@ export default function MouseWaveScene({
     </div>
   );
 }
-````
+```
 
 </Highlighter>
 </ComponentSource>

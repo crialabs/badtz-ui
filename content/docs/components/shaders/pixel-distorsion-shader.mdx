@@ -7,6 +7,7 @@ description: An interactive and customizable shader effect that distorts pixels 
   name="pixel-distorsion-demo"
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
   description="An interactive and customizable shader effect that distorts pixels dynamically."
+  v0Link="https://badtz-ui.com/r/pixel-distorsion.json"
 >
 <Highlighter slot="javascript">
 ```jsx
@@ -70,7 +71,7 @@ export default function PixelDistorsionDemo() {
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add to-setup
+npx shadcn@latest add https://badtz-ui.com/r/pixel-distorsion.json
 ```
 
 </TabsContent>
@@ -128,7 +129,7 @@ gl_FragColor = texture2D(uTexture,newUV - 0.02*offset.rg);
 }
 `;
 
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -165,7 +166,7 @@ void main()	{
 	gl_FragColor = texture2D(uTexture,newUV - 0.02*offset.rg);
 }
 `;
-````
+```
 
 </Highlighter>
 </ComponentSource>
@@ -198,51 +199,51 @@ export default function PixelDistorsion({
   const texture = useTexture(imageSrc);
   const mouseState = useRef({ x: 0.5, y: 0.5, vX: 0, vY: 0 });
 
-const uniforms = useRef({
-uTexture: { value: texture },
-uTime: { value: 0 },
-uHover: { value: new THREE.Vector2(0.5, 0.5) },
-uDataTexture: { value: null },
-resolution: { value: new THREE.Vector4() },
-});
+  const uniforms = useRef({
+    uTexture: { value: texture },
+    uTime: { value: 0 },
+    uHover: { value: new THREE.Vector2(0.5, 0.5) },
+    uDataTexture: { value: null },
+    resolution: { value: new THREE.Vector4() },
+  });
 
-const generateDataTexture = () => {
-const data = new Float32Array(grid _ grid _ 4);
-for (let i = 0; i < grid _ grid; i++) {
-const stride = i _ 4;
-data[stride] = Math.random();
-data[stride + 1] = Math.random();
-data[stride + 2] = Math.random();
-data[stride + 3] = 1.0;
-}
-const dataTexture = new THREE.DataTexture(
-data,
-grid,
-grid,
-THREE.RGBAFormat,
-THREE.FloatType
-);
-dataTexture.needsUpdate = true;
-dataTexture.minFilter = THREE.NearestFilter;
-dataTexture.magFilter = THREE.NearestFilter;
-return dataTexture;
-};
+  const generateDataTexture = () => {
+    const data = new Float32Array(grid * grid * 4);
+    for (let i = 0; i < grid * grid; i++) {
+      const stride = i * 4;
+      data[stride] = Math.random();
+      data[stride + 1] = Math.random();
+      data[stride + 2] = Math.random();
+      data[stride + 3] = 1.0;
+    }
+    const dataTexture = new THREE.DataTexture(
+      data,
+      grid,
+      grid,
+      THREE.RGBAFormat,
+      THREE.FloatType
+    );
+    dataTexture.needsUpdate = true;
+    dataTexture.minFilter = THREE.NearestFilter;
+    dataTexture.magFilter = THREE.NearestFilter;
+    return dataTexture;
+  };
 
-useEffect(() => {
-uniforms.current.uDataTexture.value = generateDataTexture();
-}, []);
+  useEffect(() => {
+    uniforms.current.uDataTexture.value = generateDataTexture();
+  }, []);
 
-useEffect(() => {
-uniforms.current.resolution.value.set(canvasWidth, canvasHeight, 1, 1);
-}, [canvasWidth, canvasHeight]);
+  useEffect(() => {
+    uniforms.current.resolution.value.set(canvasWidth, canvasHeight, 1, 1);
+  }, [canvasWidth, canvasHeight]);
 
-const settings = { grid, mouseInfluence: mouse, strength, relaxation: 0.9 };
+  const settings = { grid, mouseInfluence: mouse, strength, relaxation: 0.9 };
 
-const clamp = (number, min, max) => Math.max(min, Math.min(number, max));
+  const clamp = (number, min, max) => Math.max(min, Math.min(number, max));
 
-const updateDataTexture = () => {
-const dataTexture = uniforms.current.uDataTexture?.value;
-if (!dataTexture) return;
+  const updateDataTexture = () => {
+    const dataTexture = uniforms.current.uDataTexture?.value;
+    if (!dataTexture) return;
 
     const data = dataTexture.image.data;
     const gridMouseX = mouseState.current.x * settings.grid;
@@ -276,38 +277,37 @@ if (!dataTexture) return;
     if (uniforms.current.uDataTexture?.value) {
       uniforms.current.uDataTexture.value.needsUpdate = true;
     }
+  };
 
-};
+  const handlePointerMove = (event) => {
+    const { offsetX, offsetY } = event.nativeEvent;
+    mouseState.current.vX = offsetX / canvasWidth - mouseState.current.x;
+    mouseState.current.vY = offsetY / canvasHeight - mouseState.current.y;
+    mouseState.current.x = offsetX / canvasWidth;
+    mouseState.current.y = offsetY / canvasHeight;
+  };
 
-const handlePointerMove = (event) => {
-const { offsetX, offsetY } = event.nativeEvent;
-mouseState.current.vX = offsetX / canvasWidth - mouseState.current.x;
-mouseState.current.vY = offsetY / canvasHeight - mouseState.current.y;
-mouseState.current.x = offsetX / canvasWidth;
-mouseState.current.y = offsetY / canvasHeight;
-};
+  useFrame((state) => {
+    if (plane.current) {
+      plane.current.material.uniforms.uTime.value = state.clock.elapsedTime;
+      updateDataTexture();
+    }
+  });
 
-useFrame((state) => {
-if (plane.current) {
-plane.current.material.uniforms.uTime.value = state.clock.elapsedTime;
-updateDataTexture();
-}
-});
-
-return (
-<mesh ref={plane} onPointerMove={handlePointerMove}>
-<planeGeometry args={[canvasWidth, canvasHeight, 45, 45]} />
-<shaderMaterial
+  return (
+    <mesh ref={plane} onPointerMove={handlePointerMove}>
+      <planeGeometry args={[canvasWidth, canvasHeight, 45, 45]} />
+      <shaderMaterial
         side={THREE.DoubleSide}
         vertexShader={vertex}
         fragmentShader={fragment}
         uniforms={uniforms.current}
       />
-</mesh>
-);
+    </mesh>
+  );
 }
 
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -452,7 +452,7 @@ export default function PixelDistorsion({
     </mesh>
   );
 }
-````
+```
 
 </Highlighter>
 </ComponentSource>
@@ -480,8 +480,8 @@ export default function PixelDistorsionScene({
   const containerRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
-const updateDimensions = useCallback(() => {
-if (!containerRef.current) return;
+  const updateDimensions = useCallback(() => {
+    if (!containerRef.current) return;
 
     const parentWidth = containerRef.current.clientWidth;
     setIsMobile(window.innerWidth < 640);
@@ -500,37 +500,36 @@ if (!containerRef.current) return;
         }
       }
     };
+  }, [imageSrc]);
 
-}, [imageSrc]);
-
-useEffect(() => {
-updateDimensions();
-const observer = new ResizeObserver(() =>
-requestAnimationFrame(updateDimensions)
-);
-window.addEventListener("resize", updateDimensions);
+  useEffect(() => {
+    updateDimensions();
+    const observer = new ResizeObserver(() =>
+      requestAnimationFrame(updateDimensions)
+    );
+    window.addEventListener("resize", updateDimensions);
 
     if (containerRef.current) observer.observe(containerRef.current);
     return () => {
       observer.disconnect();
       window.removeEventListener("resize", updateDimensions);
     };
+  }, [updateDimensions]);
 
-}, [updateDimensions]);
-
-return (
-<div
-ref={containerRef}
-style={{ width: "100%", height: dimensions.height }} >
-{isMobile ? (
-<img
-src={imageSrc}
-alt={alt || "Shader preview"}
-style={{ width: "100%", height: "100%", objectFit: "cover" }}
-/>
-) : (
-<Canvas
-camera={{
+  return (
+    <div
+      ref={containerRef}
+      style={{ width: "100%", height: dimensions.height }}
+    >
+      {isMobile ? (
+        <img
+          src={imageSrc}
+          alt={alt || "Shader preview"}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      ) : (
+        <Canvas
+          camera={{
             fov: 45,
             aspect: dimensions.width / dimensions.height,
             near: 0.1,
@@ -541,11 +540,12 @@ camera={{
               dimensions.height / 2 / Math.tan((45 * Math.PI) / 360),
             ],
           }}
-onCreated={({ camera }) => {
-cameraRef.current = camera;
-}}
-style={{ width: "100%", height: "100%" }} >
-<PixelDistorsion
+          onCreated={({ camera }) => {
+            cameraRef.current = camera;
+          }}
+          style={{ width: "100%", height: "100%" }}
+        >
+          <PixelDistorsion
             imageSrc={imageSrc}
             canvasWidth={dimensions.width}
             canvasHeight={dimensions.height}
@@ -553,13 +553,12 @@ style={{ width: "100%", height: "100%" }} >
             mouse={mouse}
             strength={strength}
           />
-</Canvas>
-)}
-</div>
-);
+        </Canvas>
+      )}
+    </div>
+  );
 }
-
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -666,7 +665,7 @@ export default function PixelDistorsionScene({
     </div>
   );
 }
-````
+```
 
 </Highlighter>
 </ComponentSource>

@@ -9,7 +9,7 @@ import PlausibleProvider from "next-plausible";
 export const metadata: Metadata = {
   title: "BadtzUI • UI Components for React JS",
   description:
-    "An expanding collection of 70+ free UI components. Production-grade animations with Framer Motion. Weekly updates. Open source. React, Tailwind, TypeScript & JavaScript.",
+    "An expanding collection of 70+ free UI components. Production-grade animations with Framer Motion. Daily updates. Open source. React, Tailwind, TypeScript & JavaScript.",
   metadataBase: new URL("https://badtz-ui.com"),
   openGraph: {
     title: "BadtzUI - Modern React Components",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "BadtzUI - UI Components for React JS",
     description:
-      "An expanding collection of 70+ free UI components. Production-grade animations with Framer Motion. Weekly updates. Open source. React, Tailwind, TypeScript & JavaScript.",
+      "An expanding collection of 70+ free UI components. Production-grade animations with Framer Motion. Daily updates. Open source. React, Tailwind, TypeScript & JavaScript.",
     images: [{ url: "/twitter-image.jpg", width: 1200, height: 675 }],
     site: "@badtz_ui",
   },

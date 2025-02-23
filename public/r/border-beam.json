@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "border-beam",
+  "type": "registry:ui",
+  "title": "Border Beam",
+  "description": "Displays an animated border effect with a glowing beam around the content that adapts to the size of the container.",
+  "files": [
+    {
+      "path": "registry/components/border-beam.tsx",
+      "content": "\"use client\";\r\n\r\nimport React, { useRef, useEffect, CSSProperties } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface BorderBeamProps {\r\n  lightWidth?: number;\r\n  duration?: number;\r\n  lightColor?: string;\r\n  borderWidth?: number;\r\n  className?: string;\r\n  [key: string]: any;\r\n}\r\n\r\nexport function BorderBeam({\r\n  lightWidth = 200,\r\n  duration = 10,\r\n  lightColor = \"#FAFAFA\",\r\n  borderWidth = 1,\r\n  className,\r\n  ...props\r\n}: BorderBeamProps) {\r\n  const pathRef = useRef<HTMLDivElement>(null);\r\n\r\n  const updatePath = () => {\r\n    if (pathRef.current) {\r\n      const div = pathRef.current;\r\n      div.style.setProperty(\r\n        \"--path\",\r\n        `path(\"M 0 0 H ${div.offsetWidth} V ${div.offsetHeight} H 0 V 0\")`,\r\n      );\r\n    }\r\n  };\r\n\r\n  useEffect(() => {\r\n    updatePath();\r\n    window.addEventListener(\"resize\", updatePath);\r\n\r\n    return () => {\r\n      window.removeEventListener(\"resize\", updatePath);\r\n    };\r\n  }, []);\r\n\r\n  return (\r\n    <div\r\n      style={\r\n        {\r\n          \"--duration\": duration,\r\n          \"--light-width\": `${lightWidth}px`,\r\n          \"--border-width\": `${borderWidth}px`,\r\n          \"--light-color\": lightColor,\r\n        } as CSSProperties\r\n      }\r\n      ref={pathRef}\r\n      className={cn(\r\n        `absolute rounded-[inherit] z-0 w-full h-full`,\r\n        `after:content-[''] after:absolute after:inset-[var(--border-width)] after:rounded-[inherit]`,\r\n        \"![mask-clip:padding-box,border-box] border-[length:var(--border-width)]\",\r\n        \"![mask-composite:intersect] [mask:linear-gradient(transparent,transparent),linear-gradient(red,red)]\",\r\n\r\n        `before:border-black/10 dark:before:border-white/10 before:absolute before:inset-0 before:rounded-[inherit] before:z-[-1] before:border-[length:var(--border-width)]`,\r\n        className,\r\n      )}\r\n      {...props}\r\n    >\r\n      <div\r\n        className=\"absolute aspect-square inset-0 animate-border-beam bg-[radial-gradient(ellipse_at_center,var(--light-color),transparent,transparent)]\"\r\n        style={{\r\n          offsetPath: \"var(--path)\",\r\n          offsetDistance: \"0%\",\r\n          width: \"var(--light-width)\",\r\n        }}\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {
+          "keyframes": {
+            "border-beam": {
+              "0%": {
+                "offset-distance": "0%"
+              },
+              "100%": {
+                "offset-distance": "100%"
+              }
+            }
+          },
+          "animation": {
+            "border-beam": "border-beam calc(var(--duration)*1s) linear infinite"
+          }
+        }
+      }
+    }
+  }
+}
