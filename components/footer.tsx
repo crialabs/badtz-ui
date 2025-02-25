@@ -39,6 +39,11 @@ const LinkSection: React.FC<LinkSectionProps> = ({ title, links }) => {
               href === "https://pro.badtz-ui.com" ||
               href === "https://x.com/badtz_ui";
 
+            const isExternal = href === "https://pro.badtz-ui.com";
+            const isSocial =
+              href === "https://discord.com/invite/SV2y7vz6Es" ||
+              href === "https://x.com/badtz_ui";
+
             return (
               <li key={href}>
                 {isTracked ? (
@@ -50,8 +55,8 @@ const LinkSection: React.FC<LinkSectionProps> = ({ title, links }) => {
                 ) : (
                   <Link
                     href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={isExternal || isSocial ? "_blank" : undefined}
+                    rel={isSocial ? "noopener noreferrer" : undefined}
                     className="text-muted-foreground hover:text-foreground transition-colors duration-200"
                   >
                     {label}
@@ -80,8 +85,8 @@ const FOOTER_SECTIONS: { title: string; links: LinkType[] }[] = [
   {
     title: "Resources",
     links: [
-      { href: "#privacy", label: "Privacy" },
-      { href: "#terms", label: "Terms" },
+      { href: "/tos", label: "Terms of Service" },
+      { href: "/privacy-policy", label: "Privacy Policy" },
       { href: "/docs", label: "Documentation" },
     ],
   },

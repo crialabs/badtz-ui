@@ -39,7 +39,7 @@ export function Badge({ className, variant = "pro" }: BadgeProps) {
       className={cn(
         "inline-flex items-center rounded font-light px-1.5 py-0.5 text-[11px] ring-1 ring-inset leading-none text-white",
         classes,
-        className,
+        className
       )}
     >
       {text}
