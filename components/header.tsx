@@ -31,13 +31,17 @@ const links: Link[] = [
     label: "Components",
   },
   {
+    href: "https://pro.badtz-ui.com",
+    label: "Templates",
+    external: true,
+  },
+  {
     href: "/changelog",
     label: "Changelog",
   },
   {
-    href: "https://pro.badtz-ui.com",
-    label: "Templates",
-    external: true,
+    href: "/blog",
+    label: "Blog",
   },
 ];
 
