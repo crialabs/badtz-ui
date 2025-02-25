@@ -1,6 +1,6 @@
 # BadtzUI - Modern UI Library for Frontend Developers 🛠️✨
 
-![GitHub Repo stars](https://img.shields.io/github/stars/badtz/badtzui?style=social)
+![GitHub Repo stars](https://img.shields.io/github/stars/badtzx0/badtz-ui?style=social)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 A sleek and modern **React UI library** built for frontend developers who want to ship beautiful interfaces faster. ⚡
@@ -18,7 +18,7 @@ A sleek and modern **React UI library** built for frontend developers who want t
 
 ## 📖 Documentation
 
-Check out the full documentation here 👉 [BadtzUI Docs](https://badtzui.design/docs) *(Coming Soon)*
+Check out the full documentation here 👉 [BadtzUI Docs](https://badtz-ui.com/docs)
 
 ---
 
@@ -38,7 +38,7 @@ For more details, check out our [Contributing Guide](CONTRIBUTING.md).
 
 ## 💬 Community
 
-Have questions or want to connect? Join us on [Discord](#) *(Coming Soon)*
+Have questions or want to connect? Join us on [Discord](https://discord.com/invite/SV2y7vz6Es)
 
 ---
 
