@@ -1,21 +1,28 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Ellipsis } from "lucide-react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export function DocDropdown() {
+  const pathname = usePathname();
+
+  const githubBaseUrl = "https://github.com/badtzx0/badtz-ui/blob/main/content";
+  const githubEditUrl = `${githubBaseUrl}${pathname}.mdx`;
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -33,15 +40,55 @@ export function DocDropdown() {
             <DropdownMenuSeparator />
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
-                <DropdownMenuItem>Edit this Page</DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link
+                    href={githubEditUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Edit this Page
+                  </Link>
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Repo</DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link
+                    href="https://github.com/badtzx0/badtz-ui"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Repo
+                  </Link>
+                </DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
-          <DropdownMenuItem>Request a Component</DropdownMenuItem>
-          <DropdownMenuItem>Report a Bug</DropdownMenuItem>
-          <DropdownMenuItem>Feedback</DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link
+              href="https://github.com/badtzx0/badtz-ui"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Request a component
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link
+              href="https://github.com/badtzx0/badtz-ui"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Report a Bug
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link
+              href="https://github.com/badtzx0/badtz-ui"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Feedback
+            </Link>
+          </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
