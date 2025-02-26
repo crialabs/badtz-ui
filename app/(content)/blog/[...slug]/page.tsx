@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: { params: Params }) {
   ogUrl.searchParams.set("type", "Blog Post");
   ogUrl.searchParams.set("mode", "dark");
   const postUrl = `https://badtz-ui.com/blog/${post.slugAsParams}`;
-  console.log(postUrl);
+
   return {
     title: post.title,
     description: post.description,
@@ -65,26 +65,6 @@ export async function generateMetadata({ params }: { params: Params }) {
     })),
     alternates: {
       canonical: postUrl,
-    },
-    openGraph: {
-      title: `BadtzUI • ${post.title}`,
-      description: post.description,
-      type: "article",
-      url: absoluteUrl(post.slugAsParams),
-      images: [
-        {
-          url: ogUrl.toString(),
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.description,
-      images: [ogUrl.toString()],
     },
   };
 }
@@ -187,7 +167,7 @@ export default async function PostPage({ params }: { params: Params }) {
 
   return (
     <div className="w-full h-full pb-16 sm:pb-28">
-      <div className="px-6 lg:px-8 lg:max-w-6xl mx-auto pt-10 md:pt-20 relative lg:gap-10 xl:grid xl:grid-cols-[1fr_240px]">
+      <div className="px-6 lg:px-8 lg:max-w-5xl mx-auto pt-10 md:pt-20 relative lg:gap-10 xl:grid xl:grid-cols-[1fr_240px]">
         <div>
           <Breadcrumb>
             <BreadcrumbList>

@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { allPosts, type Post } from "@/.contentlayer/generated";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
-import { ChevronLeft } from "lucide-react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -26,17 +25,6 @@ export async function generateMetadata({
     description: `Explore all blog posts related to "${tag}" published on BadtzUI.`,
     alternates: {
       canonical: tagUrl,
-    },
-    openGraph: {
-      title: `Posts tagged "${tag}" | BadtzUI`,
-      description: `All blog posts related to "${tag}" on BadtzUI.`,
-      type: "website",
-      url: tagUrl,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `Posts tagged "${tag}" | BadtzUI`,
-      description: `Discover content related to "${tag}" published on BadtzUI.`,
     },
   };
 }
