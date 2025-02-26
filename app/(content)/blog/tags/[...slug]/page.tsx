@@ -116,7 +116,7 @@ export default async function TagPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdTag) }}
       />
-      <div className="px-6 lg:px-8 lg:max-w-5xl mx-auto pt-10 md:pt-20 relative">
+      <div className="px-6 lg:px-8 lg:max-w-6xl mx-auto pt-10 md:pt-20 relative">
         <div>
           <Breadcrumb>
             <BreadcrumbList>
@@ -140,12 +140,12 @@ export default async function TagPage({
             }}
           />
 
-          <h1 className="text-4xl/[2.75rem] md:text-5xl/[3.25rem] font-semibold tracking-tighter text-foreground text-balance font-gilroy mt-12 max-w-[605px]">
+          <h1 className="text-4xl/[2.75rem] md:text-5xl/[3.5rem] font-semibold tracking-tighter text-foreground text-balance font-gilroy mt-12 max-w-[605px]">
             Articles tagged with "{tag}"
           </h1>
           <div className="mt-8">
             {postsWithTag.length ? (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-2 lg:gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-4">
                 {postsWithTag.map((post, index) => (
                   <Link
                     href={`/blog/${post.slugAsParams}`}

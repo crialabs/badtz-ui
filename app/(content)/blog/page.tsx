@@ -69,7 +69,7 @@ export default async function BlogPage() {
 
   return (
     <div className="w-full h-full pb-16 sm:pb-28 pt-10 md:pt-20">
-      <div className="px-6 lg:px-8 lg:max-w-5xl mx-auto">
+      <div className="px-6 lg:px-8 lg:max-w-6xl mx-auto">
         <div className="flex flex-col items-start border-b border-border pb-6">
           <div className="flex w-full justify-between gap-4 items-end">
             <h1 className="text-4xl md:text-5xl font-semibold tracking-tighter text-foreground text-balance max-w-[605px] font-gilroy">
