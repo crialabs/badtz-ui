@@ -415,6 +415,19 @@
       ]
     },
     {
+      "name": "spaceship-scrollbar",
+      "type": "registry:ui",
+      "title": "Spaceship Scrollbar",
+      "description": "An animated scrollbar that dynamically tracks progress, offering a sleek and interactive user experience.",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "registry/components/spaceship-scrollbar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "like-button",
       "type": "registry:ui",
       "title": "Like Button",

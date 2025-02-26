@@ -387,6 +387,18 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
+  },"spaceship-scrollbar": {
+    name: "spaceship-scrollbar",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/components/spaceship-scrollbar")),
+    source: "",
+    files: [
+  "__registry__/components/components/spaceship-scrollbar.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
   },"blur-reveal": {
     name: "blur-reveal",
     type: "components:ui",
@@ -639,6 +651,18 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
+  },"scrollship-scrollbar-demo": {
+    name: "scrollship-scrollbar-demo",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/scrollship-scrollbar-demo")),
+    source: "",
+    files: [
+  "__registry__/components/demos/scrollship-scrollbar-demo.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
   },"shuffle-button-demo": {
     name: "shuffle-button-demo",
     type: "components:ui",
@@ -659,6 +683,18 @@ export const Index: Record<string, RegistryItem> = {
     source: "",
     files: [
   "__registry__/components/demos/social-proof-avatars-demo.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"spaceship-scrollbar-demo": {
+    name: "spaceship-scrollbar-demo",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/spaceship-scrollbar-demo")),
+    source: "",
+    files: [
+  "__registry__/components/demos/spaceship-scrollbar-demo.js"
 ],
     category: "undefined",
     subcategory: "undefined",

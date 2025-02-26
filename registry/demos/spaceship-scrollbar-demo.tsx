@@ -1,14 +1,23 @@
 "use client";
 
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, RefObject } from "react";
 
-export const SpaceshipScrollbar = () => {
-  const { scrollYProgress } = useScroll();
+interface SpaceshipScrollbarProps {
+  targetRef: RefObject<HTMLElement>;
+}
+
+export function SpaceshipScrollbar({ targetRef }: SpaceshipScrollbarProps) {
+  const { scrollYProgress } = useScroll({
+    container: targetRef,
+    layoutEffect: false,
+  });
   const [isScrolling, setIsScrolling] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down");
+  const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
   const [lastScrollY, setLastScrollY] = useState(0);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
+  // Smooth spring animation for scroll progress
   const yProgress = useSpring(scrollYProgress, {
     stiffness: 300,
     damping: 40,
@@ -46,7 +55,7 @@ export const SpaceshipScrollbar = () => {
       `}</style>
 
       {/* Track */}
-      <motion.div className="fixed right-6 top-[10%] bottom-[10%] w-[2px] z-50 dark:bg-[rgba(255,255,255,0.03)] bg-[rgba(0,0,0,0.1)] dark:border-radius-[1px] border-radius-[1px] dark:backdrop-filter-blur-[8px] backdrop-filter-blur-[8px]">
+      <motion.div className="sticky right-6 top-[25px] bottom-[25px] w-[2px] z-50 h-[280px] left-full dark:bg-[rgba(255,255,255,0.03)] bg-[rgba(0,0,0,0.1)] dark:border-radius-[1px] border-radius-[1px] dark:backdrop-filter-blur-[8px] backdrop-filter-blur-[8px]">
         {/* Progress line */}
         <motion.div
           className="absolute top-0 right-0 w-full"
@@ -85,7 +94,7 @@ export const SpaceshipScrollbar = () => {
             <div className="absolute inset-1 rounded-full dark:bg-gradient-to-br dark:from-white/40 dark:to-transparent bg-gradient-to-br from-black/40 to-transparent blur-[1px]" />
 
             {/* Center core */}
-            <div className="absolute inset-[30%] rounded-full dark:bg-white/80 bg-black/70 blur-[0.5px]" />
+            <div className="absolute inset-[30%] rounded-full dark:bg-white/80 bg-black/80 blur-[0.5px]" />
 
             {/* Thruster effects */}
             <motion.div
@@ -146,4 +155,54 @@ export const SpaceshipScrollbar = () => {
       </motion.div>
     </>
   );
-};
+}
+
+export default function SpaceshipScrollbarDemo() {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  return (
+    <div
+      ref={scrollRef}
+      className="space-scroll-container w-full h-[350px] overflow-scroll relative px-6 flex justify-start items-start disable-scrollbar"
+    >
+      <p className="font-mono text-sm text-muted-foreground p-12">
+        Once upon a time, in a small village nestled at the foot of the Japanese
+        mountains, there was a young boy named Haruto. Haruto was known for his
+        insatiable curiosity and his love for the ancient legends his
+        grandmother told him.
+        <br />
+        <br />
+        One evening, as the moon shone brightly in the sky, Haruto sat by the
+        fire with his grandmother. She told him the story of Ryujin, the dragon
+        king of the seas. Ryujin lived in a coral palace at the bottom of the
+        ocean and possessed a magical pearl that controlled the tides.
+        <br />
+        <br />
+        Fascinated by this story, Haruto dreamed of meeting Ryujin. One day, he
+        decided to set out on an adventure. He walked for days, crossing dense
+        forests and rushing rivers, until he reached the coast.
+        <br />
+        <br />
+        There, he met a giant turtle, who offered to take him to Ryujin's
+        palace. Haruto gladly accepted and climbed onto the turtle's back.
+        Together, they dove into the depths of the ocean.
+        <br />
+        <br />
+        At the palace, Ryujin welcomed Haruto with kindness. The dragon,
+        impressed by the boy's courage, offered him a fragment of his magical
+        pearl. With this gift, Haruto could now understand the language of
+        animals and the elements.
+        <br />
+        <br />
+        Back in his village, Haruto used this gift to help his people,
+        predicting storms and protecting the crops. He became a local hero, and
+        his story was passed down from generation to generation, inspiring other
+        young people to follow their dreams and respect nature.
+        <br />
+        <br />
+        And so, Haruto, the curious boy, became a legend in his own right,
+        thanks to his encounter with the dragon of the seas.
+      </p>
+      <SpaceshipScrollbar targetRef={scrollRef} />
+    </div>
+  );
+}
