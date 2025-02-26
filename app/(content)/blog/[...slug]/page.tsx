@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: { params: Params }) {
   ogUrl.searchParams.set("type", "Blog Post");
   ogUrl.searchParams.set("mode", "dark");
   const postUrl = `https://badtz-ui.com/blog/${post.slugAsParams}`;
-  console.log(postUrl);
+
   return {
     title: post.title,
     description: post.description,
@@ -65,26 +65,6 @@ export async function generateMetadata({ params }: { params: Params }) {
     })),
     alternates: {
       canonical: postUrl,
-    },
-    openGraph: {
-      title: `BadtzUI • ${post.title}`,
-      description: post.description,
-      type: "article",
-      url: absoluteUrl(post.slugAsParams),
-      images: [
-        {
-          url: ogUrl.toString(),
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.description,
-      images: [ogUrl.toString()],
     },
   };
 }
