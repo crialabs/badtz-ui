@@ -54,13 +54,6 @@ export default function RootLayout({
           src="/plausible/js/script.js"
         ></script>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <link
-          rel="icon"
-          href="/favicon-search.ico"
-          type="image/x-icon"
-          sizes="48x48"
-        />
-        <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={`${GeistSans.className} ${Gilroy.variable}`}>
         <ThemeProvider

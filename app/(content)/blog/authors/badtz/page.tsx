@@ -19,11 +19,14 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  alternates: {
+    canonical: "https://www.badtz-ui.com/blog/authors/badtz",
+  },
 };
 
 export default function AuthorPage() {
   const articles = allPosts.filter((post) =>
-    post.authors.some((author) => author.trim() === "badtz"),
+    post.authors.some((author) => author.trim() === "badtz")
   );
 
   return (

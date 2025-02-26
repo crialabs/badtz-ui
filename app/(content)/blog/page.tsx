@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  alternates: {
+    canonical: "https://badtz-ui.com/blog",
+  },
 };
 
 export default async function BlogPage() {

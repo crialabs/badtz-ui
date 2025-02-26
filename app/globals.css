@@ -319,7 +319,6 @@
   mask: linear-gradient(to top, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 1) 100%);
 }
 
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -327,4 +326,12 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+.disable-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.disable-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }

@@ -128,7 +128,6 @@ export const docsConfig: DocCategory[] = [
       {
         title: "Spaceship Scrollbar",
         href: "/docs/components/spaceship-scrollbar",
-        label: "soon",
         items: [],
       },
       {
