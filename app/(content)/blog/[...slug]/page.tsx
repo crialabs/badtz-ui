@@ -190,7 +190,7 @@ export default async function PostPage({ params }: { params: Params }) {
               __html: JSON.stringify(jsonLdBreadcrumbs),
             }}
           />
-          <article className="w-full mt-12 [&_p]:font-light [&_li]:font-base">
+          <article className="w-full mt-12 [&_p]:font-light [&_li]:font-base [&_h3]:text-2xl">
             <div className="flex flex-col  items-start">
               {post.date && (
                 <time
@@ -200,7 +200,7 @@ export default async function PostPage({ params }: { params: Params }) {
                   Published on {formatDate(post.date)}
                 </time>
               )}
-              <h1 className="text-4xl/[2.75rem] md:text-5xl/[3.25rem] font-semibold tracking-tighter text-foreground text-balance font-gilroy mt-2">
+              <h1 className="text-4xl/[2.75rem] md:text-5xl/[3.5rem] font-semibold tracking-tighter text-foreground text-balance font-gilroy mt-2">
                 {post.title}
               </h1>
               {cleanedTags.length > 0 && (
@@ -363,7 +363,7 @@ export default async function PostPage({ params }: { params: Params }) {
               className="flex [&_svg]:size-3 text-foreground items-center gap-2 rounded-lg pl-3 pr-4 h-9 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0 w-min mx-auto"
             >
               <ChevronLeft />
-              See all articles
+              All articles
             </Link>
           </div>
         </div>
