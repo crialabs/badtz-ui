@@ -22,9 +22,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.badtz-ui.com/blog/authors/badtz",
   },
-  alternates: {
-    canonical: "https://www.badtz-ui.com/blog/authors/badtz",
-  },
 };
 
 export default function AuthorPage() {
