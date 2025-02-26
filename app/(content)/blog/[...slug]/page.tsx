@@ -167,7 +167,7 @@ export default async function PostPage({ params }: { params: Params }) {
 
   return (
     <div className="w-full h-full pb-16 sm:pb-28">
-      <div className="px-6 lg:px-8 lg:max-w-5xl mx-auto pt-10 md:pt-20 relative lg:gap-10 xl:grid xl:grid-cols-[1fr_240px]">
+      <div className="px-6 lg:px-8 lg:max-w-6xl mx-auto pt-10 md:pt-20 relative lg:gap-10 xl:grid xl:grid-cols-[1fr_240px]">
         <div>
           <Breadcrumb>
             <BreadcrumbList>
