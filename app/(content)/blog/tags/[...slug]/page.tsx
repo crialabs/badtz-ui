@@ -18,7 +18,7 @@ export async function generateMetadata({
   params: { slug: string[] };
 }) {
   const tag = params.slug.join(" ").replace("-", " ");
-  const tagUrl = `https://badtz-ui.com/blog/tags/${params.slug.join("-")}`;
+  const tagUrl = `https://www.badtz-ui.com/blog/tags/${params.slug.join("-")}`;
 
   return {
     title: `BadtzUI • Posts tagged "${tag}"`,

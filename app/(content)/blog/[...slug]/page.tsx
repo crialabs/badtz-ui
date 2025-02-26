@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: { params: Params }) {
   ogUrl.searchParams.set("heading", post.title);
   ogUrl.searchParams.set("type", "Blog Post");
   ogUrl.searchParams.set("mode", "dark");
-  const postUrl = `https://badtz-ui.com/blog/${post.slugAsParams}`;
+  const postUrl = `https://www.badtz-ui.com/blog/${post.slugAsParams}`;
 
   return {
     title: post.title,

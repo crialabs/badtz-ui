@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
   },
   alternates: {
-    canonical: "https://badtz-ui.com/blog",
+    canonical: "https://www.badtz-ui.com/blog",
   },
 };
 
