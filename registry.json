@@ -439,31 +439,6 @@
           "type": "registry:ui"
         }
       ]
-    },
-    {
-      "name": "pixel-distorsion-demo",
-      "type": "registry:ui",
-      "title": "Pixel Distorsion Shader",
-      "description": "An interactive and customizable shader effect that distorts pixels dynamically based on mouse interactions, perfect for creating engaging and immersive visual effects on images.",
-      "dependencies": ["@react-three/fiber", "@react-three/drei", "gsap"],
-      "files": [
-        {
-          "path": "registry/demos/pixel-distorsion-demo.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/shaders/pixel-distorsion-scene.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/shaders/pixel-distorsion-shader.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/shaders/pixel-distorsion.tsx",
-          "type": "registry:ui"
-        }
-      ]
     }
   ]
 }

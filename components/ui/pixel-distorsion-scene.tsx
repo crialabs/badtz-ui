@@ -24,9 +24,9 @@ export default function PixelDistorsionScene({
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   const updateDimensions = useCallback(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || !window) return;
 
-    const parentWidth = containerRef.current.clientWidth;
+    const parentWidth = Math.max(1, containerRef.current.clientWidth || 1);
     setIsMobile(window.innerWidth < 640);
     const img = new Image();
     img.src = imageSrc;
@@ -43,7 +43,7 @@ export default function PixelDistorsionScene({
         }
       }
     };
-  }, [imageSrc]);
+  }, [imageSrc, isMobile]);
 
   useEffect(() => {
     updateDimensions();
