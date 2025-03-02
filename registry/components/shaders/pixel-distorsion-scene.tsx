@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import PixelDistorsion from "@/registry/components/shaders/pixel-distorsion";
+import PixelDistorsion from "@/components/ui/pixel-distorsion";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -24,9 +24,9 @@ export default function PixelDistorsionScene({
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   const updateDimensions = useCallback(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || !window) return;
 
-    const parentWidth = containerRef.current.clientWidth;
+    const parentWidth = Math.max(1, containerRef.current.clientWidth || 1);
     setIsMobile(window.innerWidth < 640);
     const img = new Image();
     img.src = imageSrc;
@@ -43,12 +43,12 @@ export default function PixelDistorsionScene({
         }
       }
     };
-  }, [imageSrc]);
+  }, [imageSrc, isMobile]);
 
   useEffect(() => {
     updateDimensions();
     const observer = new ResizeObserver(() =>
-      requestAnimationFrame(updateDimensions),
+      requestAnimationFrame(updateDimensions)
     );
     window.addEventListener("resize", updateDimensions);
 

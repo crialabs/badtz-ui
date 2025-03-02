@@ -10,7 +10,7 @@ const PixelDistorsionScene = dynamic(
         {/* Skeleton loader */}
       </div>
     ),
-  },
+  }
 );
 
 export default function MouseWaveDemo() {

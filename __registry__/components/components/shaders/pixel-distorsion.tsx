@@ -1,8 +1,5 @@
-import React, { useRef, useEffect } from "react";
-import {
-  fragment,
-  vertex,
-} from "@/registry/components/shaders/pixel-distorsion-shader";
+import React, { useRef, useEffect, useCallback } from "react";
+import { fragment, vertex } from "@/components/ui/pixel-distorsion-shader";
 import { useFrame, ThreeEvent } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
@@ -36,7 +33,7 @@ export default function PixelDistorsion({
     resolution: { value: new THREE.Vector4() },
   });
 
-  const generateDataTexture = () => {
+  const generateDataTexture = useCallback(() => {
     const data = new Float32Array(grid * grid * 4);
     for (let i = 0; i < grid * grid; i++) {
       const stride = i * 4;
@@ -50,17 +47,17 @@ export default function PixelDistorsion({
       grid,
       grid,
       THREE.RGBAFormat,
-      THREE.FloatType,
+      THREE.FloatType
     );
     dataTexture.needsUpdate = true;
     dataTexture.minFilter = THREE.NearestFilter;
     dataTexture.magFilter = THREE.NearestFilter;
     return dataTexture;
-  };
+  }, [grid]);
 
   useEffect(() => {
     uniforms.current.uDataTexture.value = generateDataTexture();
-  }, []);
+  }, [generateDataTexture]);
 
   useEffect(() => {
     uniforms.current.resolution.value.set(canvasWidth, canvasHeight, 1, 1);
@@ -73,7 +70,7 @@ export default function PixelDistorsion({
 
   const updateDataTexture = () => {
     const dataTexture = uniforms.current.uDataTexture?.value;
-    if (!dataTexture) return;
+    if (!dataTexture || !dataTexture.image?.data) return;
 
     const data = dataTexture.image.data as Float32Array;
     const gridMouseX = mouseState.current.x * settings.grid;
@@ -106,10 +103,20 @@ export default function PixelDistorsion({
     mouseState.current.vX *= 0.9;
     mouseState.current.vY *= 0.9;
 
-    if (uniforms.current.uDataTexture?.value) {
-      uniforms.current.uDataTexture.value.needsUpdate = true;
-    }
+    requestAnimationFrame(() => {
+      if (dataTexture) dataTexture.needsUpdate = true;
+    });
   };
+
+  useEffect(() => {
+    const dataTexture = generateDataTexture();
+    uniforms.current.uDataTexture.value = dataTexture;
+
+    return () => {
+      dataTexture?.dispose();
+      texture?.dispose();
+    };
+  }, [generateDataTexture, texture]);
 
   const handlePointerMove = (event: ThreeEvent<PointerEvent>) => {
     const { offsetX, offsetY } = event.nativeEvent;

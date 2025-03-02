@@ -239,64 +239,6 @@ export default async function PostPage({ params }: { params: Params }) {
               }}
             />
           </article>
-          {relatedPosts.map((post, index) => (
-            <Link
-              href={`/blog/${post.slugAsParams}`}
-              key={`related-${post.slugAsParams}`}
-            >
-              <article
-                className="flex flex-col w-full p-2 rounded-xl transition-colors duration-200 group/article"
-                key={`article-${post.slugAsParams}`}
-              >
-                {post.image && (
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    width={760}
-                    height={400}
-                    className="aspect-video object-cover bg-secondary border-border border rounded-lg"
-                    priority={index <= 1}
-                    quality={100}
-                  />
-                )}
-                <div className="pt-2.5 p-1">
-                  <h2 className="group-hover/article:text-foreground text-lg mt-2 font-medium text-foreground/70 transition-colors duration-300">
-                    {post.title}
-                  </h2>
-                  {post.date && (
-                    <p className="text-xs text-muted-foreground mt-1.5">
-                      {formatDate(post.date)}
-                    </p>
-                  )}
-                  {post.description && (
-                    <p className="mt-3 text-sm text-muted-foreground text-prose font-light">
-                      {post.description.length > 140
-                        ? `${post.description.slice(0, 140)}...`
-                        : post.description}
-                    </p>
-                  )}
-                  <div className="flex items-center space-x-1.5 text-sm mt-4">
-                    <Image
-                      src="/images/badtz-avatar-small.webp"
-                      alt="Badtz Avatar"
-                      width={20}
-                      height={20}
-                      className="rounded-full bg-secondary shrink-0 h-5 w-5 invert dark:invert-[0]"
-                    />
-                    <p className="font-light text-sm text-thin text-muted-foreground">
-                      Badtz
-                    </p>
-                  </div>
-                </div>
-                <script
-                  type="application/ld+json"
-                  dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(jsonLdRelatedArticles),
-                  }}
-                />
-              </article>
-            </Link>
-          ))}
 
           {authors?.length ? (
             <div className="mt-1 flex space-y-4">
@@ -357,10 +299,73 @@ export default async function PostPage({ params }: { params: Params }) {
               )}
             </div>
           ) : null}
+          <h3 className="mt-12 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0 font-gilroy mb-4">
+            Related Articles
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-4">
+            {relatedPosts.map((post, index) => (
+              <Link
+                href={`/blog/${post.slugAsParams}`}
+                key={`related-${post.slugAsParams}`}
+              >
+                <article
+                  className="flex flex-col w-full p-2 rounded-xl transition-colors duration-200 group/article"
+                  key={`article-${post.slugAsParams}`}
+                >
+                  {post.image && (
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      width={760}
+                      height={400}
+                      className="aspect-video object-cover bg-secondary border-border border rounded-lg"
+                      priority={index <= 1}
+                      quality={100}
+                    />
+                  )}
+                  <div className="pt-2.5 p-1">
+                    <h2 className="group-hover/article:text-foreground text-lg mt-2 font-medium text-foreground/70 transition-colors duration-300">
+                      {post.title}
+                    </h2>
+                    {post.date && (
+                      <p className="text-xs text-muted-foreground mt-1.5">
+                        {formatDate(post.date)}
+                      </p>
+                    )}
+                    {post.description && (
+                      <p className="mt-3 text-sm text-muted-foreground text-prose font-light">
+                        {post.description.length > 140
+                          ? `${post.description.slice(0, 140)}...`
+                          : post.description}
+                      </p>
+                    )}
+                    <div className="flex items-center space-x-1.5 text-sm mt-4">
+                      <Image
+                        src="/images/badtz-avatar-small.webp"
+                        alt="Badtz Avatar"
+                        width={20}
+                        height={20}
+                        className="rounded-full bg-secondary shrink-0 h-5 w-5 invert dark:invert-[0]"
+                      />
+                      <p className="font-light text-sm text-thin text-muted-foreground">
+                        Badtz
+                      </p>
+                    </div>
+                  </div>
+                  <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                      __html: JSON.stringify(jsonLdRelatedArticles),
+                    }}
+                  />
+                </article>
+              </Link>
+            ))}
+          </div>
           <div className="flex justify-center py-6 lg:py-10">
             <Link
               href="/blog"
-              className="flex [&_svg]:size-3 text-foreground items-center gap-2 rounded-lg pl-3 pr-4 h-9 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0 w-min mx-auto"
+              className="flex [&_svg]:size-3 text-foreground items-center gap-2 rounded-lg pl-3 pr-4 h-9 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0 w-min mr-auto"
             >
               <ChevronLeft />
               All articles
