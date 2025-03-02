@@ -189,7 +189,11 @@
       "type": "registry:ui",
       "title": "Pulse Shader",
       "description": "An interactive and customizable shader effect that creates a dynamic wave in response to hover interactions, perfect for adding engaging visual effects to backgrounds.",
-      "dependencies": ["@react-three/fiber", "@react-three/drei", "gsap"],
+      "dependencies": [
+        "@react-three/fiber@8.18.0",
+        "@react-three/drei@9.122.0",
+        "gsap"
+      ],
       "files": [
         {
           "path": "registry/components/shaders/pulse-shader.tsx",
@@ -210,7 +214,11 @@
       "type": "registry:ui",
       "title": "Pixel Distorsion Shader",
       "description": "An interactive and customizable shader effect that distorts pixels dynamically based on mouse interactions, perfect for creating engaging and immersive visual effects on images.",
-      "dependencies": ["@react-three/fiber", "@react-three/drei", "gsap"],
+      "dependencies": [
+        "@react-three/fiber@8.18.0",
+        "@react-three/drei@9.122.0",
+        "gsap"
+      ],
       "files": [
         {
           "path": "registry/components/shaders/pixel-distorsion-scene.tsx",
@@ -231,7 +239,11 @@
       "type": "registry:ui",
       "title": "Mouse Wave Shader",
       "description": "An interactive and customizable component that creates a dynamic wave effect responding to mouse movements, perfect for immersive backgrounds.",
-      "dependencies": ["@react-three/fiber", "@react-three/drei", "gsap"],
+      "dependencies": [
+        "@react-three/fiber@8.18.0",
+        "@react-three/drei@9.122.0",
+        "gsap"
+      ],
       "files": [
         {
           "path": "registry/components/shaders/mouse-wave-scene.tsx",
