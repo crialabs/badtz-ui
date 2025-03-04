@@ -77,7 +77,7 @@ export function LikeButton({
       <button
         onClick={handleClick}
         className={cn(
-          "bg-neutral-100 hover:bg-neutral-100/90 dark:bg-neutral-900 dark:hover:bg-neutral-900/90 relative h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+          "bg-neutral-100 hover:bg-neutral-100/90 dark:bg-neutral-900 dark:hover:bg-neutral-900/90 relative h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer",
           liked
             ? "dark:text-white text-black"
             : "dark:text-white/70 text-black/70",
