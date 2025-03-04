@@ -15,7 +15,55 @@ interface RegistryItem {
 }
 
 export const Index: Record<string, RegistryItem> = {
-  "animated-card": {
+  "article-animated-dot-pattern": {
+    name: "article-animated-dot-pattern",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/blog/article-animated-dot-pattern")),
+    source: "",
+    files: [
+  "__registry__/components/blog/article-animated-dot-pattern.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"article-dot-pattern": {
+    name: "article-dot-pattern",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/blog/article-dot-pattern")),
+    source: "",
+    files: [
+  "__registry__/components/blog/article-dot-pattern.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"article-ellipse-dot-pattern": {
+    name: "article-ellipse-dot-pattern",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/blog/article-ellipse-dot-pattern")),
+    source: "",
+    files: [
+  "__registry__/components/blog/article-ellipse-dot-pattern.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"dot-pattern": {
+    name: "dot-pattern",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/blog/dot-pattern")),
+    source: "",
+    files: [
+  "__registry__/components/blog/dot-pattern.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"animated-card": {
     name: "animated-card",
     type: "components:ui",
     registryDependencies: undefined,
