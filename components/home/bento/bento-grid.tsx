@@ -1,8 +1,8 @@
+import { PlausibleButton } from "@/components/plausible-button";
 import { cn } from "@/lib/utils";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { ReactNode } from "react";
-
 interface BentoGridProps {
   children: ReactNode;
   className?: string;
@@ -59,8 +59,13 @@ export function BentoCell({
             aria-label="Learn more about Badtz UI Pro"
             className="text-blue-500 text-sm mt-2 block hover:underline underline-offset-2"
           >
-            {link.text}
-            <ArrowTopRightIcon className="inline-block w-3.5 h-3.5 ml-1" />
+            <PlausibleButton
+              eventName="Clicked on Pro"
+              className="flex items-center justify-center gap-0"
+            >
+              {link.text}
+              <ArrowTopRightIcon className="inline-block w-3.5 h-3.5 ml-1" />
+            </PlausibleButton>
           </Link>
         )}
       </div>

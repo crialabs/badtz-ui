@@ -12,10 +12,10 @@
     --popover-foreground: 0 0% 3.9%;
     --primary: 0 0% 9%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 240 14% 97%;
+    --secondary: 240 14% 99%;
     --secondary-foreground: 0 0% 9%;
     --muted: 240 24% 93%;
-    --muted-foreground: 220 10% 46%;
+    --muted-foreground: 234 5% 38%;
     --accent: 18 100% 48%;
     --accent-foreground: 0 0% 9%;
     --destructive: 0 84.2% 60.2%;
@@ -168,6 +168,50 @@
   }
 }
 
+/* Radiant Edge T */
+
+.edge-t {
+  position: relative;
+}
+
+.edge-t::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  z-index: 1;
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.edge-t::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background-image: radial-gradient(
+    ellipse at center,
+    white,
+    transparent,
+    transparent
+  );
+  opacity: 0.025;
+  pointer-events: none;
+}
+
 /* Gradient Blur */
 .gradient-blur {
   position: absolute;
@@ -273,4 +317,21 @@
   z-index: 8;
   backdrop-filter: blur(64px);
   mask: linear-gradient(to top, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 1) 100%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+.disable-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.disable-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }

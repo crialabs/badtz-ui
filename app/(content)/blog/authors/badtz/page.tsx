@@ -12,12 +12,8 @@ export const metadata: Metadata = {
   title: "BadtzUI • Author: Badtz",
   description:
     "Discover articles by Badtz, the founder of BadtzUI. Sharing insights on UI components, React, design systems, and frontend development.",
-  openGraph: {
-    title: "BadtzUI - Articles by Badtz",
-    images: "/og-image.png",
-  },
-  twitter: {
-    card: "summary_large_image",
+  alternates: {
+    canonical: "https://www.badtz-ui.com/blog/authors/badtz",
   },
 };
 

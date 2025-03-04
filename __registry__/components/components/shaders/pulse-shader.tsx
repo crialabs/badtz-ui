@@ -1,8 +1,5 @@
 import React, { useRef } from "react";
-import {
-  fragment,
-  vertex,
-} from "@/registry/components/shaders/pulse-shader-shader";
+import { fragment, vertex } from "@/registry/components/ui/pulse-shader-shader";
 import { ThreeEvent, useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";

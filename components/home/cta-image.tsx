@@ -20,7 +20,7 @@ export function CTAImage() {
   return (
     <Image
       fill
-      className="object-cover absolute dark:opacity-70"
+      className="object-cover absolute pointer-events-none opacity-70"
       style={{
         objectPosition: "bottom",
       }}

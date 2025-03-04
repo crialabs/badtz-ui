@@ -61,9 +61,14 @@ export default function HomeBento() {
               visual={feature.visual}
               link={feature.link}
               className={cn(
+<<<<<<< HEAD
                 index === 1 || index === 2 ? "md:col-span-3" : "",
                 index === 1 ? "overflow-visible" : "",
                 "max-md:max-w-[400px] w-full",
+=======
+                index === 1 || index === 2 ? "md:col-span-3 " : "",
+                "max-md:max-w-[400px] w-full edge-t overflow-hidden"
+>>>>>>> 3af7515bb3439f82b51ddc50aa84412b86b849df
               )}
             />
           ))}

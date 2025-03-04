@@ -48,6 +48,55 @@ export const docsConfig: DocCategory[] = [
   },
   */
   {
+    title: "3d & Shaders",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        className="size-3"
+      >
+        <path d="M12.378 1.602a.75.75 0 0 0-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03ZM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 0 0 .372-.648V7.93ZM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 0 0 .372.648l8.628 5.033Z" />
+      </svg>
+    ),
+    items: [
+      {
+        title: "Pixel Distorsion",
+        href: "/docs/components/shaders/pixel-distorsion-shader",
+        items: [],
+        label: "hot",
+      },
+      {
+        title: "Pulse Shader",
+        href: "/docs/components/shaders/pulse-shader",
+        items: [],
+      },
+      {
+        title: "Mouse Wave Shader",
+        href: "/docs/components/shaders/mouse-wave-shader",
+        items: [],
+      },
+      {
+        title: "Glass Distortion",
+        href: "/docs/components/glass-text",
+        label: "soon",
+        items: [],
+      },
+      {
+        title: "Globe",
+        href: "/docs/components/globe/",
+        label: "soon",
+        items: [],
+      },
+      {
+        title: "Liquid shader",
+        href: "/docs/components/liquid-shader",
+        label: "soon",
+        items: [],
+      },
+    ],
+  },
+  {
     title: "Components",
     icon: (
       <svg
@@ -79,7 +128,6 @@ export const docsConfig: DocCategory[] = [
       {
         title: "Spaceship Scrollbar",
         href: "/docs/components/spaceship-scrollbar",
-        label: "soon",
         items: [],
       },
       {
@@ -132,58 +180,8 @@ export const docsConfig: DocCategory[] = [
         items: [],
       },
       {
-        title: "Showcase",
-        href: "/docs/components/showcase",
-        label: "soon",
-        items: [],
-      },
-    ],
-  },
-  {
-    title: "3d & Shaders",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        className="size-3"
-      >
-        <path d="M12.378 1.602a.75.75 0 0 0-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03ZM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 0 0 .372-.648V7.93ZM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 0 0 .372.648l8.628 5.033Z" />
-      </svg>
-    ),
-    items: [
-      {
-        title: "Pulse Shader",
-        href: "/docs/components/shaders/pulse-shader",
-        items: [],
-      },
-      {
-        title: "Pixel Distorsion",
-        href: "/docs/components/shaders/pixel-distorsion-shader",
-        items: [],
-        label: "hot",
-      },
-      {
-        title: "Mouse Wave Shader",
-        href: "/docs/components/shaders/mouse-wave-shader",
-        items: [],
-      },
-      {
-        title: "Glass Distortion",
-        href: "/docs/components/glass-text",
-        label: "soon",
-        items: [],
-      },
-      {
-        title: "Globe",
-        href: "/docs/components/globe/",
-        label: "soon",
-        items: [],
-      },
-      {
-        title: "Liquid shader",
-        href: "/docs/components/liquid-shader",
-        label: "soon",
+        title: "3D Wrapper",
+        href: "/docs/components/wrapper-3d",
         items: [],
       },
     ],
@@ -258,8 +256,7 @@ export const docsConfig: DocCategory[] = [
       },
       {
         title: "Hyperspace Background",
-        href: "/docs/components/backgrounds/hyperspace",
-        label: "soon",
+        href: "/docs/components/backgrounds/hyperspace-background",
         items: [],
       },
     ],
@@ -282,7 +279,7 @@ export const docsConfig: DocCategory[] = [
       </svg>
     ),
     items: [
-      /*https://www.youtube.com/watch?v=zqPy1bHUjrg
+      /*
       {
         title: "Scroll-text-reveal--",
         href: "/docs/components/wave-shader",
@@ -331,27 +328,26 @@ export const docsConfig: DocCategory[] = [
       {
         title: "Shuffle Button",
         href: "/docs/components/buttons/shuffle-button",
-        label: "soon",
         items: [],
       },
+      {
+        title: "Stagger Button",
+        href: "/docs/components/buttons/stagger-button",
+        items: [],
+      },
+      {
+        title: "Like Button",
+        href: "/docs/components/buttons/like-button",
+        items: [],
+      },
+      /*
       {
         title: "Gradient Button",
         href: "/docs/components/buttons/gradient-button",
         label: "soon",
         items: [],
       },
-      {
-        title: "Stagger Button",
-        href: "/docs/components/buttons/stagger-button",
-        label: "soon",
-        items: [],
-      },
-      {
-        title: "Like Button",
-        href: "/docs/components/buttons/like-button",
-        label: "soon",
-        items: [],
-      },
+      */
     ],
   },
 ];

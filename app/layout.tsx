@@ -9,18 +9,18 @@ import PlausibleProvider from "next-plausible";
 export const metadata: Metadata = {
   title: "BadtzUI • UI Components for React JS",
   description:
-    "An expanding collection of 70+ free UI components. Production-grade animations with Framer Motion. Weekly updates. Open source. React, Tailwind, TypeScript & JavaScript.",
+    "An expanding collection of 70+ free UI components. Production-grade animations with Framer Motion. Daily updates. Open source. React, Tailwind, TypeScript & JavaScript.",
   metadataBase: new URL("https://badtz-ui.com"),
   openGraph: {
     title: "BadtzUI - Modern React Components",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/opengraph-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "BadtzUI - UI Components for React JS",
     description:
-      "An expanding collection of 70+ free UI components. Production-grade animations with Framer Motion. Weekly updates. Open source. React, Tailwind, TypeScript & JavaScript.",
-    images: [{ url: "/twitter-image.png", width: 1200, height: 675 }],
+      "An expanding collection of 70+ free UI components. Production-grade animations with Framer Motion. Daily updates. Open source. React, Tailwind, TypeScript & JavaScript.",
+    images: [{ url: "/twitter-image.jpg", width: 1200, height: 675 }],
     site: "@badtz_ui",
   },
 };
@@ -54,13 +54,6 @@ export default function RootLayout({
           src="/plausible/js/script.js"
         ></script>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <link
-          rel="icon"
-          href="/favicon-search.ico"
-          type="image/x-icon"
-          sizes="48x48"
-        />
-        <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={`${GeistSans.className} ${Gilroy.variable}`}>
         <ThemeProvider

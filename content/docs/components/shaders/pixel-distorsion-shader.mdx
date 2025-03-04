@@ -10,6 +10,8 @@ description: An interactive and customizable shader effect that distorts pixels 
 >
 <Highlighter slot="javascript">
 ```jsx
+"use client";
+
 import dynamic from "next/dynamic";
 const PixelDistorsionScene = dynamic(
   () => import("@/components/ui/pixel-distorsion-scene"),
@@ -34,6 +36,7 @@ export default function PixelDistorsionDemo() {
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
+"use client";
 import dynamic from "next/dynamic";
 const PixelDistorsionScene = dynamic(
   () => import("@/components/ui/pixel-distorsion-scene"),
@@ -70,7 +73,7 @@ export default function PixelDistorsionDemo() {
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add to-setup
+npx shadcn@latest add https://badtz-ui.com/r/pixel-distorsion.json
 ```
 
 </TabsContent>
@@ -82,7 +85,7 @@ npx shadcn@latest add to-setup
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @react-three/fiber @react-three/drei gsap
+npm install @react-three/fiber@8.18.0 @react-three/drei@9.122.0 gsap
 ```
 
 <Step>
@@ -128,7 +131,7 @@ gl_FragColor = texture2D(uTexture,newUV - 0.02*offset.rg);
 }
 `;
 
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -165,7 +168,7 @@ void main()	{
 	gl_FragColor = texture2D(uTexture,newUV - 0.02*offset.rg);
 }
 `;
-````
+```
 
 </Highlighter>
 </ComponentSource>
@@ -307,7 +310,7 @@ return (
 );
 }
 
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -452,7 +455,7 @@ export default function PixelDistorsion({
     </mesh>
   );
 }
-````
+```
 
 </Highlighter>
 </ComponentSource>
@@ -666,7 +669,7 @@ export default function PixelDistorsionScene({
     </div>
   );
 }
-````
+```
 
 </Highlighter>
 </ComponentSource>

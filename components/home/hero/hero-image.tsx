@@ -36,17 +36,20 @@ export function HeroImage() {
       ) : (
         <div
           className={cn(
+<<<<<<< HEAD
             "absolute inset-0 lg:left-0  md:left-10 md:h-[600px] md:w-[960px] h-[400px] w-[760px] pointer-events-none",
+=======
+            "absolute inset-0 lg:left-0 md:left-10 edge-t md:h-[600px] md:w-[960px] h-[400px] w-[760px] pointer-events-none bg-background dark:bg-secondary"
+>>>>>>> 3af7515bb3439f82b51ddc50aa84412b86b849df
           )}
         >
           <Image
             src={imageSrc}
             alt="Badtz UI interface in dark mode"
-            height={600}
-            width={960}
+            fill
             quality={50}
             priority
-            className="border border-border rounded-xl overflow-hidden"
+            className="border border-border rounded-xl overflow-hidden object-contain object-left"
           />
         </div>
       )}

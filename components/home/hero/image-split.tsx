@@ -198,7 +198,10 @@ export function ImageSplit({
   return (
     <div
       ref={parentRef}
-      className={cn("flex relative w-full rounded-[inherit]", className)}
+      className={cn(
+        "flex relative w-full rounded-[inherit] border-r",
+        className
+      )}
       {...props}
     >
       <canvas ref={canvasRef} className="hidden" />
@@ -212,9 +215,9 @@ export function ImageSplit({
             imgRefs.current[index] = el;
           }}
           className={cn(
-            "object-contain transition-transform duration-300 ease-out",
+            "object-contain transition-transform duration-300 ease-out border-t",
             {
-              "rounded-l-[inherit]": index === 0,
+              "rounded-l-[inherit] border-l": index === 0,
               "rounded-r-[inherit]": index === imagePieces.length - 1,
             },
           )}
@@ -228,7 +231,6 @@ export function ImageSplit({
                 : "none",
             marginRight:
               enableBorder && index !== imagePieces.length - 1 ? "-1px" : "0",
-            boxSizing: "border-box",
           }}
         />
       ))}

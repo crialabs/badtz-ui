@@ -1,10 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-import {
-  fragment,
-  vertex,
-} from "@/registry/components/shaders/mouse-wave-shader";
+import { fragment, vertex } from "@/registry/components/ui/mouse-wave-shader";
 import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";

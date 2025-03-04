@@ -1,0 +1,482 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "Badtz UI",
+  "homepage": "https://badtz-ui.com",
+  "items": [
+    {
+      "name": "social-proof-avatars",
+      "type": "registry:ui",
+      "title": "Social Proof Avatars",
+      "description": "A component that displays user avatars with optional extra count and star ratings, ideal for showcasing social proof.",
+      "files": [
+        {
+          "path": "registry/components/social-proof-avatars.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "border-beam",
+      "type": "registry:ui",
+      "title": "Border Beam",
+      "description": "Displays an animated border effect with a glowing beam around the content that adapts to the size of the container.",
+      "tailwind": {
+        "config": {
+          "theme": {
+            "extend": {
+              "keyframes": {
+                "border-beam": {
+                  "0%": { "offset-distance": "0%" },
+                  "100%": { "offset-distance": "100%" }
+                }
+              },
+              "animation": {
+                "border-beam": "border-beam calc(var(--duration)*1s) linear infinite"
+              }
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/components/border-beam.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "cloud-orbit",
+      "type": "registry:ui",
+      "title": "Cloud Orbit",
+      "description": "This component creates a dynamic and interactive experience, where each icon orbits in a fluid motion. Fully customizable, it's ideal for showcasing your tech stack or the tools your product uses.",
+      "dependencies": ["framer-motion"],
+      "tailwind": {
+        "config": {
+          "theme": {
+            "extend": {
+              "keyframes": {
+                "cloud-orbit": {
+                  "0%": {
+                    "transform": "rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg)"
+                  },
+                  "25%": {
+                    "transform": "rotate(90deg) translateY(calc(var(--radius) * 1px)) rotate(-90deg)"
+                  },
+                  "50%": {
+                    "transform": "rotate(180deg) translateY(calc(var(--radius) * 1px)) rotate(-180deg)"
+                  },
+                  "75%": {
+                    "transform": "rotate(270deg) translateY(calc(var(--radius) * 1px)) rotate(-270deg)"
+                  },
+                  "100%": {
+                    "transform": "rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)"
+                  }
+                }
+              },
+              "animation": {
+                "cloud-orbit": "cloud-orbit calc(var(--speed)*1s) linear infinite"
+              }
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/components/cloud-orbit.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dock",
+      "type": "registry:ui",
+      "title": "Dock",
+      "description": "An interactive icon dock that smoothly scales icons/images on hover, providing a responsive and engaging visual effect.",
+      "files": [
+        {
+          "path": "registry/components/dock.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "expandable-card",
+      "type": "registry:ui",
+      "title": "Expandable Card",
+      "description": "A versatile and engaging UI component that allows users to explore content in a more immersive way.",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "registry/components/expandable-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "image-split",
+      "type": "registry:ui",
+      "title": "Image Split",
+      "description": "This component provides a dynamic and visually captivating way to display images split into multiple sections.",
+      "files": [
+        {
+          "path": "registry/components/image-split.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "image-trail",
+      "type": "registry:ui",
+      "title": "Image Trail",
+      "description": "Image Trail adds a dynamic, interactive trail of images that follows the cursor, enhancing user engagement and visual appeal on your website.",
+      "dependencies": ["gsap"],
+      "files": [
+        {
+          "path": "registry/components/image-trail.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "infinite-ribbon",
+      "type": "registry:ui",
+      "title": "Infinite Ribbon",
+      "description": "A dynamic and customizable sliding ribbon component that enhances UI experiences with smooth scrolling animations.",
+      "tailwind": {
+        "config": {
+          "theme": {
+            "extend": {
+              "keyframes": {
+                "infinite-ribbon": {
+                  "0%": { "transform": "translateX(0)" },
+                  "100%": { "transform": "translateX(-100%)" }
+                },
+                "infinite-ribbon-reverse": {
+                  "0%": { "transform": "translateX(-100%)" },
+                  "100%": { "transform": "translateX(0)" }
+                }
+              },
+              "animation": {
+                "infinite-ribbon": "infinite-ribbon var(--ribbon-duration) linear infinite",
+                "infinite-ribbon-reverse": "infinite-ribbon-reverse var(--ribbon-duration) linear infinite"
+              }
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/components/infinite-ribbon.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "wrapper-3d",
+      "type": "registry:ui",
+      "title": "3d Wrapper",
+      "description": "This component transforms any content into an immersive, interactive 3D experience. It tracks cursor movements to animate a smooth rotation, creating a captivating depth effect.",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "registry/components/wrapper-3d.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pulse-shader",
+      "type": "registry:ui",
+      "title": "Pulse Shader",
+      "description": "An interactive and customizable shader effect that creates a dynamic wave in response to hover interactions, perfect for adding engaging visual effects to backgrounds.",
+      "dependencies": [
+        "@react-three/fiber@8.18.0",
+        "@react-three/drei@9.122.0",
+        "gsap"
+      ],
+      "files": [
+        {
+          "path": "registry/components/shaders/pulse-shader.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/components/shaders/pulse-shader-shader.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/components/shaders/pulse-shader-scene.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pixel-distorsion",
+      "type": "registry:ui",
+      "title": "Pixel Distorsion Shader",
+      "description": "An interactive and customizable shader effect that distorts pixels dynamically based on mouse interactions, perfect for creating engaging and immersive visual effects on images.",
+      "dependencies": [
+        "@react-three/fiber@8.18.0",
+        "@react-three/drei@9.122.0",
+        "gsap"
+      ],
+      "files": [
+        {
+          "path": "registry/components/shaders/pixel-distorsion-scene.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/components/shaders/pixel-distorsion-shader.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/components/shaders/pixel-distorsion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "mouse-wave",
+      "type": "registry:ui",
+      "title": "Mouse Wave Shader",
+      "description": "An interactive and customizable component that creates a dynamic wave effect responding to mouse movements, perfect for immersive backgrounds.",
+      "dependencies": [
+        "@react-three/fiber@8.18.0",
+        "@react-three/drei@9.122.0",
+        "gsap"
+      ],
+      "files": [
+        {
+          "path": "registry/components/shaders/mouse-wave-scene.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/components/shaders/mouse-wave-shader.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/components/shaders/mouse-wave.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "animated-card-1",
+      "type": "registry:ui",
+      "title": "Animated Card 1",
+      "description": "An animated hover card that can showcase almost anything—it all comes down to the caption you choose.",
+      "files": [
+        {
+          "path": "registry/components/animated-cards/animated-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/components/animated-cards/visual-1.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "animated-card-2",
+      "type": "registry:ui",
+      "title": "Animated Card 2",
+      "description": "An animated hover card that can showcase almost anything—it all comes down to the caption you choose.",
+      "files": [
+        {
+          "path": "registry/components/animated-cards/animated-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/components/animated-cards/visual-2.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "animated-card-3",
+      "type": "registry:ui",
+      "title": "Animated Card 3",
+      "description": "An animated hover card that can showcase almost anything—it all comes down to the caption you choose.",
+      "files": [
+        {
+          "path": "registry/components/animated-cards/animated-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/components/animated-cards/visual-3.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stripe-animated-gradient",
+      "type": "registry:ui",
+      "title": "Stripe Animated Gradient",
+      "description": "Recreate the iconic animated gradient from Stripe with this seamless background animation component.",
+      "files": [
+        {
+          "path": "registry/components/backgrounds/stripe-animated-gradient.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/components/backgrounds/stripe-shader.js",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hyperspace-background",
+      "type": "registry:ui",
+      "title": "Hyperspace Background",
+      "description": "A dynamic and customizable background component that simulates a star-filled hyperspace effect.",
+      "files": [
+        {
+          "path": "registry/components/backgrounds/hyperspace-background.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "blur-reveal",
+      "type": "registry:ui",
+      "title": "Blur Reveal",
+      "description": "A text component that reveals its content with a smooth blur-to-focus animation, activated by default when the text enters the viewport.",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "registry/components/text-animations/blur-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "gradient-slide-button",
+      "type": "registry:ui",
+      "title": "Gradient Slide Button",
+      "description": "A dynamic and stylish button that reveals a vibrant gradient as you hover over it.",
+      "files": [
+        {
+          "path": "registry/components/buttons/gradient-slide-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "star-button",
+      "type": "registry:ui",
+      "title": "Star Button",
+      "description": "The StarButton is a visually striking button that features a radial light animation with a starry background.",
+      "tailwind": {
+        "config": {
+          "theme": {
+            "extend": {
+              "keyframes": {
+                "star-btn": {
+                  "0%": { "offset-distance": "0%" },
+                  "100%": { "offset-distance": "100%" }
+                }
+              },
+              "animation": {
+                "star-btn": "star-btn calc(var(--duration)*1s) linear infinite"
+              }
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/components/buttons/star-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "confetti-button",
+      "type": "registry:ui",
+      "title": "Confetti button",
+      "description": "A fun and interactive button that triggers a confetti explosion effect on click.",
+      "dependencies": ["canvas-confetti", "@types/canvas-confetti"],
+      "files": [
+        {
+          "path": "registry/components/buttons/confetti-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "shuffle-button",
+      "type": "registry:ui",
+      "title": "Shuffle Button",
+      "description": "A dynamic button that shuffles the characters of its text when hovered over, creating an engaging animation.",
+      "files": [
+        {
+          "path": "registry/components/buttons/shuffle-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stagger-button",
+      "type": "registry:ui",
+      "title": "Stagger Button",
+      "description": "A dynamic button that animates on hover, where each letter of the text flips in 3D with a staggered effect.",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "registry/components/buttons/stagger-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spaceship-scrollbar",
+      "type": "registry:ui",
+      "title": "Spaceship Scrollbar",
+      "description": "An animated scrollbar that dynamically tracks progress, offering a sleek and interactive user experience.",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "registry/components/spaceship-scrollbar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "like-button",
+      "type": "registry:ui",
+      "title": "Like Button",
+      "description": "A dynamic button that animates on click, creating a burst of heart icons that randomly scatter before fading out.",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "registry/components/buttons/like-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pixel-distorsion-demo",
+      "type": "registry:ui",
+      "title": "Pixel Distorsion Shader",
+      "description": "An interactive and customizable shader effect that distorts pixels dynamically based on mouse interactions, perfect for creating engaging and immersive visual effects on images.",
+      "dependencies": ["@react-three/fiber", "@react-three/drei", "gsap"],
+      "files": [
+        {
+          "path": "registry/demos/pixel-distorsion-demo.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/components/shaders/pixel-distorsion-scene.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/components/shaders/pixel-distorsion-shader.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/components/shaders/pixel-distorsion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

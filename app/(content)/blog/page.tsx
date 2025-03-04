@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  alternates: {
+    canonical: "https://www.badtz-ui.com/blog",
+  },
 };
 
 export default async function BlogPage() {
@@ -66,7 +69,7 @@ export default async function BlogPage() {
 
   return (
     <div className="w-full h-full pb-16 sm:pb-28 pt-10 md:pt-20">
-      <div className="px-6 lg:px-8 lg:max-w-5xl mx-auto">
+      <div className="px-6 lg:px-8 lg:max-w-6xl mx-auto">
         <div className="flex flex-col items-start border-b border-border pb-6">
           <div className="flex w-full justify-between gap-4 items-end">
             <h1 className="text-4xl md:text-5xl font-semibold tracking-tighter text-foreground text-balance max-w-[605px] font-gilroy">
@@ -91,12 +94,12 @@ export default async function BlogPage() {
 
         <hr className="my-3 border-none" />
         {posts?.length ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-4">
             {posts.map((post, index) => (
               <Link href={post.slug}>
                 <article
                   key={post._id}
-                  className="flex flex-col w-full p-2 rounded-xl transition-colors duration-200 shadow-none hover:shadow-sm group/article"
+                  className="flex flex-col w-full p-2 rounded-xl transition-colors duration-200 group/article"
                 >
                   {post.image && (
                     <Image
@@ -110,7 +113,7 @@ export default async function BlogPage() {
                     />
                   )}
                   <div className="pt-2.5 p-1">
-                    <h2 className="text-xl font-gilroy group-hover/article:underline underline-offset-4">
+                    <h2 className="group-hover/article:text-foreground text-lg mt-2 font-medium text-foreground/70 transition-colors duration-300">
                       {post.title}
                     </h2>
                     {post.date && (
@@ -119,14 +122,14 @@ export default async function BlogPage() {
                       </p>
                     )}
                     {post.description && (
-                      <p className="mt-3 text-sm text-muted-foreground text-justify font-light">
+                      <p className="mt-3 text-sm text-muted-foreground text-prose font-light">
                         {post.description.length > 140
                           ? `${post.description.slice(0, 140)}...`
                           : post.description}
                       </p>
                     )}
 
-                    <div className="flex items-center space-x-1.5 text-sm mt-3">
+                    <div className="flex items-center space-x-1.5 text-sm mt-4">
                       <Image
                         src="/images/badtz-avatar-small.webp"
                         alt="Twitter Logo"

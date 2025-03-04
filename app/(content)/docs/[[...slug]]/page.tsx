@@ -6,12 +6,13 @@ import { siteConfig } from "@/config/site";
 import { getTableOfContents } from "@/lib/toc";
 import { DashboardTableOfContents } from "@/components/docs/toc";
 import { cn, absoluteUrl } from "@/lib/utils";
-import { ChevronRight, ExternalLink } from "lucide-react";
+import { Bug, ChevronRight, FilePenLine, FlaskRound } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import "@/styles/mdx.css";
 import { badgeVariants } from "@/components/ui/badge-shadcn";
 import DocsCta from "@/components/docs/doc-cta";
+import { Button } from "@react-email/components";
 
 interface DocPageProps {
   params: {
@@ -169,7 +170,7 @@ export default async function DocPage({ params }: DocPageProps) {
                 className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
               >
                 Docs
-                <ExternalLink className="h-3 w-3" />
+                <ChevronRight className="h-3 w-3" />
               </Link>
             )}
             {doc.links?.api && (
@@ -180,7 +181,7 @@ export default async function DocPage({ params }: DocPageProps) {
                 className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
               >
                 API Reference
-                <ExternalLink className="h-3 w-3" />
+                <ChevronRight className="h-3 w-3" />
               </Link>
             )}
           </div>
@@ -193,7 +194,39 @@ export default async function DocPage({ params }: DocPageProps) {
       <div className="hidden text-sm xl:block">
         <div className="sticky top-10 -mt-6 h-[calc(100vh-3.5rem)] pt-4">
           <DocsCta />
-          <div className="h-full overflow-auto pb-10 pt-8">
+          <div className="flex flex-col gap-2 my-4">
+            <Link
+              href="/docs/components/button"
+              className="flex h-9 border border-sidebar-border dark:border-border whitespace-nowrap text-muted-foreground hover:text-foreground hover:border-foreground/10 hover:bg-secondary transition-colors duration-200 max-w-[240px] items-center justify-between rounded-md px-3 text-sm gap-2"
+            >
+              <span className="flex items-center gap-2">
+                <Bug className="h-3.5 w-3.5" />
+                Report a Bug
+              </span>
+              <ChevronRight className="h-3.5 w-3.5" />
+            </Link>
+            <Link
+              href="/docs/components/button"
+              className="flex h-9 border border-sidebar-border dark:border-border whitespace-nowrap text-muted-foreground hover:text-foreground hover:border-foreground/10 hover:bg-secondary transition-colors duration-200 max-w-[240px] items-center justify-between rounded-md px-3 text-sm gap-2"
+            >
+              <span className="flex items-center gap-2">
+                <FlaskRound className="h-3.5 w-3.5" />
+                Request a component
+              </span>
+              <ChevronRight className="h-3.5 w-3.5" />
+            </Link>
+            <Link
+              href="/docs/components/button"
+              className="flex h-9 border border-sidebar-border dark:border-border whitespace-nowrap text-muted-foreground hover:text-foreground hover:border-foreground/10 hover:bg-secondary transition-colors duration-200 max-w-[240px] items-center justify-between rounded-md px-3 text-sm gap-2"
+            >
+              <span className="flex items-center gap-2">
+                <FilePenLine className="h-3.5 w-3.5" />
+                Edit this page
+              </span>
+              <ChevronRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+          <div className="h-full overflow-auto pb-10 pt-4 px-1.5">
             {doc.toc && <DashboardTableOfContents toc={toc} />}
           </div>
         </div>

@@ -70,7 +70,7 @@ export default function ImageTrailDemo() {
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add to-setup
+npx shadcn@latest add https://badtz-ui.com/r/image-trail.json
 ```
 
 </TabsContent>
@@ -138,12 +138,10 @@ export function ImageTrail({
   const imgPosition = useRef(0);
   const parentSize = useRef({ width: 0, height: 0 });
 
-useEffect(() => {
-if (contentRef.current) {
-imagesRef.current = Array.from(
-contentRef.current.querySelectorAll("img")
-);
-}
+  useEffect(() => {
+    if (contentRef.current) {
+      imagesRef.current = Array.from(contentRef.current.querySelectorAll("img"));
+    }
 
     const handleMouseMove = (e) => {
       const rect = contentRef.current?.getBoundingClientRect();
@@ -190,22 +188,13 @@ return Math.hypot(dx, dy);
 const renderImages = () => {
 const distance = getMouseDistance();
 
-    cacheMousePos.current.x = lerp(
-      cacheMousePos.current.x,
-      mousePos.current.x,
-      0.1
-    );
-    cacheMousePos.current.y = lerp(
-      cacheMousePos.current.y,
-      mousePos.current.y,
-      0.1
-    );
+    cacheMousePos.current.x = lerp(cacheMousePos.current.x, mousePos.current.x, 0.1);
+    cacheMousePos.current.y = lerp(cacheMousePos.current.y, mousePos.current.y, 0.1);
 
     if (distance > threshold) {
       showNextImage();
       zIndexVal.current += 1;
-      imgPosition.current =
-        (imgPosition.current + 1) % imagesRef.current.length;
+      imgPosition.current = (imgPosition.current + 1) % imagesRef.current.length;
       lastMousePos.current = { ...mousePos.current };
     }
 

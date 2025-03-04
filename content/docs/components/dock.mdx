@@ -65,7 +65,7 @@ return (
 );
 }
 
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -123,7 +123,7 @@ export default function DockDemo() {
     </Dock>
   );
 }
-````
+```
 
 </Highlighter>
 </ComponentPreview>
@@ -140,7 +140,7 @@ export default function DockDemo() {
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add to-setup
+npx shadcn@latest add https://badtz-ui.com/r/dock.json
 ```
 
 </TabsContent>
@@ -210,60 +210,39 @@ export function DockIcon({
 }) {
   const ref = useRef(null);
 
-return (
-<>
-<style jsx>
-{`
-.icon:hover + .icon {
-width: calc(
-var(--icon-size) _ 1.33 + var(--dock-offset-right, 0px)
-);
-height: calc(
-var(--icon-size) _ 1.33 + var(--dock-offset-right, 0px)
-);
-margin-top: calc(
-var(--icon-size) _ -0.33 + var(--dock-offset-right, 0) _ -1
-);
-}
+  return (
+    <>
+      <style jsx>
+        {`
+          .icon:hover + .icon {
+            width: calc(var(--icon-size) * 1.33 + var(--dock-offset-right, 0px));
+            height: calc(var(--icon-size) * 1.33 + var(--dock-offset-right, 0px));
+            margin-top: calc(var(--icon-size) * -0.33 + var(--dock-offset-right, 0) * -1);
+          }
 
           .icon:hover + .icon + .icon {
-            width: calc(
-              var(--icon-size) * 1.17 + var(--dock-offset-right, 0px)
-            );
-            height: calc(
-              var(--icon-size) * 1.17 + var(--dock-offset-right, 0px)
-            );
-            margin-top: calc(
-              var(--icon-size) * -0.17 + var(--dock-offset-right, 0) * -1
-            );
+            width: calc(var(--icon-size) * 1.17 + var(--dock-offset-right, 0px));
+            height: calc(var(--icon-size) * 1.17 + var(--dock-offset-right, 0px));
+            margin-top: calc(var(--icon-size) * -0.17 + var(--dock-offset-right, 0) * -1);
           }
 
           .icon:has(+ .icon:hover) {
             width: calc(var(--icon-size) * 1.33 + var(--dock-offset-left, 0px));
-            height: calc(
-              var(--icon-size) * 1.33 + var(--dock-offset-left, 0px)
-            );
-            margin-top: calc(
-              var(--icon-size) * -0.33 + var(--dock-offset-left, 0) * -1
-            );
+            height: calc(var(--icon-size) * 1.33 + var(--dock-offset-left, 0px));
+            margin-top: calc(var(--icon-size) * -0.33 + var(--dock-offset-left, 0) * -1);
           }
 
           .icon:has(+ .icon + .icon:hover) {
             width: calc(var(--icon-size) * 1.17 + var(--dock-offset-left, 0px));
-            height: calc(
-              var(--icon-size) * 1.17 + var(--dock-offset-left, 0px)
-            );
-            margin-top: calc(
-              var(--icon-size) * -0.17 + var(--dock-offset-left, 0) * -1
-            );
+            height: calc(var(--icon-size) * 1.17 + var(--dock-offset-left, 0px));
+            margin-top: calc(var(--icon-size) * -0.17 + var(--dock-offset-left, 0) * -1);
           }
         `}
       </style>
       <li
         ref={ref}
         style={{
-          transition:
-            "width, height, margin-top, cubic-bezier(0.25, 1, 0.5, 1) 150ms",
+          transition: "width, height, margin-top, cubic-bezier(0.25, 1, 0.5, 1) 150ms",
           "--icon-size": `${iconSize}px`,
         }}
         onMouseMove={handleIconHover}
@@ -348,7 +327,7 @@ iconSize,
 );
 }
 
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -536,7 +515,7 @@ export function Dock({
     </nav>
   );
 }
-````
+```
 
 </Highlighter>
 </ComponentSource>

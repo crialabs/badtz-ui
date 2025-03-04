@@ -3,7 +3,6 @@
 import "@/styles/bento.css";
 import React from "react";
 import { useState, useEffect, useRef } from "react";
-import { useBreakpoint } from "@/hooks/use-brakpoints";
 import { useTheme } from "next-themes";
 import {
   motion,

@@ -10,6 +10,8 @@ description: An interactive and customizable shader effect that creates a dynami
 >
 <Highlighter slot="javascript">
 ```jsx
+"use client";
+
 import dynamic from "next/dynamic";
 const PulseShaderScene = dynamic(
   () => import("@/components/ui/pulse-shader-scene"),
@@ -34,6 +36,7 @@ export default function PulseShaderDemo() {
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
+"use client";
 import dynamic from "next/dynamic";
 const PulseShaderScene = dynamic(
   () => import("@/components/ui/pulse-shader-scene"),
@@ -70,7 +73,7 @@ export default function PulseShaderDemo() {
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add to-setup
+npx shadcn@latest add https://badtz-ui.com/r/pulse-shader.json
 ```
 
 </TabsContent>
@@ -82,7 +85,7 @@ npx shadcn@latest add to-setup
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @react-three/fiber @react-three/drei gsap
+npm install @react-three/fiber@8.18.0 @react-three/drei@9.122.0 gsap
 ```
 
 <Step>Copy and paste the `pulse-shader` code into your project.</Step>
@@ -216,7 +219,7 @@ gl_FragColor = f;
 }
 `;
 
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -344,7 +347,7 @@ uniform float uTime;
     gl_FragColor = f;
   }
 `;
-````
+```
 
 </Highlighter>
 </ComponentSource>
@@ -430,7 +433,7 @@ position={[0, 0, 0]} >
 );
 }
 
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -534,7 +537,7 @@ export default function PulseShader({
     </mesh>
   );
 }
-````
+```
 
 </Highlighter>
 </ComponentSource>
@@ -633,7 +636,7 @@ style={{ width: "100%", height: "100%" }} >
 );
 }
 
-````
+```
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
@@ -734,7 +737,7 @@ export default function PulseShaderScene({
     </div>
   );
 }
-````
+```
 
 </Highlighter>
 </ComponentSource>
