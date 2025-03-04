@@ -12,14 +12,14 @@ export function HeroImage() {
   const { theme } = useTheme();
 
   const [imageSrc, setImageSrc] = useState(
-    "/images/home-hero/badtz-ui-documentation-dark.svg",
+    "/images/home-hero/badtz-ui-documentation-dark.svg"
   );
 
   useEffect(() => {
     setImageSrc(
       theme === "dark"
         ? "/images/home-hero/badtz-ui-documentation-dark.svg"
-        : "/images/home-hero/badtz-ui-documentation-light.svg",
+        : "/images/home-hero/badtz-ui-documentation-light.svg"
     );
   }, [theme]);
 
@@ -36,11 +36,7 @@ export function HeroImage() {
       ) : (
         <div
           className={cn(
-<<<<<<< HEAD
-            "absolute inset-0 lg:left-0  md:left-10 md:h-[600px] md:w-[960px] h-[400px] w-[760px] pointer-events-none",
-=======
             "absolute inset-0 lg:left-0 md:left-10 edge-t md:h-[600px] md:w-[960px] h-[400px] w-[760px] pointer-events-none bg-background dark:bg-secondary"
->>>>>>> 3af7515bb3439f82b51ddc50aa84412b86b849df
           )}
         >
           <Image

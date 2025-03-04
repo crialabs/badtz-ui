@@ -42,13 +42,8 @@ export default function HomeBento() {
           aria-busy="false"
           className={cn(
             "mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-h-[65dvh] overflow-hidden relative w-full",
-<<<<<<< HEAD
-            "before:absolute before:top-[-2px] before:inset-x-0 before:h-[150px] before:bg-gradient-to-t from-transparent to-background before:z-[20] before:pointer-events-none",
-            "after:absolute after:bottom-[-2px] after:inset-x-0 after:h-[150px] after:bg-gradient-to-b after:z-[20] after:pointer-events-none",
-=======
             "before:absolute before:top-[-2px] before:inset-x-0 before:h-[75px] before:bg-gradient-to-t from-transparent to-background before:z-[20] before:pointer-events-none",
             "after:absolute after:bottom-[-2px] after:inset-x-0 after:h-[150px] after:bg-gradient-to-b after:z-[20] after:pointer-events-none"
->>>>>>> 3af7515bb3439f82b51ddc50aa84412b86b849df
           )}
         >
           {tweetGroups.map((group, index) => (
