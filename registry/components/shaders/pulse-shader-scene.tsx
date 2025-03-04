@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import PulseShader from "@/registry/components/shaders/pulse-shader";
+import PulseShader from "@/registry/components/ui/pulse-shader";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -45,7 +45,7 @@ export default function PulseShaderScene({
   useEffect(() => {
     updateDimensions();
     const observer = new ResizeObserver(() =>
-      requestAnimationFrame(updateDimensions),
+      requestAnimationFrame(updateDimensions)
     );
     window.addEventListener("resize", updateDimensions);
 

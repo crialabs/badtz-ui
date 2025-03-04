@@ -1,10 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-import {
-  fragment,
-  vertex,
-} from "@/registry/components/shaders/mouse-wave-shader";
+import { fragment, vertex } from "@/registry/components/ui/mouse-wave-shader";
 import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
@@ -65,7 +62,7 @@ export default function MouseWave({
 
     const pointer = new THREE.Vector2(
       (event.clientX / window.innerWidth) * 2 - 1,
-      -(event.clientY / window.innerHeight) * 2 + 1,
+      -(event.clientY / window.innerHeight) * 2 + 1
     );
 
     raycaster.setFromCamera(pointer, camera);
@@ -78,7 +75,7 @@ export default function MouseWave({
       if (uv) {
         (obj.material as THREE.ShaderMaterial).uniforms.uHover.value.set(
           uv.x,
-          uv.y,
+          uv.y
         );
       }
     }
