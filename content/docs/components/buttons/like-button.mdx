@@ -7,11 +7,11 @@ description: A dynamic button that animates on click, creating a burst of heart 
   name="like-button-demo"
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
   description="A dynamic button that animates on click, creating a burst of heart icons that randomly scatter before fading out."
-  v0Link="https://badtz-ui.com/r/like-button.json"
+  v0Link="https://badtz-ui.com/r/like-button-demo.json"
 >
 <Highlighter slot="javascript">
 ```jsx
-import { LikeButton } from "@/components/ui/buttons/like-button";
+import { LikeButton } from "@/components/ui/like-button";
 
 export default function LikeButtonDemo() {
   return (
@@ -24,7 +24,7 @@ export default function LikeButtonDemo() {
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
-import { LikeButton } from "@/components/ui/buttons/like-button";
+import { LikeButton } from "@/components/ui/like-button";
 
 export default function LikeButtonDemo() {
   return (
@@ -164,7 +164,7 @@ export function LikeButton({
       <button
         onClick={handleClick}
         className={cn(
-          "bg-neutral-100 hover:bg-neutral-100/90 dark:bg-neutral-900 dark:hover:bg-neutral-900/90 relative h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+          "bg-neutral-100 hover:bg-neutral-100/90 dark:bg-neutral-900 dark:hover:bg-neutral-900/90 relative h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer",
           liked
             ? "dark:text-white text-black"
             : "dark:text-white/70 text-black/70",
@@ -273,7 +273,7 @@ export function LikeButton({
       <button
         onClick={handleClick}
         className={cn(
-          "bg-neutral-100 hover:bg-neutral-100/90 dark:bg-neutral-900 dark:hover:bg-neutral-900/90 relative h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+          "bg-neutral-100 hover:bg-neutral-100/90 dark:bg-neutral-900 dark:hover:bg-neutral-900/90 relative h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer",
           liked
             ? "dark:text-white text-black"
             : "dark:text-white/70 text-black/70",

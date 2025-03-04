@@ -10,6 +10,8 @@ description: An interactive and customizable component that creates a dynamic wa
 >
 <Highlighter slot="javascript">
 ```jsx
+"use client";
+
 import dynamic from "next/dynamic";
 const MouseWaveScene = dynamic(
   () => import("@/components/ui/mouse-wave-scene"),
@@ -34,6 +36,8 @@ export default function MouseWaveDemo() {
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
+"use client";
+
 import dynamic from "next/dynamic";
 const MouseWaveScene = dynamic(
   () => import("@/components/ui/mouse-wave-scene"),

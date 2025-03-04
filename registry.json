@@ -476,6 +476,23 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "like-button",
+      "type": "registry:ui",
+      "title": "Like Button",
+      "description": "A dynamic button that animates on click, creating a burst of heart icons that randomly scatter before fading out.",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "registry/demos/like-button-demo.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/components/buttons/like-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
