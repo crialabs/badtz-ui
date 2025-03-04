@@ -10,6 +10,8 @@ description: An interactive and customizable shader effect that creates a dynami
 >
 <Highlighter slot="javascript">
 ```jsx
+"use client";
+
 import dynamic from "next/dynamic";
 const PulseShaderScene = dynamic(
   () => import("@/components/ui/pulse-shader-scene"),
@@ -34,6 +36,7 @@ export default function PulseShaderDemo() {
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
+"use client";
 import dynamic from "next/dynamic";
 const PulseShaderScene = dynamic(
   () => import("@/components/ui/pulse-shader-scene"),

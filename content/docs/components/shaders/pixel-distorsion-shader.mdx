@@ -10,6 +10,8 @@ description: An interactive and customizable shader effect that distorts pixels 
 >
 <Highlighter slot="javascript">
 ```jsx
+"use client";
+
 import dynamic from "next/dynamic";
 const PixelDistorsionScene = dynamic(
   () => import("@/components/ui/pixel-distorsion-scene"),
@@ -34,6 +36,7 @@ export default function PixelDistorsionDemo() {
 </Highlighter>
 <Highlighter slot="typescript">
 ```tsx
+"use client";
 import dynamic from "next/dynamic";
 const PixelDistorsionScene = dynamic(
   () => import("@/components/ui/pixel-distorsion-scene"),

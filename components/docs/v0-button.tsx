@@ -2,7 +2,7 @@ export function OpenInV0Button({ url }: { url: string }) {
   return (
     <button
       aria-label="Open in v0"
-      className="h-7 bg-secondary border border-sidebar-border text-foreground gap-1 text-xs py-0.5 whitespace-nowrap rounded-[6px] px-2"
+      className="h-8 bg-secondary border border-sidebar-border text-foreground gap-1 text-xs py-0.5 whitespace-nowrap rounded-[6px] px-2"
     >
       <a
         href={`https://v0.dev/chat/api/open?url=${url}`}
