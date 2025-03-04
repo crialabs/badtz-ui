@@ -476,40 +476,6 @@
           "type": "registry:ui"
         }
       ]
-    },
-    {
-      "name": "like-button-demo",
-      "type": "registry:ui",
-      "title": "Like Button Demo",
-      "description": "A dynamic button that animates on click, creating a burst of heart icons that randomly scatter before fading out.",
-      "dependencies": ["framer-motion"],
-      "files": [
-        {
-          "path": "registry/demos/like-button-demo.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/buttons/like-button.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "stagger-button-demo",
-      "type": "registry:ui",
-      "title": "Stagger Button Demo",
-      "description": "A dynamic button that animates on hover, where each letter of the text flips in 3D with a staggered effect.",
-      "dependencies": ["framer-motion"],
-      "files": [
-        {
-          "path": "registry/demos/stagger-button-demo.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/buttons/stagger-button.tsx",
-          "type": "registry:ui"
-        }
-      ]
     }
   ]
 }
