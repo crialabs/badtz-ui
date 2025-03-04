@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
-import MouseWave from "@/registry/components/shaders/mouse-wave";
+import MouseWave from "@/registry/components/ui/mouse-wave";
 
 interface MouseWaveSceneProps {
   imageSrc: string;

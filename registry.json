@@ -340,6 +340,7 @@
       "type": "registry:ui",
       "title": "Blur Reveal",
       "description": "A text component that reveals its content with a smooth blur-to-focus animation, activated by default when the text enters the viewport.",
+      "dependencies": ["framer-motion"],
       "files": [
         {
           "path": "registry/components/text-animations/blur-reveal.tsx",

@@ -1,8 +1,5 @@
 import React, { useRef } from "react";
-import {
-  fragment,
-  vertex,
-} from "@/registry/components/shaders/pulse-shader-shader";
+import { fragment, vertex } from "@/registry/components/ui/pulse-shader-shader";
 import { ThreeEvent, useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
@@ -56,7 +53,7 @@ export default function PulseShader({
     if (!plane.current) return;
     const pointer = new THREE.Vector2(
       (event.clientX / window.innerWidth) * 2 - 1,
-      -(event.clientY / window.innerHeight) * 2 + 1,
+      -(event.clientY / window.innerHeight) * 2 + 1
     );
 
     const raycaster = new THREE.Raycaster();
@@ -67,7 +64,7 @@ export default function PulseShader({
       const obj = intersects[0].object as THREE.Mesh;
       (obj.material as THREE.ShaderMaterial).uniforms.uHover.value.set(
         intersects[0].uv!.x,
-        intersects[0].uv!.y,
+        intersects[0].uv!.y
       );
     }
   };

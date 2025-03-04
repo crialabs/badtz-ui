@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { Gradient } from "@/registry/components/backgrounds/stripe-shader";
+import { Gradient } from "@/registry/components/ui/stripe-shader";
 
 interface GradientType {
   initGradient: (canvas: HTMLCanvasElement | string) => void;

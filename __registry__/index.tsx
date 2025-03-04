@@ -283,10 +283,10 @@ export const Index: Record<string, RegistryItem> = {
     name: "mouse-wave-shader",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/components/shaders/mouse-wave-shader")),
+    component: React.lazy(() => import("@/__registry__/components/components/ui/mouse-wave-shader")),
     source: "",
     files: [
-  "__registry__/components/components/shaders/mouse-wave-shader.js"
+  "__registry__/components/components/ui/mouse-wave-shader.js"
 ],
     category: "undefined",
     subcategory: "undefined",
@@ -295,10 +295,10 @@ export const Index: Record<string, RegistryItem> = {
     name: "mouse-wave",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/components/shaders/mouse-wave")),
+    component: React.lazy(() => import("@/__registry__/components/components/ui/mouse-wave")),
     source: "",
     files: [
-  "__registry__/components/components/shaders/mouse-wave.js"
+  "__registry__/components/components/ui/mouse-wave.js"
 ],
     category: "undefined",
     subcategory: "undefined",
@@ -355,10 +355,10 @@ export const Index: Record<string, RegistryItem> = {
     name: "pulse-shader-shader",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/components/shaders/pulse-shader-shader")),
+    component: React.lazy(() => import("@/__registry__/components/components/ui/pulse-shader-shader")),
     source: "",
     files: [
-  "__registry__/components/components/shaders/pulse-shader-shader.js"
+  "__registry__/components/components/ui/pulse-shader-shader.js"
 ],
     category: "undefined",
     subcategory: "undefined",
@@ -367,10 +367,10 @@ export const Index: Record<string, RegistryItem> = {
     name: "pulse-shader",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/components/shaders/pulse-shader")),
+    component: React.lazy(() => import("@/__registry__/components/components/ui/pulse-shader")),
     source: "",
     files: [
-  "__registry__/components/components/shaders/pulse-shader.js"
+  "__registry__/components/components/ui/pulse-shader.js"
 ],
     category: "undefined",
     subcategory: "undefined",
