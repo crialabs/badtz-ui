@@ -226,7 +226,7 @@ export function Cell3Visual() {
       </div>
       <div
         aria-hidden
-        className="absolute z-20 top-6 left-6 rounded-lg bg-secondary/80 backdrop-blur-sm border border-secondary-border/70 text-sm text-muted-foreground font-light"
+        className="absolute z-20 top-6 left-6 rounded-lg dark:bg-[#171717] bg-secondary backdrop-blur-sm border border-secondary-border/70 text-sm text-muted-foreground font-light"
       >
         <div className="py-2 px-3  border-b border-secondary-border/70">
           <span className="text-foreground">Customize</span>
@@ -403,7 +403,7 @@ const ScrollingIcons: React.FC<{
           return (
             <motion.div
               key={index}
-              className="bg-background dark:bg-secondary border border-background dark:border-secondary-border flex-shrink-0 rounded-full dark:shadow-[0_0px_20px_rgba(34,_35,_38,_0.07)_inset] shadow-[0_0px_20px_rgba(233,_233,_241,_1)_inset] flex items-center justify-center relative p-2"
+              className="bg-background dark:bg-[#171717] border border-background dark:border-secondary-border flex-shrink-0 rounded-full dark:shadow-[0_0px_20px_rgba(34,_35,_38,_0.07)_inset] shadow-[0_0px_20px_rgba(233,_233,_241,_1)_inset] flex items-center justify-center relative p-2"
               style={{
                 width: STACK_LOGO_WIDTH,
                 height: STACK_LOGO_WIDTH,

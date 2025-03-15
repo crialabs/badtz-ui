@@ -100,10 +100,7 @@ const FOOTER_SECTIONS: { title: string; links: LinkType[] }[] = [
   },
   {
     title: "Company",
-    links: [
-      { href: "/", label: "About" },
-      { href: "https://pro.badtz-ui.com", label: "BadtzUI Pro" },
-    ],
+    links: [{ href: "https://pro.badtz-ui.com", label: "BadtzUI Pro" }],
   },
 ];
 

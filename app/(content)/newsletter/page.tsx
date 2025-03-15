@@ -62,7 +62,7 @@ export default function NewsletterPage() {
           id="page-title"
           className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter text-foreground font-gilroy mt-8 md:mt-10"
         >
-          Subscribe to my newsletter
+          Subscribe to our newsletter
         </h1>
         <p className="mt-4 text-balance max-w-[550px] md:max-w-[700px] tracking-tight lg:mt-6 sm:mt-3 text-muted-foreground text-base md:text-lg font-light md:mb-4">
           Join our exclusive community by subscribing to our newsletter and stay
