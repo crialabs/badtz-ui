@@ -70,7 +70,7 @@ export default function HomeBento() {
           href="https://twitter.com/intent/tweet?text=Sharing%20the%20love%20for%20BadtzUI!%20%F0%9F%8C%9F%0ACheck%20it%20out%3A%20https%3A%2F%2Fbadtz-ui.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="h-10 px-5 text-sm rounded-full bg-secondary text-foreground hover:bg-secondary/70 flex items-center relative transition-colors duration-300 mt-10 [&_svg]:size-3 gap-2 border mx-auto"
+          className="h-10 px-5 text-sm rounded-full bg-foreground text-background hover:bg-foreground/90 flex items-center relative transition-colors duration-300 mt-10 [&_svg]:size-3 gap-2 mx-auto"
           aria-label="Share your experience on Twitter"
         >
           <Icons.twitter />

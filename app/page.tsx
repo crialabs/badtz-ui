@@ -4,8 +4,9 @@ import Hero from "@/components/home/hero";
 import Footer from "@/components/footer";
 import WallOfLove from "@/components/home/wall-of-love";
 import CallToAction from "@/components/home/call-to-action";
+import FAQ from "@/components/home/faq";
 import type { Metadata } from "next";
-//import Marketing from "@/components/marketing";
+import Marketing from "@/components/marketing";
 
 export const metadata: Metadata = {
   title: "BadtzUI • UI Components for React JS",
@@ -28,17 +29,20 @@ export const metadata: Metadata = {
 export default async function Home() {
   return (
     <>
-      {/*
-      //TODO: TESTS -> We're probably losing conversion rate, but the design is too ugly.
-      <Marketing href="https://pro.badtz-ui.com" plausibleEvent="Clicked on Pro">
-        Coming Soon! Badtz UI Pro +70 expected templates, blocks, and much more!
+      <Marketing
+        href="https://pro.badtz-ui.com"
+        plausibleEvent="Clicked on Pro"
+      >
+        🚀&nbsp;Coming Soon! Badtz UI Pro +70 expected templates, blocks, and
+        much more!
       </Marketing>
-      */}
+
       <Header />
       <main>
         <Hero />
         <HomeBento />
         <WallOfLove />
+        <FAQ />
         <CallToAction />
       </main>
 
