@@ -6,6 +6,8 @@ const nextConfig = {
   images: {
     deviceSizes: [640, 768, 1024, 1280, 1536],
     imageSizes: [16, 32, 48, 64, 96],
+    loader: "custom",
+    domains: ["cdn.badtz-ui.com"],
   },
   eslint: {
     ignoreDuringBuilds: true,

@@ -10,13 +10,13 @@ const PixelDistorsionScene = dynamic(
         {/* Skeleton loader */}
       </div>
     ),
-  },
+  }
 );
 
 export default function MouseWaveDemo() {
   return (
     <div className=" w-full max-w-[900px] h-auto flex items-center justify-center">
-      <PixelDistorsionScene imageSrc="/images/shaders/medusa-image.webp" />
+      <PixelDistorsionScene imageSrc="https://cdn.badtz-ui.com/images/shaders/medusa-image.webp" />
     </div>
   );
 }

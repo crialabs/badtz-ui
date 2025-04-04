@@ -9,11 +9,11 @@ const orbitingImagesData = [
     images: [
       {
         name: "Deepseek Logo",
-        url: "/images/components/cloud-orbit/deepseek-logo.webp",
+        url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/deepseek-logo.webp",
       },
       {
         name: "Drizzle ORM Logo",
-        url: "/images/components/cloud-orbit/drizzle-orm-logo.webp",
+        url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/drizzle-orm-logo.webp",
       },
     ],
   },
@@ -25,11 +25,11 @@ const orbitingImagesData = [
     images: [
       {
         name: "Motion Logo",
-        url: "/images/components/cloud-orbit/motion-logo.webp",
+        url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/motion-logo.webp",
       },
       {
         name: "Deepseek Logo",
-        url: "/images/components/cloud-orbit/deepseek-logo.webp",
+        url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/deepseek-logo.webp",
       },
     ],
   },
@@ -41,11 +41,11 @@ const orbitingImagesData = [
     images: [
       {
         name: "Tailwind Logo",
-        url: "/images/components/cloud-orbit/tailwindcss-logo.webp",
+        url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/tailwindcss-logo.webp",
       },
       {
         name: "Motion Logo",
-        url: "/images/components/cloud-orbit/motion-logo.webp",
+        url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/motion-logo.webp",
       },
     ],
   },
@@ -57,11 +57,11 @@ const orbitingImagesData = [
     images: [
       {
         name: "Edge Logo",
-        url: "/images/components/cloud-orbit/edge-logo.webp",
+        url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/edge-logo.webp",
       },
       {
         name: "Tailwind Logo",
-        url: "/images/components/cloud-orbit/tailwindcss-logo.webp",
+        url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/tailwindcss-logo.webp",
       },
     ],
   },
@@ -73,11 +73,11 @@ const orbitingImagesData = [
     images: [
       {
         name: "Linear Logo",
-        url: "/images/components/cloud-orbit/linear-logo.webp",
+        url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/linear-logo.webp",
       },
       {
         name: "Edge Logo",
-        url: "/images/components/cloud-orbit/edge-logo.webp",
+        url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/edge-logo.webp",
       },
     ],
   },
@@ -89,11 +89,11 @@ const orbitingImagesData = [
     images: [
       {
         name: "React Logo",
-        url: "/images/components/cloud-orbit/react-logo.webp",
+        url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/react-logo.webp",
       },
       {
         name: "Linear Logo",
-        url: "/images/components/cloud-orbit/linear-logo.webp",
+        url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/linear-logo.webp",
       },
     ],
   },
@@ -105,11 +105,11 @@ const orbitingImagesData = [
     images: [
       {
         name: "Drizzle ORM Logo",
-        url: "/images/components/cloud-orbit/drizzle-orm-logo.webp",
+        url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/drizzle-orm-logo.webp",
       },
       {
         name: "React Logo",
-        url: "/images/components/cloud-orbit/react-logo.webp",
+        url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/react-logo.webp",
       },
     ],
   },
@@ -123,11 +123,11 @@ export default function CloudOrbitDemo() {
       images={[
         {
           name: "Charlie Avatar",
-          url: "/images/components/cloud-orbit/avatar-1.webp",
+          url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/avatar-1.webp",
         },
         {
           name: "Tommy Avatar",
-          url: "/images/components/cloud-orbit/avatar-2.webp",
+          url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/avatar-2.webp",
         },
       ]}
       className=""

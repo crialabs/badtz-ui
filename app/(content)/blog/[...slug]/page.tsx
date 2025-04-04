@@ -19,6 +19,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import BunnyImage from "@/components/bunny-image";
 
 type Params = {
   slug: string[];
@@ -221,7 +222,7 @@ export default async function PostPage({ params }: { params: Params }) {
               {post.description}
             </p>
             {post.image && (
-              <Image
+              <BunnyImage
                 src={post.image}
                 alt={post.title}
                 width={760}
@@ -245,7 +246,7 @@ export default async function PostPage({ params }: { params: Params }) {
               {authors.map((author) =>
                 author ? (
                   <div className="w-full bg-secondary/20 border rounded-xl p-5 mt-12 flex text-left flex-col md:flex-row gap-6 items-start">
-                    <Image
+                    <BunnyImage
                       src={author.avatar}
                       alt={author.title}
                       width={90}
@@ -313,7 +314,7 @@ export default async function PostPage({ params }: { params: Params }) {
                   key={`article-${post.slugAsParams}`}
                 >
                   {post.image && (
-                    <Image
+                    <BunnyImage
                       src={post.image}
                       alt={post.title}
                       width={760}
@@ -340,7 +341,7 @@ export default async function PostPage({ params }: { params: Params }) {
                       </p>
                     )}
                     <div className="flex items-center space-x-1.5 text-sm mt-4">
-                      <Image
+                      <BunnyImage
                         src="/images/badtz-avatar-small.webp"
                         alt="Badtz Avatar"
                         width={20}

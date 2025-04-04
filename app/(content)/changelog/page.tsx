@@ -1,11 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import { allChangelogs } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 import { formatDate } from "@/lib/utils";
 import { Icons } from "@/components/icons";
 import { Metadata } from "next";
-
+import BunnyImage from "@/components/bunny-image";
 export const metadata: Metadata = {
   title: "BadtzUI • Changelog",
   description:
@@ -81,7 +80,7 @@ export default async function ChangelogPage() {
                       </p>
                     )}
                     {changelog.image && (
-                      <Image
+                      <BunnyImage
                         src={changelog.image}
                         alt={changelog.title}
                         width={760}
@@ -102,7 +101,7 @@ export default async function ChangelogPage() {
                     )}
 
                     <div className="flex items-center space-x-1.5 text-sm mt-4">
-                      <Image
+                      <BunnyImage
                         src="/images/badtz-avatar-small.webp"
                         alt="Twitter Logo"
                         width={20}

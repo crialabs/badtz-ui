@@ -30,6 +30,7 @@ import {
   Part8,
   Part9,
 } from "@/components/home/bento/split-logo";
+import bunnyLoader from "@/lib/image-loader";
 
 interface SpotlightProps {
   rotate?: string;
@@ -120,6 +121,7 @@ export function Cell1Visual() {
   return (
     <div className="relative h-full w-full cell1-bg" ref={cell1Ref}>
       <Image
+        loader={bunnyLoader}
         src={imageSrc}
         alt="Elipse Dark"
         width={240}
@@ -159,6 +161,7 @@ export function Cell2Visual() {
     >
       <div className="absolute z-10 right-0 top-1/2 -translate-y-1/4 md:-translate-y-1/2 lg:pl-0 pl-12">
         <Image
+          loader={bunnyLoader}
           src={imageSrc}
           alt="Dark Keyboard"
           width={448}
@@ -412,6 +415,7 @@ const ScrollingIcons: React.FC<{
               }}
             >
               <Image
+                loader={bunnyLoader}
                 src={
                   theme === "light" && logo.lightSrc ? logo.lightSrc : logo.src
                 }

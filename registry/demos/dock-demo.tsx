@@ -6,37 +6,37 @@ export default function DockDemo() {
 
   const dockItems = [
     {
-      src: "/images/components/dock/tailwindcss-logo.webp",
+      src: "https://cdn.badtz-ui.com/images/components/dock/tailwindcss-logo.webp",
       name: "TailwindCSS",
       href: "#tailwindcss",
     },
     {
-      src: "/images/components/dock/edge-logo.webp",
+      src: "https://cdn.badtz-ui.com/images/components/dock/edge-logo.webp",
       name: "Edge",
       href: "#linear",
     },
     {
-      src: "/images/components/dock/motion-logo.webp",
+      src: "https://cdn.badtz-ui.com/images/components/dock/motion-logo.webp",
       name: "Motion",
       href: "#motion",
     },
     {
-      src: "/images/components/dock/react-logo.webp",
+      src: "https://cdn.badtz-ui.com/images/components/dock/react-logo.webp",
       name: "React",
       href: "#react",
     },
     {
-      src: "/images/components/dock/linear-logo.webp",
+      src: "https://cdn.badtz-ui.com/images/components/dock/linear-logo.webp",
       name: "Linear",
       href: "#linear",
     },
     {
-      src: "/images/components/dock/drizzle-orm-logo.webp",
+      src: "https://cdn.badtz-ui.com/images/components/dock/drizzle-orm-logo.webp",
       name: "Drizzle ORM",
       href: "#drizzle-orm",
     },
     {
-      src: "/images/components/dock/deepseek-logo.webp",
+      src: "https://cdn.badtz-ui.com/images/components/dock/deepseek-logo.webp",
       name: "Deepseek",
       href: "#linear",
     },

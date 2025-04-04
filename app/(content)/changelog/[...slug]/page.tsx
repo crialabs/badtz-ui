@@ -5,7 +5,6 @@ import {
   type Changelog,
 } from "@/.contentlayer/generated";
 import { Mdx } from "@/components/docs/mdx-components/mdx-components";
-import Image from "next/image";
 import Link from "next/link";
 import { absoluteUrl, formatDate } from "@/lib/utils";
 import { ChevronLeft } from "lucide-react";
@@ -14,6 +13,7 @@ import DocsCta from "@/components/docs/doc-cta";
 import { Icons } from "@/components/icons";
 import { toc } from "mdast-util-toc";
 import { getTableOfContents } from "@/lib/toc";
+import BunnyImage from "@/components/bunny-image";
 
 interface Params {
   slug?: string[];
@@ -149,7 +149,7 @@ export default async function ChangelogPage({ params }: { params: Params }) {
               {changelog.description}
             </p>
             {changelog.image && (
-              <Image
+              <BunnyImage
                 src={changelog.image}
                 alt={changelog.title}
                 width={760}
@@ -172,7 +172,7 @@ export default async function ChangelogPage({ params }: { params: Params }) {
               {authors.map((author) =>
                 author ? (
                   <div className="w-full bg-secondary/20 border rounded-xl p-5 mt-12 flex text-left flex-col md:flex-row gap-6 items-start">
-                    <Image
+                    <BunnyImage
                       src={author.avatar}
                       alt={author.title}
                       width={90}

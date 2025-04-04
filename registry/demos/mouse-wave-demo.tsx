@@ -10,13 +10,13 @@ const MouseWaveScene = dynamic(
         {/* Skeleton loader */}
       </div>
     ),
-  },
+  }
 );
 
 export default function MouseWaveDemo() {
   return (
     <div className=" w-full max-w-[900px] h-auto flex items-center justify-center">
-      <MouseWaveScene imageSrc="/images/shaders/forest-image.webp" />
+      <MouseWaveScene imageSrc="https://cdn.badtz-ui.com/images/shaders/forest-image.webp" />
     </div>
   );
 }

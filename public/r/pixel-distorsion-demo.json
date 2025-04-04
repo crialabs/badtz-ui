@@ -12,7 +12,7 @@
   "files": [
     {
       "path": "registry/demos/pixel-distorsion-demo.tsx",
-      "content": "\"use client\";\r\n\r\nimport dynamic from \"next/dynamic\";\r\nconst PixelDistorsionScene = dynamic(\r\n  () => import(\"@/registry/components/shaders/pixel-distorsion-scene\"),\r\n  {\r\n    ssr: false,\r\n    loading: () => (\r\n      <div className=\"h-full w-full bg-zinc-100 dark:bg-neutral-950\">\r\n        {/* Skeleton loader */}\r\n      </div>\r\n    ),\r\n  },\r\n);\r\n\r\nexport default function MouseWaveDemo() {\r\n  return (\r\n    <div className=\" w-full max-w-[900px] h-auto flex items-center justify-center\">\r\n      <PixelDistorsionScene imageSrc=\"/images/shaders/medusa-image.webp\" />\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "\"use client\";\r\n\r\nimport dynamic from \"next/dynamic\";\r\nconst PixelDistorsionScene = dynamic(\r\n  () => import(\"@/registry/components/shaders/pixel-distorsion-scene\"),\r\n  {\r\n    ssr: false,\r\n    loading: () => (\r\n      <div className=\"h-full w-full bg-zinc-100 dark:bg-neutral-950\">\r\n        {/* Skeleton loader */}\r\n      </div>\r\n    ),\r\n  }\r\n);\r\n\r\nexport default function MouseWaveDemo() {\r\n  return (\r\n    <div className=\" w-full max-w-[900px] h-auto flex items-center justify-center\">\r\n      <PixelDistorsionScene imageSrc=\"https://cdn.badtz-ui.com/images/shaders/medusa-image.webp\" />\r\n    </div>\r\n  );\r\n}\r\n",
       "type": "registry:ui"
     },
     {

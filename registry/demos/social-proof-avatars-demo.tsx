@@ -3,23 +3,23 @@ import { SocialProofAvatars } from "@/registry/components/social-proof-avatars";
 const avatars = [
   {
     alt: "Avatar 1",
-    src: "/images/components/avatar-proof/avatar-1.webp",
+    src: "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-1.webp",
   },
   {
     alt: "Avatar 2",
-    src: "/images/components/avatar-proof/avatar-2.webp",
+    src: "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-2.webp",
   },
   {
     alt: "Avatar 3",
-    src: "/images/components/avatar-proof/avatar-3.webp",
+    src: "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-3.webp",
   },
   {
     alt: "Avatar 4",
-    src: "/images/components/avatar-proof/avatar-4.webp",
+    src: "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-4.webp",
   },
   {
     alt: "Avatar 5",
-    src: "/images/components/avatar-proof/avatar-5.webp",
+    src: "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-5.webp",
   },
 ];
 

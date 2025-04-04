@@ -7,7 +7,7 @@ import { ChevronLeft } from "lucide-react";
 import { Icons } from "@/components/icons";
 import { formatDate } from "@/lib/utils";
 import { Metadata } from "next";
-
+import BunnyImage from "@/components/bunny-image";
 export const metadata: Metadata = {
   title: "BadtzUI • Author: Badtz",
   description:
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function AuthorPage() {
   const articles = allPosts.filter((post) =>
-    post.authors.some((author) => author.trim() === "badtz"),
+    post.authors.some((author) => author.trim() === "badtz")
   );
 
   return (
@@ -34,7 +34,7 @@ export default function AuthorPage() {
             Back
           </Link>
           <div className="mt-8 text-center flex items-center flex-col">
-            <Image
+            <BunnyImage
               src="/images/badtz-author.webp"
               alt="Badtz"
               width={100}
@@ -74,7 +74,7 @@ export default function AuthorPage() {
                 <Link href={`/blog/${post.slugAsParams}`} key={post._id}>
                   <article className="flex flex-col w-full p-2 border border-transparent hover:border-border rounded-xl transition-colors duration-200 shadow-none hover:shadow-sm">
                     {post.image && (
-                      <Image
+                      <BunnyImage
                         src={post.image}
                         alt={post.title}
                         width={760}
@@ -99,7 +99,7 @@ export default function AuthorPage() {
                       )}
 
                       <div className="flex items-center space-x-1.5 text-sm mt-3">
-                        <Image
+                        <BunnyImage
                           src="/images/badtz-avatar-small.webp"
                           alt="Author Avatar"
                           width={20}

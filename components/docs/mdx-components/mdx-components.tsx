@@ -20,6 +20,7 @@ import { useComponentSource } from "@/components/docs/mdx-components/component-s
 import { useUtilsSource } from "@/components/docs/mdx-components/utils-source";
 import { UtilsSource } from "@/components/docs/mdx-components/utils-source";
 import { DownloadButton } from "@/components/docs/mdx-components/download-button";
+import BunnyImage from "@/components/bunny-image";
 import {
   CopyButton,
   CopyNpmCommandButton,
@@ -260,6 +261,7 @@ const components = {
     />
   ),
   Image,
+  BunnyImage,
   ComponentPreview,
   ComponentExample,
   ComponentSource,

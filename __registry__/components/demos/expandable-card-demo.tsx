@@ -4,7 +4,7 @@ export default function ExpandableCardDemo() {
   return (
     <ExpandableCard
       title="Whispering Forest"
-      src="/images/components/expandable-card/haunted-house.webp"
+      src="https://cdn.badtz-ui.com/images/components/expandable-card/haunted-house.webp"
       description="A Yokai Tale"
       classNameExpanded="[&_h4]:text-black dark:[&_h4]:text-white [&_h4]:font-medium"
     >

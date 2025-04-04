@@ -1,5 +1,3 @@
-"use client";
-
 export default function AnimatedDotPattern() {
   return (
     <div className="relative h-[350px] w-full">

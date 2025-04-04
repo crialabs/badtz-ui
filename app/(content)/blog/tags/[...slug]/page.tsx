@@ -10,7 +10,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import Image from "next/image";
+import BunnyImage from "@/components/bunny-image";
 
 export async function generateMetadata({
   params,
@@ -153,7 +153,7 @@ export default async function TagPage({
                   >
                     <article className="flex flex-col w-full p-2 rounded-xl transition-colors duration-200 group/article">
                       {post.image && (
-                        <Image
+                        <BunnyImage
                           src={post.image}
                           alt={post.title}
                           width={760}
@@ -180,7 +180,7 @@ export default async function TagPage({
                           </p>
                         )}
                         <div className="flex items-center space-x-1.5 text-sm mt-4">
-                          <Image
+                          <BunnyImage
                             src="/images/badtz-avatar-small.webp"
                             alt="Twitter Logo"
                             width={20}

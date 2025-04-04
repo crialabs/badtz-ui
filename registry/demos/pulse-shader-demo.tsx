@@ -10,13 +10,13 @@ const PulseShaderScene = dynamic(
         {/* Skeleton loader */}
       </div>
     ),
-  },
+  }
 );
 
 export default function MouseWaveDemo() {
   return (
     <div className=" w-full max-w-[900px] h-auto flex items-center justify-center">
-      <PulseShaderScene imageSrc="/images/shaders/aurora-borealis-image.webp" />
+      <PulseShaderScene imageSrc="https://cdn.badtz-ui.com/images/shaders/aurora-borealis-image.webp" />
     </div>
   );
 }
