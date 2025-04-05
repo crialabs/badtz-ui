@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import { ImageSplit } from "./image-split";
 import { useBreakpoint } from "@/hooks/use-brakpoints";
+import BunnyImage from "@/components/bunny-image";
 
 export function HeroImage() {
   const breakpoint = useBreakpoint();
@@ -39,7 +40,7 @@ export function HeroImage() {
             "absolute inset-0 lg:left-0 md:left-10 edge-t md:h-[600px] md:w-[960px] h-[400px] w-[760px] pointer-events-none bg-background dark:bg-secondary"
           )}
         >
-          <Image
+          <BunnyImage
             src={imageSrc}
             alt="Badtz UI interface in dark mode"
             fill
