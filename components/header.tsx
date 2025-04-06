@@ -31,9 +31,8 @@ const links: Link[] = [
     label: "Components",
   },
   {
-    href: "https://pro.badtz-ui.com",
+    href: "/docs/templates/mappl-saas-template",
     label: "Templates",
-    external: true,
   },
   {
     href: "/changelog",
