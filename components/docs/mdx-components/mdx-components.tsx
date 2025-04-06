@@ -21,6 +21,7 @@ import { useUtilsSource } from "@/components/docs/mdx-components/utils-source";
 import { UtilsSource } from "@/components/docs/mdx-components/utils-source";
 import { DownloadButton } from "@/components/docs/mdx-components/download-button";
 import BunnyImage from "@/components/bunny-image";
+import { MdxVideo } from "@/components/docs/mdx-components/mdx-video";
 import {
   CopyButton,
   CopyNpmCommandButton,
@@ -40,6 +41,7 @@ import {
   EmojiCross,
   EmojiIdea,
 } from "@/components/docs/mdx-components/mdx-emoji";
+import { TemplateLinks } from "@/components/docs/mdx-components/template-links";
 
 const components = {
   Accordion,
@@ -57,6 +59,8 @@ const components = {
   Highlighter,
   UtilsSource,
   MdxLink,
+  MdxVideo,
+  TemplateLinks,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(

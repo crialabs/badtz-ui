@@ -32,7 +32,7 @@ export const NewsletterWelcome: React.FC<NewsletterWelcomeProps> = ({
     <Body style={main}>
       <Container style={container}>
         <Img
-          src={`${baseUrl}/static/badtz-ui-logo.png`}
+          src="https://cdn.badtz-ui.com/mail-assets/bui-logo.png"
           width="42"
           height="42"
           alt="BadtzUI"
@@ -92,10 +92,6 @@ export const NewsletterWelcome: React.FC<NewsletterWelcomeProps> = ({
           To embracing the grind,
           <br />
           Badtz
-          <br />
-          <span style={{ fontSize: "13px" }}>
-            (your fellow trial-and-error enthusiast)
-          </span>
         </Text>
       </Container>
     </Body>
