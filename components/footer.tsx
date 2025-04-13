@@ -77,8 +77,7 @@ const FOOTER_SECTIONS: { title: string; links: LinkType[] }[] = [
     links: [
       { href: "/docs", label: "Components" },
       { href: "/changelog", label: "Changelog" },
-      { href: "#templates", label: "Templates" },
-      { href: "#sections", label: "Sections" },
+      { href: "/docs/templates/mappl-saas-template", label: "Templates" },
       { href: "/blog", label: "Blog" },
     ],
   },
