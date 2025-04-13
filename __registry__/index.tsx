@@ -51,18 +51,6 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
-  },"dot-pattern": {
-    name: "dot-pattern",
-    type: "components:ui",
-    registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/blog/dot-pattern")),
-    source: "",
-    files: [
-  "__registry__/components/blog/dot-pattern.js"
-],
-    category: "undefined",
-    subcategory: "undefined",
-    chunks: []
   },"animated-card": {
     name: "animated-card",
     type: "components:ui",
@@ -695,18 +683,6 @@ export const Index: Record<string, RegistryItem> = {
     source: "",
     files: [
   "__registry__/components/demos/pulse-shader-demo.js"
-],
-    category: "undefined",
-    subcategory: "undefined",
-    chunks: []
-  },"scrollship-scrollbar-demo": {
-    name: "scrollship-scrollbar-demo",
-    type: "components:ui",
-    registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/demos/scrollship-scrollbar-demo")),
-    source: "",
-    files: [
-  "__registry__/components/demos/scrollship-scrollbar-demo.js"
 ],
     category: "undefined",
     subcategory: "undefined",

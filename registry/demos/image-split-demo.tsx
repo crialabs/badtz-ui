@@ -216,7 +216,7 @@ export default function ImageSplitDemo() {
   const [borderOpacity, setBorderOpacity] = useState(0.3);
   const [borderColor, setBorderColor] = useState("#FFFFFF");
   const [imageSrc, setImageSrc] = useState(
-    "https://cdn.badtz-ui.com/images/components/image-split/badtz-ui-documentation-dark.webp"
+    "/images/components/image-split/badtz-ui-documentation-dark.webp"
   );
 
   useEffect(() => {
@@ -224,8 +224,8 @@ export default function ImageSplitDemo() {
     setBorderOpacity(theme === "dark" ? 0.2 : 0.1);
     setImageSrc(
       theme === "dark"
-        ? "https://cdn.badtz-ui.com/images/components/image-split/badtz-ui-documentation-dark.webp"
-        : "https://cdn.badtz-ui.com/images/components/image-split/badtz-ui-documentation-light.webp"
+        ? "/images/components/image-split/badtz-ui-documentation-dark.webp"
+        : "/images/components/image-split/badtz-ui-documentation-light.webp"
     );
   }, [theme]);
 
