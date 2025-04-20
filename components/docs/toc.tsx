@@ -40,7 +40,6 @@ function TocThumb({
   const [style, setStyle] = React.useState<React.CSSProperties>({});
 
   React.useEffect(() => {
-    console.log("[TocThumb] Active ID:", activeId);
     if (!containerRef.current || !activeId) {
       setStyle({ opacity: 0, height: "0px" });
       return;
@@ -50,17 +49,14 @@ function TocThumb({
       `a[href="#${activeId}"]`
     );
     if (!activeElement) {
-      console.log("[TocThumb] Active element not found for:", activeId);
       setStyle({ opacity: 0, height: "0px" });
       return;
     }
 
     const top = activeElement.offsetTop;
     const height = activeElement.clientHeight;
-    console.log("[TocThumb] Calculated Style:", { top, height });
 
     if (isNaN(top) || isNaN(height)) {
-      console.log("[TocThumb] Invalid top/height:", { top, height });
       setStyle({ opacity: 0, height: "0px" });
       return;
     }
@@ -70,7 +66,6 @@ function TocThumb({
       height: `${height}px`,
       opacity: 1,
     };
-    console.log("[TocThumb] Setting Style:", newStyle);
     setStyle(newStyle);
   }, [activeId, containerRef, items]);
 
@@ -113,7 +108,6 @@ function TOCItem({
       )}
       aria-current={isActive ? "location" : undefined}
     >
-      {/* Diagonal line from upper item */}
       {offset !== upperOffset && item.depth > 1 ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +126,6 @@ function TOCItem({
           />
         </svg>
       ) : null}
-      {/* Vertical line segment */}
       <div
         className={cn(
           "absolute inset-y-0 w-px bg-border",
@@ -171,7 +164,6 @@ export function DashboardTableOfContents({ toc }: TocProps) {
   );
 
   const activeId = useActiveItem(itemIds);
-  console.log("[DashboardTOC] Active ID:", activeId);
 
   React.useEffect(() => {
     if (!containerRef.current || flattenedItems.length === 0) return;
@@ -213,28 +205,22 @@ export function DashboardTableOfContents({ toc }: TocProps) {
           width: Math.max(w, 1),
           height: Math.max(h, 1),
         };
-        // Only update if different to prevent infinite loops if observers trigger unnecessarily
         setSvg((currentSvg) => {
           if (JSON.stringify(currentSvg) !== JSON.stringify(newSvgState)) {
-            // console.log("[DashboardTOC] Calculating new SVG:", newSvgState);
             return newSvgState;
           }
           return currentSvg;
         });
       } else {
-        // console.log("[DashboardTOC] Resetting SVG state");
         setSvg(null);
       }
     };
 
-    // Initial calculation
     calculatePath();
 
-    // Use ResizeObserver to recalculate on container resize
     const observer = new ResizeObserver(calculatePath);
     observer.observe(container);
 
-    // Observe changes in children that might affect layout (e.g., dynamic content loading)
     const mutationObserver = new MutationObserver(calculatePath);
     mutationObserver.observe(container, { childList: true, subtree: true });
 
@@ -242,7 +228,7 @@ export function DashboardTableOfContents({ toc }: TocProps) {
       observer.disconnect();
       mutationObserver.disconnect();
     };
-  }, [flattenedItems]); // Rerun when items change
+  }, [flattenedItems]);
 
   React.useEffect(() => {
     if (svg) {
@@ -251,20 +237,13 @@ export function DashboardTableOfContents({ toc }: TocProps) {
   }, [svg]);
 
   if (!mounted || flattenedItems.length === 0) {
-    // Optionally, render a placeholder or empty state
-    // return <p className="text-sm text-muted-foreground">No sections on this page.</p>;
-    return null; // Or return null if preferred
+    return null;
   }
 
   return (
     <div className="relative space-y-2">
-      {" "}
-      {/* Added relative positioning */}
       <p className="font-medium">On This Page</p>
       <div className="relative">
-        {" "}
-        {/* Added relative positioning */}
-        {/* SVG Mask Container */}
         {svg ? (
           <div
             aria-hidden="true"
@@ -277,15 +256,13 @@ export function DashboardTableOfContents({ toc }: TocProps) {
               )}")`,
               WebkitMaskImage: `url("data:image/svg+xml,${encodeURIComponent(
                 `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${svg.width} ${svg.height}'><path d='${svg.path}' stroke='black' stroke-width='1' fill='none' /></svg>`
-              )}")`, // For Safari/Webkit
+              )}")`,
             }}
           >
-            {/* Active Item Indicator */}
             <TocThumb
               containerRef={containerRef}
               activeId={activeId}
               items={flattenedItems}
-              // No extra className needed here as base styles are in TocThumb
             />
           </div>
         ) : null}

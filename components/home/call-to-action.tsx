@@ -11,7 +11,7 @@ const Scene = dynamic(() => import("@/components/home/cta/scene"), {
 
 export default function CallToAction() {
   return (
-    <section className="md:max-w-3xl lg:max-w-5xl mx-auto w-full bg-gradient-to-t from-third to-background">
+    <section className="md:max-w-3xl lg:max-w-5xl mx-auto w-full bg-gradient-to-b from-third to-background">
       <div className="border-t border-border h-full w-full  relative overflow-hidden flex items-center justify-center md:flex-row flex-col">
         <div className="w-full md:w-1/2 flex flex-col items-center justify-center md:items-start md:justify-start text-center md:text-left py-16 px-6 md:px-16 md:pr-0">
           <div className="lg:ml-8">

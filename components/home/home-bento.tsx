@@ -62,7 +62,7 @@ const features = [
 
 export default function HomeBento() {
   return (
-    <section className="w-full h-full bg-gradient-to-t from-third to-background border-b">
+    <section className="w-full h-full bg-third border-b">
       <div className="lg:max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row px-6 lg:px-12 py-12">
           <div className="w-full md:w-1/2 flex md:items-center">
