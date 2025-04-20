@@ -128,7 +128,7 @@ export function ComponentPreview({
         </div>
         <TabsContent
           value="preview"
-          className="relative rounded-md border bg-third"
+          className="relative rounded-md border bg-white dark:bg-third"
         >
           <div
             className={cn(
