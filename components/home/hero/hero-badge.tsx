@@ -1,20 +1,25 @@
-import Link from "next/link";
+import { cn } from "@/lib/utils";
 
-export function HeroBadge() {
+export function HeroBadge({
+  children,
+  icon,
+  className,
+  iconClassName,
+}: {
+  children: React.ReactNode;
+  icon: React.ReactNode;
+  className?: string;
+  iconClassName?: string;
+}) {
   return (
-    <Link
-      href="/docs/components/shaders/pulse-shader"
-      className="rounded-full font-light 
-      py-[5px] px-6 shadow-sm border border-border text-sm dark:bg-secondary text-muted-foreground hover:text-foreground transition-colors duration-300"
-      aria-label="1 Component update per day"
+    <div
+      className={cn(
+        "flex items-center gap-2 border px-4 h-8 rounded-full text-sm font-mono shadow-sm bg-background",
+        className
+      )}
     >
-      <p>
-        {/* 1 New Component / day */}New Component
-        <span className="md:inline hidden">
-          <span className="mx-1.5">•</span>
-          {/*Streaking*/}Pulse Shader
-        </span>
-      </p>
-    </Link>
+      <div className={cn("", iconClassName)}>{icon}</div>
+      {children}
+    </div>
   );
 }

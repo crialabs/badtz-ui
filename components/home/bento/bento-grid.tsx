@@ -12,7 +12,7 @@ export function BentoGrid({ children, className }: BentoGridProps) {
   return (
     <div
       className={cn(
-        "grid gap-5 grid-cols-1 md:max-w-none max-w-[400px] mx-auto w-full md:grid-cols-5 md:grid-rows-[340px_380px] lg:grid-rows-[380px_420px] grid-rows-[460px]",
+        "grid gap-4 md:gap-6 grid-cols-1 md:max-w-none max-w-[400px] mx-auto w-full md:grid-cols-5 md:grid-rows-[340px_380px] lg:grid-rows-[380px_420px] grid-rows-[460px]",
         className
       )}
     >
@@ -42,13 +42,13 @@ export function BentoCell({
   return (
     <div
       className={cn(
-        "row-span-1 md:col-span-2 rounded-xl border border-border flex flex-col items-center justify-center dark:bg-[#171717] bg-secondary relative overflow-hidden max-md:h-[460px] ",
+        "row-span-1 md:col-span-2 flex flex-col items-center justify-center relative overflow-hidden max-md:h-[460px]",
         className
       )}
     >
       <div className="h-full w-full overflow-hidden">{visual}</div>
-      <div className="p-6 pt-2 absolute rounded-b-xl inset-x-0 bottom-0 bg-secondary dark:bg-[#0a0a0a]/50 z-20 before:bg-gradient-to-t before:from-secondary before:dark:from-[#0a0a0a]/50 before:to-transparent before:inset-x-0 before:-top-[50px] before:absolute before:h-[50px] before:pointer-events-none">
-        <span className="relative text-balance font-light text-muted-foreground">
+      <div className="p-6 pt-2 absolute rounded-b-xl inset-x-0 bottom-0 bg-third z-20 before:bg-gradient-to-t before:from-secondary before:dark:from-third before:to-transparent before:inset-x-0 before:-top-[50px] before:absolute before:h-[50px] before:pointer-events-none">
+        <span className="relative text-balance text-muted-foreground">
           <h3 className="font-medium mb-2 text-foreground inline">{title} </h3>
           {description}
         </span>
@@ -57,7 +57,7 @@ export function BentoCell({
             target="_blank"
             href={link.src}
             aria-label="Learn more about Badtz UI Pro"
-            className="text-blue-500 text-sm mt-2 block hover:underline underline-offset-2"
+            className="text-blue-500 text-sm mt-2 block hover:underline underline-offset-2 font-medium"
           >
             <PlausibleButton
               eventName="Clicked on Pro"

@@ -4,6 +4,16 @@ import * as React from "react";
 import { HeroImage } from "@/components/home/hero/hero-image";
 import { HeroBadge } from "@/components/home/hero/hero-badge";
 import { PlausibleButton } from "@/components/plausible-button";
+import BunnyImage from "@/components/bunny-image";
+import {
+  NextIcon,
+  ShadcnIcon,
+  TailwindIcon,
+  MotionIcon,
+  TypeScriptIcon,
+  JavaScriptIcon,
+  ReactIcon,
+} from "@/components/home/hero/hero-icons";
 
 const homeSchema = {
   "@context": "https://schema.org",
@@ -44,45 +54,64 @@ const homeSchema = {
   },
 };
 
+const tags = [
+  { name: "React", icon: <ReactIcon /> },
+  { name: "NextJS", icon: <NextIcon /> },
+  { name: "TailwindCSS", icon: <TailwindIcon /> },
+  { name: "Shadcn UI", icon: <ShadcnIcon /> },
+  { name: "Motion", icon: <MotionIcon /> },
+  { name: "TypeScript", icon: <TypeScriptIcon /> },
+  { name: "JavaScript", icon: <JavaScriptIcon /> },
+];
+
 export default function Hero() {
   return (
-    <section className="w-full h-full pt-10 md:pt-20 overflow-hidden">
+    <section className="w-full h-full pt-10 md:pt-20 overflow-hidden bg-third relative border-b">
+      <BunnyImage
+        src="/images/home-hero/halo.webp"
+        alt="Badtz UI"
+        fill
+        className="object-cover top-0 left-0 hidden dark:block z-0 opacity-50"
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }}
       />
-      <div className="px-6 lg:px-8 lg:max-w-5xl mx-auto">
+      <div className="px-6 lg:px-8 lg:max-w-6xl mx-auto z-10 relative">
         <div className="md:text-center text-left flex flex-col items-start md:items-center justify-center">
-          <HeroBadge />
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tighter text-foreground font-gilroy mt-8 md:mt-10">
-            UI Components
-            <br />
-            for React JS
-          </h1>
-          <p className="mt-6 text-balance font-light tracking-tight lg:mt-5 sm:mt-3 max-w-[680px] text-muted-foreground text-base md:text-lg">
-            Open-source collection of 70+ UI components. Production-grade Framer
-            Motion animations. Weekly updates. React, Tailwind, TypeScript &
-            JavaScript.
+          <p className="max-w-[700px] text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tighter text-foreground font-gilroy mt-8 md:mt-10 text-balance">
+            Build Stunning Websites in a Blink
           </p>
+          <h1 className="mt-6 text-balance tracking-tight lg:mt-5 sm:mt-3 max-w-[680px] text-muted-foreground text-base md:text-lg">
+            An open-source React UI library with production-ready animations.
+            Weekly updates. Built with React, Tailwind, TypeScript & JavaScript.
+          </h1>
           <div className="mt-8 flex gap-3.5">
             <Link
               href="/docs"
-              className="h-10 px-5 font-medium text-sm rounded-full bg-foreground text-background hover:bg-foreground/90 flex items-center relative transition-colors duration-300"
+              className="h-9 sm:h-10 px-5 shadow-sm font-medium text-sm rounded-xl bg-foreground text-background hover:bg-foreground/85 flex items-center relative transition-colors duration-300"
             >
               View Docs
             </Link>
             <Link
               target="_blank"
               href="https://pro.badtz-ui.com"
-              className="h-10 px-5 font-medium text-sm rounded-full flex items-center relative gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-gradient-to-t from-orange-600 to-orange-500 shadow-[0_0px_16px_rgba(245,_73,_0,_0.7)] text-white  before:absolute before:inset-0 before:shadow-[0_0px_20px_rgba(245,_73,_0,_0.5)] before:opacity-0 transition-opacity duration-300 hover:before:opacity-100 before:rounded-[inherit] before:pointer-events-none before:transition-opacity before:duration-300 before:will-change-opacity after:inset-0 after:absolute after:shadow-[rgba(255,_255,_255,_0.2)_0px_1px_0px_inset] after:rounded-[inherit]"
+              className="h-9 sm:h-10 px-5 shadow-sm font-medium text-sm rounded-xl flex items-center relative gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 after:inset-0 after:absolute after:shadow-[rgba(255,_255,_255,_0.2)_0px_1px_0px_inset] after:rounded-[inherit] bg-gradient-to-t from-blue-600 to-blue-500 text-white before:bg-gradient-to-t before:from-blue-700 before:to-blue-500 before:inset-0 before:absolute before:rounded-[inherit] before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:z-[1] before:shadow-[rgba(255,_255,_255,_0.2)_0px_1px_0px_inset]"
             >
               <PlausibleButton
                 eventName="Clicked on Pro"
-                className="flex items-center justify-center gap-2"
+                className="flex items-center justify-center gap-2 relative z-10"
               >
                 BadtzUI Pro <ExternalLinkIcon />
               </PlausibleButton>
             </Link>
+          </div>
+          <div className="flex items-center gap-2 flex-wrap max-w-lg md:justify-center justify-start mt-10">
+            {tags.map((tag) => (
+              <HeroBadge key={tag.name} icon={tag.icon}>
+                {tag.name}
+              </HeroBadge>
+            ))}
           </div>
         </div>
         <noscript>

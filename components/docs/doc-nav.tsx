@@ -60,7 +60,7 @@ export function DocNav({ items }: DocNavProps) {
   const breakpoint = useBreakpoint();
 
   return (
-    <Sidebar className="">
+    <Sidebar className="border-r border-sidebar-border">
       <button
         className="absolute z-10 top-2.5 right-2 p-1 bg-background border border-sidebar-border rounded-md text-foreground md:hidden"
         onClick={closeSidebar}
@@ -83,7 +83,7 @@ export function DocNav({ items }: DocNavProps) {
                     <span className="text-lg font-gilroy font-semibold mt-[2px]">
                       BadtzUI
                     </span>
-                    <span className="text-[10px] mt-2 -ml-0.5 bg-muted dark:bg-background border px-1 rounded mr-1 leading-none py-0.5">
+                    <span className="text-[10px] mt-2 -ml-0.5 bg-sidebar-accent border px-1 rounded mr-1 leading-none py-0.5">
                       Beta
                     </span>
                   </Link>
@@ -103,13 +103,13 @@ export function DocNav({ items }: DocNavProps) {
                   <Collapsible
                     defaultOpen
                     key={index}
-                    className={cn("group/collapsible")}
+                    className={cn("group/collapsible mb-2")}
                   >
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton asChild>
                         <CollapsibleTrigger className="flex w-full items-center justify-between text-sm">
                           {item.icon}
-                          <span className="whitespace-nowrap text-sm">
+                          <span className="whitespace-nowrap text-sm font-medium">
                             {item.title}
                           </span>
                           <ChevronDown
@@ -134,12 +134,12 @@ export function DocNav({ items }: DocNavProps) {
           </SidebarGroup>
         </ScrollArea>
 
-        <SidebarGroup className="p-3 border-t border-sidebar-border mt-auto">
+        <SidebarGroup className="py-t px-3 border-t border-sidebar-border mt-auto">
           <SidebarGroupContent className="flex items-center justify-between">
             <DocDropdown />
-            <div className="flex justify-center gap-2">
+            <div className="flex justify-center gap-0">
               <SocialButton
-                className="border-sidebar-border"
+                className="hover:bg-sidebar-accent [&_svg]:size-3"
                 srOnly="Twitter Link"
                 src="https://x.com/badtz_ui"
               >
@@ -148,12 +148,12 @@ export function DocNav({ items }: DocNavProps) {
               <SocialButton
                 srOnly="Discord Link"
                 src="https://discord.gg/SV2y7vz6Es"
-                className="border-sidebar-border"
+                className="hover:bg-sidebar-accent"
                 onClick={() => plausible("Clicked on GitHub Button")}
               >
                 <Icons.discord />
               </SocialButton>
-              <ModeToggle className="border-sidebar-border" />
+              <ModeToggle className="hover:bg-sidebar-accent" />
             </div>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -169,7 +169,7 @@ export function DocsSidebarNavItems({
   const { setOpenMobile } = useSidebar();
 
   return items?.length ? (
-    <div className="grid grid-flow-row auto-rows-max text-sm py-1 pl-3 ml-3 gap-[2px] border-l border-sidebar-border">
+    <div className="grid grid-flow-row auto-rows-max text-sm py-1 ml-1 gap-[2px]">
       {items.map((item, index) => {
         const isSoon = item.label === "soon";
 
@@ -179,10 +179,10 @@ export function DocsSidebarNavItems({
             href={item.href}
             onClick={() => setOpenMobile(false)}
             className={cn(
-              "group flex w-full text-sm items-center focus:outline-transparent outline-none px-2 text-balance h-8 transition-colors rounded-md duration-200 ",
+              "group flex w-full text-sm items-center focus:outline-transparent outline-none px-3 text-balance h-8 transition-colors rounded-md duration-200",
               pathname === item.href
-                ? "text-foreground dark:bg-muted bg-sidebar-accent"
-                : "text-muted-foreground dark:hover:bg-muted hover:bg-sidebar-accent",
+                ? "text-accent bg-accent-foreground dark:bg-accent-foreground/10"
+                : "text-muted-foreground hover:bg-sidebar-accent"
             )}
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
@@ -194,7 +194,7 @@ export function DocsSidebarNavItems({
           <span
             key={index}
             className={cn(
-              "flex w-full text-sm outline-none focus:outline-transparent items-center px-2 h-8 text-muted-foreground cursor-not-allowed text-balance ",
+              "flex w-full text-sm outline-none focus:outline-transparent items-center px-3 h-8 text-muted-foreground cursor-not-allowed text-balance "
             )}
           >
             {item.title}

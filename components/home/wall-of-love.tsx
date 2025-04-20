@@ -21,27 +21,33 @@ const tweetGroups = [
   },
 ];
 
-export default function HomeBento() {
+export default function WallOfLove() {
   return (
-    <section aria-label="Wall of Love" className="w-full h-full py-16 sm:py-28">
-      <div className="px-6 lg:px-8 max-w-[400px] md:max-w-3xl lg:max-w-5xl mx-auto flex flex-col items-center justify-center md:items-start">
-        <div className="-mb-8">
-          <h2
-            id="wall-of-love-heading"
-            className="text-4xl sm:text-5xl font-semibold tracking-tighter text-foreground text-balance max-w-[605px] font-gilroy text-center md:text-left"
-          >
-            Wall of Love
+    <section className="w-full h-full border-b bg-third">
+      <div className="max-w-[400px] md:max-w-3xl lg:max-w-5xl mx-auto flex flex-col items-center justify-center text-center bg-third">
+        <div className="flex flex-col items-center justify-center px-6 lg:px-12 py-12">
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tighter text-foreground text-balance max-w-[605px] font-gilroy">
+            Open Source, Built Together
           </h2>
-          <p className="mt-4 lg:mt-6 text-balance tracking-tight text-muted-foreground text-base md:text-lg font-light text-center max-w-prose md:text-left">
-            Discover what our community is saying about their experience with
-            BadtzUI. Join the conversation and share your thoughts!
+          <p className="text-balance max-w-[550px] md:max-w-[700px] tracking-tight text-muted-foreground text-sm md:text-base mt-4">
+            BadtzUI is an open-source project where everyone can contribute.
+            Join our community, suggest improvements, and help shape the future
+            of this UI library!
           </p>
+          <Link
+            href="https://github.com/badtzx0/badtz-ui"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="h-9 px-5 shadow-sm font-medium text-sm rounded-xl bg-foreground text-background hover:bg-foreground/85 flex items-center relative transition-colors duration-300 mt-6 [&_svg]:size-4 [&_svg]:shrink-0 gap-2"
+          >
+            <Icons.gitHub />
+            Star Us on GitHub
+          </Link>
         </div>
+        {/*
         <div
-          role="feed"
-          aria-busy="false"
           className={cn(
-            "mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-h-[65dvh] overflow-hidden relative w-full",
+            "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-h-[65dvh] overflow-hidden relative w-full",
             "before:absolute before:top-[-2px] before:inset-x-0 before:h-[75px] before:bg-gradient-to-t from-transparent to-background before:z-[20] before:pointer-events-none",
             "after:absolute after:bottom-[-2px] after:inset-x-0 after:h-[150px] after:bg-gradient-to-b after:z-[20] after:pointer-events-none"
           )}
@@ -77,6 +83,7 @@ export default function HomeBento() {
           <span className="sr-only">Twitter</span>
           Share love on X
         </Link>
+        */}
       </div>
     </section>
   );

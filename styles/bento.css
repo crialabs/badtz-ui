@@ -1,10 +1,8 @@
-/* Base styles */
-.bento-bg {
+/* .bento-bg {
   @apply bg-cover bg-center bg-no-repeat;
-}
+} */
 
-/* Cell 1 */
-.cell1-bg {
+/* .cell1-bg {
   @apply bento-bg;
   background-image: url("/images/home-bento/small-background-light-x1.webp");
 }
@@ -28,10 +26,9 @@
   .dark .cell1-bg {
     background-image: url("/images/home-bento/small-background-dark-x3.webp");
   }
-}
+} */
 
-/* Cell 2 */
-.cell2-bg {
+/* .cell2-bg {
   @apply bento-bg;
   background-image: url("/images/home-bento/small-background-reverse-light-x1.webp");
 }
@@ -55,10 +52,9 @@
   .dark .cell2-bg {
     background-image: url("/images/home-bento/large-background-dark-x3.webp");
   }
-}
+} */
 
-/* Cell 3 */
-.cell3-bg {
+/* .cell3-bg {
   @apply bento-bg;
   background-image: url("/images/home-bento/small-background-light-x1.webp");
 }
@@ -82,10 +78,9 @@
   .dark .cell3-bg {
     background-image: url("/images/home-bento/large-background-reverse-dark-x3.webp");
   }
-}
+} */
 
-/* Cell 4 */
-.cell4-bg {
+/* .cell4-bg {
   @apply bento-bg;
   background-image: url("/images/home-bento/small-background-reverse-light-x1.webp");
 }
@@ -109,4 +104,4 @@
   .dark .cell4-bg {
     background-image: url("/images/home-bento/small-background-dark-x3.webp");
   }
-}
+} */

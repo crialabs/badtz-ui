@@ -17,7 +17,7 @@ export function GithubButton() {
     async function fetchStars() {
       try {
         const response = await fetch(
-          "https://api.github.com/repos/badtzx0/badtz-ui",
+          "https://api.github.com/repos/badtzx0/badtz-ui"
         );
         const data = await response.json();
         setStars(data.stargazers_count);

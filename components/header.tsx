@@ -77,22 +77,9 @@ export default function Header(): JSX.Element {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 w-full py-4">
-      <div aria-hidden className="absolute inset-0 gradient-blur z-20">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <div
-        className={cn(
-          "mx-auto px-5 lg:px-7",
-          pathname?.startsWith("/blog") ? "max-w-6xl" : "max-w-5xl"
-        )}
-      >
-        <div className="flex h-14 items-center pl-4 pr-3 w-full justify-between dark:border-secondary-border/70 border-secondary-border backdrop-blur-md bg-background/70 border rounded-xl z-50 relative">
+    <header className="sticky top-0 z-40 w-full border-b border-sidebar-border backdrop-blur-md bg-third/70">
+      <div className={cn("mx-auto px-6 lg:px-8 max-w-6xl")}>
+        <div className="flex h-14 items-center pl-4 pr-3 w-full justify-between z-50 relative">
           {/*Large screen Nav*/}
           <div className="mr-4 hidden md:flex">
             <Link href="/" className="flex items-center gap-2 text-foreground">
@@ -191,17 +178,10 @@ export default function Header(): JSX.Element {
             <Logo />
           </div>
 
-          <div className="flex items-center gap-3 text-sm font-light">
+          <div className="flex items-center gap-2 text-sm font-light">
             <div className="flex items-center gap-0.5">
               <HomeSearchbar />
               <ModeToggle />
-              <SocialButton
-                srOnly="Discord Link"
-                src="https://discord.gg/SV2y7vz6Es"
-                className="[&_svg]:size-4"
-              >
-                <Icons.discord />
-              </SocialButton>
               <SocialButton srOnly="Twitter Link" src="https://x.com/badtz_ui">
                 <Icons.twitter />
               </SocialButton>

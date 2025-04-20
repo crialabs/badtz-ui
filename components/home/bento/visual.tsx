@@ -159,7 +159,7 @@ export function Cell2Visual() {
       className="relative overflow-hidden h-full w-full cell2-bg"
       style={{ clipPath: "inset(0 round 12px)" }}
     >
-      <div className="absolute z-10 right-0 top-1/2 -translate-y-1/4 md:-translate-y-1/2 lg:pl-0 pl-12">
+      <div className="absolute z-10 right-0 top-1/2 -translate-y-[60%] md:-translate-y-1/2 lg:pl-0 pl-12">
         <Image
           loader={bunnyLoader}
           src={imageSrc}
@@ -196,7 +196,7 @@ export function Cell2Visual() {
 
 export function Cell3Visual() {
   const [activeColor, setActiveColor] = useState({
-    vibrant: "#ff6900",
+    vibrant: "#155dfc",
   });
 
   const colors = [
@@ -273,7 +273,7 @@ export function Cell3Visual() {
 export function Cell4Visual() {
   return (
     <div className="relative h-full w-full cell4-bg overflow-x-auto">
-      <span className="absolute top-6 left-6 text-xs py-1 px-3 z-10 bg-gradient-to-b from-orange-500 to-orange-600 border border-orange-500 rounded-full font-medium shadow-[0_0px_100px_rgba(245,_73,_0,_0.9)] before:shadow-[0_0px_20px_rgba(245,_73,_0,_0.9)] before:inset-0 before:absolute before:z-[-1] before:rounded-[inherit] opacity-100 transition-opacity duration-300 group-hover:opacity-0 text-white">
+      <span className="absolute top-6 left-6 text-xs py-1 px-3 z-10 bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-500 rounded-full font-medium shadow-[0_0px_100px_rgba(37,_99,_235,_0.9)] before:shadow-[0_0px_20px_rgba(37,_99,_235,_0.9)] before:inset-0 before:absolute before:z-[-1] before:rounded-[inherit] opacity-100 transition-opacity duration-300 group-hover:opacity-0 text-white">
         Beta
       </span>
       <div className="absolute inset-x-6 lg:inset-x-12 top-6 grid grid-cols-5 grid-rows-6 gap-1 w-[274px] h-[320px] mx-auto">

@@ -12,14 +12,14 @@ export default function DocsLayout({
   return (
     <div>
       <Marketing
-        className="dark:bg-secondary bg-sidebar"
+        className=""
         href="https://x.com/badtz_ui"
         plausibleEvent="Clicked on Twitter"
       >
-        Soon: New UI components daily! Follow us on X for updates.
+        🎉 New components daily! Follow us on X for updates.
       </Marketing>
       <SidebarProvider>
-        <div className="flex flex-col h-full w-full bg-white dark:bg-background">
+        <div className="flex flex-col h-full w-full bg-background">
           <div className="flex-1 items-start flex">
             <DocNav items={docsConfig} />
             <div className="flex flex-col w-full relative">

@@ -51,6 +51,7 @@ const config: Config = {
         destructiveForeground: "hsl(var(--destructive-foreground))",
         border: "hsl(var(--border))",
         "secondary-border": "hsl(var(--secondary-border))",
+        third: "hsl(var(--third))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         chart1: "hsl(var(--chart-1))",

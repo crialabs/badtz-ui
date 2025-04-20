@@ -8,7 +8,7 @@ interface ChangelogLayoutProps {
 
 export default function ChangelogLayout({ children }: ChangelogLayoutProps) {
   return (
-    <div>
+    <div className="bg-third">
       <Header />
       <div className="container w-full flex justify-center">{children}</div>
       <footer>

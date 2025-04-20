@@ -106,7 +106,7 @@ const FOOTER_SECTIONS: { title: string; links: LinkType[] }[] = [
 export default function Footer() {
   return (
     <footer
-      className="border-t border-border w-full bg-background"
+      className="border-t border-border w-full bg-third"
       aria-label="Footer"
       itemScope
       itemType="https://schema.org/WPFooter"
@@ -152,9 +152,9 @@ export default function Footer() {
               className="md:text-sm text-muted-foreground mt-2"
               itemProp="slogan"
             >
-              Here you can subscribe to my
+              Here you can subscribe
               <br />
-              personal newsletter. No spam, I promise :)
+              to our newsletter.
             </p>
             <NewsletterForm />
             <div itemScope itemType="https://schema.org/ContactPoint">

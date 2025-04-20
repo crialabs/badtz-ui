@@ -28,25 +28,27 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   return (
-    <>
+    <div className="bg-third ">
       <Marketing
         href="https://pro.badtz-ui.com"
         plausibleEvent="Clicked on Pro"
       >
-        🚀&nbsp;Coming Soon! Badtz UI Pro +70 expected templates, blocks, and
+        🎉&nbsp;Introducing Badtz UI Pro +70 expected templates, blocks, and
         much more!
       </Marketing>
 
       <Header />
-      <main>
-        <Hero />
-        <HomeBento />
-        <WallOfLove />
-        <FAQ />
-        <CallToAction />
-      </main>
+      <div className="px-4 md:px-0">
+        <main className="border-x bg-background border-sidebar-border max-w-5xl mx-auto">
+          <Hero />
+          <HomeBento />
+          <WallOfLove />
+          <FAQ />
+          <CallToAction />
+        </main>
+      </div>
 
       <Footer />
-    </>
+    </div>
   );
 }

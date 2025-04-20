@@ -198,11 +198,6 @@ export default async function DocPage({ params }: DocPageProps) {
       <div className="hidden text-sm xl:block">
         <div className="sticky top-10 -mt-6 h-[calc(100vh-3.5rem)] pt-4">
           <DocsCta />
-          <div className="flex flex-col gap-2 my-4">
-            <ReportBugButton />
-            <RequestComponentButton />
-            <EditPageButton />
-          </div>
           <div className="h-full overflow-auto pb-10 pt-4 px-1.5">
             {doc.toc && <DashboardTableOfContents toc={toc} />}
           </div>

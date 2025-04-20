@@ -23,12 +23,8 @@ export const docsConfig: DocCategory[] = [
         fill="currentColor"
         className="size-4"
       >
-        <path d="M19.006 3.705a.75.75 0 1 0-.512-1.41L6 6.838V3a.75.75 0 0 0-.75-.75h-1.5A.75.75 0 0 0 3 3v4.93l-1.006.365a.75.75 0 0 0 .512 1.41l16.5-6Z" />
-        <path
-          fillRule="evenodd"
-          d="M3.019 11.114 18 5.667v3.421l4.006 1.457a.75.75 0 1 1-.512 1.41l-.494-.18v8.475h.75a.75.75 0 0 1 0 1.5H2.25a.75.75 0 0 1 0-1.5H3v-9.129l.019-.007ZM18 20.25v-9.566l1.5.546v9.02H18Zm-9-6a.75.75 0 0 0-.75.75v4.5c0 .414.336.75.75.75h3a.75.75 0 0 0 .75-.75V15a.75.75 0 0 0-.75-.75H9Z"
-          clipRule="evenodd"
-        />
+        <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+        <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
       </svg>
     ),
     items: [
@@ -81,7 +77,6 @@ export const docsConfig: DocCategory[] = [
         title: "Pixel Distorsion",
         href: "/docs/components/shaders/pixel-distorsion-shader",
         items: [],
-        label: "hot",
       },
       {
         title: "Pulse Shader",
@@ -183,7 +178,6 @@ export const docsConfig: DocCategory[] = [
         title: "Image Split",
         href: "/docs/components/image-split",
         items: [],
-        label: "hot",
       },
       {
         title: "Image Trail",

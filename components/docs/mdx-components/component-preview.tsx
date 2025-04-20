@@ -55,7 +55,7 @@ export function ComponentPreview({
         extractedText += child;
       } else if (React.isValidElement(child) && child.props.children) {
         extractedText += extractTextFromChildren(
-          React.Children.toArray(child.props.children),
+          React.Children.toArray(child.props.children)
         );
       }
     });
@@ -66,10 +66,10 @@ export function ComponentPreview({
   const codeBlocks = React.useMemo(() => {
     const parsedChildren = React.Children.toArray(children);
     const jsCode = parsedChildren.find(
-      (child) => (child as any)?.props?.slot === "javascript",
+      (child) => (child as any)?.props?.slot === "javascript"
     );
     const tsCode = parsedChildren.find(
-      (child) => (child as any)?.props?.slot === "typescript",
+      (child) => (child as any)?.props?.slot === "typescript"
     );
 
     return {
@@ -126,16 +126,19 @@ export function ComponentPreview({
             </TabsTrigger>
           </TabsList>
         </div>
-        <TabsContent value="preview" className="relative rounded-md border">
+        <TabsContent
+          value="preview"
+          className="relative rounded-md border bg-third"
+        >
           <div
             className={cn(
-              "preview flex min-h-[350px] w-full justify-center p-10 relative",
+              "preview flex min-h-[380px] w-full justify-center p-10 relative",
               {
                 "items-center": align === "center",
                 "items-start": align === "start",
                 "items-end": align === "end",
               },
-              className,
+              className
             )}
           >
             <div className="absolute top-4 right-4 z-20 flex gap-2.5 items-center">

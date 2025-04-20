@@ -7,7 +7,7 @@ export default function BlogLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <div className="bg-third">
       <Header />
       <main className="w-full flex justify-center">{children}</main>
       <Footer />

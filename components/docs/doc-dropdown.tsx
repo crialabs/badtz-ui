@@ -26,12 +26,12 @@ export function DocDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="h-8 w-8 dark:hover:bg-muted/70 hover:bg-muted/20 transition-colors flex items-center justify-center rounded-md [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 text-foreground bg-transparent shadow-none">
+        <Button className="h-8 w-8 hover:bg-sidebar-accent transition-colors flex items-center justify-center rounded-md [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 text-foreground bg-transparent shadow-none">
           <Ellipsis />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="w-56 bg-background/70 backdrop-blur-md border-sidebar-border mb-4 shadow-sm"
+        className="w-56 bg-background border-sidebar-border mb-4 shadow-sm"
         align="start"
       >
         <DropdownMenuGroup>

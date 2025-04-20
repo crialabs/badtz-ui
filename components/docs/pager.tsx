@@ -59,13 +59,13 @@ export function DocsPager({ doc }: { doc: Doc }) {
     <div
       className={cn(
         "flex flex-row items-center justify-between gap-4",
-        !pager?.prev?.href && "justify-end",
+        !pager?.prev?.href && "justify-end"
       )}
     >
       {pager?.prev?.href && (
         <Link
           href={pager.prev.href}
-          className="pr-3 pl-3 md:pl-1 h-9 w-min flex justify-start items-center rounded-lg transition-all gap-1 group whitespace-nowrap active:scale-[98%] cursor-pointer text-sm bg-background hover:bg-muted/30 border border-border md:w-auto max-w-56 text-foreground dark:text-muted-foreground hover:text-foreground duration-300 dark:hover:text-foreground"
+          className="pr-3 pl-3 md:pl-1 h-9 w-min flex justify-start items-center rounded-lg transition-all gap-1 group whitespace-nowrap active:scale-[98%] cursor-pointer text-sm bg-background hover:bg-sidebar-accent border border-border md:w-auto max-w-56 text-foreground dark:text-muted-foreground hover:text-foreground duration-300 shadow-xs"
         >
           <ChevronLeftIcon className="h-4 w-4 md:hidden block" />
           <kbd className="pointer-events-none hidden h-6 w-6 select-none items-center gap-1 rounded-md border border-border bg-muted/50 px-1.5 text-[10px] font-medium opacity-100 md:flex mr-2">
@@ -77,7 +77,7 @@ export function DocsPager({ doc }: { doc: Doc }) {
       {pager?.next?.href && (
         <Link
           href={pager.next.href}
-          className="pl-3 pr-3 md:pr-1 h-9 w-min flex justify-start items-center rounded-lg transition-all gap-1 group whitespace-nowrap active:scale-[98%] cursor-pointer text-sm bg-background hover:bg-muted/30 border border-border md:w-auto max-w-56 text-foreground dark:text-muted-foreground hover:text-foreground duration-300 dark:hover:text-foreground"
+          className="pl-3 pr-3 md:pr-1 h-9 w-min flex justify-start items-center rounded-lg transition-all gap-1 group whitespace-nowrap active:scale-[98%] cursor-pointer text-sm bg-background hover:bg-sidebar-accent border border-border md:w-auto max-w-56 text-foreground dark:text-muted-foreground hover:text-foreground duration-300 shadow-xs"
         >
           {pager.next.title}
           <ChevronRightIcon className="h-4 w-4 md:hidden block" />
@@ -118,7 +118,7 @@ export function DocsPager({ doc }: { doc: Doc }) {
               },
             },
             null,
-            2,
+            2
           ),
         }}
       />
@@ -133,7 +133,7 @@ export function getPagerForDoc(doc: Doc): Pager {
     null,
   ];
   const activeIndex = flattenedLinks.findIndex(
-    (link) => doc.slug === link?.href,
+    (link) => doc.slug === link?.href
   );
 
   const prev = activeIndex !== 0 ? flattenedLinks[activeIndex - 1] : null;
