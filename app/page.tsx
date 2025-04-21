@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   return (
-    <div className="bg-third ">
+    <div className="bg-third">
       <Marketing
         href="https://pro.badtz-ui.com"
         plausibleEvent="Clicked on Pro"
@@ -38,7 +38,7 @@ export default async function Home() {
       </Marketing>
 
       <Header />
-      <div className="px-4 md:px-0">
+      <div className="px-4 md:px-0 relative">
         <main className="border-x bg-background border-sidebar-border max-w-5xl mx-auto">
           <Hero />
           <HomeBento />
