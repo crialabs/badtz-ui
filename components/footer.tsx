@@ -157,6 +157,18 @@ export default function Footer() {
               to our newsletter.
             </p>
             <NewsletterForm />
+            <a
+              href="https://www.producthunt.com/posts/badtzui?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-badtzui"
+              target="_blank"
+            >
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=956559&theme=dark&t=1745353693431"
+                alt="BadtzUI - A&#0032;free&#0032;and&#0032;open&#0045;source&#0032;React&#0032;component&#0032;library | Product Hunt"
+                style={{ width: "185px", height: "40px" }}
+                width="185"
+                height="40"
+              />
+            </a>
             <div itemScope itemType="https://schema.org/ContactPoint">
               <meta itemProp="email" content="contact@badtz-ui.com" />
               <meta itemProp="contactType" content="customer service" />
