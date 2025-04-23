@@ -322,6 +322,12 @@ export const docsConfig: DocCategory[] = [
     ),
     items: [
       {
+        title: "Swipe Button",
+        href: "/docs/components/buttons/swipe-button",
+        items: [],
+        label: "new",
+      },
+      {
         title: "Gradient Slide",
         href: "/docs/components/buttons/gradient-slide-button",
         items: [],

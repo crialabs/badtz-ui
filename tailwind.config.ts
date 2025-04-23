@@ -184,9 +184,9 @@ const config: Config = {
           "0%": { transform: "translateX(-100%)" },
           "100%": { transform: "translateX(0)" },
         },
-        "star-btn": {
-          "0%": { "offset-distance": "0%" },
-          "100%": { "offset-distance": "100%" },
+        "swipe-button-text": {
+          "0%": { backgroundPosition: "0 0" },
+          "100%": { backgroundPosition: "var(--swipe-button-text-width) 0" },
         },
       },
       animation: {
@@ -203,6 +203,8 @@ const config: Config = {
         "collapsible-up": "collapsible-up 0.2s ease-out",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "swipe-button-text":
+          "swipe-button-text 1.5s cubic-bezier(.4,0,.2,1) infinite",
       },
     },
   },

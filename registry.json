@@ -390,6 +390,38 @@
       ]
     },
     {
+      "name": "swipe-button",
+      "type": "registry:ui",
+      "title": "Swipe Button",
+      "description": "A sleek swipe-to-validate button with animated text, smooth transitions.",
+      "tailwind": {
+        "config": {
+          "theme": {
+            "extend": {
+              "keyframes": {
+                "swipe-button-text": {
+                  "0%": { "background-position": "0 0" },
+                  "100%": {
+                    "background-position": "var(--swipe-button-text-width) 0"
+                  }
+                }
+              },
+              "animation": {
+                "swipe-button-text": "swipe-button-text 1.5s cubic-bezier(.4,0,.2,1) infinite"
+              }
+            }
+          }
+        }
+      },
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/components/buttons/swipe-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "confetti-button",
       "type": "registry:ui",
       "title": "Confetti button",

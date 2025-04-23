@@ -44,7 +44,7 @@ export function ComponentSource({
         extractedText += child;
       } else if (React.isValidElement(child) && child.props.children) {
         extractedText += extractTextFromChildren(
-          React.Children.toArray(child.props.children),
+          React.Children.toArray(child.props.children)
         );
       }
     });
@@ -54,10 +54,10 @@ export function ComponentSource({
   const codeBlocks = React.useMemo(() => {
     const parsedChildren = React.Children.toArray(children);
     const jsCode = parsedChildren.find(
-      (child) => (child as any)?.props?.slot === "javascript",
+      (child) => (child as any)?.props?.slot === "javascript"
     );
     const tsCode = parsedChildren.find(
-      (child) => (child as any)?.props?.slot === "typescript",
+      (child) => (child as any)?.props?.slot === "typescript"
     );
 
     return {
@@ -81,7 +81,7 @@ export function ComponentSource({
       <div
         className={cn(
           "relative max-h-[650px] overflow-hidden rounded-md bg-zinc-950 dark:bg-zinc-900 text-white",
-          className,
+          className
         )}
       >
         <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-950 dark:bg-zinc-900 px-3 py-2.5">
@@ -135,7 +135,7 @@ export function ComponentSource({
           forceMount
           className={cn(
             "transition-none data-[state=open]:!animate-none data-[state=closed]:!animate-none",
-            !isExpanded && "max-h-64",
+            !isExpanded && "max-h-64"
           )}
         >
           <ComponentSourceContext.Provider value={true}>
@@ -149,7 +149,7 @@ export function ComponentSource({
         <div
           className={cn(
             "absolute pointer-events-none flex items-center justify-center inset-x-0 bottom-0 bg-gradient-to-b from-transparent to-zinc-950 dark:to-zinc-900",
-            isExpanded ? "h-24" : "h-[250px]",
+            isExpanded ? "h-24" : "h-[250px]"
           )}
         >
           <CollapsibleTrigger
