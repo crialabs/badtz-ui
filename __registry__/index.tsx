@@ -207,6 +207,18 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
+  },"swipe-button": {
+    name: "swipe-button",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/components/buttons/swipe-button")),
+    source: "",
+    files: [
+  "__registry__/components/components/buttons/swipe-button.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
   },"cloud-orbit": {
     name: "cloud-orbit",
     type: "components:ui",
@@ -755,6 +767,18 @@ export const Index: Record<string, RegistryItem> = {
     source: "",
     files: [
   "__registry__/components/demos/stripe-animated-gradient-demo.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"swipe-button-demo": {
+    name: "swipe-button-demo",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/swipe-button-demo")),
+    source: "",
+    files: [
+  "__registry__/components/demos/swipe-button-demo.js"
 ],
     category: "undefined",
     subcategory: "undefined",
