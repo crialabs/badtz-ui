@@ -1,13 +1,11 @@
-import path from "path";
-
-interface DocItem {
+export interface DocItem {
   title: string;
   href: string;
   items: DocItem[];
   label?: string;
 }
 
-interface DocCategory {
+export interface DocCategory {
   title: string;
   icon: JSX.Element;
   items: DocItem[];
@@ -125,6 +123,12 @@ export const docsConfig: DocCategory[] = [
       </svg>
     ),
     items: [
+      {
+        title: "Marquee",
+        href: "/docs/components/marquee",
+        label: "new",
+        items: [],
+      },
       {
         title: "Bento Grid",
         href: "/docs/components/bento-grid",

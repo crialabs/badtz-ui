@@ -1,16 +1,5 @@
 "use client";
 
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar,
-} from "@/components/ui/sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
 import { X } from "lucide-react";
@@ -26,12 +15,10 @@ import {
 import { ChevronDown } from "lucide-react";
 import { ModeToggle } from "@/components/mode-toggle";
 import { DocDropdown } from "@/components/docs/doc-dropdown";
-import { Logo } from "@/components/logo";
 import * as React from "react";
 import { Icons } from "@/components/icons";
 import { SocialButton } from "@/components/ui/social-button";
 import { usePlausible } from "next-plausible";
-import { useBreakpoint } from "@/hooks/use-brakpoints";
 
 type Item = {
   title: string;
@@ -54,88 +41,49 @@ type DocsSidebarNavItemsProps = {
 
 export function DocNav({ items }: DocNavProps) {
   const plausible = usePlausible();
-  const { setOpenMobile } = useSidebar();
   const pathname = usePathname();
-  const closeSidebar = () => setOpenMobile(false);
-  const breakpoint = useBreakpoint();
 
   return (
-    <Sidebar className="border-r border-sidebar-border">
-      <button
-        className="absolute z-10 top-2.5 right-2 p-1 bg-background border border-sidebar-border rounded-md text-foreground md:hidden"
-        onClick={closeSidebar}
-        aria-label="Close sidebar"
-      >
-        <X className="w-3 h-3" />
-      </button>
-      <SidebarContent className="gap-0">
-        <SidebarGroup className="px-4 pt-4">
-          <SidebarGroupLabel className="sr-only">logo</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton
-                  asChild
-                  className="hover:bg-transparent hover:text-foreground text-foreground active:bg-transparent"
+    <div className="border-sidebar-border h-full flex flex-col">
+      <div className="flex flex-col h-full">
+        <ScrollArea className="flex-1 overflow-auto">
+          <div className="pb-6 pt-4 pr-6 pl-3">
+            <nav aria-label="Documentation navigation">
+              <div className="mb-4">
+                <DocsSearchbar />
+              </div>
+              {items.map((item, index) => (
+                <Collapsible
+                  defaultOpen
+                  key={index}
+                  className={cn("group/collapsible mb-2")}
                 >
-                  <Link href="/" className="[&_svg]:size-5">
-                    <Logo />
-                    <span className="text-lg font-gilroy font-semibold mt-[2px]">
-                      BadtzUI
+                  <CollapsibleTrigger className="flex w-full items-center justify-between text-sm px-3 py-2 hover:bg-sidebar-accent rounded-md">
+                    <span className="whitespace-nowrap text-sm font-medium flex items-center gap-2">
+                      {item.icon}
+                      {item.title}
                     </span>
-                    <span className="text-[10px] mt-2 -ml-0.5 bg-sidebar-accent border px-1 rounded mr-1 leading-none py-0.5">
-                      Beta
-                    </span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-        <div className="px-2 pt-1">
-          <DocsSearchbar />
-        </div>
-        <ScrollArea className="h-full overflow-auto">
-          <SidebarGroup className="pb-6 pt-4 pr-6 pl-3">
-            <SidebarGroupContent>
-              <SidebarMenu aria-label="Documentation navigation">
-                {items.map((item, index) => (
-                  <Collapsible
-                    defaultOpen
-                    key={index}
-                    className={cn("group/collapsible mb-2")}
-                  >
-                    <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton asChild>
-                        <CollapsibleTrigger className="flex w-full items-center justify-between text-sm">
-                          {item.icon}
-                          <span className="whitespace-nowrap text-sm font-medium">
-                            {item.title}
-                          </span>
-                          <ChevronDown
-                            size={12}
-                            className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180"
-                          />
-                        </CollapsibleTrigger>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <CollapsibleContent className="">
-                      {item?.items?.length && (
-                        <DocsSidebarNavItems
-                          items={item.items}
-                          pathname={pathname}
-                        />
-                      )}
-                    </CollapsibleContent>
-                  </Collapsible>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
+                    <ChevronDown
+                      size={12}
+                      className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180"
+                    />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    {item?.items?.length && (
+                      <DocsSidebarNavItems
+                        items={item.items}
+                        pathname={pathname}
+                      />
+                    )}
+                  </CollapsibleContent>
+                </Collapsible>
+              ))}
+            </nav>
+          </div>
         </ScrollArea>
 
-        <SidebarGroup className="py-t px-3 border-t border-sidebar-border mt-auto">
-          <SidebarGroupContent className="flex items-center justify-between">
+        <div className="py-4 px-3 mt-auto">
+          <div className="flex items-center justify-between">
             <DocDropdown />
             <div className="flex justify-center gap-0">
               <SocialButton
@@ -155,10 +103,10 @@ export function DocNav({ items }: DocNavProps) {
               </SocialButton>
               <ModeToggle className="hover:bg-sidebar-accent" />
             </div>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -166,8 +114,6 @@ export function DocsSidebarNavItems({
   items,
   pathname,
 }: DocsSidebarNavItemsProps) {
-  const { setOpenMobile } = useSidebar();
-
   return items?.length ? (
     <div className="grid grid-flow-row auto-rows-max text-sm py-1 ml-1 gap-[2px]">
       {items.map((item, index) => {
@@ -177,7 +123,6 @@ export function DocsSidebarNavItems({
           <Link
             key={index}
             href={item.href}
-            onClick={() => setOpenMobile(false)}
             className={cn(
               "group flex w-full text-sm items-center focus:outline-transparent outline-none px-3 text-balance h-8 transition-colors rounded-md duration-200",
               pathname === item.href
@@ -194,7 +139,7 @@ export function DocsSidebarNavItems({
           <span
             key={index}
             className={cn(
-              "flex w-full text-sm outline-none focus:outline-transparent items-center px-3 h-8 text-muted-foreground cursor-not-allowed text-balance "
+              "flex w-full text-sm outline-none focus:outline-transparent items-center px-3 h-8 text-muted-foreground cursor-not-allowed text-balance"
             )}
           >
             {item.title}

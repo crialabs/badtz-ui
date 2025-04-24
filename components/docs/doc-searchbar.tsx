@@ -76,33 +76,21 @@ export function DocsSearchbar(props: DocsSearchbarProps) {
 
   return (
     <>
-      <SidebarGroup>
-        <SidebarGroupLabel className="sr-only">logo</SidebarGroupLabel>
-        <SidebarGroupContent>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton
-                asChild
-                className="border border-sidebar-border bg-sidebar-accent hover:bg-sidebar-primary text-muted-foreground pr-1 h-9 transition-colors duration-300 rounded-lg"
-              >
-                <button
-                  className={cn("")}
-                  onClick={handleButtonClick}
-                  {...props}
-                >
-                  <Search size={14} />
-                  <span className="flex justify-between w-full items-center text-sm">
-                    Search{" "}
-                    <kbd className="pointer-events-none h-6 select-none items-center rounded-md shadow-sm border border-sidebar-border bg-background px-1.5 font-mono text-[10px] font-medium flex">
-                      <span className="text-[8px] mr-0.5">⌘</span>K
-                    </kbd>
-                  </span>
-                </button>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroupContent>
-      </SidebarGroup>
+      <button
+        className={cn(
+          "flex items-center w-full border border-sidebar-border bg-background hover:bg-sidebar-primary text-muted-foreground pr-1 pl-2 h-8 transition-colors duration-300 rounded-lg text-[13px]"
+        )}
+        onClick={handleButtonClick}
+        {...props}
+      >
+        <Search size={14} />
+        <span className="flex justify-between w-full items-center text-sm ml-2">
+          Search{" "}
+          <kbd className="pointer-events-none h-6 select-none items-center rounded-md shadow-sm border border-sidebar-border bg-background px-1.5 font-mono text-[10px] font-medium flex">
+            <span className="text-[8px] mr-0.5">⌘</span>K
+          </kbd>
+        </span>
+      </button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <VisuallyHidden>
           <DialogTitle>Command search</DialogTitle>

@@ -1,7 +1,6 @@
 "use client";
 import { Icons } from "@/components/icons";
 import { SocialButton } from "@/components/ui/social-button";
-
 import * as React from "react";
 import {
   Sheet,
@@ -11,6 +10,12 @@ import {
   SheetTitle,
   SheetDescription,
 } from "@/components/ui/sheet";
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from "@/components/ui/collapsible";
+import { ChevronDown } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { LargeLogo, Logo } from "@/components/logo";
@@ -18,6 +23,10 @@ import { GithubButton } from "@/components/github-button";
 import { ModeToggle } from "@/components/mode-toggle";
 import Link from "next/link";
 import { HomeSearchbar } from "@/components/home/home-searchbar";
+import { Badge } from "@/components/ui/badge";
+import { docsConfig, type DocCategory, type DocItem } from "@/config/docs";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { DocsSearchbar } from "@/components/docs/doc-searchbar";
 
 interface Link {
   href: string;
@@ -44,26 +53,48 @@ interface MobileLinkProps {
   href: string;
   label: string;
   className?: string;
+  onClick?: () => void;
   [x: string]: any;
 }
+
+type Item = {
+  title: string;
+  icon?: React.ReactNode;
+  href?: string;
+  label?: string;
+  disabled?: boolean;
+  external?: boolean;
+  items?: Item[];
+};
+
+type DocNavProps = {
+  items: Item[];
+};
+
+type DocsSidebarNavItemsProps = {
+  items: Item[];
+  pathname: string;
+  onItemClick?: () => void;
+};
 
 function MobileLink({
   href,
   label,
   className,
+  onClick,
   ...props
 }: MobileLinkProps): JSX.Element {
   const router = useRouter();
-  const pathname = usePathname();
 
   return (
     <Link
       href={href}
       onClick={() => {
         router.push(href.toString());
+        onClick?.();
       }}
       className={cn(
-        "text-base w-min whitespace-nowrap text-foreground font-light",
+        "w-min whitespace-nowrap text-foreground text-sm py-2",
         className
       )}
       {...props}
@@ -73,13 +104,62 @@ function MobileLink({
   );
 }
 
+export function DocsSidebarNavItems({
+  items,
+  pathname,
+  onItemClick,
+}: DocsSidebarNavItemsProps) {
+  return items?.length ? (
+    <div className="grid grid-flow-row auto-rows-max text-sm ml-1">
+      {items.map((item, index) => {
+        const isSoon = item.label === "soon";
+
+        return item.href && !item.disabled && !isSoon ? (
+          <Link
+            key={index}
+            href={item.href}
+            onClick={onItemClick}
+            className={cn(
+              "group flex w-full text-sm items-center focus:outline-transparent outline-none text-balance h-9 transition-colors rounded-md duration-200",
+              pathname === item.href
+                ? "text-foreground"
+                : "text-muted-foreground"
+            )}
+            target={item.external ? "_blank" : ""}
+            rel={item.external ? "noreferrer" : ""}
+          >
+            {item.title}
+            {item.label && <Badge className="ml-2" variant={item.label} />}
+          </Link>
+        ) : (
+          <span
+            key={index}
+            className={cn(
+              "flex w-full text-sm outline-none focus:outline-transparent items-center h-9 text-muted-foreground cursor-not-allowed text-balance "
+            )}
+          >
+            {item.title}
+            {item.label && <Badge className="ml-2" variant={item.label} />}
+          </span>
+        );
+      })}
+    </div>
+  ) : null;
+}
+
 export default function Header(): JSX.Element {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-sidebar-border backdrop-blur-md bg-third/70">
-      <div className={cn("mx-auto px-6 lg:px-8 max-w-6xl")}>
-        <div className="flex h-14 items-center pl-4 pr-3 w-full justify-between z-50 relative">
+      <div
+        className={cn(
+          "mx-auto px-6 lg:px-8",
+          pathname?.startsWith("/docs") ? "container" : "max-w-6xl"
+        )}
+      >
+        <div className="flex h-14 items-center w-full justify-between z-50 relative">
           {/*Large screen Nav*/}
           <div className="mr-4 hidden md:flex">
             <Link href="/" className="flex items-center gap-2 text-foreground">
@@ -87,7 +167,7 @@ export default function Header(): JSX.Element {
             </Link>
             <nav
               aria-label="Main navigation"
-              className="flex items-center gap-4 text-sm xl:gap-5"
+              className="flex items-center gap-4 text-[13px] xl:gap-5"
             >
               {links.map((link) => (
                 <Link
@@ -113,7 +193,7 @@ export default function Header(): JSX.Element {
 
           {/*Mobile nav*/}
           <div className="md:hidden flex gap-3">
-            <Sheet>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <button
                   aria-label="Open main menu"
@@ -141,7 +221,7 @@ export default function Header(): JSX.Element {
               </SheetTrigger>
               <SheetContent
                 side="left"
-                className="border-zinc-200 dark:border-zinc-800 z-50 pt-3 max-w-72 bg-white dark:bg-black"
+                className="border-border z-50 max-w-[17.5rem] sm:max-w-[17.5rem] bg-white dark:bg-black"
               >
                 <SheetHeader>
                   <SheetTitle className="sr-only">Main Menu</SheetTitle>
@@ -149,43 +229,91 @@ export default function Header(): JSX.Element {
                     Use the options below to navigate the application.
                   </SheetDescription>
                 </SheetHeader>
-                <div>
+                <div className="flex flex-col h-[calc(100vh)]">
                   <Link
                     href="/"
                     rel="prefetch"
-                    className="mr-4 flex items-center gap-2 lg:mr-6 text-foreground"
+                    className="flex items-center gap-2 text-foreground px-6 py-4"
+                    onClick={() => setIsOpen(false)}
                   >
                     <Logo />
                     <span className="font-bold pt-0.5 font-gilroy">
                       BadtzUI
                     </span>
                   </Link>
-                  <nav
-                    aria-label="Mobile navigation"
-                    className="flex flex-col space-y-3 mt-8"
-                  >
-                    {links.map((item) => (
-                      <MobileLink
-                        key={item.href}
-                        href={item.href}
-                        label={item.label}
-                      />
-                    ))}
-                  </nav>
+                  <div className="px-5 pb-4">
+                    <DocsSearchbar />
+                  </div>
+                  <ScrollArea className="flex-1 px-6">
+                    <nav
+                      aria-label="Mobile navigation"
+                      className="flex flex-col"
+                    >
+                      {links.map((item) => (
+                        <MobileLink
+                          key={item.href}
+                          href={item.href}
+                          label={item.label}
+                          onClick={() => setIsOpen(false)}
+                        />
+                      ))}
+                      {pathname?.startsWith("/docs") && (
+                        <div className="flex flex-col">
+                          {docsConfig.map(
+                            (item: DocCategory, index: number) => (
+                              <Collapsible
+                                key={index}
+                                className={cn("group/collapsible py-2")}
+                              >
+                                <div key={item.title}>
+                                  <div>
+                                    <CollapsibleTrigger className="flex w-full items-center justify-between text-sm">
+                                      <span className="whitespace-nowrap text-sm">
+                                        {item.title}
+                                      </span>
+                                      <ChevronDown
+                                        size={12}
+                                        className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180"
+                                      />
+                                    </CollapsibleTrigger>
+                                  </div>
+                                </div>
+                                <CollapsibleContent className="mt-2">
+                                  {item?.items?.length && (
+                                    <DocsSidebarNavItems
+                                      items={item.items}
+                                      pathname={pathname}
+                                      onItemClick={() => setIsOpen(false)}
+                                    />
+                                  )}
+                                </CollapsibleContent>
+                              </Collapsible>
+                            )
+                          )}
+                        </div>
+                      )}
+                    </nav>
+                  </ScrollArea>
                 </div>
               </SheetContent>
             </Sheet>
-            <Logo />
+            <Link href="/">
+              <Logo />
+            </Link>
           </div>
 
           <div className="flex items-center gap-2 text-sm font-light">
-            <div className="flex items-center gap-0.5">
-              <HomeSearchbar />
-              <ModeToggle />
-              <SocialButton srOnly="Twitter Link" src="https://x.com/badtz_ui">
-                <Icons.twitter />
-              </SocialButton>
-            </div>
+            {!pathname?.startsWith("/docs") && (
+              <div className="flex items-center gap-0.5">
+                <ModeToggle />
+                <SocialButton
+                  srOnly="Twitter Link"
+                  src="https://x.com/badtz_ui"
+                >
+                  <Icons.twitter />
+                </SocialButton>
+              </div>
+            )}
             <GithubButton />
           </div>
         </div>
