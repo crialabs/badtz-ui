@@ -509,6 +509,42 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "marquee",
+      "type": "registry:ui",
+      "title": "Marquee",
+      "description": "A dynamic and customizable sliding marquee component that enhances UI experiences with smooth scrolling animations.",
+      "tailwind": {
+        "config": {
+          "theme": {
+            "extend": {
+              "keyframes": {
+                "marquee-left": {
+                  "from": { "transform": "translateX(0)" },
+                  "to": { "transform": "translateX(calc(-100% - var(--gap)))" }
+                },
+                "marquee-right": {
+                  "from": {
+                    "transform": "translateX(calc(-100% - var(--gap)))"
+                  },
+                  "to": { "transform": "translateX(0)" }
+                }
+              },
+              "animation": {
+                "marquee-left": "marquee-left var(--duration, 30s) linear infinite",
+                "marquee-right": "marquee-right var(--duration, 30s) linear infinite"
+              }
+            }
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/components/marquee.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

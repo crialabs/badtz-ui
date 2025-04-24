@@ -188,6 +188,14 @@ const config: Config = {
           "0%": { backgroundPosition: "0 0" },
           "100%": { backgroundPosition: "var(--swipe-button-text-width) 0" },
         },
+        "marquee-left": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-right": {
+          from: { transform: "translateX(calc(-100% - var(--gap)))" },
+          to: { transform: "translateX(0)" },
+        },
       },
       animation: {
         "star-btn": "star-btn calc(var(--duration)*1s) linear infinite",
@@ -205,6 +213,8 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "swipe-button-text":
           "swipe-button-text 1.5s cubic-bezier(.4,0,.2,1) infinite",
+        "marquee-left": "marquee-left var(--duration, 30s) linear infinite",
+        "marquee-right": "marquee-right var(--duration, 30s) linear infinite",
       },
     },
   },

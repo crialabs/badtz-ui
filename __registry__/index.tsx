@@ -315,6 +315,18 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
+  },"marquee": {
+    name: "marquee",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/components/marquee")),
+    source: "",
+    files: [
+  "__registry__/components/components/marquee.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
   },"mouse-wave-scene": {
     name: "mouse-wave-scene",
     type: "components:ui",
@@ -659,6 +671,18 @@ export const Index: Record<string, RegistryItem> = {
     source: "",
     files: [
   "__registry__/components/demos/like-button-demo.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"marquee-demo": {
+    name: "marquee-demo",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/marquee-demo")),
+    source: "",
+    files: [
+  "__registry__/components/demos/marquee-demo.js"
 ],
     category: "undefined",
     subcategory: "undefined",
