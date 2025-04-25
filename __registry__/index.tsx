@@ -471,6 +471,18 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
+  },"fade-up-word": {
+    name: "fade-up-word",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/components/text-animations/fade-up-word")),
+    source: "",
+    files: [
+  "__registry__/components/components/text-animations/fade-up-word.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
   },"wrapper-3d": {
     name: "wrapper-3d",
     type: "components:ui",
@@ -587,6 +599,18 @@ export const Index: Record<string, RegistryItem> = {
     source: "",
     files: [
   "__registry__/components/demos/expandable-card-demo.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"fade-up-word-demo": {
+    name: "fade-up-word-demo",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/fade-up-word-demo")),
+    source: "",
+    files: [
+  "__registry__/components/demos/fade-up-word-demo.js"
 ],
     category: "undefined",
     subcategory: "undefined",

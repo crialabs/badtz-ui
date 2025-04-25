@@ -349,6 +349,19 @@
       ]
     },
     {
+      "name": "fade-up-word",
+      "type": "registry:ui",
+      "title": "Fade Up Word",
+      "description": "A text component that reveals its content with a smooth fade-up animation, activated by default when the text enters the viewport.",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "registry/components/text-animations/fade-up-word.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "gradient-slide-button",
       "type": "registry:ui",
       "title": "Gradient Slide Button",

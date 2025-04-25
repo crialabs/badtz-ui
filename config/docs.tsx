@@ -306,6 +306,11 @@ export const docsConfig: DocCategory[] = [
         href: "/docs/components/text-animations/blur-reveal",
         items: [],
       },
+      {
+        title: "Fade Up Word",
+        href: "/docs/components/text-animations/fade-up-word",
+        items: [],
+      },
     ],
   },
   {
