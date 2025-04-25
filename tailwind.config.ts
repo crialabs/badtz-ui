@@ -48,6 +48,11 @@ const config: Config = {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
+        doc: {
+          DEFAULT: "hsl(var(--doc-background))",
+          background: "hsl(var(--doc-background))",
+        },
+        "doc-background": "hsl(var(--doc-background))",
         destructiveForeground: "hsl(var(--destructive-foreground))",
         border: "hsl(var(--border))",
         "secondary-border": "hsl(var(--secondary-border))",
@@ -77,6 +82,7 @@ const config: Config = {
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
+          "muted-foreground": "hsl(var(--sidebar-muted-foreground))",
           primary: "hsl(var(--sidebar-primary))",
           "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
           accent: "hsl(var(--sidebar-accent))",

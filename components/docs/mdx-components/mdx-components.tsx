@@ -173,7 +173,7 @@ const components = {
   tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
     <tr
       className={cn(
-        "last:border-b-none m-0 border-b even:bg-secondary",
+        "last:border-b-none m-0 border-b even:bg-sidebar",
         className
       )}
       {...props}
@@ -235,7 +235,7 @@ const components = {
       <>
         <pre
           className={cn(
-            "max-h-[650px] overflow-x-auto rounded-md bg-zinc-950 dark:bg-zinc-900 mb-4 py-4",
+            "max-h-[650px] overflow-x-auto rounded-md bg-zinc-950 dark:bg-sidebar mb-4 py-4",
             isInsideComponentSource ? "" : "mt-6",
             className
           )}

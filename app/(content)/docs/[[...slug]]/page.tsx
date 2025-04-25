@@ -12,11 +12,6 @@ import type { Metadata } from "next";
 import "@/styles/mdx.css";
 import { badgeVariants } from "@/components/ui/badge-shadcn";
 import DocsCta from "@/components/docs/doc-cta";
-import {
-  ReportBugButton,
-  RequestComponentButton,
-  EditPageButton,
-} from "@/components/docs/actions-button";
 
 interface DocPageProps {
   params: {
@@ -116,7 +111,7 @@ export default async function DocPage({ params }: DocPageProps) {
   };
 
   return (
-    <main className="relative pt-6 lg:pt-8 pb-6 lg:gap-10 lg:pb-8 xl:grid xl:grid-cols-[1fr_300px] px-6 lg:px-8 ">
+    <main className="relative bg-doc-background pt-6 lg:pt-16 pb-6 lg:gap-10 lg:pb-8 xl:grid xl:grid-cols-[1fr_300px] px-6 lg:px-8 lg:pr-0 [&_p]:text-[15px]">
       <div className="mx-auto w-full min-w-0 max-w-2xl">
         <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
           <div className="truncate">Docs</div>
@@ -196,7 +191,7 @@ export default async function DocPage({ params }: DocPageProps) {
         <DocsPager doc={doc} />
       </div>
       <div className="hidden text-sm xl:block">
-        <div className="sticky top-14 -mt-6 h-[calc(100vh-3.5rem)] pt-4">
+        <div className="sticky top-10 -mt-6 h-[calc(100vh-3.5rem)] pt-4">
           <DocsCta />
           <div className="h-full overflow-auto pb-10 pt-4 px-1.5">
             {doc.toc && <DashboardTableOfContents toc={toc} />}

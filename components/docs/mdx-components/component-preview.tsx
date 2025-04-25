@@ -165,8 +165,8 @@ export function ComponentPreview({
           </div>
         </TabsContent>
         <TabsContent value="code">
-          <div className="relative max-h-[650px] overflow-x-auto rounded-md bg-zinc-950 dark:bg-zinc-900 text-white">
-            <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-950 dark:bg-zinc-900 px-3 py-2.5">
+          <div className="relative max-h-[650px] overflow-x-auto rounded-md bg-zinc-950 dark:bg-sidebar text-white">
+            <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-950 dark:bg-sidebar px-3 py-2.5">
               <div className="flex items-center gap-2.5 ml-0.5">
                 {currentLanguage === "typescript" ? (
                   <div className="bg-white rounded-lg">

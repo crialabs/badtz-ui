@@ -9,7 +9,7 @@ export default function DocsCta({ className }: { className?: string }) {
       href="https://pro.badtz-ui.com"
       target="_blank"
       className={cn(
-        "border border-sidebar-border bg-background rounded-lg flex max-w-[240px] group/cta ",
+        "border border-sidebar-border bg-white dark:bg-sidebar rounded-md flex max-w-[240px] group/cta ",
         className
       )}
     >
@@ -17,14 +17,14 @@ export default function DocsCta({ className }: { className?: string }) {
         eventName="Clicked on Pro From Doc"
         className="flex flex-col items-start justify-start text-left p-4 "
       >
-        <h3 className="text-base/[22px] tracking-tight text-balance font-semibold">
+        <h3 className="text-base text-sidebar-primary-foreground tracking-tight text-balance font-medium">
           Build stunning websites even faster.
         </h3>
-        <p className="text-sm text-muted-foreground mt-3 mb-6">
+        <p className="!text-[13.5px] text-sidebar-muted-foreground mt-4 mb-6">
           Get BadtzUI Pro and access over 70+ prebuilt templates, blocks, and
           sections for React.
         </p>
-        <span className="h-8 flex items-center text-xs w-full justify-center whitespace-nowrap rounded-md font-medium px-3 bg-gradient-to-t from-blue-600 to-blue-500 text-white relative before:absolute before:inset-0 before:shadow-[0_0px_20px_rgba(25,_148,_255,_0.4)] before:opacity-0 transition-opacity duration-300 group-hover/cta:before:opacity-100 before:rounded-[inherit] before:pointer-events-none before:transition-opacity before:duration-300 before:will-change-opacity after:inset-0 after:absolute after:shadow-[rgba(255,_255,_255,_0.2)_0px_1px_0px_inset] after:rounded-[inherit] [&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0 gap-2 ">
+        <span className="h-8 flex items-center text-[13px] w-full justify-center whitespace-nowrap rounded-md font-medium px-3 bg-accent hover:bg-[#6370c8] border border-[#6370c8] text-white transition-colors duration-200 relative gap-2 [&_svg]:mb-[1.5px] [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0">
           BadtzUI Pro <ExternalLinkIcon aria-hidden="true" />
         </span>
       </PlausibleButton>
