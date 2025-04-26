@@ -38,7 +38,7 @@ export function UtilsSource({
         extractedText += child;
       } else if (React.isValidElement(child) && child.props.children) {
         extractedText += extractTextFromChildren(
-          React.Children.toArray(child.props.children),
+          React.Children.toArray(child.props.children)
         );
       }
     });
@@ -48,10 +48,10 @@ export function UtilsSource({
   const codeBlocks = React.useMemo(() => {
     const parsedChildren = React.Children.toArray(children);
     const jsCode = parsedChildren.find(
-      (child) => (child as any)?.props?.slot === "javascript",
+      (child) => (child as any)?.props?.slot === "javascript"
     );
     const tsCode = parsedChildren.find(
-      (child) => (child as any)?.props?.slot === "typescript",
+      (child) => (child as any)?.props?.slot === "typescript"
     );
 
     return {
@@ -75,8 +75,8 @@ export function UtilsSource({
       className={cn("group relative my-4 flex flex-col space-y-2", className)}
       {...props}
     >
-      <div className="relative max-h-[650px] overflow-x-auto rounded-md bg-zinc-950 dark:bg-zinc-900 text-white">
-        <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-950 dark:bg-zinc-900 px-3 py-2.5">
+      <div className="relative max-h-[650px] overflow-x-auto rounded-md bg-zinc-950 dark:bg-sidebar text-white">
+        <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-950 dark:bg-sidebar px-3 py-2.5">
           <div className="flex items-center gap-2.5 ml-0.5">
             {currentLanguage === "typescript" ? (
               <div className="bg-white rounded-lg">

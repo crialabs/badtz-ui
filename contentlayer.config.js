@@ -211,7 +211,8 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: "github-dark-default",
+          //theme: "github-dark-default",
+          theme: "vitesse-dark",
           getHighlighter,
           onVisitLine(node) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty

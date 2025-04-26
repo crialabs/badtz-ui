@@ -8,347 +8,336 @@ description: A dynamic button that animates on hover, where each letter of the t
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
   description="A dynamic button that animates on hover, where each letter of the text flips in 3D with a staggered effect."
 >
-<Highlighter slot="javascript">
-```jsx
-import { StaggerButton } from "@/components/ui/stagger-button";
+  <Highlighter slot="javascript">
+    ```jsx
+    import { StaggerButton } from "@/components/ui/stagger-button";
 
-export default function StaggerButtonDemo() {
-  return (
-    <div className="flex items-center justify-center">
-      <StaggerButton>Hover Me</StaggerButton>
-    </div>
-  );
-}
-```
-</Highlighter>
-<Highlighter slot="typescript">
-```tsx
-import { StaggerButton } from "@/components/ui/stagger-button";
+    export default function StaggerButtonDemo() {
+      return (
+        <div className="flex items-center justify-center">
+          <StaggerButton>Hover Me</StaggerButton>
+        </div>
+      );
+    }
+    ```
+  </Highlighter>
+  <Highlighter slot="typescript">
+    ```tsx
+    import { StaggerButton } from "@/components/ui/stagger-button";
 
-export default function StaggerButtonDemo() {
-  return (
-    <div className="flex items-center justify-center">
-      <StaggerButton>Hover Me</StaggerButton>
-    </div>
-  );
-}
-```
-</Highlighter>
+    export default function StaggerButtonDemo() {
+      return (
+        <div className="flex items-center justify-center">
+          <StaggerButton>Hover Me</StaggerButton>
+        </div>
+      );
+    }
+    ```
+  </Highlighter>
 </ComponentPreview>
 
 ## Installation
 
 <Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
 
-<TabsList>
-  <TabsTrigger value="cli">CLI</TabsTrigger>
-  <TabsTrigger value="manual">Manual</TabsTrigger>
-</TabsList>
+  <TabsContent value="cli">
+    ```bash
+    npx shadcn@latest add https://badtz-ui.com/r/stagger-button.json
+    ```
+  </TabsContent>
 
-<TabsContent value="cli">
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Install the following dependencies:</Step>
 
-```bash
-npx shadcn@latest add https://badtz-ui.com/r/stagger-button.json
-```
+      ```bash
+      npm install clsx tailwind-merge framer-motion
+      ```
 
-</TabsContent>
+      <Step>Add the <Kbd>utils</Kbd> file to the <Kbd>@/lib</Kbd> folder</Step>
 
-<TabsContent value="manual">
+      <UtilsSource>
+        <Highlighter slot="javascript">
+          ```jsx
+          import { clsx } from "clsx";
+          import { twMerge } from "tailwind-merge";
 
-<Steps>
+          export function cn(...inputs) {
+            return twMerge(clsx(inputs));
+          }
+          ```
+        </Highlighter>
+        <Highlighter slot="typescript">
+          ```tsx
+          import { ClassValue, clsx } from "clsx";
+          import { twMerge } from "tailwind-merge";
 
-<Step>Install the following dependencies:</Step>
+          export function cn(...inputs: ClassValue[]) {
+            return twMerge(clsx(inputs));
+          }
+          ```
+        </Highlighter>
+      </UtilsSource>
 
-```bash
-npm install clsx tailwind-merge framer-motion
-```
+      <Step>Copy and paste the <Kbd>stagger-button</Kbd> code into your project.</Step>
 
-<Step>Add the utils file to the `@/lib` folder</Step>
+      <ComponentSource name="stagger-button">
+        <Highlighter slot="javascript">
+          ```jsx
+          "use client";
 
-<UtilsSource>
-<Highlighter slot="javascript">
-```jsx
-import { clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+          import React, { useState, useEffect } from "react";
+          import { stagger, useAnimate } from "framer-motion";
+          import { cn } from "@/lib/utils";
 
-export function cn(...inputs) {
-  return twMerge(clsx(inputs));
-}
-```
-</Highlighter>
-<Highlighter slot="typescript">
-```tsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+          export function StaggerButton({
+            className,
+            children,
+            duration = 0.2,
+            staggerDelay = 0.05,
+            height = 26,
+            ...props
+          }) {
+            const [scope, animate] = useAnimate();
+            const [isHovered, setIsHovered] = useState(false);
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-```
-</Highlighter>
-</UtilsSource>
+            const onMouseEnter = () => setIsHovered(true);
+            const onMouseLeave = () => setIsHovered(false);
 
-<Step>Copy and paste the `stagger-button` code into your project.</Step>
+            useEffect(() => {
+              const animationConfig = isHovered
+                ? [
+                    [
+                      ".letter",
+                      { rotateX: 90 },
+                      { duration, delay: stagger(staggerDelay) },
+                    ],
+                    [
+                      ".letter::after",
+                      { rotateX: 90 },
+                      { duration, delay: stagger(staggerDelay) },
+                    ],
+                  ]
+                : [
+                    [
+                      ".letter",
+                      { rotateX: 0 },
+                      { duration, delay: stagger(staggerDelay) },
+                    ],
+                    [
+                      ".letter::after",
+                      { rotateX: -90 },
+                      { duration, delay: stagger(staggerDelay) },
+                    ],
+                  ];
+              animate(animationConfig);
+            }, [isHovered, animate, duration, staggerDelay]);
 
-<ComponentSource
-  name="stagger-button"
->
-<Highlighter slot="javascript">
-```jsx
-"use client";
+            const lettersArray = children?.toString().split("") || [];
 
-import React, { useState, useEffect } from "react";
-import { stagger, useAnimate } from "framer-motion";
-import { cn } from "@/lib/utils";
+            return (
+              <div
+                ref={scope}
+                style={{
+                  "--height": `${height}px`,
+                  perspective: "1000px",
+                }}
+              >
+                <button
+                  onMouseEnter={onMouseEnter}
+                  onMouseLeave={onMouseLeave}
+                  className={cn(
+                    "relative bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+                    className
+                  )}
+                  {...props}
+                >
+                  <span className="sr-only">{children}</span>
+                  <span
+                    aria-hidden
+                    className="h-[--height] overflow-hidden flex items-center justify-center relative"
+                  >
+                    {lettersArray.map((letter, index) => (
+                      <span
+                        style={{
+                          transformStyle: "preserve-3d",
+                          transition: `transform cubic-bezier(0.3, 0.65, 0.4, 1)`,
+                        }}
+                        data-letter={letter}
+                        key={`${letter}-${index}`}
+                        className="letter inline-block h-[--height] leading-[--height]"
+                      >
+                        <span className="opacity-0">{letter === " " ? " " : letter}</span>
+                      </span>
+                    ))}
+                    <style jsx>{`
+                      .letter::before {
+                        content: attr(data-letter);
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        transform: rotateX(0deg) translateZ(calc(var(--height) / 2));
+                      }
+                      .letter::after {
+                        content: attr(data-letter);
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        transform: rotateX(-90deg) translateZ(calc(var(--height) / 2));
+                      }
+                    `}</style>
+                  </span>
+                </button>
+              </div>
+            );
+          }
+          ```
+        </Highlighter>
+        <Highlighter slot="typescript">
+          ```tsx
+          "use client";
 
-export function StaggerButton({
-  className,
-  children,
-  duration = 0.2,
-  staggerDelay = 0.05,
-  height = 26,
-  ...props
-}) {
-  const [scope, animate] = useAnimate();
-  const [isHovered, setIsHovered] = useState(false);
+          import React, { useState, useEffect, ReactNode, CSSProperties } from "react";
+          import { stagger, useAnimate } from "framer-motion";
+          import { cn } from "@/lib/utils";
 
-  const onMouseEnter = () => setIsHovered(true);
-  const onMouseLeave = () => setIsHovered(false);
+          interface StaggerButtonProps
+            extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+            className?: string;
+            children: ReactNode;
+            duration?: number;
+            staggerDelay?: number;
+            height?: number;
+          }
 
-  useEffect(() => {
-    const animationConfig = isHovered
-      ? [
-          [
-            ".letter",
-            { rotateX: 90 },
-            { duration, delay: stagger(staggerDelay) },
-          ],
-          [
-            ".letter::after",
-            { rotateX: 90 },
-            { duration, delay: stagger(staggerDelay) },
-          ],
-        ]
-      : [
-          [
-            ".letter",
-            { rotateX: 0 },
-            { duration, delay: stagger(staggerDelay) },
-          ],
-          [
-            ".letter::after",
-            { rotateX: -90 },
-            { duration, delay: stagger(staggerDelay) },
-          ],
-        ];
-    animate(animationConfig);
-  }, [isHovered, animate, duration, staggerDelay]);
+          export function StaggerButton({
+            className,
+            children,
+            duration = 0.2,
+            staggerDelay = 0.05,
+            height = 26,
+            ...props
+          }: StaggerButtonProps) {
+            const [scope, animate] = useAnimate();
+            const [isHovered, setIsHovered] = useState<boolean>(false);
 
-  const lettersArray = children?.toString().split("") || [];
+            const onMouseEnter = () => {
+              setIsHovered(true);
+            };
 
-  return (
-    <div
-      ref={scope}
-      style={{
-        "--height": `${height}px`,
-        perspective: "1000px",
-      }}
-    >
-      <button
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        className={cn(
-          "relative bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
-          className
-        )}
-        {...props}
-      >
-        <span className="sr-only">{children}</span>
-        <span
-          aria-hidden
-          className="h-[--height] overflow-hidden flex items-center justify-center relative"
-        >
-          {lettersArray.map((letter, index) => (
-            <span
-              style={{
-                transformStyle: "preserve-3d",
-                transition: `transform cubic-bezier(0.3, 0.65, 0.4, 1)`,
-              }}
-              data-letter={letter}
-              key={`${letter}-${index}`}
-              className="letter inline-block h-[--height] leading-[--height]"
-            >
-              <span className="opacity-0">{letter === " " ? " " : letter}</span>
-            </span>
-          ))}
-          <style jsx>{`
-            .letter::before {
-              content: attr(data-letter);
-              position: absolute;
-              left: 0;
-              top: 0;
-              transform: rotateX(0deg) translateZ(calc(var(--height) / 2));
-            }
-            .letter::after {
-              content: attr(data-letter);
-              position: absolute;
-              left: 0;
-              top: 0;
-              transform: rotateX(-90deg) translateZ(calc(var(--height) / 2));
-            }
-          `}</style>
-        </span>
-      </button>
-    </div>
-  );
-}
-```
-</Highlighter>
-<Highlighter slot="typescript">
-```tsx
-"use client";
+            const onMouseLeave = () => {
+              setIsHovered(false);
+            };
 
-import React, { useState, useEffect, ReactNode, CSSProperties } from "react";
-import { stagger, useAnimate } from "framer-motion";
-import { cn } from "@/lib/utils";
+            useEffect(() => {
+              if (isHovered) {
+                animate([
+                  [
+                    ".letter",
+                    {
+                      rotateX: 90,
+                    },
+                    { duration, delay: stagger(staggerDelay) },
+                  ],
+                  [
+                    ".letter::after",
+                    {
+                      rotateX: 90,
+                    },
+                    { duration, delay: stagger(staggerDelay) },
+                  ],
+                ]);
+              } else {
+                animate([
+                  [
+                    ".letter",
+                    {
+                      rotateX: 0,
+                    },
+                    { duration, delay: stagger(staggerDelay) },
+                  ],
+                  [
+                    ".letter::after",
+                    {
+                      rotateX: -90,
+                    },
+                    { duration, delay: stagger(staggerDelay) },
+                  ],
+                ]);
+              }
+            }, [isHovered, animate, duration, staggerDelay]);
 
-interface StaggerButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
-  children: ReactNode;
-  duration?: number;
-  staggerDelay?: number;
-  height?: number;
-}
+            const lettersArray = children?.toString().split("") || [];
 
-export function StaggerButton({
-  className,
-  children,
-  duration = 0.2,
-  staggerDelay = 0.05,
-  height = 26,
-  ...props
-}: StaggerButtonProps) {
-  const [scope, animate] = useAnimate();
-  const [isHovered, setIsHovered] = useState<boolean>(false);
+            return (
+              <div
+                ref={scope}
+                style={
+                  {
+                    "--height": `${height}px`,
+                    perspective: "1000px",
+                  } as CSSProperties
+                }
+              >
+                <button
+                  onMouseEnter={onMouseEnter}
+                  onMouseLeave={onMouseLeave}
+                  className={cn(
+                    "relative bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+                    className
+                  )}
+                  {...props}
+                >
+                  <span className="sr-only">{children}</span>
+                  <span
+                    aria-hidden
+                    className="h-[--height] overflow-hidden flex items-center justify-center relative"
+                  >
+                    {lettersArray.map((letter, index) => (
+                      <span
+                        style={{
+                          transformStyle: "preserve-3d",
+                          transition: `transform cubic-bezier(0.3, 0.65, 0.4, 1)`,
+                        }}
+                        data-letter={letter}
+                        key={`${letter}-${index}`}
+                        className="letter inline-block h-[--height] leading-[--height]"
+                      >
+                        <span className="opacity-0">{letter === " " ? " " : letter}</span>
+                      </span>
+                    ))}
+                    <style jsx>{`
+                      .letter::before {
+                        content: attr(data-letter);
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        transform: rotateX(0deg) translateZ(calc(var(--height) / 2));
+                      }
+                      .letter::after {
+                        content: attr(data-letter);
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        transform: rotateX(-90deg) translateZ(calc(var(--height) / 2));
+                      }
+                    `}</style>
+                  </span>
+                </button>
+              </div>
+            );
+          }
+          ```
+        </Highlighter>
+      </ComponentSource>
 
-  const onMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const onMouseLeave = () => {
-    setIsHovered(false);
-  };
-
-  useEffect(() => {
-    if (isHovered) {
-      animate([
-        [
-          ".letter",
-          {
-            rotateX: 90,
-          },
-          { duration, delay: stagger(staggerDelay) },
-        ],
-        [
-          ".letter::after",
-          {
-            rotateX: 90,
-          },
-          { duration, delay: stagger(staggerDelay) },
-        ],
-      ]);
-    } else {
-      animate([
-        [
-          ".letter",
-          {
-            rotateX: 0,
-          },
-          { duration, delay: stagger(staggerDelay) },
-        ],
-        [
-          ".letter::after",
-          {
-            rotateX: -90,
-          },
-          { duration, delay: stagger(staggerDelay) },
-        ],
-      ]);
-    }
-  }, [isHovered, animate, duration, staggerDelay]);
-
-  const lettersArray = children?.toString().split("") || [];
-
-  return (
-    <div
-      ref={scope}
-      style={
-        {
-          "--height": `${height}px`,
-          perspective: "1000px",
-        } as CSSProperties
-      }
-    >
-      <button
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        className={cn(
-          "relative bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
-          className
-        )}
-        {...props}
-      >
-        <span className="sr-only">{children}</span>
-        <span
-          aria-hidden
-          className="h-[--height] overflow-hidden flex items-center justify-center relative"
-        >
-          {lettersArray.map((letter, index) => (
-            <span
-              style={{
-                transformStyle: "preserve-3d",
-                transition: `transform cubic-bezier(0.3, 0.65, 0.4, 1)`,
-              }}
-              data-letter={letter}
-              key={`${letter}-${index}`}
-              className="letter inline-block h-[--height] leading-[--height]"
-            >
-              <span className="opacity-0">{letter === " " ? " " : letter}</span>
-            </span>
-          ))}
-          <style jsx>{`
-            .letter::before {
-              content: attr(data-letter);
-              position: absolute;
-              left: 0;
-              top: 0;
-              transform: rotateX(0deg) translateZ(calc(var(--height) / 2));
-            }
-            .letter::after {
-              content: attr(data-letter);
-              position: absolute;
-              left: 0;
-              top: 0;
-              transform: rotateX(-90deg) translateZ(calc(var(--height) / 2));
-            }
-          `}</style>
-        </span>
-      </button>
-    </div>
-  );
-}
-```
-
-</Highlighter>
-</ComponentSource>
-
-<Step>Update the import paths to match your project setup.</Step>
-
-</Steps>
-
-</TabsContent>
-
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
 </Tabs>
 
 ## Usage
@@ -365,12 +354,12 @@ import { StaggerButton } from "@/components/ui/stagger-button";
 
 ## Props
 
-`StaggerButton` props.
+<Kbd>StaggerButton</Kbd> props.
 
 | Prop          | Type     | Description                                                                 | Default  |
 | ------------- | -------- | --------------------------------------------------------------------------- | -------- |
-| `children`    | `ReactNode` | The text or elements to display and animate inside the button.              | -        |
-| `className`   | `string` | Additional custom classes for styling.                                      | -        |
-| `duration`    | `number` | Duration of the animation for each character flip (in seconds).             | `0.2`    |
-| `staggerDelay`| `number` | Delay between the animations of each character (in seconds).                | `0.05`   |
-| `height`      | `number` | The height of the button, affecting the 3D flip effect.                     | `26`     |
+| children      | <Kbd>ReactNode</Kbd> | The text or elements to display and animate inside the button.              | -        |
+| className     | <Kbd>string</Kbd> | Additional custom classes for styling.                                      | -        |
+| duration      | <Kbd>number</Kbd> | Duration of the animation for each character flip (in seconds).             | 0.2    |
+| staggerDelay  | <Kbd>number</Kbd> | Delay between the animations of each character (in seconds).                | 0.05   |
+| height        | <Kbd>number</Kbd> | The height of the button, affecting the 3D flip effect.                     | 26     |

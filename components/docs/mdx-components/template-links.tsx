@@ -18,7 +18,7 @@ export function TemplateLinks({ previewLink, pageLink }: TemplateLinksProps) {
       >
         <PlausibleButton
           eventName="PreviewMappl"
-          className="w-full border bg-muted/50 hover:bg-muted/30 rounded-lg transition-colors duration-300 h-9 text-sm font-medium"
+          className="w-full border bg-sidebar hover:bg-sidebar/50 rounded-md transition-colors duration-300 h-9 text-sm font-medium"
         >
           <span>Preview Template</span>
         </PlausibleButton>
@@ -26,7 +26,7 @@ export function TemplateLinks({ previewLink, pageLink }: TemplateLinksProps) {
       <Link target="_blank" href={pageLink} className="w-full">
         <PlausibleButton
           eventName="ClickedOnProFromMappl"
-          className="w-full bg-foreground hover:bg-foreground/90 text-background rounded-lg transition-colors duration-300 h-9 text-sm font-medium"
+          className="w-full bg-sidebar-foreground hover:bg-sidebar-foreground/90 text-background rounded-md transition-colors duration-300 h-9 text-sm font-medium"
         >
           <span>Get Template</span>
         </PlausibleButton>

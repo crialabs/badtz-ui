@@ -42,6 +42,7 @@ import {
   EmojiIdea,
 } from "@/components/docs/mdx-components/mdx-emoji";
 import { TemplateLinks } from "@/components/docs/mdx-components/template-links";
+import { Kbd } from "@/components/docs/mdx-components/kbd";
 
 const components = {
   Accordion,
@@ -61,6 +62,7 @@ const components = {
   MdxLink,
   MdxVideo,
   TemplateLinks,
+  Kbd,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
@@ -73,7 +75,7 @@ const components = {
   h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
       className={cn(
-        "font-heading mt-12 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0 font-gilroy",
+        "font-heading mt-12 scroll-m-20 border-b pb-2 font-gilroy text-2xl font-semibold tracking-tight first:mt-0 ",
         className
       )}
       {...props}
@@ -124,7 +126,7 @@ const components = {
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
       className={cn(
-        "leading-7 [&:not(:first-child)]:mt-6 text-muted-foreground",
+        "leading-7 text-[15px] [&:not(:first-child)]:mt-4 text-muted-foreground",
         className
       )}
       {...props}
@@ -144,7 +146,10 @@ const components = {
   ),
   blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <blockquote
-      className={cn("mt-6 border-l-2 pl-6 italic", className)}
+      className={cn(
+        "mt-6 bg-sidebar border-border-sidebar border rounded-lg py-4 px-6 italic",
+        className
+      )}
       {...props}
     />
   ),
@@ -173,7 +178,7 @@ const components = {
   tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
     <tr
       className={cn(
-        "last:border-b-none m-0 border-b even:bg-secondary",
+        "last:border-b-none m-0 border-b even:bg-sidebar",
         className
       )}
       {...props}
@@ -235,7 +240,7 @@ const components = {
       <>
         <pre
           className={cn(
-            "max-h-[650px] overflow-x-auto rounded-md bg-zinc-950 dark:bg-zinc-900 mb-4 py-4",
+            "max-h-[650px] overflow-x-auto rounded-md bg-zinc-950 dark:bg-sidebar mb-4 py-4",
             isInsideComponentSource ? "" : "mt-6",
             className
           )}

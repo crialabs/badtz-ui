@@ -1,25 +1,27 @@
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { DocNav } from "@/components/docs/doc-nav";
 import { docsConfig } from "@/config/docs";
-import { MobileDocHeader } from "@/components/docs/mobile-doc-header";
-import Marketing from "@/components/marketing";
 import Header from "@/components/header";
+import { DocHeader } from "@/components/docs/doc-header";
 
 export default function DocsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div className="bg-third">
-      <Header />
+  const navItems = docsConfig.map((category) => ({
+    ...category,
+    href: `#${category.title.toLowerCase().replace(/\s+/g, "-")}`,
+    items: category.items.map((item) => ({
+      ...item,
+      href: item.href,
+      items: item.items || [],
+    })),
+  }));
 
-      <div className="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10 bg-third">
-        <aside className="border-grid fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 border-r md:sticky md:block">
-          <DocNav items={docsConfig} />
-        </aside>
-        {children}
-      </div>
+  return (
+    <div className="bg-doc-background">
+      <DocNav items={navItems}>{children}</DocNav>
     </div>
   );
 }

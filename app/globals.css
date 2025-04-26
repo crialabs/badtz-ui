@@ -16,12 +16,12 @@
     --secondary-foreground: 0 0% 9%;
     --third: 0 0% 96%;
     --muted: 240 24% 93%;
-    --muted-foreground: 0 0% 45%;
-    --accent: 220 91% 54%;
+    --muted-foreground: 217 10% 26%;
+    --accent: 234 55% 63%;
     --accent-foreground: 220 41% 90%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 90%;
+    --border: 0 0% 86%;
     --secondary-border: 240 8% 95%;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
@@ -32,13 +32,15 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --sidebar-background: 0 0% 95%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 0 0% 90%;
-    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-foreground: 230 1.85% 18.3%;
+    --sidebar-muted-foreground: 230.2 1% 35.27%;
+    --sidebar-primary: 0 0% 91%;
+    --sidebar-primary-foreground: 0 0% 0%;
     --sidebar-accent: 0 0% 93%;
     --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 0 0% 90%;
+    --sidebar-border: 0 0% 86%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --doc-background: 0 0% 99%;
   }
 
   .dark {
@@ -54,12 +56,12 @@
     --secondary-foreground: 0 0% 98%;
     --third: 0 0% 4%;
     --muted: 225 6% 14%;
-    --muted-foreground: 0 0% 72%;
-    --accent: 217 92% 76%;
+    --muted-foreground: 217 21% 80%;
+    --accent: 234 55% 63%;
     --accent-foreground: 217 92% 76%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14%;
+    --border: 223 9% 15%;
     --secondary-border: 206 8% 17%;
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
@@ -68,14 +70,16 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --sidebar-background: 0 0% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 0 0% 17%;
+    --sidebar-background: 240 6% 7%;
+    --sidebar-foreground: 220.25 5% 89.4%;
+    --sidebar-muted-foreground: 220.3 1.18% 58.6%;
+    --sidebar-primary: 228 8% 13%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 14%;
+    --sidebar-accent: 228 8% 13%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 0 0% 14%;
+    --sidebar-border: 223 9% 15%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --doc-background: 0 0% 4%;
   }
 }
 
@@ -95,8 +99,8 @@ strong {
   }
   body {
     @apply bg-background text-foreground overscroll-none;
-    font-synthesis-weight: none;
-    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     height: 100%;
   }
 
@@ -107,18 +111,18 @@ strong {
   }
 
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 4px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--border));
+    background: hsl(var(--sidebar-primary));
     border-radius: 5px;
   }
   * {
     scrollbar-width: thin;
-    scrollbar-color: hsl(var(--border)) transparent;
+    scrollbar-color: hsl(var(--sidebar-primary)) transparent;
   }
 }
 

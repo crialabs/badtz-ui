@@ -80,11 +80,11 @@ export function ComponentSource({
     <Collapsible open={isExpanded} onOpenChange={setIsExpanded}>
       <div
         className={cn(
-          "relative max-h-[650px] overflow-hidden rounded-md bg-zinc-950 dark:bg-zinc-900 text-white",
+          "relative max-h-[650px] overflow-hidden rounded-md bg-zinc-950 dark:bg-sidebar text-white",
           className
         )}
       >
-        <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-950 dark:bg-zinc-900 px-3 py-2.5">
+        <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-950 dark:bg-sidebar px-3 py-2.5">
           <div className="flex items-center gap-2.5 ml-0.5">
             {currentLanguage === "typescript" ? (
               <div className="bg-white rounded-lg">
@@ -93,7 +93,7 @@ export function ComponentSource({
             ) : (
               <SiJavascript className="text-[#f0dc4e]" size={14} />
             )}
-            <p className="text-sm">
+            <p className="!text-sm">
               {name}.{currentLanguage === "typescript" ? "tsx" : "jsx"}
             </p>
           </div>
@@ -139,7 +139,7 @@ export function ComponentSource({
           )}
         >
           <ComponentSourceContext.Provider value={true}>
-            <div className="w-full rounded-md bg-zinc-950 dark:bg-zinc-900">
+            <div className="w-full rounded-md bg-zinc-950 dark:bg-sidebar">
               {currentLanguage === "typescript"
                 ? codeBlocks.typescript.element
                 : codeBlocks.javascript.element}
@@ -148,7 +148,7 @@ export function ComponentSource({
         </CollapsibleContent>
         <div
           className={cn(
-            "absolute pointer-events-none flex items-center justify-center inset-x-0 bottom-0 bg-gradient-to-b from-transparent to-zinc-950 dark:to-zinc-900",
+            "absolute pointer-events-none flex items-center justify-center inset-x-0 bottom-0 bg-gradient-to-b from-transparent to-zinc-950 dark:to-sidebar",
             isExpanded ? "h-24" : "h-[250px]"
           )}
         >

@@ -13,7 +13,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Ellipsis } from "lucide-react";
+import { ChevronDown, HeartHandshake } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
@@ -26,12 +26,14 @@ export function DocDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="h-8 w-8 hover:bg-sidebar-accent transition-colors flex items-center justify-center rounded-md [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 text-foreground bg-transparent shadow-none">
-          <Ellipsis />
+        <Button className="h-[30px] px-2 border border-sidebar-border text-[13.5px] font-medium !text-sidebar-primary-foreground bg-doc-background hover:bg-transparent dark:hover:bg-sidebar-primary transition-colors flex items-center justify-center rounded-md [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 shadow-none group/contribute">
+          <HeartHandshake className="group-hover/contribute:animate-handshake text-sidebar-muted-foreground group-hover/contribute:text-sidebar-primary-foreground transition-colors" />
+          <span className="lg:pt-[2px]">Contribute</span>
+          <ChevronDown className="ml-1 text-sidebar-muted-foreground group-hover/contribute:text-sidebar-primary-foreground transition-colors" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="w-56 bg-background border-sidebar-border mb-4 shadow-sm"
+        className="w-56 border-sidebar-border mb-4 shadow-sm mr-2"
         align="start"
       >
         <DropdownMenuGroup>
