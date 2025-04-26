@@ -1,8 +1,8 @@
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { DocNav } from "@/components/docs/doc-nav";
 import { docsConfig } from "@/config/docs";
-import Header from "@/components/header";
-import { DocHeader } from "@/components/docs/doc-header";
+
+import { BookmarksWrapper } from "@/components/docs/bookmarks-wrapper";
 
 export default function DocsLayout({
   children,
@@ -20,8 +20,10 @@ export default function DocsLayout({
   }));
 
   return (
-    <div className="bg-doc-background">
-      <DocNav items={navItems}>{children}</DocNav>
-    </div>
+    <BookmarksWrapper>
+      <div className="bg-doc-background">
+        <DocNav items={navItems}>{children}</DocNav>
+      </div>
+    </BookmarksWrapper>
   );
 }

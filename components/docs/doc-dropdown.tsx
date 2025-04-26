@@ -66,7 +66,7 @@ export function DocDropdown() {
           </DropdownMenuSub>
           <DropdownMenuItem asChild>
             <Link
-              href="https://github.com/badtzx0/badtz-ui"
+              href="https://github.com/badtzx0/badtz-ui/discussions/categories/component-suggestions"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -75,7 +75,7 @@ export function DocDropdown() {
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link
-              href="https://github.com/badtzx0/badtz-ui"
+              href="https://github.com/badtzx0/badtz-ui/discussions/categories/bug-reports"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -84,7 +84,7 @@ export function DocDropdown() {
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link
-              href="https://github.com/badtzx0/badtz-ui"
+              href="https://github.com/badtzx0/badtz-ui/discussions/categories/general"
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -27,6 +27,7 @@ import { docsConfig, type DocCategory, type DocItem } from "@/config/docs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { DocsSearchbar } from "@/components/docs/doc-searchbar";
 import { TriangleDownIcon } from "@radix-ui/react-icons";
+import { BookmarksNav } from "@/components/docs/bookmarks-nav";
 
 interface MobileLinkProps {
   href: string;
@@ -190,6 +191,7 @@ export function MobileDocHeader({
               <ScrollArea className="flex-1 overflow-auto w-[246px]">
                 <div className="pb-6 pt-4 pr-6 pl-3">
                   <nav aria-label="Documentation navigation">
+                    <BookmarksNav />
                     {items.map((item, index) => (
                       <Collapsible
                         defaultOpen

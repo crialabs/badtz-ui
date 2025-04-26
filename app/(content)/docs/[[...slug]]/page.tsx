@@ -12,6 +12,7 @@ import type { Metadata } from "next";
 import "@/styles/mdx.css";
 import { badgeVariants } from "@/components/ui/badge-shadcn";
 import DocsCta from "@/components/docs/doc-cta";
+import { BookmarkButton } from "@/components/docs/bookmark-button";
 
 interface DocPageProps {
   params: {
@@ -149,10 +150,17 @@ export default async function DocPage({ params }: DocPageProps) {
             __html: JSON.stringify(tocJsonLd, null, 2),
           }}
         />
-        <div className="space-y-2">
-          <h1 className={cn("scroll-m-20 text-3xl font-gilroy tracking-tight")}>
-            {doc.title}
-          </h1>
+        <div className="flex flex-col gap-3">
+          <div className="flex items-start justify-between">
+            <h1
+              className={cn("scroll-m-20 text-3xl font-gilroy tracking-tight")}
+            >
+              {doc.title}
+            </h1>
+            <BookmarkButton title={doc.title}>
+              <span className="md:block hidden">Bookmark</span>
+            </BookmarkButton>
+          </div>
           {doc.description && (
             <p className="text-[15px] text-muted-foreground text-balance">
               {doc.description}

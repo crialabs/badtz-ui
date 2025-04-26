@@ -24,6 +24,7 @@ import { LargeLogo } from "@/components/logo";
 import { DocGithubButton } from "@/components/docs/doc-github-button";
 import { MobileDocHeader } from "@/components/docs/mobile-doc-header";
 import { DocItem } from "@/config/docs";
+import { BookmarksNav } from "@/components/docs/bookmarks-nav";
 
 type ExtendedDocItem = DocItem & {
   icon?: React.ReactNode;
@@ -58,6 +59,7 @@ export function DocNav({ items, children }: DocNavProps) {
           <ScrollArea className="flex-1 overflow-auto w-[246px]">
             <div className="pb-6 pt-4 pr-6 pl-3">
               <nav aria-label="Documentation navigation">
+                <BookmarksNav />
                 {items.map((item, index) => {
                   const extendedItem = item as ExtendedDocItem;
                   return (
