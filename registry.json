@@ -349,6 +349,19 @@
       ]
     },
     {
+      "name": "particles",
+      "type": "registry:ui",
+      "title": "Particles",
+      "description": "A versatile and performant component for creating engaging, animated content displays with smooth infinite scrolling animations. Perfect for showcasing client logos, testimonials, feature highlights, and promotional content with customizable speed, direction, and responsive design.",
+      "dependencies": ["@tsparticles/slim, @tsparticles/react"],
+      "files": [
+        {
+          "path": "registry/components/particles.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "fade-up-word",
       "type": "registry:ui",
       "title": "Fade Up Word",

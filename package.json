@@ -39,6 +39,8 @@
     "@react-email/render": "^1.0.4",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.8.1",
     "@types/canvas-confetti": "^1.9.0",
     "@types/three": "^0.173.0",
     "@types/unist": "^3.0.3",

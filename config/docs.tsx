@@ -140,6 +140,12 @@ export const docsConfig: DocCategory[] = [
     ),
     items: [
       {
+        title: "Particles",
+        href: "/docs/components/particles",
+        items: [],
+        label: "new",
+      },
+      {
         title: "Marquee",
         href: "/docs/components/marquee",
         label: "new",

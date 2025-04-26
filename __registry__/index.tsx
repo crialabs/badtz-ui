@@ -327,6 +327,18 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
+  },"particles": {
+    name: "particles",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/components/particles")),
+    source: "",
+    files: [
+  "__registry__/components/components/particles.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
   },"mouse-wave-scene": {
     name: "mouse-wave-scene",
     type: "components:ui",
@@ -719,6 +731,42 @@ export const Index: Record<string, RegistryItem> = {
     source: "",
     files: [
   "__registry__/components/demos/mouse-wave-demo.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"particles-demo-2": {
+    name: "particles-demo-2",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/particles-demo-2")),
+    source: "",
+    files: [
+  "__registry__/components/demos/particles-demo-2.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"particles-demo-3": {
+    name: "particles-demo-3",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/particles-demo-3")),
+    source: "",
+    files: [
+  "__registry__/components/demos/particles-demo-3.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"particles-demo": {
+    name: "particles-demo",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/particles-demo")),
+    source: "",
+    files: [
+  "__registry__/components/demos/particles-demo.js"
 ],
     category: "undefined",
     subcategory: "undefined",
