@@ -26,9 +26,9 @@ export function DocDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="h-[30px] px-2 border border-sidebar-border text-[13px] font-medium text-sidebar-primary-foreground bg-doc-background hover:bg-transparent dark:hover:bg-sidebar-primary transition-colors flex items-center justify-center rounded-md [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 shadow-none group/contribute">
-          <HeartHandshake className="text-sidebar-muted-foreground group-hover/contribute:text-sidebar-primary-foreground transition-colors" />{" "}
-          Contribute
+        <Button className="h-[30px] px-2 border border-sidebar-border text-[13.5px] font-medium !text-sidebar-primary-foreground bg-doc-background hover:bg-transparent dark:hover:bg-sidebar-primary transition-colors flex items-center justify-center rounded-md [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 shadow-none group/contribute">
+          <HeartHandshake className="group-hover/contribute:animate-handshake text-sidebar-muted-foreground group-hover/contribute:text-sidebar-primary-foreground transition-colors" />
+          <span className="lg:pt-[2px]">Contribute</span>
           <ChevronDown className="ml-1 text-sidebar-muted-foreground group-hover/contribute:text-sidebar-primary-foreground transition-colors" />
         </Button>
       </DropdownMenuTrigger>

@@ -85,7 +85,7 @@ npx shadcn@latest add https://badtz-ui.com/r/star-button.json
 npm install clsx tailwind-merge
 ```
 
-<Step>Add the utils file to the `@/lib` folder</Step>
+<Step>Add the <Kbd>utils</Kbd> file to the <Kbd>@/lib</Kbd> folder</Step>
 
 <UtilsSource>
 <Highlighter slot="javascript">
@@ -110,7 +110,7 @@ export function cn(...inputs: ClassValue[]) {
 </Highlighter>
 </UtilsSource>
 
-<Step>Copy and paste the `star-button` code into your project.</Step>
+<Step>Copy and paste the <Kbd>star-button</Kbd> code into your project.</Step>
 
 <ComponentSource
   name="star-button"
@@ -335,9 +335,9 @@ export function StarButton({
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Update `tailwind.config.js`</Step>
+<Step>Update <Kbd>tailwind.config.js</Kbd></Step>
 
-Add the following animations to your `tailwind.config.js` file:
+Add the following animations to your <Kbd>tailwind.config.js</Kbd> file:
 
 ```js {5-13}
 /** @type {import('tailwindcss').Config} */
@@ -376,14 +376,14 @@ import { StarButton } from "@/components/ui/star-button";
 
 ## Props
 
-`star-button` props.
+<Kbd>StarButton</Kbd> props.
 
 | Prop            | Type      | Description                                      | Default          |
 | --------------- | --------- | ------------------------------------------------ | ---------------- |
-| children        | ReactNode | The content inside the button.                   | **(required)**   |
-| lightWidth      | number    | Width of the light effect in pixels.             | `110`            |
-| duration        | number    | Duration of the light animation in seconds.      | `3`              |
-| lightColor      | string    | Color of the light effect.                       | `"#FAFAFA"`      |
-| backgroundColor | string    | Background color of the star effect.             | `"currentColor"` |
-| borderWidth     | number    | Width of the border around the button in pixels. | `2`              |
-| className       | string    | Additional custom classes for styling.           | -                |
+| children        | <Kbd>ReactNode</Kbd> | The content inside the button.                   | **(required)**   |
+| lightWidth      | <Kbd>number</Kbd>    | Width of the light effect in pixels.             | `110`            |
+| duration        | <Kbd>number</Kbd>    | Duration of the light animation in seconds.      | `3`              |
+| lightColor      | <Kbd>string</Kbd>    | Color of the light effect.                       | `"#FAFAFA"`      |
+| backgroundColor | <Kbd>string</Kbd>    | Background color of the star effect.             | `"currentColor"` |
+| borderWidth     | <Kbd>number</Kbd>    | Width of the border around the button in pixels. | `2`              |
+| className       | <Kbd>string</Kbd>    | Additional custom classes for styling.           | -                |

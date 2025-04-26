@@ -57,7 +57,7 @@ export function CodeBlockCommand({
   }, [packageManager, tabs]);
 
   return (
-    <div className="relative mt-6 max-h-[650px] overflow-x-auto rounded-md bg-zinc-950 dark:bg-zinc-900">
+    <div className="relative mt-6 max-h-[650px] overflow-x-auto rounded-md bg-zinc-950 dark:bg-sidebar">
       <Tabs
         defaultValue={packageManager}
         onValueChange={(value) => {
@@ -67,7 +67,7 @@ export function CodeBlockCommand({
           });
         }}
       >
-        <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-950 dark:bg-zinc-900 px-3 pt-2.5">
+        <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-950 dark:bg-sidebar px-3 pt-2.5">
           <TabsList className="h-7 translate-y-[2px] gap-3 bg-transparent p-0 pl-1">
             {Object.entries(tabs).map(([key, value]) => {
               return (

@@ -6,7 +6,7 @@ import { siteConfig } from "@/config/site";
 import { getTableOfContents } from "@/lib/toc";
 import { DashboardTableOfContents } from "@/components/docs/toc";
 import { cn, absoluteUrl } from "@/lib/utils";
-import { Bug, ChevronRight, FilePenLine, FlaskRound } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import "@/styles/mdx.css";
@@ -111,7 +111,7 @@ export default async function DocPage({ params }: DocPageProps) {
   };
 
   return (
-    <main className="relative bg-doc-background pt-6 lg:pt-16 pb-6 lg:gap-10 lg:pb-8 xl:grid xl:grid-cols-[1fr_300px] px-6 lg:px-8 lg:pr-0 [&_p]:text-[15px]">
+    <main className="relative bg-doc-background pt-10 lg:pt-16 pb-6 lg:gap-10 lg:pb-8 xl:grid xl:grid-cols-[1fr_300px] px-6 lg:px-8 lg:pr-0">
       <div className="mx-auto w-full min-w-0 max-w-2xl">
         <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
           <div className="truncate">Docs</div>
@@ -154,7 +154,7 @@ export default async function DocPage({ params }: DocPageProps) {
             {doc.title}
           </h1>
           {doc.description && (
-            <p className="text-base text-muted-foreground text-pretty">
+            <p className="text-[15px] text-muted-foreground text-balance">
               {doc.description}
             </p>
           )}

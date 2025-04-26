@@ -8,7 +8,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-// TODO: Find suitable colors for the badge variants
 const variants: Record<
   string,
   { text: string; description: string; classes: string }
@@ -26,7 +25,7 @@ const variants: Record<
   hot: {
     text: "Hot",
     description: "Trending 🔥",
-    classes: "bg-[#ff7235] ",
+    classes: "bg-[#ff7235]",
   },
   soon: {
     text: "Soon",
@@ -50,23 +49,25 @@ export function Badge({ className, variant = "pro" }: BadgeProps) {
   const { description, classes } = variantData;
 
   return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <span
-            className={cn(
-              "rounded cursor-pointer h-3 w-3 flex items-center justify-center font-light text-white text-[8px] pt-[1px] pl-[1px]",
-              classes,
-              className
-            )}
-          >
-            !
-          </span>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>{description}</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <div className="hidden md:block">
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <span
+              className={cn(
+                "ml-auto rounded-[3px] cursor-default h-3 w-3 flex items-center justify-center font-light text-white text-[8px] pt-[1px]",
+                classes,
+                className
+              )}
+            >
+              !
+            </span>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{description}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    </div>
   );
 }

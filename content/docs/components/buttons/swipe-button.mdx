@@ -8,401 +8,391 @@ description: A sleek swipe-to-validate button with animated text, smooth transit
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
   description="A dynamic and stylish button that reveals a vibrant gradient as you hover over it."
 >
-<Highlighter slot="javascript">
-```jsx
-import { SwipeButton } from "@/registry/components/buttons/swipe-button";
-import confetti from "canvas-confetti";
+  <Highlighter slot="javascript">
+    ```jsx
+    import { SwipeButton } from "@/registry/components/buttons/swipe-button";
+    import confetti from "canvas-confetti";
 
-export default function SwipeButtonDemo() {
-  const triggerConfetti = () => {
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 },
-    });
-  };
+    export default function SwipeButtonDemo() {
+      const triggerConfetti = () => {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+      };
 
-  return (
-    <div>
-      <SwipeButton onSwipeComplete={triggerConfetti} />
-    </div>
-  );
-}
-```
-</Highlighter>
-<Highlighter slot="typescript">
-```tsx
-import { SwipeButton } from "@/registry/components/buttons/swipe-button";
-import confetti from "canvas-confetti";
+      return (
+        <div>
+          <SwipeButton onSwipeComplete={triggerConfetti} />
+        </div>
+      );
+    }
+    ```
+  </Highlighter>
+  <Highlighter slot="typescript">
+    ```tsx
+    import { SwipeButton } from "@/registry/components/buttons/swipe-button";
+    import confetti from "canvas-confetti";
 
-export default function SwipeButtonDemo() {
-  const triggerConfetti = () => {
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 },
-    });
-  };
+    export default function SwipeButtonDemo() {
+      const triggerConfetti = () => {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+      };
 
-  return (
-    <div>
-      <SwipeButton onSwipeComplete={triggerConfetti} />
-    </div>
-  );
-}
-```
-</Highlighter>
+      return (
+        <div>
+          <SwipeButton onSwipeComplete={triggerConfetti} />
+        </div>
+      );
+    }
+    ```
+  </Highlighter>
 </ComponentPreview>
 
 ## Installation
 
 <Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
 
-<TabsList>
-  <TabsTrigger value="cli">CLI</TabsTrigger>
-  <TabsTrigger value="manual">Manual</TabsTrigger>
-</TabsList>
+  <TabsContent value="cli">
+    ```bash
+    npx shadcn@latest add https://badtz-ui.com/r/swipe-button.json
+    ```
+  </TabsContent>
 
-<TabsContent value="cli">
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Install the following dependencies:</Step>
 
-```bash
-npx shadcn@latest add https://badtz-ui.com/r/swipe-button.json
-```
+      ```bash
+      npm install clsx tailwind-merge lucide-react
+      ```
 
-</TabsContent>
+      <Step>Add the <Kbd>utils</Kbd> file to the <Kbd>@/lib</Kbd> folder</Step>
 
-<TabsContent value="manual">
+      <UtilsSource>
+        <Highlighter slot="javascript">
+          ```jsx
+          import { clsx } from "clsx";
+          import { twMerge } from "tailwind-merge";
 
-<Steps>
+          export function cn(...inputs) {
+            return twMerge(clsx(inputs));
+          }
+          ```
+        </Highlighter>
+        <Highlighter slot="typescript">
+          ```tsx
+          import { ClassValue, clsx } from "clsx";
+          import { twMerge } from "tailwind-merge";
 
-<Step>Install the following dependencies:</Step>
+          export function cn(...inputs: ClassValue[]) {
+            return twMerge(clsx(inputs));
+          }
+          ```
+        </Highlighter>
+      </UtilsSource>
 
-```bash
-npm install clsx tailwind-merge lucide-react
-```
+      <Step>Copy and paste the <Kbd>swipe-button</Kbd> code into your project.</Step>
 
-<Step>Add the utils file to the `@/lib` folder</Step>
+      <ComponentSource name="swipe-button">
+        <Highlighter slot="javascript">
+          ```jsx
+          "use client";
 
-<UtilsSource>
-<Highlighter slot="javascript">
-```jsx
-import { clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+          import { useState, useRef, useEffect } from "react";
+          import { cn } from "@/lib/utils";
+          import { ChevronRight, Check } from "lucide-react";
 
-export function cn(...inputs) {
-  return twMerge(clsx(inputs));
-}
-```
-</Highlighter>
-<Highlighter slot="typescript">
-```tsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+          export function SwipeButton({
+            onSwipeComplete,
+            text = "Swipe to validate",
+            className,
+            gap = 3,
+            validationDuration = 2000,
+            ...props
+          }) {
+            const [isSwiped, setIsSwiped] = useState(false);
+            const [isValidated, setIsValidated] = useState(false);
+            const [startX, setStartX] = useState(0);
+            const [currentX, setCurrentX] = useState(0);
+            const [isDragging, setIsDragging] = useState(false);
+            const containerRef = useRef(null);
+            const buttonRef = useRef(null);
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-```
-</Highlighter>
-</UtilsSource>
+            useEffect(() => {
+              if (isValidated) {
+                const timer = setTimeout(() => {
+                  setIsValidated(false);
+                  setIsSwiped(false);
+                  setCurrentX(0);
+                  setIsDragging(false);
+                }, validationDuration);
+                return () => clearTimeout(timer);
+              }
+            }, [isValidated, validationDuration]);
 
-<Step>Copy and paste the `swipe-button` code into your project.</Step>
+            const handleStart = (clientX) => {
+              if (isValidated) return;
+              setStartX(clientX);
+              setIsDragging(true);
+            };
 
-<ComponentSource
-  name="swipe-button"
->
-<Highlighter slot="javascript">
-```jsx
-"use client";
+            const handleMove = (clientX) => {
+              if (!buttonRef.current || !isDragging || isValidated) return;
 
-import { useState, useRef, useEffect } from "react";
-import { cn } from "@/lib/utils";
-import { ChevronRight, Check } from "lucide-react";
+              const containerWidth = containerRef.current?.offsetWidth || 0;
+              const buttonWidth = buttonRef.current.offsetWidth;
+              const maxSwipe = containerWidth - buttonWidth - gap * 2;
 
-export function SwipeButton({
-  onSwipeComplete,
-  text = "Swipe to validate",
-  className,
-  gap = 3,
-  validationDuration = 2000,
-  ...props
-}) {
-  const [isSwiped, setIsSwiped] = useState(false);
-  const [isValidated, setIsValidated] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [currentX, setCurrentX] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const containerRef = useRef(null);
-  const buttonRef = useRef(null);
+              let newX = clientX - startX;
+              newX = Math.max(0, Math.min(newX, maxSwipe));
 
-  useEffect(() => {
-    if (isValidated) {
-      const timer = setTimeout(() => {
-        setIsValidated(false);
-        setIsSwiped(false);
-        setCurrentX(0);
-        setIsDragging(false);
-      }, validationDuration);
-      return () => clearTimeout(timer);
-    }
-  }, [isValidated, validationDuration]);
+              setCurrentX(newX);
+              setIsSwiped(newX >= maxSwipe - 10);
+            };
 
-  const handleStart = (clientX) => {
-    if (isValidated) return;
-    setStartX(clientX);
-    setIsDragging(true);
-  };
+            const handleEnd = () => {
+              if (isValidated) return;
 
-  const handleMove = (clientX) => {
-    if (!buttonRef.current || !isDragging || isValidated) return;
+              if (isSwiped) {
+                setIsValidated(true);
+                setCurrentX(0);
+                onSwipeComplete?.();
+              } else {
+                setCurrentX(0);
+                setIsSwiped(false);
+              }
+              setIsDragging(false);
+            };
 
-    const containerWidth = containerRef.current?.offsetWidth || 0;
-    const buttonWidth = buttonRef.current.offsetWidth;
-    const maxSwipe = containerWidth - buttonWidth - gap * 2;
+            return (
+              <div
+                ref={containerRef}
+                className={cn(
+                  "relative w-[250px] h-10 rounded-lg overflow-hidden",
+                  "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm",
+                  "transition-colors duration-200",
+                  className
+                )}
+                onTouchStart={(e) => handleStart(e.touches[0].clientX)}
+                onTouchMove={(e) => handleMove(e.touches[0].clientX)}
+                onTouchEnd={handleEnd}
+                onMouseDown={(e) => handleStart(e.clientX)}
+                onMouseMove={(e) => handleMove(e.clientX)}
+                onMouseUp={handleEnd}
+                onMouseLeave={handleEnd}
+                role="button"
+                aria-label="Swipe to validate"
+                {...props}
+              >
+                <button
+                  ref={buttonRef}
+                  className={cn(
+                    "absolute rounded-md",
+                    "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900",
+                    "flex items-center justify-center",
+                    "cursor-grab active:cursor-grabbing",
+                    "shadow-sm transition-all duration-300",
+                    "hover:bg-neutral-800 dark:hover:bg-neutral-100",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-neutral-900",
+                    "disabled:pointer-events-none",
+                    isValidated &&
+                      "w-[calc(100%-6px)] cursor-default bg-emerald-500 dark:bg-emerald-500 hover:bg-emerald-500 dark:hover:bg-emerald-500 opacity-100"
+                  )}
+                  style={{
+                    width: isValidated ? `calc(100% - ${gap * 2}px)` : "36px",
+                    height: `calc(100% - ${gap * 2}px)`,
+                    left: isValidated ? `${gap}px` : `${gap}px`,
+                    top: `${gap}px`,
+                    transform: isValidated ? "none" : `translateX(${currentX}px)`,
+                    transition: isDragging ? "none" : "all 0.3s ease",
+                  }}
+                  aria-label={isValidated ? "Validated" : "Swipe to validate"}
+                  disabled={isValidated}
+                >
+                  {isValidated ? (
+                    <Check className="w-4 h-4" aria-hidden="true" />
+                  ) : (
+                    <ChevronRight className="w-4 h-4" aria-hidden="true" />
+                  )}
+                </button>
+                <div className="w-full h-full flex items-center justify-center">
+                  <span
+                    style={{ "--swipe-button-text-width": "130px" }}
+                    className={cn(
+                      "mx-auto max-w-md text-neutral-600/70 dark:text-neutral-400/70 text-sm pointer-events-none",
+                      "animate-swipe-button-text bg-clip-text bg-no-repeat [background-position:0_0] [background-size:var(--swipe-button-text-width)_100%] [transition:background-position_1s_cubic-bezier(.4,0,.2,1)_infinite] select-none",
+                      "bg-gradient-to-r from-transparent via-black/80 via-50% to-transparent dark:via-white/80"
+                    )}
+                  >
+                    {text}
+                  </span>
+                </div>
+              </div>
+            );
+          }
+          ```
+        </Highlighter>
+        <Highlighter slot="typescript">
+          ```tsx
+          "use client";
 
-    let newX = clientX - startX;
-    newX = Math.max(0, Math.min(newX, maxSwipe));
+          import { useState, useRef, CSSProperties, useEffect } from "react";
+          import { cn } from "@/lib/utils";
+          import { ChevronRight, Check } from "lucide-react";
 
-    setCurrentX(newX);
-    setIsSwiped(newX >= maxSwipe - 10);
-  };
+          export interface SwipeButtonProps extends React.HTMLAttributes<HTMLDivElement> {
+            onSwipeComplete?: () => void;
+            text?: string;
+            className?: string;
+            gap?: number;
+            validationDuration?: number;
+          }
 
-  const handleEnd = () => {
-    if (isValidated) return;
+          export function SwipeButton({
+            onSwipeComplete,
+            text = "Swipe to validate",
+            className,
+            gap = 3,
+            validationDuration = 2000,
+            ...props
+          }: SwipeButtonProps) {
+            const [isSwiped, setIsSwiped] = useState(false);
+            const [isValidated, setIsValidated] = useState(false);
+            const [startX, setStartX] = useState(0);
+            const [currentX, setCurrentX] = useState(0);
+            const [isDragging, setIsDragging] = useState(false);
+            const containerRef = useRef<HTMLDivElement>(null);
+            const buttonRef = useRef<HTMLButtonElement>(null);
 
-    if (isSwiped) {
-      setIsValidated(true);
-      setCurrentX(0);
-      onSwipeComplete?.();
-    } else {
-      setCurrentX(0);
-      setIsSwiped(false);
-    }
-    setIsDragging(false);
-  };
+            useEffect(() => {
+              if (isValidated) {
+                const timer = setTimeout(() => {
+                  setIsValidated(false);
+                  setIsSwiped(false);
+                  setCurrentX(0);
+                  setIsDragging(false);
+                }, validationDuration);
+                return () => clearTimeout(timer);
+              }
+            }, [isValidated, validationDuration]);
 
-  return (
-    <div
-      ref={containerRef}
-      className={cn(
-        "relative w-[250px] h-10 rounded-lg overflow-hidden",
-        "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm",
-        "transition-colors duration-200",
-        className
-      )}
-      onTouchStart={(e) => handleStart(e.touches[0].clientX)}
-      onTouchMove={(e) => handleMove(e.touches[0].clientX)}
-      onTouchEnd={handleEnd}
-      onMouseDown={(e) => handleStart(e.clientX)}
-      onMouseMove={(e) => handleMove(e.clientX)}
-      onMouseUp={handleEnd}
-      onMouseLeave={handleEnd}
-      role="button"
-      aria-label="Swipe to validate"
-      {...props}
-    >
-      <button
-        ref={buttonRef}
-        className={cn(
-          "absolute rounded-md",
-          "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900",
-          "flex items-center justify-center",
-          "cursor-grab active:cursor-grabbing",
-          "shadow-sm transition-all duration-300",
-          "hover:bg-neutral-800 dark:hover:bg-neutral-100",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-neutral-900",
-          "disabled:pointer-events-none",
-          isValidated &&
-            "w-[calc(100%-6px)] cursor-default bg-emerald-500 dark:bg-emerald-500 hover:bg-emerald-500 dark:hover:bg-emerald-500 opacity-100"
-        )}
-        style={{
-          width: isValidated ? `calc(100% - ${gap * 2}px)` : "36px",
-          height: `calc(100% - ${gap * 2}px)`,
-          left: isValidated ? `${gap}px` : `${gap}px`,
-          top: `${gap}px`,
-          transform: isValidated ? "none" : `translateX(${currentX}px)`,
-          transition: isDragging ? "none" : "all 0.3s ease",
-        }}
-        aria-label={isValidated ? "Validated" : "Swipe to validate"}
-        disabled={isValidated}
-      >
-        {isValidated ? (
-          <Check className="w-4 h-4" aria-hidden="true" />
-        ) : (
-          <ChevronRight className="w-4 h-4" aria-hidden="true" />
-        )}
-      </button>
-      <div className="w-full h-full flex items-center justify-center">
-        <span
-          style={{ "--swipe-button-text-width": "130px" }}
-          className={cn(
-            "mx-auto max-w-md text-neutral-600/70 dark:text-neutral-400/70 text-sm pointer-events-none",
-            "animate-swipe-button-text bg-clip-text bg-no-repeat [background-position:0_0] [background-size:var(--swipe-button-text-width)_100%] [transition:background-position_1s_cubic-bezier(.4,0,.2,1)_infinite] select-none",
-            "bg-gradient-to-r from-transparent via-black/80 via-50% to-transparent dark:via-white/80"
-          )}
-        >
-          {text}
-        </span>
-      </div>
-    </div>
-  );
-}
-```
-</Highlighter>
-<Highlighter slot="typescript">
-```tsx
-"use client";
+            const handleStart = (clientX: number) => {
+              if (isValidated) return;
+              setStartX(clientX);
+              setIsDragging(true);
+            };
 
-import { useState, useRef, CSSProperties, useEffect } from "react";
-import { cn } from "@/lib/utils";
-import { ChevronRight, Check } from "lucide-react";
+            const handleMove = (clientX: number) => {
+              if (!buttonRef.current || !isDragging || isValidated) return;
 
-export interface SwipeButtonProps extends React.HTMLAttributes<HTMLDivElement> {
-  onSwipeComplete?: () => void;
-  text?: string;
-  className?: string;
-  gap?: number;
-  validationDuration?: number;
-}
+              const containerWidth = containerRef.current?.offsetWidth || 0;
+              const buttonWidth = buttonRef.current.offsetWidth;
+              const maxSwipe = containerWidth - buttonWidth - gap * 2;
 
-export function SwipeButton({
-  onSwipeComplete,
-  text = "Swipe to validate",
-  className,
-  gap = 3,
-  validationDuration = 2000,
-  ...props
-}: SwipeButtonProps) {
-  const [isSwiped, setIsSwiped] = useState(false);
-  const [isValidated, setIsValidated] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [currentX, setCurrentX] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+              let newX = clientX - startX;
+              newX = Math.max(0, Math.min(newX, maxSwipe));
 
-  useEffect(() => {
-    if (isValidated) {
-      const timer = setTimeout(() => {
-        setIsValidated(false);
-        setIsSwiped(false);
-        setCurrentX(0);
-        setIsDragging(false);
-      }, validationDuration);
-      return () => clearTimeout(timer);
-    }
-  }, [isValidated, validationDuration]);
+              setCurrentX(newX);
+              setIsSwiped(newX >= maxSwipe - 10);
+            };
 
-  const handleStart = (clientX: number) => {
-    if (isValidated) return;
-    setStartX(clientX);
-    setIsDragging(true);
-  };
+            const handleEnd = () => {
+              if (isValidated) return;
 
-  const handleMove = (clientX: number) => {
-    if (!buttonRef.current || !isDragging || isValidated) return;
+              if (isSwiped) {
+                setIsValidated(true);
+                setCurrentX(0);
+                onSwipeComplete?.();
+              } else {
+                setCurrentX(0);
+                setIsSwiped(false);
+              }
+              setIsDragging(false);
+            };
 
-    const containerWidth = containerRef.current?.offsetWidth || 0;
-    const buttonWidth = buttonRef.current.offsetWidth;
-    const maxSwipe = containerWidth - buttonWidth - gap * 2;
+            return (
+              <div
+                ref={containerRef}
+                className={cn(
+                  "relative w-[250px] h-10 rounded-lg overflow-hidden",
+                  "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm",
+                  "transition-colors duration-200",
+                  className
+                )}
+                onTouchStart={(e) => handleStart(e.touches[0].clientX)}
+                onTouchMove={(e) => handleMove(e.touches[0].clientX)}
+                onTouchEnd={handleEnd}
+                onMouseDown={(e) => handleStart(e.clientX)}
+                onMouseMove={(e) => handleMove(e.clientX)}
+                onMouseUp={handleEnd}
+                onMouseLeave={handleEnd}
+                role="button"
+                aria-label="Swipe to validate"
+                {...props}
+              >
+                <button
+                  ref={buttonRef}
+                  className={cn(
+                    "absolute rounded-md",
+                    "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900",
+                    "flex items-center justify-center",
+                    "cursor-grab active:cursor-grabbing",
+                    "shadow-sm transition-all duration-300",
+                    "hover:bg-neutral-800 dark:hover:bg-neutral-100",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-neutral-900",
+                    "disabled:pointer-events-none",
+                    isValidated &&
+                      "w-[calc(100%-6px)] cursor-default bg-emerald-500 dark:bg-emerald-500 hover:bg-emerald-500 dark:hover:bg-emerald-500 opacity-100"
+                  )}
+                  style={{
+                    width: isValidated ? `calc(100% - ${gap * 2}px)` : "36px",
+                    height: `calc(100% - ${gap * 2}px)`,
+                    left: isValidated ? `${gap}px` : `${gap}px`,
+                    top: `${gap}px`,
+                    transform: isValidated ? "none" : `translateX(${currentX}px)`,
+                    transition: isDragging ? "none" : "all 0.3s ease",
+                  }}
+                  aria-label={isValidated ? "Validated" : "Swipe to validate"}
+                  disabled={isValidated}
+                >
+                  {isValidated ? (
+                    <Check className="w-4 h-4" aria-hidden="true" />
+                  ) : (
+                    <ChevronRight className="w-4 h-4" aria-hidden="true" />
+                  )}
+                </button>
+                <div className="w-full h-full flex items-center justify-center">
+                  <span
+                    style={{ "--swipe-button-text-width": "130px" } as CSSProperties}
+                    className={cn(
+                      "mx-auto max-w-md text-neutral-600/70 dark:text-neutral-400/70 text-sm pointer-events-none",
+                      "animate-swipe-button-text bg-clip-text bg-no-repeat [background-position:0_0] [background-size:var(--swipe-button-text-width)_100%] [transition:background-position_1s_cubic-bezier(.4,0,.2,1)_infinite] select-none",
+                      "bg-gradient-to-r from-transparent via-black/80 via-50% to-transparent dark:via-white/80"
+                    )}
+                  >
+                    {text}
+                  </span>
+                </div>
+              </div>
+            );
+          }
+          ```
+        </Highlighter>
+      </ComponentSource>
 
-    let newX = clientX - startX;
-    newX = Math.max(0, Math.min(newX, maxSwipe));
-
-    setCurrentX(newX);
-    setIsSwiped(newX >= maxSwipe - 10);
-  };
-
-  const handleEnd = () => {
-    if (isValidated) return;
-
-    if (isSwiped) {
-      setIsValidated(true);
-      setCurrentX(0);
-      onSwipeComplete?.();
-    } else {
-      setCurrentX(0);
-      setIsSwiped(false);
-    }
-    setIsDragging(false);
-  };
-
-  return (
-    <div
-      ref={containerRef}
-      className={cn(
-        "relative w-[250px] h-10 rounded-lg overflow-hidden",
-        "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm",
-        "transition-colors duration-200",
-        className
-      )}
-      onTouchStart={(e) => handleStart(e.touches[0].clientX)}
-      onTouchMove={(e) => handleMove(e.touches[0].clientX)}
-      onTouchEnd={handleEnd}
-      onMouseDown={(e) => handleStart(e.clientX)}
-      onMouseMove={(e) => handleMove(e.clientX)}
-      onMouseUp={handleEnd}
-      onMouseLeave={handleEnd}
-      role="button"
-      aria-label="Swipe to validate"
-      {...props}
-    >
-      <button
-        ref={buttonRef}
-        className={cn(
-          "absolute rounded-md",
-          "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900",
-          "flex items-center justify-center",
-          "cursor-grab active:cursor-grabbing",
-          "shadow-sm transition-all duration-300",
-          "hover:bg-neutral-800 dark:hover:bg-neutral-100",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-neutral-900",
-          "disabled:pointer-events-none",
-          isValidated &&
-            "w-[calc(100%-6px)] cursor-default bg-emerald-500 dark:bg-emerald-500 hover:bg-emerald-500 dark:hover:bg-emerald-500 opacity-100"
-        )}
-        style={{
-          width: isValidated ? `calc(100% - ${gap * 2}px)` : "36px",
-          height: `calc(100% - ${gap * 2}px)`,
-          left: isValidated ? `${gap}px` : `${gap}px`,
-          top: `${gap}px`,
-          transform: isValidated ? "none" : `translateX(${currentX}px)`,
-          transition: isDragging ? "none" : "all 0.3s ease",
-        }}
-        aria-label={isValidated ? "Validated" : "Swipe to validate"}
-        disabled={isValidated}
-      >
-        {isValidated ? (
-          <Check className="w-4 h-4" aria-hidden="true" />
-        ) : (
-          <ChevronRight className="w-4 h-4" aria-hidden="true" />
-        )}
-      </button>
-      <div className="w-full h-full flex items-center justify-center">
-        <span
-          style={{ "--swipe-button-text-width": "130px" } as CSSProperties}
-          className={cn(
-            "mx-auto max-w-md text-neutral-600/70 dark:text-neutral-400/70 text-sm pointer-events-none",
-            "animate-swipe-button-text bg-clip-text bg-no-repeat [background-position:0_0] [background-size:var(--swipe-button-text-width)_100%] [transition:background-position_1s_cubic-bezier(.4,0,.2,1)_infinite] select-none",
-            "bg-gradient-to-r from-transparent via-black/80 via-50% to-transparent dark:via-white/80"
-          )}
-        >
-          {text}
-        </span>
-      </div>
-    </div>
-  );
-}
-```
-</Highlighter>
-</ComponentSource>
-
-<Step>Update the import paths to match your project setup.</Step>
-
-</Steps>
-
-</TabsContent>
-
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
 </Tabs>
 
 ## Usage
@@ -417,14 +407,12 @@ import { SwipeButton } from "@/components/ui/swipe-button";
 
 ## Props
 
-`swipe-button` props.
-
-## Props
+<Kbd>SwipeButton</Kbd> props.
 
 | Prop               | Type       | Description                                          | Default             |
 | ----------------- | ---------- | ---------------------------------------------------- | ------------------- |
-| text              | string     | The text displayed in the button                     | "Swipe to validate" |
-| onSwipeComplete   | () => void | Callback function triggered when swipe is completed  | -                   |
-| gap               | number     | Space around the swipe button in pixels             | 3                   |
-| validationDuration| number     | Duration of the success state in milliseconds       | 2000                |
-| className         | string     | Additional classes for custom styling               | -                   |
+| text              | <Kbd>string</Kbd>     | The text displayed in the button                     | "Swipe to validate" |
+| onSwipeComplete   | <Kbd>() => void</Kbd> | Callback function triggered when swipe is completed  | -                   |
+| gap               | <Kbd>number</Kbd>     | Space around the swipe button in pixels             | 3                   |
+| validationDuration| <Kbd>number</Kbd>     | Duration of the success state in milliseconds       | 2000                |
+| className         | <Kbd>string</Kbd>     | Additional classes for custom styling               | -                   |

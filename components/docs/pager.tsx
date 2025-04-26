@@ -1,16 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ArrowLeftIcon,
-  ArrowRightIcon,
-} from "@radix-ui/react-icons";
 import { useEffect } from "react";
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type Doc = {
   slug: string;
@@ -58,32 +53,37 @@ export function DocsPager({ doc }: { doc: Doc }) {
   return (
     <div
       className={cn(
-        "flex flex-row items-center justify-between gap-4",
+        "flex flex-row items-center justify-between gap-6",
         !pager?.prev?.href && "justify-end"
       )}
     >
       {pager?.prev?.href && (
         <Link
           href={pager.prev.href}
-          className="pr-3 pl-3 md:pl-1 h-9 w-min flex justify-start items-center rounded-lg transition-all gap-1 group whitespace-nowrap active:scale-[98%] cursor-pointer text-sm bg-background hover:bg-sidebar-accent border border-border md:w-auto max-w-56 text-foreground dark:text-muted-foreground hover:text-foreground duration-300 shadow-xs"
+          className=" flex flex-col items-start gap-2 border border-sidebar-border rounded-md py-2 px-3 md:px-3 md:py-3 w-min md:w-1/2 md:text-left hover:bg-sidebar transition-colors duration-200"
         >
-          <ChevronLeftIcon className="h-4 w-4 md:hidden block" />
-          <kbd className="pointer-events-none hidden h-6 w-6 select-none items-center gap-1 rounded-md border border-border bg-muted/50 px-1.5 text-[10px] font-medium opacity-100 md:flex mr-2">
-            <ArrowLeftIcon className="h-3 w-3" />
-          </kbd>
-          {pager.prev.title}
+          <div className="flex flex-row items-center text-sm text-sidebar-muted-foreground md:gap-0 gap-1">
+            <ChevronLeft className="h-4 w-4" />
+            <span>Previous</span>
+          </div>
+
+          <span className="md:block hidden font-medium">
+            {pager.prev.title}
+          </span>
         </Link>
       )}
       {pager?.next?.href && (
         <Link
           href={pager.next.href}
-          className="pl-3 pr-3 md:pr-1 h-9 w-min flex justify-start items-center rounded-lg transition-all gap-1 group whitespace-nowrap active:scale-[98%] cursor-pointer text-sm bg-background hover:bg-sidebar-accent border border-border md:w-auto max-w-56 text-foreground dark:text-muted-foreground hover:text-foreground duration-300 shadow-xs"
+          className=" flex flex-col items-end gap-2 border border-sidebar-border rounded-md py-2 px-3 md:px-3 md:py-3 w-min md:w-1/2 md:text-right hover:bg-sidebar transition-colors duration-200"
         >
-          {pager.next.title}
-          <ChevronRightIcon className="h-4 w-4 md:hidden block" />
-          <kbd className="pointer-events-none hidden h-6 w-6 select-none items-center gap-1 rounded-md border border-border bg-muted/50 px-1.5 text-[10px] font-medium opacity-100 md:flex ml-2">
-            <ArrowRightIcon className="h-3 w-3" />
-          </kbd>
+          <div className="flex flex-row items-center text-sm text-sidebar-muted-foreground md:gap-0 gap-1">
+            <span>Next</span>
+            <ChevronRight className="h-4 w-4" />
+          </div>
+          <span className="md:block hidden font-medium">
+            {pager.next.title}
+          </span>
         </Link>
       )}
 

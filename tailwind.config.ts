@@ -202,6 +202,15 @@ const config: Config = {
           from: { transform: "translateX(calc(-100% - var(--gap)))" },
           to: { transform: "translateX(0)" },
         },
+        handshake: {
+          "0%, 100%": { transform: "rotate(0deg)" },
+          "25%": { transform: "rotate(-4deg)" },
+          "75%": { transform: "rotate(4deg)" },
+        },
+        "star-btn": {
+          "0%": { "offset-distance": "0%" },
+          "100%": { "offset-distance": "100%" },
+        },
       },
       animation: {
         "star-btn": "star-btn calc(var(--duration)*1s) linear infinite",
@@ -221,6 +230,7 @@ const config: Config = {
           "swipe-button-text 1.5s cubic-bezier(.4,0,.2,1) infinite",
         "marquee-left": "marquee-left var(--duration, 30s) linear infinite",
         "marquee-right": "marquee-right var(--duration, 30s) linear infinite",
+        handshake: "handshake 0.3s ease-in-out",
       },
     },
   },

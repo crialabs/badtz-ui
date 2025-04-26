@@ -54,8 +54,8 @@ export function CopyButton({
       size="icon"
       variant={variant}
       className={cn(
-        "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 [&_svg]:h-3 [&_svg]:w-3",
-        className,
+        "relative z-10 h-6 w-6 text-zinc-50 hover:bg-[#1e2024] hover:text-white [&_svg]:h-3 [&_svg]:w-3",
+        className
       )}
       onClick={() => {
         copyToClipboardWithMeta(value);
@@ -104,8 +104,8 @@ export function CopyWithClassNames({
           size="icon"
           variant="ghost"
           className={cn(
-            "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50",
-            className,
+            "relative z-10 h-6 w-6 text-zinc-50 hover:bg-[#1e2024] hover:text-white",
+            className
           )}
         >
           {hasCopied ? (
@@ -158,7 +158,7 @@ export function CopyNpmCommandButton({
 
       setHasCopied(true);
     },
-    [],
+    []
   );
 
   return (
@@ -168,8 +168,8 @@ export function CopyNpmCommandButton({
           size="icon"
           variant="ghost"
           className={cn(
-            "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50",
-            className,
+            "relative z-10 h-6 w-6 text-zinc-50 hover:bg-[#1e2024] hover:text-white",
+            className
           )}
         >
           {hasCopied ? (

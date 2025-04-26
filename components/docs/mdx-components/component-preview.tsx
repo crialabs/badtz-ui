@@ -92,9 +92,9 @@ export function ComponentPreview({
     const Component = Index[name]?.component;
     if (!Component) {
       return (
-        <p className="text-sm text-muted-foreground my-auto">
+        <p className="!text-sm text-muted-foreground my-auto">
           Component{" "}
-          <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
+          <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono !text-sm">
             {name}
           </code>{" "}
           not found.
@@ -154,7 +154,7 @@ export function ComponentPreview({
             </div>
             <React.Suspense
               fallback={
-                <div className="flex w-full items-center justify-center text-sm text-muted-foreground">
+                <div className="flex w-full items-center justify-center !text-sm text-muted-foreground">
                   <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                   Loading...
                 </div>
@@ -175,7 +175,7 @@ export function ComponentPreview({
                 ) : (
                   <SiJavascript className="text-[#f0dc4e]" size={14} />
                 )}
-                <p className="text-sm">
+                <p className="!text-sm">
                   {name}.{currentLanguage === "typescript" ? "tsx" : "jsx"}
                 </p>
               </div>

@@ -78,7 +78,7 @@ export function DocsSearchbar(props: DocsSearchbarProps) {
     <>
       <button
         className={cn(
-          "flex items-center max-w-[400px] w-full border border-sidebar-border bg-doc-background hover:bg-transparent dark:hover:bg-sidebar-primary text-sidebar-muted-foreground hover:text-sidebar-primary-foreground pr-1 pl-2 h-8 transition-colors duration-300 rounded-md text-[13.5px]"
+          "flex items-center max-w-[390px] w-full border border-sidebar-border bg-doc-background hover:bg-transparent dark:hover:bg-sidebar-primary text-sidebar-muted-foreground hover:text-sidebar-primary-foreground pr-1 pl-2 h-8 transition-colors duration-300 rounded-md text-[13.5px]"
         )}
         onClick={handleButtonClick}
         {...props}

@@ -93,7 +93,7 @@ export function ComponentSource({
             ) : (
               <SiJavascript className="text-[#f0dc4e]" size={14} />
             )}
-            <p className="text-sm">
+            <p className="!text-sm">
               {name}.{currentLanguage === "typescript" ? "tsx" : "jsx"}
             </p>
           </div>
