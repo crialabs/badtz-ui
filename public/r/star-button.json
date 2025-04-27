@@ -11,24 +11,18 @@
       "type": "registry:ui"
     }
   ],
-  "tailwind": {
-    "config": {
-      "theme": {
-        "extend": {
-          "keyframes": {
-            "star-btn": {
-              "0%": {
-                "offset-distance": "0%"
-              },
-              "100%": {
-                "offset-distance": "100%"
-              }
-            }
-          },
-          "animation": {
-            "star-btn": "star-btn calc(var(--duration)*1s) linear infinite"
-          }
-        }
+  "cssVars": {
+    "theme": {
+      "star-btn": "star-btn calc(var(--duration)*1s) linear infinite"
+    }
+  },
+  "css": {
+    "@keyframes star-btn": {
+      "0%": {
+        "offset-distance": "0%"
+      },
+      "100%": {
+        "offset-distance": "100%"
       }
     }
   }

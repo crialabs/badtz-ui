@@ -2,7 +2,7 @@ import { Download } from "lucide-react";
 import React from "react";
 
 export function DownloadButton() {
-  const fileUrl = "/downloads/stripe-gradient.zip";
+  const fileUrl = "http://cdn.badtz-ui.com/downloads/stripe-shader.zip";
 
   return (
     <a

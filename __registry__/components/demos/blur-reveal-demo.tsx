@@ -14,7 +14,7 @@ export default function BlurRevealDemo() {
         <br /> to reveal itself! Watch it come to life with a blur.
       </BlurReveal>
       <BlurReveal delay={0.5}>
-        <button className="h-8 px-4 py-2 inline-flex items-center justify-center text-xs bg-muted rounded-md mt-1.5">
+        <button className="h-8 px-4 py-2 inline-flex items-center justify-center text-xs bg-muted rounded-md mt-2">
           Discover
         </button>
       </BlurReveal>
