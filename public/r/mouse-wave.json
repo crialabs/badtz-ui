@@ -5,9 +5,10 @@
   "title": "Mouse Wave Shader",
   "description": "An interactive and customizable component that creates a dynamic wave effect responding to mouse movements, perfect for immersive backgrounds.",
   "dependencies": [
-    "@react-three/fiber@8.18.0",
-    "@react-three/drei@9.122.0",
-    "gsap"
+    "@react-three/fiber",
+    "@react-three/drei",
+    "gsap",
+    "three"
   ],
   "files": [
     {

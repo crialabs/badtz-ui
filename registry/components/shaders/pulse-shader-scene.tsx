@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import PulseShader from "@/registry/components/ui/pulse-shader";
+import PulseShader from "@/registry/components/shaders/pulse-shader";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -18,9 +20,10 @@ export default function PulseShaderScene({
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [key, setKey] = useState(0);
 
   const updateDimensions = useCallback(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || !window) return;
 
     const parentWidth = containerRef.current.clientWidth;
     setIsMobile(window.innerWidth < 640);
@@ -40,13 +43,13 @@ export default function PulseShaderScene({
         }
       }
     };
-  }, [imageSrc, marginFactor]);
+  }, [imageSrc, marginFactor, isMobile]);
 
   useEffect(() => {
     updateDimensions();
-    const observer = new ResizeObserver(() =>
-      requestAnimationFrame(updateDimensions),
-    );
+    const observer = new ResizeObserver(() => {
+      requestAnimationFrame(updateDimensions);
+    });
     window.addEventListener("resize", updateDimensions);
 
     if (containerRef.current) observer.observe(containerRef.current);
@@ -55,6 +58,21 @@ export default function PulseShaderScene({
       window.removeEventListener("resize", updateDimensions);
     };
   }, [updateDimensions]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setKey(1);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleCanvasCreated = useCallback(
+    ({ camera }: { camera: THREE.Camera }) => {
+      cameraRef.current = camera as THREE.PerspectiveCamera;
+    },
+    []
+  );
 
   return (
     <div
@@ -69,6 +87,7 @@ export default function PulseShaderScene({
         />
       ) : (
         <Canvas
+          key={key}
           camera={{
             fov: 45,
             aspect: dimensions.width / dimensions.height,
@@ -80,9 +99,7 @@ export default function PulseShaderScene({
               dimensions.height / 2 / Math.tan((45 * Math.PI) / 360),
             ],
           }}
-          onCreated={({ camera }) => {
-            cameraRef.current = camera as THREE.PerspectiveCamera;
-          }}
+          onCreated={handleCanvasCreated}
           style={{ width: "100%", height: "100%" }}
         >
           <PulseShader

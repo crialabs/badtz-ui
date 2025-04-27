@@ -80,7 +80,7 @@ description: An interactive and customizable shader effect that creates a dynami
       <Step>Install the following dependencies:</Step>
 
       ```bash
-      npm install @react-three/fiber@8.18.0 @react-three/drei@9.122.0 gsap
+      npm install @react-three/fiber @react-three/drei gsap three
       ```
 
       <Step>Copy and paste the <Kbd>pulse-shader</Kbd> code into your project.</Step>
@@ -343,15 +343,15 @@ description: An interactive and customizable shader effect that creates a dynami
       <ComponentSource name="pulse-shader">
         <Highlighter slot="javascript">
           ```jsx
+          "use client";
+
           import React, { useRef } from "react";
-          import {
-            fragment,
-            vertex,
-          } from "@/registry/components/shaders/pulse-shader-shader";
+          import { fragment, vertex } from "@/components/ui/pulse-shader-shader";
           import { useFrame } from "@react-three/fiber";
           import { useTexture } from "@react-three/drei";
           import * as THREE from "three";
           import gsap from "gsap";
+          //import { useControls } from "leva";
 
           export default function PulseShader({ imageSrc, canvasWidth, canvasHeight }) {
             const plane = useRef(null);
@@ -369,6 +369,21 @@ description: An interactive and customizable shader effect that creates a dynami
                 plane.current.material.uniforms.uTime.value = state.clock.elapsedTime;
               }
             });
+
+            // If you ever want to experiment, you can install Leva and use the controls; otherwise, feel free to remove this.
+            /*
+            const controls = useControls("Shader Controls", {
+              uTime: { value: 0, min: 0, max: 10, step: 0.1 },
+              uHoverState: { value: 0, min: 0, max: 10, step: 0.01 },
+              uHover: { value: { x: 0.5, y: 0.5 }, step: 0.01 },
+            });
+
+            useFrame(() => {
+              uniforms.current.uTime.value = controls.uTime;
+              uniforms.current.uHoverState.value = controls.uHoverState;
+              uniforms.current.uHover.value.set(controls.uHover.x, controls.uHover.y);
+            });
+            */
 
             const handlePointerMove = (event) => {
               if (!plane.current) return;
@@ -420,15 +435,15 @@ description: An interactive and customizable shader effect that creates a dynami
         </Highlighter>
         <Highlighter slot="typescript">
           ```tsx
+          "use client";
+
           import React, { useRef } from "react";
-          import {
-            fragment,
-            vertex,
-          } from "@/registry/components/shaders/pulse-shader-shader";
+          import { fragment, vertex } from "@/components/ui/pulse-shader-shader";
           import { ThreeEvent, useFrame } from "@react-three/fiber";
           import { useTexture } from "@react-three/drei";
           import * as THREE from "three";
           import gsap from "gsap";
+          //import { useControls } from "leva";
 
           interface PulseShaderProps {
             imageSrc: string;
@@ -457,6 +472,21 @@ description: An interactive and customizable shader effect that creates a dynami
                   state.clock.elapsedTime;
               }
             });
+
+            // If you ever want to experiment, you can install Leva and use the controls; otherwise, feel free to remove this.
+            /*
+            const controls = useControls("Shader Controls", {
+              uTime: { value: 0, min: 0, max: 10, step: 0.1 },
+              uHoverState: { value: 0, min: 0, max: 10, step: 0.01 },
+              uHover: { value: { x: 0.5, y: 0.5 }, step: 0.01 },
+            });
+
+            useFrame(() => {
+              uniforms.current.uTime.value = controls.uTime;
+              uniforms.current.uHoverState.value = controls.uHoverState;
+              uniforms.current.uHover.value.set(controls.uHover.x, controls.uHover.y);
+            });
+            */
 
             const handlePointerMove = (event: ThreeEvent<PointerEvent>) => {
               if (!plane.current) return;
@@ -513,8 +543,10 @@ description: An interactive and customizable shader effect that creates a dynami
       <ComponentSource name="pulse-shader-scene">
         <Highlighter slot="javascript">
           ```jsx
+          "use client";
+
           import React, { useEffect, useState, useRef, useCallback } from "react";
-          import PulseShader from "@/registry/components/shaders/pulse-shader";
+          import PulseShader from "@/components/ui/pulse-shader";
           import { Canvas } from "@react-three/fiber";
 
           export default function PulseShaderScene({ imageSrc, alt, marginFactor = 1.05 }) {
@@ -522,9 +554,10 @@ description: An interactive and customizable shader effect that creates a dynami
             const cameraRef = useRef(null);
             const containerRef = useRef(null);
             const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+            const [key, setKey] = useState(0);
 
             const updateDimensions = useCallback(() => {
-              if (!containerRef.current) return;
+              if (!containerRef.current || !window) return;
 
               const parentWidth = containerRef.current.clientWidth;
               setIsMobile(window.innerWidth < 640);
@@ -544,13 +577,13 @@ description: An interactive and customizable shader effect that creates a dynami
                   }
                 }
               };
-            }, [imageSrc, marginFactor]);
+            }, [imageSrc, marginFactor, isMobile]);
 
             useEffect(() => {
               updateDimensions();
-              const observer = new ResizeObserver(() =>
-                requestAnimationFrame(updateDimensions)
-              );
+              const observer = new ResizeObserver(() => {
+                requestAnimationFrame(updateDimensions);
+              });
               window.addEventListener("resize", updateDimensions);
 
               if (containerRef.current) observer.observe(containerRef.current);
@@ -559,6 +592,18 @@ description: An interactive and customizable shader effect that creates a dynami
                 window.removeEventListener("resize", updateDimensions);
               };
             }, [updateDimensions]);
+
+            useEffect(() => {
+              const timer = setTimeout(() => {
+                setKey(1);
+              }, 100);
+
+              return () => clearTimeout(timer);
+            }, []);
+
+            const handleCanvasCreated = useCallback(({ camera }) => {
+              cameraRef.current = camera;
+            }, []);
 
             return (
               <div
@@ -573,6 +618,7 @@ description: An interactive and customizable shader effect that creates a dynami
                   />
                 ) : (
                   <Canvas
+                    key={key}
                     camera={{
                       fov: 45,
                       aspect: dimensions.width / dimensions.height,
@@ -584,9 +630,7 @@ description: An interactive and customizable shader effect that creates a dynami
                         dimensions.height / 2 / Math.tan((45 * Math.PI) / 360),
                       ],
                     }}
-                    onCreated={({ camera }) => {
-                      cameraRef.current = camera;
-                    }}
+                    onCreated={handleCanvasCreated}
                     style={{ width: "100%", height: "100%" }}
                   >
                     <PulseShader
@@ -603,8 +647,10 @@ description: An interactive and customizable shader effect that creates a dynami
         </Highlighter>
         <Highlighter slot="typescript">
           ```tsx
+          "use client";
+
           import React, { useEffect, useState, useRef, useCallback } from "react";
-          import PulseShader from "@/registry/components/shaders/pulse-shader";
+          import PulseShader from "@/components/ui/pulse-shader";
           import { Canvas } from "@react-three/fiber";
           import * as THREE from "three";
 
@@ -623,9 +669,10 @@ description: An interactive and customizable shader effect that creates a dynami
             const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
             const containerRef = useRef<HTMLDivElement>(null);
             const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+            const [key, setKey] = useState(0);
 
             const updateDimensions = useCallback(() => {
-              if (!containerRef.current) return;
+              if (!containerRef.current || !window) return;
 
               const parentWidth = containerRef.current.clientWidth;
               setIsMobile(window.innerWidth < 640);
@@ -645,13 +692,13 @@ description: An interactive and customizable shader effect that creates a dynami
                   }
                 }
               };
-            }, [imageSrc, marginFactor]);
+            }, [imageSrc, marginFactor, isMobile]);
 
             useEffect(() => {
               updateDimensions();
-              const observer = new ResizeObserver(() =>
-                requestAnimationFrame(updateDimensions)
-              );
+              const observer = new ResizeObserver(() => {
+                requestAnimationFrame(updateDimensions);
+              });
               window.addEventListener("resize", updateDimensions);
 
               if (containerRef.current) observer.observe(containerRef.current);
@@ -660,6 +707,21 @@ description: An interactive and customizable shader effect that creates a dynami
                 window.removeEventListener("resize", updateDimensions);
               };
             }, [updateDimensions]);
+
+            useEffect(() => {
+              const timer = setTimeout(() => {
+                setKey(1);
+              }, 100);
+
+              return () => clearTimeout(timer);
+            }, []);
+
+            const handleCanvasCreated = useCallback(
+              ({ camera }: { camera: THREE.Camera }) => {
+                cameraRef.current = camera as THREE.PerspectiveCamera;
+              },
+              []
+            );
 
             return (
               <div
@@ -674,6 +736,7 @@ description: An interactive and customizable shader effect that creates a dynami
                   />
                 ) : (
                   <Canvas
+                    key={key}
                     camera={{
                       fov: 45,
                       aspect: dimensions.width / dimensions.height,
@@ -685,9 +748,7 @@ description: An interactive and customizable shader effect that creates a dynami
                         dimensions.height / 2 / Math.tan((45 * Math.PI) / 360),
                       ],
                     }}
-                    onCreated={({ camera }) => {
-                      cameraRef.current = camera as THREE.PerspectiveCamera;
-                    }}
+                    onCreated={handleCanvasCreated}
                     style={{ width: "100%", height: "100%" }}
                   >
                     <PulseShader
@@ -756,14 +817,24 @@ const PulseShaderScene = dynamic(
 Here are some of the key resources that helped me learn about shaders.
 If you're interested in exploring shaders further, these are great places to start!
 
-<li className="text-sm text-muted-foreground mt-4">
-  <MdxLink href="https://github.com/akella/">Akella's repo</MdxLink>
-</li>
-<li className="text-sm text-muted-foreground mt-4">
-  <MdxLink href="https://thebookofshaders.com/?lan=jp">
-    The Book Of Shaders
-  </MdxLink>
-</li>
-<li className="text-sm text-muted-foreground mt-4">
-  <MdxLink href="https://threejs-journey.com/">ThreeJS Journey</MdxLink>
-</li>
+<li className="text-sm text-muted-foreground mt-4"><MdxLink href="https://github.com/akella/">Akella's repo</MdxLink></li>
+<li className="text-sm text-muted-foreground mt-4"><MdxLink href="https://thebookofshaders.com/?lan=jp">The Book Of Shaders</MdxLink></li>
+<li className="text-sm text-muted-foreground mt-4"><MdxLink href="https://threejs-journey.com/">ThreeJS Journey</MdxLink></li>
+
+## Version Requirements
+
+If you are using Next.js 14 or earlier, install these packages instead:
+<Kbd>@react-three/fiber@8.18.0</Kbd> <Kbd>@react-three/drei@9.122.0 gsap</Kbd>
+
+```bash
+npm install @react-three/fiber@8.18.0 @react-three/drei@9.122.0 gsap three
+```
+
+## Changelog
+
+### 2025-04-27
+
+- Fixed a critical <Kbd>THREE.WebGLRenderer: Context Lost</Kbd> error occurring on **Next.js 15** projects.
+- Improved WebGL context handling for better stability across modern browsers.
+- Adjusted recommended package versions to ensure compatibility with **Next.js 14**.
+- Updated installation instructions to clearly differentiate requirements between Next.js 14 and 15 environments.

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef } from "react";
 import { fragment, vertex } from "@/registry/components/ui/pulse-shader-shader";
 import { ThreeEvent, useFrame } from "@react-three/fiber";
