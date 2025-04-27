@@ -10,35 +10,31 @@ description: A dynamic and customizable sliding component that creates smooth, i
 >
   <Highlighter slot="javascript">
     ```jsx
-    import { Marquee } from "@/ui/components/marquee";
+    import { Marquee } from "@/components/ui/marquee";
 
     const items = [
       {
         name: "Emma Wilson",
         title: "Product Designer, TechCorp",
-        image:
-          "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-2.webp",
+        image: "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-2.webp",
         body: "This design system has transformed our workflow. The components are intuitive and well-documented.",
       },
       {
         name: "Lucas Chen",
         title: "Frontend Developer, WebFlow",
-        image:
-          "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-1.webp",
+        image: "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-1.webp",
         body: "The components are well-structured and customizable. They've significantly reduced our development time.",
       },
       {
         name: "Sophia Martinez",
         title: "UI/UX Lead, DesignHub",
-        image:
-          "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-5.webp",
+        image: "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-5.webp",
         body: "Every component feels polished and professional. It's become our go-to resource for all projects.",
       },
       {
         name: "Oliver Thompson",
         title: "Creative Director, StudioX",
-        image:
-          "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-4.webp",
+        image: "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-4.webp",
         body: "This design system brings consistency and efficiency to our creative process. Beautiful and functional.",
       },
     ];
@@ -90,35 +86,31 @@ description: A dynamic and customizable sliding component that creates smooth, i
   </Highlighter>
   <Highlighter slot="typescript">
     ```tsx
-    import { Marquee } from "@/ui/components/marquee";
+    import { Marquee } from "@/components/ui/marquee";
 
     const items = [
       {
         name: "Emma Wilson",
         title: "Product Designer, TechCorp",
-        image:
-          "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-2.webp",
+        image: "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-2.webp",
         body: "This design system has transformed our workflow. The components are intuitive and well-documented.",
       },
       {
         name: "Lucas Chen",
         title: "Frontend Developer, WebFlow",
-        image:
-          "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-1.webp",
+        image: "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-1.webp",
         body: "The components are well-structured and customizable. They've significantly reduced our development time.",
       },
       {
         name: "Sophia Martinez",
         title: "UI/UX Lead, DesignHub",
-        image:
-          "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-5.webp",
+        image: "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-5.webp",
         body: "Every component feels polished and professional. It's become our go-to resource for all projects.",
       },
       {
         name: "Oliver Thompson",
         title: "Creative Director, StudioX",
-        image:
-          "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-4.webp",
+        image: "https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-4.webp",
         body: "This design system brings consistency and efficiency to our creative process. Beautiful and functional.",
       },
     ];
@@ -310,7 +302,34 @@ description: A dynamic and customizable sliding component that creates smooth, i
 
       <Step>Update the import paths to match your project setup.</Step>
 
-      <Step>Update <Kbd>tailwind.config.js</Kbd></Step>
+      <Step>Tailwind v4: Update <Kbd>global.css</Kbd></Step>
+
+      Add the following animations to your <Kbd>global.css</Kbd> file inside the <Kbd>@theme</Kbd> inline block:
+
+      ```css
+      --animate-marquee-left: marquee-left var(--duration, 30s) linear infinite;
+      --animate-marquee-right: marquee-right var(--duration, 30s) linear infinite;
+
+      @keyframes marquee-left {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(calc(-100% - var(--gap)));
+        }
+      }
+
+      @keyframes marquee-right {
+        from {
+          transform: translateX(calc(-100% - var(--gap)));
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+      ```
+
+      <Step>Tailwind v3: Update <Kbd>tailwind.config.js</Kbd></Step>
 
       Add the following animations to your `tailwind.config.js` file:
 

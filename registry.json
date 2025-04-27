@@ -544,27 +544,27 @@
       "type": "registry:ui",
       "title": "Marquee",
       "description": "A dynamic and customizable sliding marquee component that enhances UI experiences with smooth scrolling animations.",
-      "tailwind": {
-        "config": {
-          "theme": {
-            "extend": {
-              "keyframes": {
-                "marquee-left": {
-                  "from": { "transform": "translateX(0)" },
-                  "to": { "transform": "translateX(calc(-100% - var(--gap)))" }
-                },
-                "marquee-right": {
-                  "from": {
-                    "transform": "translateX(calc(-100% - var(--gap)))"
-                  },
-                  "to": { "transform": "translateX(0)" }
-                }
-              },
-              "animation": {
-                "marquee-left": "marquee-left var(--duration, 30s) linear infinite",
-                "marquee-right": "marquee-right var(--duration, 30s) linear infinite"
-              }
-            }
+      "cssVars": {
+        "theme": {
+          "animate-marquee-left": "marquee-left var(--duration, 30s) linear infinite",
+          "animate-marquee-right": "marquee-right var(--duration, 30s) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes marquee-left": {
+          "from": {
+            "transform": "translateX(0)"
+          },
+          "to": {
+            "transform": "translateX(calc(-100% - var(--gap)))"
+          }
+        },
+        "@keyframes marquee-right": {
+          "from": {
+            "transform": "translateX(calc(-100% - var(--gap)))"
+          },
+          "to": {
+            "transform": "translateX(0)"
           }
         }
       },
