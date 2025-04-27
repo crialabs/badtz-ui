@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useEffect, useCallback } from "react";
 import { fragment, vertex } from "@/components/ui/pixel-distorsion-shader";
 import { useFrame, ThreeEvent } from "@react-three/fiber";
@@ -47,7 +49,7 @@ export default function PixelDistorsion({
       grid,
       grid,
       THREE.RGBAFormat,
-      THREE.FloatType,
+      THREE.FloatType
     );
     dataTexture.needsUpdate = true;
     dataTexture.minFilter = THREE.NearestFilter;

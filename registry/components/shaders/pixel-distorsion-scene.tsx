@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import PixelDistorsion from "@/components/ui/pixel-distorsion";
 import { Canvas } from "@react-three/fiber";
@@ -22,6 +24,7 @@ export default function PixelDistorsionScene({
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [key, setKey] = useState(0);
 
   const updateDimensions = useCallback(() => {
     if (!containerRef.current || !window) return;
@@ -47,9 +50,9 @@ export default function PixelDistorsionScene({
 
   useEffect(() => {
     updateDimensions();
-    const observer = new ResizeObserver(() =>
-      requestAnimationFrame(updateDimensions),
-    );
+    const observer = new ResizeObserver(() => {
+      requestAnimationFrame(updateDimensions);
+    });
     window.addEventListener("resize", updateDimensions);
 
     if (containerRef.current) observer.observe(containerRef.current);
@@ -58,6 +61,21 @@ export default function PixelDistorsionScene({
       window.removeEventListener("resize", updateDimensions);
     };
   }, [updateDimensions]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setKey(1);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleCanvasCreated = useCallback(
+    ({ camera }: { camera: THREE.Camera }) => {
+      cameraRef.current = camera as THREE.PerspectiveCamera;
+    },
+    []
+  );
 
   return (
     <div
@@ -72,6 +90,7 @@ export default function PixelDistorsionScene({
         />
       ) : (
         <Canvas
+          key={key}
           camera={{
             fov: 45,
             aspect: dimensions.width / dimensions.height,
@@ -83,9 +102,7 @@ export default function PixelDistorsionScene({
               dimensions.height / 2 / Math.tan((45 * Math.PI) / 360),
             ],
           }}
-          onCreated={({ camera }) => {
-            cameraRef.current = camera as THREE.PerspectiveCamera;
-          }}
+          onCreated={handleCanvasCreated}
           style={{ width: "100%", height: "100%" }}
         >
           <PixelDistorsion
