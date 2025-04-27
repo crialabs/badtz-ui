@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { AnimationSequence, useAnimate } from "framer-motion";
 import { useBookmarks } from "@/hooks/bookmarks-context";
 import { usePathname } from "next/navigation";
+import { usePlausible } from "next-plausible";
 
 interface IconProps {
   className?: string;
@@ -40,6 +41,7 @@ export function BookmarkButton({
   const pathname = usePathname();
   const { addBookmark, removeBookmark, isBookmarked } = useBookmarks();
   const [liked, setLiked] = useState<boolean>(false);
+  const plausible = usePlausible();
 
   useEffect(() => {
     setLiked(isBookmarked(pathname));
@@ -53,6 +55,13 @@ export function BookmarkButton({
 
     if (!liked) {
       addBookmark({ title: title || "", href: pathname });
+      plausible("Bookmarked", {
+        props: {
+          title: title || "",
+          path: pathname,
+          action: "add",
+        },
+      });
       const icons = Array.from({ length: iconCount });
       const iconsAnimation = icons.map((_, index) => [
         `.icon-${index}`,
@@ -82,6 +91,13 @@ export function BookmarkButton({
       animate([...iconsReset, ...iconsAnimation] as AnimationSequence);
     } else {
       removeBookmark(pathname);
+      plausible("Bookmarked", {
+        props: {
+          title: title || "",
+          path: pathname,
+          action: "remove",
+        },
+      });
     }
   };
 

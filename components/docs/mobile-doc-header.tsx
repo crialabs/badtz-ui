@@ -144,13 +144,13 @@ export function MobileDocHeader({
 
   return (
     <div className="lg:hidden block">
-      <div className="flex gap-3">
+      <div>
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
             <button
               aria-label="Open main menu"
               aria-controls="mobile-navigation"
-              className="flex items-center"
+              className="flex items-center gap-3"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -167,6 +167,7 @@ export function MobileDocHeader({
                 />
               </svg>
               <span className="sr-only">Toggle Menu</span>
+              <Logo />
             </button>
           </SheetTrigger>
           <SheetContent
@@ -191,7 +192,7 @@ export function MobileDocHeader({
               <ScrollArea className="flex-1 overflow-auto w-[246px]">
                 <div className="pb-6 pt-4 pr-6 pl-3">
                   <nav aria-label="Documentation navigation">
-                    <BookmarksNav />
+                    <BookmarksNav onItemClick={() => setIsOpen(false)} />
                     {items.map((item, index) => (
                       <Collapsible
                         defaultOpen
@@ -235,7 +236,6 @@ export function MobileDocHeader({
             </div>
           </SheetContent>
         </Sheet>
-        <Logo />
       </div>
     </div>
   );

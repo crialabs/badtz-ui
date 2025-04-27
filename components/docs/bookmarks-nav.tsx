@@ -12,7 +12,11 @@ import { TriangleDownIcon } from "@radix-ui/react-icons";
 import { Bookmark } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-export function BookmarksNav() {
+interface BookmarksNavProps {
+  onItemClick?: () => void;
+}
+
+export function BookmarksNav({ onItemClick }: BookmarksNavProps) {
   const { bookmarks } = useBookmarks();
   const pathname = usePathname();
 
@@ -39,6 +43,7 @@ export function BookmarksNav() {
                   ? "bg-sidebar-primary text-sidebar-primary-foreground"
                   : "hover:bg-sidebar-primary/50"
               )}
+              onClick={onItemClick}
             >
               {bookmark.title}
             </Link>

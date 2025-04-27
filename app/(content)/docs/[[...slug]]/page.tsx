@@ -114,35 +114,40 @@ export default async function DocPage({ params }: DocPageProps) {
   return (
     <main className="relative bg-doc-background pt-10 lg:pt-16 pb-6 lg:gap-10 lg:pb-8 xl:grid xl:grid-cols-[1fr_300px] px-6 lg:px-8 lg:pr-0">
       <div className="mx-auto w-full min-w-0 max-w-2xl">
-        <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
-          <div className="truncate">Docs</div>
-          <ChevronRight className="h-3.5 w-3.5" />
-          <div className="text-foreground">{doc.title}</div>
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center space-x-1 text-sm leading-none text-muted-foreground">
+            <div className="truncate">Docs</div>
+            <ChevronRight className="h-3.5 w-3.5" />
+            <div className="text-foreground">{doc.title}</div>
+          </div>
+          {/* JSON-LD Breadcrumb */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Docs",
+                    item: absoluteUrl("/docs"),
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: doc.title,
+                    item: absoluteUrl(doc.slug),
+                  },
+                ],
+              }),
+            }}
+          />
+          <BookmarkButton title={doc.title}>
+            <span className="md:block hidden">Bookmark</span>
+          </BookmarkButton>
         </div>
-        {/* JSON-LD Breadcrumb */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Docs",
-                  item: absoluteUrl("/docs"),
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: doc.title,
-                  item: absoluteUrl(doc.slug),
-                },
-              ],
-            }),
-          }}
-        />
         {/* JSON-LD Table of Contents */}
         <script
           type="application/ld+json"
@@ -151,16 +156,10 @@ export default async function DocPage({ params }: DocPageProps) {
           }}
         />
         <div className="flex flex-col gap-3">
-          <div className="flex items-start justify-between">
-            <h1
-              className={cn("scroll-m-20 text-3xl font-gilroy tracking-tight")}
-            >
-              {doc.title}
-            </h1>
-            <BookmarkButton title={doc.title}>
-              <span className="md:block hidden">Bookmark</span>
-            </BookmarkButton>
-          </div>
+          <h1 className={cn("scroll-m-20 text-3xl font-gilroy tracking-tight")}>
+            {doc.title}
+          </h1>
+
           {doc.description && (
             <p className="text-[15px] text-muted-foreground text-balance">
               {doc.description}
