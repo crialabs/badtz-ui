@@ -81,7 +81,7 @@ description: An interactive and customizable component that creates a dynamic wa
       <Step>Install the following dependencies:</Step>
 
       ```bash
-      npm install @react-three/fiber @react-three/drei gsap
+      npm install @react-three/fiber @react-three/drei gsap three
       ```
 
       <Step>Copy and paste the <Kbd>mouse-wave-shader</Kbd> code into your project.</Step>
@@ -316,205 +316,227 @@ description: An interactive and customizable component that creates a dynamic wa
       <ComponentSource name="mouse-wave">
         <Highlighter slot="javascript">
           ```jsx
-          "use client";
+"use client";
 
-          import React, { useRef, useEffect } from "react";
-          import {
-            fragment,
-            vertex,
-          } from "@/registry/components/shaders/mouse-wave-shader";
-          import { useFrame, useThree } from "@react-three/fiber";
-          import { useTexture } from "@react-three/drei";
-          import * as THREE from "three";
-          import gsap from "gsap";
+import React, { useRef, useEffect } from "react";
+import { fragment, vertex } from "@/components/ui/mouse-wave-shader";
+import { useFrame, useThree } from "@react-three/fiber";
+import { useTexture } from "@react-three/drei";
+import * as THREE from "three";
+import gsap from "gsap";
+//import { useControls } from "leva";
 
-          export default function MouseWave({ imageSrc, canvasWidth, canvasHeight }) {
-            const plane = useRef(null);
-            const texture = useTexture(imageSrc);
-            const { raycaster, camera } = useThree();
+export default function MouseWave({ imageSrc, canvasWidth, canvasHeight }) {
+  const plane = useRef(null);
+  const texture = useTexture(imageSrc);
+  const { raycaster, camera } = useThree();
 
-            const uniforms = useRef({
-              uTexture: { value: texture },
-              uTime: { value: 0 },
-              uHover: { value: new THREE.Vector2(0.5, 0.5) },
-              uHoverState: { value: 0 },
-            });
+  const uniforms = useRef({
+    uTexture: { value: texture },
+    uTime: { value: 0 },
+    uHover: { value: new THREE.Vector2(0.5, 0.5) },
+    uHoverState: { value: 0 },
+  });
 
-            useFrame((state) => {
-              if (plane.current) {
-                const material = plane.current.material;
-                material.uniforms.uTime.value = state.clock.elapsedTime;
-              }
-            });
+  //If you ever want to experiment, you can install Leva and use the controls; otherwise, feel free to remove this.
+  /*
+  const controls = useControls("Shader Controls", {
+    uTime: { value: 0, min: 0, max: 10, step: 0.1 },
+    uHoverState: { value: 0, min: 0, max: 10, step: 0.01 },
+  });
 
-            useEffect(() => {
-              if (camera instanceof THREE.PerspectiveCamera) {
-                camera.aspect = canvasWidth / canvasHeight;
-                camera.updateProjectionMatrix();
-              }
-            }, [canvasWidth, canvasHeight, camera]);
+  useFrame(() => {
+    uniforms.current.uTime.value = controls.uTime;
+    uniforms.current.uHoverState.value = controls.uHoverState;
+  });
+  */
 
-            const handlePointerMove = (event) => {
-              if (!plane.current) return;
+  useFrame((state) => {
+    if (plane.current) {
+      const material = plane.current.material;
+      material.uniforms.uTime.value = state.clock.elapsedTime;
+    }
+  });
 
-              const pointer = new THREE.Vector2(
-                (event.clientX / window.innerWidth) * 2 - 1,
-                -(event.clientY / window.innerHeight) * 2 + 1
-              );
+  useEffect(() => {
+    if (camera instanceof THREE.PerspectiveCamera) {
+      camera.aspect = canvasWidth / canvasHeight;
+      camera.updateProjectionMatrix();
+    }
+  }, [canvasWidth, canvasHeight, camera]);
 
-              raycaster.setFromCamera(pointer, camera);
-              const intersects = raycaster.intersectObject(plane.current);
+  const handlePointerMove = (event) => {
+    if (!plane.current) return;
 
-              if (intersects.length > 0) {
-                const obj = intersects[0].object;
-                const uv = intersects[0].uv;
+    const pointer = new THREE.Vector2(
+      (event.clientX / window.innerWidth) * 2 - 1,
+      -(event.clientY / window.innerHeight) * 2 + 1
+    );
 
-                if (uv) {
-                  obj.material.uniforms.uHover.value.set(uv.x, uv.y);
-                }
-              }
-            };
+    raycaster.setFromCamera(pointer, camera);
+    const intersects = raycaster.intersectObject(plane.current);
 
-            const handlePointerEnter = () => {
-              gsap.to(uniforms.current.uHoverState, {
-                duration: 1,
-                value: 1,
-              });
-            };
+    if (intersects.length > 0) {
+      const obj = intersects[0].object;
+      const uv = intersects[0].uv;
 
-            const handlePointerLeave = () => {
-              gsap.to(uniforms.current.uHoverState, {
-                duration: 1,
-                value: 0,
-              });
-            };
+      if (uv) {
+        obj.material.uniforms.uHover.value.set(uv.x, uv.y);
+      }
+    }
+  };
 
-            return (
-              <mesh
-                ref={plane}
-                onPointerMove={handlePointerMove}
-                onPointerEnter={handlePointerEnter}
-                onPointerLeave={handlePointerLeave}
-                position={[0, 0, 0]}
-              >
-                <planeGeometry args={[canvasWidth, canvasHeight, 45, 45]} />
-                <shaderMaterial
-                  side={THREE.DoubleSide}
-                  vertexShader={vertex}
-                  fragmentShader={fragment}
-                  uniforms={uniforms.current}
-                />
-              </mesh>
-            );
-          }
+  const handlePointerEnter = () => {
+    gsap.to(uniforms.current.uHoverState, {
+      duration: 1,
+      value: 1,
+    });
+  };
+
+  const handlePointerLeave = () => {
+    gsap.to(uniforms.current.uHoverState, {
+      duration: 1,
+      value: 0,
+    });
+  };
+
+  return (
+    <mesh
+      ref={plane}
+      onPointerMove={handlePointerMove}
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
+      position={[0, 0, 0]}
+    >
+      <planeGeometry args={[canvasWidth, canvasHeight, 45, 45]} />
+      <shaderMaterial
+        side={THREE.DoubleSide}
+        vertexShader={vertex}
+        fragmentShader={fragment}
+        uniforms={uniforms.current}
+      />
+    </mesh>
+  );
+}
           ```
         </Highlighter>
         <Highlighter slot="typescript">
           ```tsx
-          "use client";
+"use client";
 
-          import React, { useRef, useEffect, useState } from "react";
-          import {
-            fragment,
-            vertex,
-          } from "@/registry/components/shaders/mouse-wave-shader";
-          import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";
-          import { useTexture } from "@react-three/drei";
-          import * as THREE from "three";
-          import gsap from "gsap";
+import React, { useRef, useEffect } from "react";
+import { fragment, vertex } from "@/components/ui/mouse-wave-shader";
+import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";
+import { useTexture } from "@react-three/drei";
+import * as THREE from "three";
+import gsap from "gsap";
+//import { useControls } from "leva";
 
-          interface MouseWaveProps {
-            imageSrc: string;
-            canvasWidth: number;
-            canvasHeight: number;
-          }
+interface MouseWaveProps {
+  imageSrc: string;
+  canvasWidth: number;
+  canvasHeight: number;
+}
 
-          export default function MouseWave({
-            imageSrc,
-            canvasWidth,
-            canvasHeight,
-          }: MouseWaveProps) {
-            const plane = useRef<THREE.Mesh>(null);
-            const texture = useTexture(imageSrc);
-            const { raycaster, camera } = useThree();
+export default function MouseWave({
+  imageSrc,
+  canvasWidth,
+  canvasHeight,
+}: MouseWaveProps) {
+  const plane = useRef<THREE.Mesh>(null);
+  const texture = useTexture(imageSrc);
+  const { raycaster, camera } = useThree();
 
-            const uniforms = useRef({
-              uTexture: { value: texture },
-              uTime: { value: 0 },
-              uHover: { value: new THREE.Vector2(0.5, 0.5) },
-              uHoverState: { value: 0 },
-            });
+  const uniforms = useRef({
+    uTexture: { value: texture },
+    uTime: { value: 0 },
+    uHover: { value: new THREE.Vector2(0.5, 0.5) },
+    uHoverState: { value: 0 },
+  });
 
-            useFrame((state) => {
-              if (plane.current) {
-                const material = plane.current.material as THREE.ShaderMaterial;
-                material.uniforms.uTime.value = state.clock.elapsedTime;
-              }
-            });
+  //If you ever want to experiment, you can install Leva and use the controls; otherwise, feel free to remove this.
+  /*
+  const controls = useControls("Shader Controls", {
+    uTime: { value: 0, min: 0, max: 10, step: 0.1 },
+    uHoverState: { value: 0, min: 0, max: 10, step: 0.01 },
+  });
 
-            useEffect(() => {
-              if (camera instanceof THREE.PerspectiveCamera) {
-                camera.aspect = canvasWidth / canvasHeight;
-                camera.updateProjectionMatrix();
-              }
-            }, [canvasWidth, canvasHeight, camera]);
+  useFrame(() => {
+    uniforms.current.uTime.value = controls.uTime;
+    uniforms.current.uHoverState.value = controls.uHoverState;
+  });
+  */
 
-            const handlePointerMove = (event: ThreeEvent<PointerEvent>) => {
-              if (!plane.current) return;
+  useFrame((state) => {
+    if (plane.current) {
+      const material = plane.current.material as THREE.ShaderMaterial;
+      material.uniforms.uTime.value = state.clock.elapsedTime;
+    }
+  });
 
-              const pointer = new THREE.Vector2(
-                (event.clientX / window.innerWidth) * 2 - 1,
-                -(event.clientY / window.innerHeight) * 2 + 1
-              );
+  useEffect(() => {
+    if (camera instanceof THREE.PerspectiveCamera) {
+      camera.aspect = canvasWidth / canvasHeight;
+      camera.updateProjectionMatrix();
+    }
+  }, [canvasWidth, canvasHeight, camera]);
 
-              raycaster.setFromCamera(pointer, camera);
-              const intersects = raycaster.intersectObject(plane.current!);
+  const handlePointerMove = (event: ThreeEvent<PointerEvent>) => {
+    if (!plane.current) return;
 
-              if (intersects.length > 0) {
-                const obj = intersects[0].object as THREE.Mesh;
-                const uv = intersects[0].uv;
+    const pointer = new THREE.Vector2(
+      (event.clientX / window.innerWidth) * 2 - 1,
+      -(event.clientY / window.innerHeight) * 2 + 1
+    );
 
-                if (uv) {
-                  (obj.material as THREE.ShaderMaterial).uniforms.uHover.value.set(
-                    uv.x,
-                    uv.y
-                  );
-                }
-              }
-            };
+    raycaster.setFromCamera(pointer, camera);
+    const intersects = raycaster.intersectObject(plane.current!);
 
-            const handlePointerEnter = () => {
-              gsap.to(uniforms.current.uHoverState, {
-                duration: 1,
-                value: 1,
-              });
-            };
+    if (intersects.length > 0) {
+      const obj = intersects[0].object as THREE.Mesh;
+      const uv = intersects[0].uv;
 
-            const handlePointerLeave = () => {
-              gsap.to(uniforms.current.uHoverState, {
-                duration: 1,
-                value: 0,
-              });
-            };
+      if (uv) {
+        (obj.material as THREE.ShaderMaterial).uniforms.uHover.value.set(
+          uv.x,
+          uv.y
+        );
+      }
+    }
+  };
 
-            return (
-              <mesh
-                ref={plane}
-                onPointerMove={handlePointerMove}
-                onPointerEnter={handlePointerEnter}
-                onPointerLeave={handlePointerLeave}
-                position={[0, 0, 0]}
-              >
-                <planeGeometry args={[canvasWidth, canvasHeight, 45, 45]} />
-                <shaderMaterial
-                  side={THREE.DoubleSide}
-                  vertexShader={vertex}
-                  fragmentShader={fragment}
-                  uniforms={uniforms.current}
-                />
-              </mesh>
-            );
-          }
+  const handlePointerEnter = () => {
+    gsap.to(uniforms.current.uHoverState, {
+      duration: 1,
+      value: 1,
+    });
+  };
+
+  const handlePointerLeave = () => {
+    gsap.to(uniforms.current.uHoverState, {
+      duration: 1,
+      value: 0,
+    });
+  };
+
+  return (
+    <mesh
+      ref={plane}
+      onPointerMove={handlePointerMove}
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
+      position={[0, 0, 0]}
+    >
+      <planeGeometry args={[canvasWidth, canvasHeight, 45, 45]} />
+      <shaderMaterial
+        side={THREE.DoubleSide}
+        vertexShader={vertex}
+        fragmentShader={fragment}
+        uniforms={uniforms.current}
+      />
+    </mesh>
+  );
+}
           ```
         </Highlighter>
       </ComponentSource>
@@ -524,207 +546,231 @@ description: An interactive and customizable component that creates a dynamic wa
       <ComponentSource name="mouse-wave-scene">
         <Highlighter slot="javascript">
           ```jsx
-          import React, { useEffect, useState, useRef, useCallback } from "react";
-          import { Canvas } from "@react-three/fiber";
-          import MouseWave from "@/registry/components/shaders/mouse-wave";
+"use client";
 
-          export default function MouseWaveScene({ imageSrc, alt, marginFactor = 1.05 }) {
-            const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-            const cameraRef = useRef(null);
-            const containerRef = useRef(null);
-            const [dimensions, setDimensions] = useState({
-              width: 0,
-              height: 0,
-            });
+import React, { useEffect, useState, useRef, useCallback } from "react";
+import { Canvas } from "@react-three/fiber";
+import MouseWave from "@/components/ui/mouse-wave";
 
-            const updateDimensions = useCallback(() => {
-              if (!containerRef.current) return;
+export default function MouseWaveScene({ imageSrc, alt, marginFactor = 1.05 }) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const cameraRef = useRef(null);
+  const containerRef = useRef(null);
+  const [dimensions, setDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
+  const [key, setKey] = useState(0);
 
-              const parentWidth = containerRef.current.clientWidth;
-              setIsMobile(window.innerWidth < 640);
-              const img = new Image();
-              img.src = imageSrc;
-              img.onload = () => {
-                const aspect = img.width / img.height;
-                const newHeight = parentWidth / aspect;
-                setDimensions({
-                  width: parentWidth,
-                  height: parentWidth / aspect,
-                });
+  const updateDimensions = useCallback(() => {
+    if (!containerRef.current) return;
 
-                if (!isMobile) {
-                  const newDistance =
-                    (newHeight / 2 / Math.tan((45 * Math.PI) / 360)) * marginFactor;
-                  if (cameraRef.current) {
-                    cameraRef.current.position.set(0, 0, newDistance);
-                    cameraRef.current.updateProjectionMatrix();
-                  }
-                }
-              };
-            }, [imageSrc]);
+    const parentWidth = containerRef.current.clientWidth;
+    setIsMobile(window.innerWidth < 640);
+    const img = new Image();
+    img.src = imageSrc;
+    img.onload = () => {
+      const aspect = img.width / img.height;
+      const newHeight = parentWidth / aspect;
+      setDimensions({
+        width: parentWidth,
+        height: parentWidth / aspect,
+      });
 
-            useEffect(() => {
-              updateDimensions();
-              const observer = new ResizeObserver(() => {
-                requestAnimationFrame(updateDimensions);
-              });
+      if (!isMobile) {
+        const newDistance =
+          (newHeight / 2 / Math.tan((45 * Math.PI) / 360)) * marginFactor;
+        if (cameraRef.current) {
+          cameraRef.current.position.set(0, 0, newDistance);
+          cameraRef.current.updateProjectionMatrix();
+        }
+      }
+    };
+  }, [imageSrc]);
 
-              window.addEventListener("resize", updateDimensions);
+  useEffect(() => {
+    updateDimensions();
+    const observer = new ResizeObserver(() => {
+      requestAnimationFrame(updateDimensions);
+    });
 
-              if (containerRef.current) observer.observe(containerRef.current);
-              return () => {
-                observer.disconnect();
-                window.removeEventListener("resize", updateDimensions);
-              };
-            }, [updateDimensions]);
+    window.addEventListener("resize", updateDimensions);
 
-            return (
-              <div
-                ref={containerRef}
-                style={{ width: "100%", height: dimensions.height }}
-              >
-                {isMobile ? (
-                  <img
-                    src={imageSrc}
-                    alt={alt || "Shader preview"}
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                  />
-                ) : (
-                  <Canvas
-                    camera={{
-                      fov: 45,
-                      aspect: dimensions.width / dimensions.height,
-                      near: 0.1,
-                      far: 1000,
-                      position: [
-                        0,
-                        0,
-                        dimensions.height / 2 / Math.tan((45 * Math.PI) / 360),
-                      ],
-                    }}
-                    onCreated={({ camera }) => {
-                      cameraRef.current = camera;
-                    }}
-                    style={{ width: "100%", height: "100%" }}
-                  >
-                    <MouseWave
-                      imageSrc={imageSrc}
-                      canvasWidth={dimensions.width}
-                      canvasHeight={dimensions.height}
-                    />
-                  </Canvas>
-                )}
-              </div>
-            );
-          }
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateDimensions);
+    };
+  }, [updateDimensions]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setKey(1);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      style={{ width: "100%", height: dimensions.height }}
+    >
+      {isMobile ? (
+        <img
+          src={imageSrc}
+          alt={alt || "Shader preview"}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      ) : (
+        <Canvas
+          key={key}
+          camera={{
+            fov: 45,
+            aspect: dimensions.width / dimensions.height,
+            near: 0.1,
+            far: 1000,
+            position: [
+              0,
+              0,
+              dimensions.height / 2 / Math.tan((45 * Math.PI) / 360),
+            ],
+          }}
+          onCreated={({ camera }) => {
+            cameraRef.current = camera;
+          }}
+          style={{ width: "100%", height: "100%" }}
+        >
+          <MouseWave
+            imageSrc={imageSrc}
+            canvasWidth={dimensions.width}
+            canvasHeight={dimensions.height}
+          />
+        </Canvas>
+      )}
+    </div>
+  );
+}
           ```
         </Highlighter>
         <Highlighter slot="typescript">
           ```tsx
-          import React, { useEffect, useState, useRef, useCallback } from "react";
-          import { Canvas } from "@react-three/fiber";
-          import * as THREE from "three";
-          import MouseWave from "@/registry/components/shaders/mouse-wave";
+"use client";
 
-          interface MouseWaveSceneProps {
-            imageSrc: string;
-            alt?: string;
-            marginFactor?: number;
-          }
+import React, { useEffect, useState, useRef, useCallback } from "react";
+import { Canvas } from "@react-three/fiber";
+import * as THREE from "three";
+import MouseWave from "@/components/ui/mouse-wave";
 
-          export default function MouseWaveScene({
-            imageSrc,
-            alt,
-            marginFactor = 1.05,
-          }: MouseWaveSceneProps) {
-            const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-            const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
-            const containerRef = useRef<HTMLDivElement>(null);
-            const [dimensions, setDimensions] = useState({
-              width: 0,
-              height: 0,
-            });
+interface MouseWaveSceneProps {
+  imageSrc: string;
+  alt?: string;
+  marginFactor?: number;
+}
 
-            const updateDimensions = useCallback(() => {
-              if (!containerRef.current) return;
+export default function MouseWaveScene({
+  imageSrc,
+  alt,
+  marginFactor = 1.05,
+}: MouseWaveSceneProps) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [dimensions, setDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
+  const [key, setKey] = useState(0);
 
-              const parentWidth = containerRef.current.clientWidth;
-              setIsMobile(window.innerWidth < 640);
-              const img = new Image();
-              img.src = imageSrc;
-              img.onload = () => {
-                const aspect = img.width / img.height;
-                const newHeight = parentWidth / aspect;
-                setDimensions({
-                  width: parentWidth,
-                  height: parentWidth / aspect,
-                });
+  const updateDimensions = useCallback(() => {
+    if (!containerRef.current) return;
 
-                if (!isMobile) {
-                  const newDistance =
-                    (newHeight / 2 / Math.tan((45 * Math.PI) / 360)) * marginFactor;
-                  if (cameraRef.current) {
-                    cameraRef.current.position.set(0, 0, newDistance);
-                    cameraRef.current.updateProjectionMatrix();
-                  }
-                }
-              };
-            }, [imageSrc]);
+    const parentWidth = containerRef.current.clientWidth;
+    setIsMobile(window.innerWidth < 640);
+    const img = new Image();
+    img.src = imageSrc;
+    img.onload = () => {
+      const aspect = img.width / img.height;
+      const newHeight = parentWidth / aspect;
+      setDimensions({
+        width: parentWidth,
+        height: parentWidth / aspect,
+      });
 
-            useEffect(() => {
-              updateDimensions();
-              const observer = new ResizeObserver(() => {
-                requestAnimationFrame(updateDimensions);
-              });
+      if (!isMobile) {
+        const newDistance =
+          (newHeight / 2 / Math.tan((45 * Math.PI) / 360)) * marginFactor;
+        if (cameraRef.current) {
+          cameraRef.current.position.set(0, 0, newDistance);
+          cameraRef.current.updateProjectionMatrix();
+        }
+      }
+    };
+  }, [imageSrc]);
 
-              window.addEventListener("resize", updateDimensions);
+  useEffect(() => {
+    updateDimensions();
+    const observer = new ResizeObserver(() => {
+      requestAnimationFrame(updateDimensions);
+    });
 
-              if (containerRef.current) observer.observe(containerRef.current);
-              return () => {
-                observer.disconnect();
-                window.removeEventListener("resize", updateDimensions);
-              };
-            }, [updateDimensions]);
+    window.addEventListener("resize", updateDimensions);
 
-            return (
-              <div
-                ref={containerRef}
-                style={{ width: "100%", height: dimensions.height }}
-              >
-                {isMobile ? (
-                  <img
-                    src={imageSrc}
-                    alt={alt || "Shader preview"}
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                  />
-                ) : (
-                  <Canvas
-                    camera={{
-                      fov: 45,
-                      aspect: dimensions.width / dimensions.height,
-                      near: 0.1,
-                      far: 1000,
-                      position: [
-                        0,
-                        0,
-                        dimensions.height / 2 / Math.tan((45 * Math.PI) / 360),
-                      ],
-                    }}
-                    onCreated={({ camera }) => {
-                      cameraRef.current = camera as THREE.PerspectiveCamera;
-                    }}
-                    style={{ width: "100%", height: "100%" }}
-                  >
-                    <MouseWave
-                      imageSrc={imageSrc}
-                      canvasWidth={dimensions.width}
-                      canvasHeight={dimensions.height}
-                    />
-                  </Canvas>
-                )}
-              </div>
-            );
-          }
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateDimensions);
+    };
+  }, [updateDimensions]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setKey(1);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      style={{ width: "100%", height: dimensions.height }}
+    >
+      {isMobile ? (
+        <img
+          src={imageSrc}
+          alt={alt || "Shader preview"}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      ) : (
+        <Canvas
+          key={key}
+          camera={{
+            fov: 45,
+            aspect: dimensions.width / dimensions.height,
+            near: 0.1,
+            far: 1000,
+            position: [
+              0,
+              0,
+              dimensions.height / 2 / Math.tan((45 * Math.PI) / 360),
+            ],
+          }}
+          onCreated={({ camera }) => {
+            cameraRef.current = camera as THREE.PerspectiveCamera;
+          }}
+          style={{ width: "100%", height: "100%" }}
+        >
+          <MouseWave
+            imageSrc={imageSrc}
+            canvasWidth={dimensions.width}
+            canvasHeight={dimensions.height}
+          />
+        </Canvas>
+      )}
+    </div>
+  );
+}
           ```
         </Highlighter>
       </ComponentSource>
@@ -793,3 +839,21 @@ If you're interested in exploring shaders further, these are great places to sta
 <li className="text-sm text-muted-foreground mt-4">
   <MdxLink href="https://threejs-journey.com/">ThreeJS Journey</MdxLink>
 </li>
+
+## Version Requirements
+
+If you are using Next.js 14 or earlier, install these packages instead:
+<Kbd>@react-three/fiber@8.18.0</Kbd> <Kbd>@react-three/drei@9.122.0 gsap</Kbd>
+
+```bash
+npm install @react-three/fiber@8.18.0 @react-three/drei@9.122.0 gsap three
+```
+
+## Changelog
+
+### 2025-04-27
+
+- Fixed a critical <Kbd>THREE.WebGLRenderer: Context Lost</Kbd> error occurring on **Next.js 15** projects.
+- Improved WebGL context handling for better stability across modern browsers.
+- Adjusted recommended package versions to ensure compatibility with **Next.js 14**.
+- Updated installation instructions to clearly differentiate requirements between Next.js 14 and 15 environments.
