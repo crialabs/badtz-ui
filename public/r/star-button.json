@@ -13,7 +13,7 @@
   ],
   "cssVars": {
     "theme": {
-      "star-btn": "star-btn calc(var(--duration)*1s) linear infinite"
+      "animate-star-btn": "star-btn calc(var(--duration)*1s) linear infinite"
     }
   },
   "css": {

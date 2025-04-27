@@ -342,24 +342,14 @@ export function StarButton({
       Add the following animations to your <Kbd>global.css</Kbd> file inside the <Kbd>@theme</Kbd> inline block:
 
       ```css
-      --animate-marquee-left: marquee-left var(--duration, 30s) linear infinite;
-      --animate-marquee-right: marquee-right var(--duration, 30s) linear infinite;
+      --animate-star-btn: star-btn calc(var(--duration) * 1s) linear infinite;
 
-      @keyframes marquee-left {
-        from {
-          transform: translateX(0);
+      @keyframes star-btn {
+        0% {
+          offset-distance: 0%;
         }
-        to {
-          transform: translateX(calc(-100% - var(--gap)));
-        }
-      }
-
-      @keyframes marquee-right {
-        from {
-          transform: translateX(calc(-100% - var(--gap)));
-        }
-        to {
-          transform: translateX(0);
+        100% {
+          offset-distance: 100%;
         }
       }
       ```

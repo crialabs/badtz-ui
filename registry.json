@@ -376,7 +376,7 @@
       "description": "The StarButton is a visually striking button that features a radial light animation with a starry background.",
       "cssVars": {
         "theme": {
-          "star-btn": "star-btn calc(var(--duration)*1s) linear infinite"
+          "animate-star-btn": "star-btn calc(var(--duration)*1s) linear infinite"
         }
       },
       "css": {
