@@ -20,29 +20,23 @@
       "type": "registry:ui",
       "title": "Border Beam",
       "description": "Displays an animated border effect with a glowing beam around the content that adapts to the size of the container.",
-      "tailwind": {
-        "config": {
-          "theme": {
-            "extend": {
-              "keyframes": {
-                "border-beam": {
-                  "0%": { "offset-distance": "0%" },
-                  "100%": { "offset-distance": "100%" }
-                }
-              },
-              "animation": {
-                "border-beam": "border-beam calc(var(--duration)*1s) linear infinite"
-              }
-            }
-          }
-        }
-      },
       "files": [
         {
           "path": "registry/components/border-beam.tsx",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "cssVars": {
+        "theme": {
+          "border-beam": "border-beam calc(var(--duration)*1s) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes border-beam": {
+          "0%": { "offset-distance": "0%" },
+          "100%": { "offset-distance": "100%" }
+        }
+      }
     },
     {
       "name": "cloud-orbit",

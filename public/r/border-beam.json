@@ -11,24 +11,18 @@
       "type": "registry:ui"
     }
   ],
-  "tailwind": {
-    "config": {
-      "theme": {
-        "extend": {
-          "keyframes": {
-            "border-beam": {
-              "0%": {
-                "offset-distance": "0%"
-              },
-              "100%": {
-                "offset-distance": "100%"
-              }
-            }
-          },
-          "animation": {
-            "border-beam": "border-beam calc(var(--duration)*1s) linear infinite"
-          }
-        }
+  "cssVars": {
+    "theme": {
+      "border-beam": "border-beam calc(var(--duration)*1s) linear infinite"
+    }
+  },
+  "css": {
+    "@keyframes border-beam": {
+      "0%": {
+        "offset-distance": "0%"
+      },
+      "100%": {
+        "offset-distance": "100%"
       }
     }
   }

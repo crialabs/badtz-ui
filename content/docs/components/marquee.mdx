@@ -68,7 +68,7 @@ description: A dynamic and customizable sliding component that creates smooth, i
 
     export default function MarqueeDemo() {
       return (
-        <div>
+        <div className="max-w-[670px] overflow-hidden">
           <Marquee className="py-2" direction="left">
             {[...items, ...items].map((item, index) => (
               <TestimonialCard key={index} item={item} />
@@ -144,7 +144,7 @@ description: A dynamic and customizable sliding component that creates smooth, i
 
     export default function MarqueeDemo() {
       return (
-        <div>
+        <div className="max-w-[670px] overflow-hidden">
           <Marquee className="py-2" direction="left">
             {[...items, ...items].map((item, index) => (
               <TestimonialCard key={index} item={item} />
