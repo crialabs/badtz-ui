@@ -26,17 +26,7 @@
           "type": "registry:ui"
         }
       ],
-      "cssVars": {
-        "theme": {
-          "border-beam": "border-beam calc(var(--duration)*1s) linear infinite"
-        }
-      },
-      "css": {
-        "@keyframes border-beam": {
-          "0%": { "offset-distance": "0%" },
-          "100%": { "offset-distance": "100%" }
-        }
-      }
+      "dependencies": ["framer-motion"]
     },
     {
       "name": "cloud-orbit",
@@ -44,33 +34,27 @@
       "title": "Cloud Orbit",
       "description": "This component creates a dynamic and interactive experience, where each icon orbits in a fluid motion. Fully customizable, it's ideal for showcasing your tech stack or the tools your product uses.",
       "dependencies": ["framer-motion"],
-      "tailwind": {
-        "config": {
-          "theme": {
-            "extend": {
-              "keyframes": {
-                "cloud-orbit": {
-                  "0%": {
-                    "transform": "rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg)"
-                  },
-                  "25%": {
-                    "transform": "rotate(90deg) translateY(calc(var(--radius) * 1px)) rotate(-90deg)"
-                  },
-                  "50%": {
-                    "transform": "rotate(180deg) translateY(calc(var(--radius) * 1px)) rotate(-180deg)"
-                  },
-                  "75%": {
-                    "transform": "rotate(270deg) translateY(calc(var(--radius) * 1px)) rotate(-270deg)"
-                  },
-                  "100%": {
-                    "transform": "rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)"
-                  }
-                }
-              },
-              "animation": {
-                "cloud-orbit": "cloud-orbit calc(var(--speed)*1s) linear infinite"
-              }
-            }
+      "cssVars": {
+        "theme": {
+          "animate-cloud-orbit": "cloud-orbit calc(var(--speed) * 1s) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes cloud-orbit": {
+          "0%": {
+            "transform": "rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg)"
+          },
+          "25%": {
+            "transform": "rotate(90deg) translateY(calc(var(--radius) * 1px)) rotate(-90deg)"
+          },
+          "50%": {
+            "transform": "rotate(180deg) translateY(calc(var(--radius) * 1px)) rotate(-180deg)"
+          },
+          "75%": {
+            "transform": "rotate(270deg) translateY(calc(var(--radius) * 1px)) rotate(-270deg)"
+          },
+          "100%": {
+            "transform": "rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)"
           }
         }
       },

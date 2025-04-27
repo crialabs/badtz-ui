@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, CSSProperties } from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface BorderBeamProps {
@@ -9,7 +10,7 @@ interface BorderBeamProps {
   lightColor?: string;
   borderWidth?: number;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export function BorderBeam({
@@ -27,7 +28,7 @@ export function BorderBeam({
       const div = pathRef.current;
       div.style.setProperty(
         "--path",
-        `path("M 0 0 H ${div.offsetWidth} V ${div.offsetHeight} H 0 V 0")`,
+        `path("M 0 0 H ${div.offsetWidth} V ${div.offsetHeight} H 0 V 0")`
       );
     }
   };
@@ -46,9 +47,7 @@ export function BorderBeam({
       style={
         {
           "--duration": duration,
-          "--light-width": `${lightWidth}px`,
           "--border-width": `${borderWidth}px`,
-          "--light-color": lightColor,
         } as CSSProperties
       }
       ref={pathRef}
@@ -57,18 +56,28 @@ export function BorderBeam({
         `after:content-[''] after:absolute after:inset-[var(--border-width)] after:rounded-[inherit]`,
         "![mask-clip:padding-box,border-box] border-[length:var(--border-width)]",
         "![mask-composite:intersect] [mask:linear-gradient(transparent,transparent),linear-gradient(red,red)]",
-
         `before:border-black/10 dark:before:border-white/10 before:absolute before:inset-0 before:rounded-[inherit] before:z-[-1] before:border-[length:var(--border-width)]`,
-        className,
+        className
       )}
       {...props}
     >
-      <div
-        className="absolute aspect-square inset-0 animate-border-beam bg-[radial-gradient(ellipse_at_center,var(--light-color),transparent,transparent)]"
-        style={{
-          offsetPath: "var(--path)",
-          offsetDistance: "0%",
-          width: "var(--light-width)",
+      <motion.div
+        className="absolute aspect-square inset-0 bg-[radial-gradient(ellipse_at_center,var(--light-color),transparent,transparent)]"
+        style={
+          {
+            "--light-color": lightColor,
+            "--light-width": `${lightWidth}px`,
+            width: "var(--light-width)",
+            offsetPath: "var(--path)",
+          } as CSSProperties
+        }
+        animate={{
+          offsetDistance: ["0%", "100%"],
+        }}
+        transition={{
+          duration: duration,
+          repeat: Infinity,
+          ease: "linear",
         }}
       />
     </div>

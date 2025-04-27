@@ -87,7 +87,7 @@ description: Displays an animated border effect with a glowing beam around the c
       <Step>Install the following dependencies:</Step>
 
       ```bash
-      npm install clsx tailwind-merge
+      npm install clsx tailwind-merge framer-motion
       ```
 
       <Step>Add the <Kbd>utils</Kbd> file to the <Kbd>@/lib</Kbd> folder</Step>
@@ -123,6 +123,7 @@ description: Displays an animated border effect with a glowing beam around the c
           "use client";
 
           import React, { useRef, useEffect } from "react";
+          import { motion } from "framer-motion";
           import { cn } from "@/lib/utils";
 
           export function BorderBeam({
@@ -158,9 +159,7 @@ description: Displays an animated border effect with a glowing beam around the c
               <div
                 style={{
                   "--duration": duration,
-                  "--light-width": `${lightWidth}px`,
                   "--border-width": `${borderWidth}px`,
-                  "--light-color": lightColor,
                 }}
                 ref={pathRef}
                 className={cn(
@@ -173,12 +172,21 @@ description: Displays an animated border effect with a glowing beam around the c
                 )}
                 {...props}
               >
-                <div
-                  className="absolute aspect-square inset-0 animate-border-beam bg-[radial-gradient(ellipse_at_center,var(--light-color),transparent,transparent)]"
+                <motion.div
+                  className="absolute aspect-square inset-0 bg-[radial-gradient(ellipse_at_center,var(--light-color),transparent,transparent)]"
                   style={{
-                    offsetPath: "var(--path)",
-                    offsetDistance: "0%",
+                    "--light-color": lightColor,
+                    "--light-width": `${lightWidth}px`,
                     width: "var(--light-width)",
+                    offsetPath: "var(--path)",
+                  }}
+                  animate={{
+                    offsetDistance: ["0%", "100%"],
+                  }}
+                  transition={{
+                    duration: duration,
+                    repeat: Infinity,
+                    ease: "linear",
                   }}
                 />
               </div>
@@ -191,6 +199,7 @@ description: Displays an animated border effect with a glowing beam around the c
           "use client";
 
           import React, { useRef, useEffect, CSSProperties } from "react";
+          import { motion } from "framer-motion";
           import { cn } from "@/lib/utils";
 
           interface BorderBeamProps {
@@ -199,7 +208,7 @@ description: Displays an animated border effect with a glowing beam around the c
             lightColor?: string;
             borderWidth?: number;
             className?: string;
-            [key: string]: any;
+            [key: string]: unknown;
           }
 
           export function BorderBeam({
@@ -236,9 +245,7 @@ description: Displays an animated border effect with a glowing beam around the c
                 style={
                   {
                     "--duration": duration,
-                    "--light-width": `${lightWidth}px`,
                     "--border-width": `${borderWidth}px`,
-                    "--light-color": lightColor,
                   } as CSSProperties
                 }
                 ref={pathRef}
@@ -252,12 +259,23 @@ description: Displays an animated border effect with a glowing beam around the c
                 )}
                 {...props}
               >
-                <div
-                  className="absolute aspect-square inset-0 animate-border-beam bg-[radial-gradient(ellipse_at_center,var(--light-color),transparent,transparent)]"
-                  style={{
-                    offsetPath: "var(--path)",
-                    offsetDistance: "0%",
-                    width: "var(--light-width)",
+                <motion.div
+                  className="absolute aspect-square inset-0 bg-[radial-gradient(ellipse_at_center,var(--light-color),transparent,transparent)]"
+                  style={
+                    {
+                      "--light-color": lightColor,
+                      "--light-width": `${lightWidth}px`,
+                      width: "var(--light-width)",
+                      offsetPath: "var(--path)",
+                    } as CSSProperties
+                  }
+                  animate={{
+                    offsetDistance: ["0%", "100%"],
+                  }}
+                  transition={{
+                    duration: duration,
+                    repeat: Infinity,
+                    ease: "linear",
                   }}
                 />
               </div>
@@ -268,29 +286,6 @@ description: Displays an animated border effect with a glowing beam around the c
       </ComponentSource>
 
       <Step>Update the import paths to match your project setup.</Step>
-
-      <Step>Update <Kbd>tailwind.config.js</Kbd></Step>
-
-      Add the following animations to your <Kbd>tailwind.config.js</Kbd> file:
-
-      ```js {5-13}
-      /** @type {import('tailwindcss').Config} */
-      module.exports = {
-        theme: {
-          extend: {
-            keyframes: {
-              "border-beam": {
-                "0%": { "offset-distance": "0%" },
-                "100%": { "offset-distance": "100%" },
-              },
-            },
-            animation: {
-              "border-beam": "border-beam calc(var(--duration)*1s) linear infinite",
-            },
-          },
-        },
-      };
-      ```
     </Steps>
   </TabsContent>
 </Tabs>
@@ -323,11 +318,11 @@ import { BorderBeam } from "@/components/ui/border-beam";
 
 | Prop        | Type                      | Description                                                 | Default   |
 | ----------- | ------------------------- | ----------------------------------------------------------- | --------- |
-| lightWidth  | <Kbd>number</Kbd>                    | Width of the light beam effect in pixels.                   | 200       |
-| duration    | <Kbd>number</Kbd>                    | Duration of the animation in seconds.                       | 10        |
-| lightColor  | <Kbd>string</Kbd>                    | Color of the light beam effect.                             | "#FAFAFA" |
-| borderWidth | <Kbd>number</Kbd>                    | Width of the border in pixels.                              | 1         |
-| className   | <Kbd>string</Kbd>                    | Additional custom classes.                                  | -         |
+| lightWidth  | <Kbd>number</Kbd>         | Width of the light beam effect in pixels.                   | 200       |
+| duration    | <Kbd>number</Kbd>         | Duration of the animation in seconds.                       | 10        |
+| lightColor  | <Kbd>string</Kbd>         | Color of the light beam effect.                             | "#FAFAFA" |
+| borderWidth | <Kbd>number</Kbd>         | Width of the border in pixels.                              | 1         |
+| className   | <Kbd>string</Kbd>         | Additional custom classes.                                  | -         |
 | props       | <Kbd>Record&lt;string, any&gt;</Kbd> | Additional HTML attributes for the component's wrapper div. | -         |
 
 ## Credits
