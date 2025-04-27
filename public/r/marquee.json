@@ -11,5 +11,28 @@
       "type": "registry:ui"
     }
   ],
-  "cssVars": {}
+  "cssVars": {
+    "theme": {
+      "animate-marquee-left": "marquee-left var(--duration, 30s) linear infinite",
+      "animate-marquee-right": "marquee-right var(--duration, 30s) linear infinite"
+    }
+  },
+  "css": {
+    "@keyframes marquee-left": {
+      "from": {
+        "transform": "translateX(0)"
+      },
+      "to": {
+        "transform": "translateX(calc(-100% - var(--gap)))"
+      }
+    },
+    "@keyframes marquee-right": {
+      "from": {
+        "transform": "translateX(calc(-100% - var(--gap)))"
+      },
+      "to": {
+        "transform": "translateX(0)"
+      }
+    }
+  }
 }

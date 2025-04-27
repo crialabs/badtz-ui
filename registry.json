@@ -544,6 +544,12 @@
       "type": "registry:ui",
       "title": "Marquee",
       "description": "A dynamic and customizable sliding marquee component that enhances UI experiences with smooth scrolling animations.",
+      "files": [
+        {
+          "path": "registry/components/marquee.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "cssVars": {
         "theme": {
           "animate-marquee-left": "marquee-left var(--duration, 30s) linear infinite",
@@ -567,13 +573,7 @@
             "transform": "translateX(0)"
           }
         }
-      },
-      "files": [
-        {
-          "path": "registry/components/marquee.tsx",
-          "type": "registry:ui"
-        }
-      ]
+      }
     }
   ]
 }

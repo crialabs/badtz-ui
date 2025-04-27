@@ -30,9 +30,10 @@ const items = [
     body: "This design system brings consistency and efficiency to our creative process. Beautiful and functional.",
   },
 ];
+
 function TestimonialCard({ item }: { item: (typeof items)[number] }) {
   return (
-    <div className="relative h-full w-[20rem] rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-6 shadow-sm transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-900 flex flex-col justify-between items-start">
+    <div className="relative h-full w-[20rem] rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-4 shadow-sm transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-900 flex flex-col justify-between items-start">
       <div className="mb-4 text-sm text-neutral-500 dark:text-neutral-400">
         {item.body}
       </div>
