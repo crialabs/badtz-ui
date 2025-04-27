@@ -240,7 +240,36 @@ description: A dynamic and customizable sliding ribbon component that enhances U
 
       <Step>Update the import paths to match your project setup.</Step>
 
-      <Step>Update <Kbd>tailwind.config.js</Kbd></Step>
+      <Step>Tailwind v4: Update <Kbd>global.css</Kbd></Step>
+
+      Add the following animations to your <Kbd>global.css</Kbd> file inside the <Kbd>@theme</Kbd> inline block:
+
+      ```css
+      --animate-infinite-ribbon: infinite-ribbon var(--ribbon-duration) linear
+        infinite;
+      --animate-infinite-ribbon-reverse: infinite-ribbon-reverse
+        var(--ribbon-duration) linear infinite;
+
+      @keyframes infinite-ribbon {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+      
+      @keyframes infinite-ribbon-reverse {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      ```
+
+      <Step>Tailwind v3: Update <Kbd>tailwind.config.js</Kbd></Step>
 
       Add the following animations to your <Kbd>tailwind.config.js</Kbd> file:
 

@@ -120,25 +120,27 @@
       "type": "registry:ui",
       "title": "Infinite Ribbon",
       "description": "A dynamic and customizable sliding ribbon component that enhances UI experiences with smooth scrolling animations.",
-      "tailwind": {
-        "config": {
-          "theme": {
-            "extend": {
-              "keyframes": {
-                "infinite-ribbon": {
-                  "0%": { "transform": "translateX(0)" },
-                  "100%": { "transform": "translateX(-100%)" }
-                },
-                "infinite-ribbon-reverse": {
-                  "0%": { "transform": "translateX(-100%)" },
-                  "100%": { "transform": "translateX(0)" }
-                }
-              },
-              "animation": {
-                "infinite-ribbon": "infinite-ribbon var(--ribbon-duration) linear infinite",
-                "infinite-ribbon-reverse": "infinite-ribbon-reverse var(--ribbon-duration) linear infinite"
-              }
-            }
+      "cssVars": {
+        "theme": {
+          "animate-infinite-ribbon": "infinite-ribbon var(--ribbon-duration) linear infinite",
+          "animate-infinite-ribbon-reverse": "infinite-ribbon-reverse var(--ribbon-duration) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes infinite-ribbon": {
+          "0%": {
+            "transform": "translateX(0)"
+          },
+          "100%": {
+            "transform": "translateX(-100%)"
+          }
+        },
+        "@keyframes infinite-ribbon-reverse": {
+          "0%": {
+            "transform": "translateX(-100%)"
+          },
+          "100%": {
+            "transform": "translateX(0)"
           }
         }
       },
