@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
@@ -21,6 +23,7 @@ export default function MouseWaveScene({
     width: 0,
     height: 0,
   });
+  const [key, setKey] = useState(0);
 
   const updateDimensions = useCallback(() => {
     if (!containerRef.current) return;
@@ -63,6 +66,14 @@ export default function MouseWaveScene({
     };
   }, [updateDimensions]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setKey(1);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div
       ref={containerRef}
@@ -76,6 +87,7 @@ export default function MouseWaveScene({
         />
       ) : (
         <Canvas
+          key={key}
           camera={{
             fov: 45,
             aspect: dimensions.width / dimensions.height,
