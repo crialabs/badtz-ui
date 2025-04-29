@@ -438,6 +438,19 @@
       ]
     },
     {
+      "name": "animated-keyboard",
+      "type": "registry:ui",
+      "title": "Animated Keyboard",
+      "description": "A fun and interactive animated keyboard with keycaps that can be customized with different colors and variants.",
+      "dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/components/animated-keyboard.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "shuffle-button",
       "type": "registry:ui",
       "title": "Shuffle Button",

@@ -19,8 +19,8 @@ import { ChevronDown } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { LargeLogo, Logo } from "@/components/logo";
-import { GithubButton } from "@/components/github-button";
-import { ModeToggle } from "@/components/mode-toggle";
+import { DocGithubButton } from "@/components/docs/doc-github-button";
+import { DocModeToggle } from "@/components/docs/doc-mode-toggle";
 import Link from "next/link";
 import { HomeSearchbar } from "@/components/home/home-searchbar";
 import { Badge } from "@/components/ui/badge";
@@ -152,11 +152,11 @@ export default function Header(): JSX.Element {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-sidebar-border backdrop-blur-md bg-third/70">
+    <header className="sticky top-0 z-40 w-full border-b border-sidebar-border/80 backdrop-blur-md bg-code-background/70 px-6 lg:px-8">
       <div
         className={cn(
-          "mx-auto px-6 lg:px-8",
-          pathname?.startsWith("/docs") ? "container" : "max-w-6xl"
+          "mx-auto",
+          pathname?.startsWith("/docs") ? "container" : "max-w-5xl"
         )}
       >
         <div className="flex h-14 items-center w-full justify-between z-50 relative">
@@ -167,7 +167,7 @@ export default function Header(): JSX.Element {
             </Link>
             <nav
               aria-label="Main navigation"
-              className="flex items-center gap-4 text-[13px] xl:gap-5"
+              className="flex items-center gap-4 text-[13.5px] xl:gap-5"
             >
               {links.map((link) => (
                 <Link
@@ -179,10 +179,10 @@ export default function Header(): JSX.Element {
                     "aria-label": `${link.label} (opens in new tab)`,
                   })}
                   className={cn(
-                    "transition-colors text-muted-foreground hover:text-foreground font-normal",
+                    "transition-colors text-sidebar-muted-foreground hover:text-foreground font-normal",
                     pathname?.startsWith(link.href)
                       ? "text-foreground"
-                      : "text-muted-foreground"
+                      : "text-sidebar-muted-foreground"
                   )}
                 >
                   {link.label}
@@ -303,9 +303,10 @@ export default function Header(): JSX.Element {
           </div>
 
           <div className="flex items-center gap-2 text-sm font-light">
+            <DocGithubButton className="h-[30px]" />
             {!pathname?.startsWith("/docs") && (
-              <div className="flex items-center gap-0.5">
-                <ModeToggle />
+              <div className="flex items-center gap-0">
+                <DocModeToggle className="border-0 hover:bg-sidebar-accent bg-transparent" />
                 <SocialButton
                   srOnly="Twitter Link"
                   src="https://x.com/badtz_ui"
@@ -314,7 +315,6 @@ export default function Header(): JSX.Element {
                 </SocialButton>
               </div>
             )}
-            <GithubButton />
           </div>
         </div>
       </div>

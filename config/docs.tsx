@@ -140,6 +140,12 @@ export const docsConfig: DocCategory[] = [
     ),
     items: [
       {
+        title: "Keyboard",
+        href: "/docs/components/animated-keyboard",
+        items: [],
+        label: "new",
+      },
+      {
         title: "Particles",
         href: "/docs/components/particles",
         items: [],

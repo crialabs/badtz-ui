@@ -99,6 +99,18 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
+  },"animated-keyboard": {
+    name: "animated-keyboard",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/components/animated-keyboard")),
+    source: "",
+    files: [
+  "__registry__/components/components/animated-keyboard.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
   },"hyperspace-background": {
     name: "hyperspace-background",
     type: "components:ui",
@@ -695,6 +707,54 @@ export const Index: Record<string, RegistryItem> = {
     source: "",
     files: [
   "__registry__/components/demos/infinite-ribbon-demo.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"keyboard-demo": {
+    name: "keyboard-demo",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/keyboard/keyboard-demo")),
+    source: "",
+    files: [
+  "__registry__/components/demos/keyboard/keyboard-demo.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"keycaps-demo": {
+    name: "keycaps-demo",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/keyboard/keycaps-demo")),
+    source: "",
+    files: [
+  "__registry__/components/demos/keyboard/keycaps-demo.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"numpad-demo": {
+    name: "numpad-demo",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/keyboard/numpad-demo")),
+    source: "",
+    files: [
+  "__registry__/components/demos/keyboard/numpad-demo.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"rgb-keyboard-demo": {
+    name: "rgb-keyboard-demo",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/keyboard/rgb-keyboard-demo")),
+    source: "",
+    files: [
+  "__registry__/components/demos/keyboard/rgb-keyboard-demo.js"
 ],
     category: "undefined",
     subcategory: "undefined",

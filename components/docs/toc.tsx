@@ -2,11 +2,13 @@
 "use client";
 
 import * as React from "react";
+import { motion } from "framer-motion";
 
 import { TableOfContents } from "@/lib/toc";
 import { cn } from "@/lib/utils";
 import { useMounted } from "@/hooks/use-mounted";
 import { TableOfContents as TableOfContentsIcon } from "lucide-react";
+import { useTocThumb } from "@/hooks/use-toc-thumb";
 
 interface TocProps {
   toc: TableOfContents;
@@ -33,7 +35,7 @@ export function DashboardTableOfContents({ toc }: TocProps) {
 
   return (
     <div className="space-y-1">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 pb-2">
         <TableOfContentsIcon className="size-4" />
         <p className="font-medium !text-sm">On This Page</p>
       </div>
@@ -84,18 +86,44 @@ interface TreeProps {
 }
 
 function Tree({ tree, level = 1, activeItem }: TreeProps) {
+  const containerRef = React.useRef<HTMLUListElement>(null);
+  const [top, height] = useTocThumb(containerRef, activeItem);
+
   return tree?.items?.length && level < 3 ? (
-    <ul className={cn("m-0 list-none", { "pl-4": level !== 1 })}>
+    <ul
+      ref={containerRef}
+      className={cn("m-0 list-none relative", { "pl-4": level !== 1 })}
+    >
       {tree.items.map((item, index) => {
+        const isActive = item.url === `#${activeItem}`;
         return (
-          <li key={index} className={cn("mt-0 pt-2")}>
+          <li
+            key={index}
+            className={cn(
+              "mt-0 py-[2.5px] border-l-2 pl-3 border-sidebar-border relative",
+              {
+                "pl-0 border-0": level !== 1,
+              }
+            )}
+          >
+            {isActive && (
+              <motion.div
+                className="absolute left-[-2px] w-[2px] bg-foreground"
+                initial={false}
+                animate={{
+                  y: top,
+                  height: height,
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              />
+            )}
             <a
               href={item.url}
               className={cn(
-                "inline-block no-underline transition-colors hover:text-foreground text-balance max-w-[240px]",
-                item.url === `#${activeItem}`
+                "inline-block no-underline transition-colors hover:text-foreground text-balance max-w-[220px] text-[13.5px]",
+                isActive
                   ? "font-medium text-foreground"
-                  : "text-muted-foreground"
+                  : "text-sidebar-muted-foreground"
               )}
             >
               {item.title}

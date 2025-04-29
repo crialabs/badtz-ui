@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { allChangelogs } from "contentlayer/generated";
-import { compareDesc } from "date-fns";
 import { formatDate } from "@/lib/utils";
 import { Icons } from "@/components/icons";
 import { Metadata } from "next";
@@ -30,21 +29,19 @@ export default async function ChangelogPage() {
       <div className="px-6 lg:px-8 lg:max-w-5xl mx-auto">
         <div className="flex flex-col items-start border-b border-border pb-6">
           <div className="flex w-full justify-between gap-4 items-end">
-            <h1 className="text-4xl md:text-5xl font-semibold tracking-tighter text-foreground text-balance max-w-[605px] font-gilroy">
+            <h1 className="text-3xl font-semibold tracking-tighter text-foreground text-balance max-w-[605px] font-gilroy">
               Changelog
             </h1>
             <Link
               href="https://x.com/badtz_ui"
               target="_blank"
-              className="flex [&_svg]:size-3 items-center gap-2 rounded-lg px-2 md:px-3 h-8 md:h-10 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0"
+              className="gap-2 px-2 md:px-3 h-8 text-[13.5px] border hover:border-foreground/10 duration-300 whitespace-nowrap shrink-0 hover:bg-sidebar-accent transition-colors flex items-center justify-center rounded [&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0 text-foreground bg-transparent"
             >
               <Icons.twitter />
-              <span className="hidden md:block font-light">
-                Follow for updates
-              </span>
+              <span className="hidden md:block font-light">Updates</span>
             </Link>
           </div>
-          <p className="mt-4 text-balance max-w-[550px] md:max-w-[700px] tracking-tight lg:mt-6 sm:mt-3 text-muted-foreground text-base md:text-lg font-light">
+          <p className="mt-4 text-balance max-w-[550px] md:max-w-[700px] tracking-tight text-sidebar-muted-foreground text-[15px]">
             Welcome to our changelog, where we discuss the latest updates on our
             project and components, keeping you informed about new features and
             improvements...
@@ -61,15 +58,15 @@ export default async function ChangelogPage() {
                     <div className="flex w-full pb-4 md:w-[125px] md:pb-0">
                       {changelog.date && (
                         <div className="h-full">
-                          <p className="text-sm font-medium text-muted-foreground hidden md:block mt-2 sticky top-20">
+                          <p className="text-sm text-sidebar-muted-foreground hidden md:block mt-2 sticky top-20">
                             {formatDate(changelog.date)}
                           </p>
                         </div>
                       )}
                     </div>
                     <div className="relative hidden md:flex md:w-[75px]">
-                      <div className="sticky left-0 top-20 mt-3.5 h-1.5 w-1.5 rounded-full bg-muted-foreground z-[5]"></div>
-                      <div className="absolute left-0.5 top-0.5 h-full w-0.5 bg-border"></div>
+                      <div className="sticky left-0 top-[87px] mt-3.5 h-1.5 w-1.5 rounded-full bg-sidebar-muted-foreground z-[5]"></div>
+                      <div className="absolute left-0.5 top-0.5 h-full w-[1px] bg-border"></div>
                     </div>
                   </div>
 
@@ -89,11 +86,11 @@ export default async function ChangelogPage() {
                         priority={index <= 1}
                       />
                     )}
-                    <h2 className="text-3xl text-foreground font-gilroy ">
+                    <h2 className="text-xl text-foreground font-gilroy">
                       {changelog.title}
                     </h2>
                     {changelog.description && (
-                      <p className="text-muted-foreground mt-2 text-balance">
+                      <p className="mt-3 text-balance tracking-tight text-sidebar-muted-foreground text-[15px]">
                         {changelog.description.length > 140
                           ? `${changelog.description.slice(0, 140)}...`
                           : changelog.description}
@@ -108,7 +105,7 @@ export default async function ChangelogPage() {
                         height={20}
                         className="rounded-full bg-secondary shrink-0 h-5 w-5 invert dark:invert-[0]"
                       />
-                      <p className="font-light text-sm text-thin text-muted-foreground">
+                      <p className="text-sm text-sidebar-muted-foreground">
                         Badtz
                       </p>
                     </div>

@@ -3,7 +3,6 @@
 import { notFound } from "next/navigation";
 import { allAuthors, allPosts, type Post } from "@/.contentlayer/generated";
 import { Mdx } from "@/components/docs/mdx-components/mdx-components";
-import Image from "next/image";
 import Link from "next/link";
 import { absoluteUrl, formatDate } from "@/lib/utils";
 import { ChevronLeft } from "lucide-react";
@@ -167,9 +166,16 @@ export default async function PostPage({ params }: { params: Params }) {
   };
 
   return (
-    <div className="w-full h-full pb-16 sm:pb-28">
-      <div className="px-6 lg:px-8 lg:max-w-6xl mx-auto pt-10 md:pt-20 relative lg:gap-10 xl:grid xl:grid-cols-[1fr_240px]">
-        <div>
+    <div className="w-full h-full pb-16">
+      <div className="px-6 lg:px-8 lg:max-w-5xl mx-auto pt-10 md:pt-20 relative lg:gap-10 xl:grid xl:grid-cols-[1fr_240px]">
+        <div className="max-w-xl mx-auto">
+          <Link
+            href="/blog"
+            className="pl-3 pr-4 text-sm w-min mr-auto gap-2 px-2 md:pl-3 h-8 text-[13.5px] border hover:border-foreground/10 duration-300 whitespace-nowrap shrink-0 hover:bg-sidebar-accent transition-colors flex items-center justify-center rounded [&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0 text-foreground bg-transparent mb-8"
+          >
+            <ChevronLeft />
+            Back
+          </Link>
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -191,21 +197,21 @@ export default async function PostPage({ params }: { params: Params }) {
               __html: JSON.stringify(jsonLdBreadcrumbs),
             }}
           />
-          <article className="w-full mt-12 [&_p]:font-light [&_li]:font-base [&_h3]:text-2xl">
-            <div className="flex flex-col  items-start">
+          <article className="w-full mt-3 [&_p]:font-light [&_li]:font-base [&_h3]:text-2xl max-w-xl mx-auto">
+            <div className="flex flex-col items-start">
+              <h1 className="text-4xl font-semibold tracking-tighter text-foreground text-balance font-gilroy mt-3">
+                {post.title}
+              </h1>
               {post.date && (
                 <time
                   dateTime={post.date}
-                  className="block text-sm text-muted-foreground"
+                  className="block text-xs text-muted-foreground mt-1"
                 >
                   Published on {formatDate(post.date)}
                 </time>
               )}
-              <h1 className="text-4xl/[2.75rem] md:text-5xl/[3.5rem] font-semibold tracking-tighter text-foreground text-balance font-gilroy mt-2">
-                {post.title}
-              </h1>
               {cleanedTags.length > 0 && (
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-2">
                   {cleanedTags.map((tag) => (
                     <Link
                       key={tag}
@@ -245,27 +251,48 @@ export default async function PostPage({ params }: { params: Params }) {
             <div className="mt-1 flex space-y-4">
               {authors.map((author) =>
                 author ? (
-                  <div className="w-full bg-secondary/20 border rounded-xl p-5 mt-12 flex text-left flex-col md:flex-row gap-6 items-start">
-                    <BunnyImage
-                      src={author.avatar}
-                      alt={author.title}
-                      width={90}
-                      height={90}
-                      className="aspect-square object-cover bg-secondary border-border border rounded-full shrink-0"
-                    />
+                  <div className="w-full bg-secondary/20 border rounded-lg p-5 mt-12 flex text-left flex-col md:flex-row gap-8 items-start">
+                    <div className="flex flex-row w-full md:w-auto items-start md:flex-col gap-2 justify-between h-full">
+                      <BunnyImage
+                        src={author.avatar}
+                        alt={author.title}
+                        width={90}
+                        height={90}
+                        className="aspect-square object-cover bg-secondary border-border border rounded-full shrink-0"
+                      />
+                      <div className="flex items-center space-x-3">
+                        <Link
+                          key={author._id}
+                          href={`https://twitter.com/${author.twitter}`}
+                          target="_blank"
+                          title={`View ${author.title}'s Twitter profile`}
+                          className="flex [&_svg]:size-3.5 items-center gap-2 rounded-md px-2 aspect-square justify-center h-8 w-8 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0"
+                        >
+                          <Icons.twitter />
+                        </Link>
+                        <Link
+                          href="https://github.com/badtzx0"
+                          target="_blank"
+                          title={`View ${author.title}'s Github profile`}
+                          className="flex [&_svg]:size-4 items-center gap-2 rounded-md px-2 aspect-square justify-center h-8 w-8 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0"
+                        >
+                          <Icons.gitHub />
+                        </Link>
+                      </div>
+                    </div>
                     <div>
                       <h3 className="text-xl font-semibold mt-2">
                         Article written by{" "}
                         <Link
                           href="/blog/authors/badtz"
-                          className="text-blue-500 hover:underline"
+                          className="hover:underline"
                           title={`View all articles by ${author.title}`}
                         >
                           {author.title}
                         </Link>
                       </h3>
                       <h4 className="mt-1">Founder of BadtzUI</h4>
-                      <p className="text-muted-foreground text-pretty font-light mt-3">
+                      <p className="text-muted-foreground text-pretty text-[15px] mt-3">
                         Badtz is the <strong>Founder of BadtzUI</strong>. Badtz
                         focuses on crafting
                         <strong>
@@ -275,25 +302,6 @@ export default async function PostPage({ params }: { params: Params }) {
                         to help developers build beautiful applications with
                         ease.
                       </p>
-                      <div className="flex items-center space-x-2 mt-5">
-                        <Link
-                          key={author._id}
-                          href={`https://twitter.com/${author.twitter}`}
-                          target="_blank"
-                          title={`View ${author.title}'s Twitter profile`}
-                          className="flex [&_svg]:size-3.5 items-center gap-2 rounded-lg px-2 aspect-square justify-center h-10 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0 w-min"
-                        >
-                          <Icons.twitter />
-                        </Link>
-                        <Link
-                          href="https://github.com/badtzx0"
-                          target="_blank"
-                          title={`View ${author.title}'s Github profile`}
-                          className="flex [&_svg]:size-4 items-center gap-2 rounded-lg px-2 aspect-square justify-center h-10 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0 w-min"
-                        >
-                          <Icons.gitHub />
-                        </Link>
-                      </div>
                     </div>
                   </div>
                 ) : null
@@ -325,16 +333,16 @@ export default async function PostPage({ params }: { params: Params }) {
                     />
                   )}
                   <div className="pt-2.5 p-1">
-                    <h2 className="group-hover/article:text-foreground text-lg mt-2 font-medium text-foreground/70 transition-colors duration-300">
+                    <h2 className="group-hover/article:text-foreground mt-2 font-medium transition-colors duration-300 text-xl text-sidebar-foreground font-gilroy">
                       {post.title}
                     </h2>
                     {post.date && (
-                      <p className="text-xs text-muted-foreground mt-1.5">
+                      <p className="text-xs text-sidebar-muted-foreground mt-1.5">
                         {formatDate(post.date)}
                       </p>
                     )}
                     {post.description && (
-                      <p className="mt-3 text-sm text-muted-foreground text-prose font-light">
+                      <p className="mt-3 text-sm text-sidebar-muted-foreground text-prose">
                         {post.description.length > 140
                           ? `${post.description.slice(0, 140)}...`
                           : post.description}
@@ -348,7 +356,7 @@ export default async function PostPage({ params }: { params: Params }) {
                         height={20}
                         className="rounded-full bg-secondary shrink-0 h-5 w-5 invert dark:invert-[0]"
                       />
-                      <p className="font-light text-sm text-thin text-muted-foreground">
+                      <p className="text-sm text-sidebar-muted-foreground">
                         Badtz
                       </p>
                     </div>
@@ -366,7 +374,7 @@ export default async function PostPage({ params }: { params: Params }) {
           <div className="flex justify-center py-6 lg:py-10">
             <Link
               href="/blog"
-              className="flex [&_svg]:size-3 text-foreground items-center gap-2 rounded-lg pl-3 pr-4 h-9 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0 w-min mr-auto"
+              className="pl-3 pr-4 text-sm w-min mr-auto gap-2 px-2 md:px-3 h-8 text-[13.5px] border hover:border-foreground/10 duration-300 whitespace-nowrap shrink-0 hover:bg-sidebar-accent transition-colors flex items-center justify-center rounded [&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0 text-foreground bg-transparent"
             >
               <ChevronLeft />
               All articles

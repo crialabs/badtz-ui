@@ -2,10 +2,14 @@
 "use client";
 
 import * as React from "react";
+import { motion } from "framer-motion";
 import { TableOfContents } from "@/lib/toc";
 import { cn } from "@/lib/utils";
 import { useMounted } from "@/hooks/use-mounted";
-import { ChevronDown } from "lucide-react";
+import {
+  ChevronDown,
+  TableOfContents as TableOfContentsIcon,
+} from "lucide-react";
 import {
   Collapsible,
   CollapsibleTrigger,
@@ -26,7 +30,7 @@ export function DashboardTableOfContents({ toc }: TocProps) {
             .filter(Boolean)
             .map((id) => id?.split("#")[1])
         : [],
-    [toc],
+    [toc]
   );
   const activeHeading = useActiveItem(itemIds);
   const mounted = useMounted();
@@ -36,8 +40,11 @@ export function DashboardTableOfContents({ toc }: TocProps) {
   }
 
   return (
-    <div className="space-y-2 px-1">
-      <p className="font-medium">On This Page</p>
+    <div className="space-y-1">
+      <div className="flex items-center gap-2 pb-2">
+        <TableOfContentsIcon className="size-4" />
+        <p className="font-medium !text-sm">On This Page</p>
+      </div>
       <Tree tree={toc} activeItem={activeHeading} />
     </div>
   );
@@ -55,7 +62,7 @@ function useActiveItem(itemIds: string[]) {
           }
         });
       },
-      { rootMargin: `0% 0% -80% 0%` },
+      { rootMargin: `0% 0% -80% 0%` }
     );
 
     itemIds?.forEach((id) => {
@@ -85,22 +92,75 @@ interface TreeProps {
 }
 
 function Tree({ tree, level = 1, activeItem }: TreeProps) {
+  const [activePosition, setActivePosition] = React.useState({
+    top: 0,
+    height: 0,
+  });
+
+  React.useEffect(() => {
+    const activeElement = document.querySelector(`a[href="#${activeItem}"]`);
+    if (activeElement) {
+      const rect = activeElement.getBoundingClientRect();
+      const parentRect = activeElement.parentElement?.getBoundingClientRect();
+      if (parentRect) {
+        setActivePosition({
+          top: rect.top - parentRect.top,
+          height: rect.height,
+        });
+      }
+    }
+  }, [activeItem]);
+
   return tree?.items?.length ? (
-    <ul className={cn("m-0 list-none px-1", { "pl-4": level !== 1 })}>
+    <ul className={cn("m-0 list-none relative", { "pl-4": level !== 1 })}>
       {tree.items.map((item, index) => {
         const hasChildren = item.items?.length;
         const isActiveParent = hasChildren
           ? item.items.some((subItem) => subItem.url === `#${activeItem}`)
           : false;
+        const isActive = item.url === `#${activeItem}`;
 
         return (
-          <li key={index} className={cn("mt-0 pt-2")}>
+          <li
+            key={index}
+            className={cn(
+              "mt-0 py-[3.5px] border-l-2 pl-3 border-sidebar-border relative",
+              {
+                "pl-0 border-0": level !== 1,
+              }
+            )}
+          >
+            {(isActive || isActiveParent) && (
+              <motion.svg
+                className="absolute left-[-2px] w-[2px] text-foreground"
+                initial={false}
+                animate={{
+                  y: activePosition.top,
+                  height: activePosition.height,
+                }}
+                viewBox="0 0 2 100"
+                preserveAspectRatio="none"
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              >
+                <line
+                  x1="1"
+                  y1="0"
+                  x2="1"
+                  y2="100"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </motion.svg>
+            )}
             {hasChildren ? (
               <Collapsible defaultOpen={false} className="space-y-2">
                 <CollapsibleTrigger
                   className={cn(
-                    "flex items-start gap-2 font-medium transition text-muted-foreground hover:text-foreground text-left",
-                    isActiveParent && "text-foreground font-semibold", // Highlight si actif
+                    "flex text-left items-start gap-2 transition text-balance max-w-[220px] text-[13.5px]",
+                    isActiveParent
+                      ? "font-medium text-foreground"
+                      : "text-sidebar-muted-foreground hover:text-foreground"
                   )}
                 >
                   {item.title}
@@ -109,14 +169,14 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
                 <CollapsibleContent>
                   <ul className="pl-4">
                     {item.items.map((subItem, subIndex) => (
-                      <li key={subIndex}>
+                      <li key={subIndex} className="mt-0 py-[2.5px]">
                         <a
                           href={subItem.url}
                           className={cn(
-                            "inline-block no-underline transition-colors hover:text-foreground pt-2",
+                            "inline-block no-underline transition-colors hover:text-foreground text-balance max-w-[220px] text-[13.5px]",
                             subItem.url === `#${activeItem}`
                               ? "font-medium text-foreground"
-                              : "text-muted-foreground",
+                              : "text-sidebar-muted-foreground"
                           )}
                         >
                           {subItem.title}
@@ -130,10 +190,10 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
               <a
                 href={item.url}
                 className={cn(
-                  "inline-block no-underline transition-colors hover:text-foreground",
-                  item.url === `#${activeItem}`
+                  "inline-block no-underline transition-colors hover:text-foreground text-balance max-w-[220px] text-[13.5px]",
+                  isActive
                     ? "font-medium text-foreground"
-                    : "text-muted-foreground",
+                    : "text-sidebar-muted-foreground"
                 )}
               >
                 {item.title}

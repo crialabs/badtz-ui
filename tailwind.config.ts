@@ -211,6 +211,16 @@ const config: Config = {
           "0%": { "offset-distance": "0%" },
           "100%": { "offset-distance": "100%" },
         },
+        "gradient-x": {
+          "0%, 100%": {
+            "background-size": "200% 200%",
+            "background-position": "left center",
+          },
+          "50%": {
+            "background-size": "200% 200%",
+            "background-position": "right center",
+          },
+        },
       },
       animation: {
         "star-btn": "star-btn calc(var(--duration)*1s) linear infinite",
@@ -231,6 +241,7 @@ const config: Config = {
         "marquee-left": "marquee-left var(--duration, 30s) linear infinite",
         "marquee-right": "marquee-right var(--duration, 30s) linear infinite",
         handshake: "handshake 0.3s ease-in-out",
+        "gradient-x": "gradient-x 8s ease infinite",
       },
     },
   },

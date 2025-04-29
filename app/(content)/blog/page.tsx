@@ -4,11 +4,9 @@
 -topic clusters -> auto tags +++
 -pagination (next/prev + ?numbered pages)
 -json-ld for each
-ask j if needed
 priority-2
 */
 
-import Image from "next/image";
 import Link from "next/link";
 import { allPosts } from "@/.contentlayer/generated";
 import { compareDesc } from "date-fns";
@@ -68,25 +66,23 @@ export default async function BlogPage() {
   };
 
   return (
-    <div className="w-full h-full pb-16 sm:pb-28 pt-10 md:pt-20">
-      <div className="px-6 lg:px-8 lg:max-w-6xl mx-auto">
+    <div className="w-full h-full pb-16 sm:pb-28 pt-10 md:pt-16">
+      <div className="px-6 lg:px-8 lg:max-w-5xl mx-auto">
         <div className="flex flex-col items-start border-b border-border pb-6">
           <div className="flex w-full justify-between gap-4 items-end">
-            <h1 className="text-4xl md:text-5xl font-semibold tracking-tighter text-foreground text-balance max-w-[605px] font-gilroy">
+            <h1 className="text-3xl font-semibold tracking-tighter text-foreground text-balance max-w-[605px] font-gilroy">
               Blog
             </h1>
             <Link
               href="https://x.com/badtz_ui"
               target="_blank"
-              className="flex [&_svg]:size-3 items-center gap-2 rounded-lg px-2 md:px-3 h-8 md:h-10 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0"
+              className="gap-2 px-2 md:px-3 h-8 text-[13.5px] border hover:border-foreground/10 duration-300 whitespace-nowrap shrink-0 hover:bg-sidebar-accent transition-colors flex items-center justify-center rounded [&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0 text-foreground bg-transparent"
             >
               <Icons.twitter />
-              <span className="hidden md:block font-light">
-                Follow for updates
-              </span>
+              <span className="hidden md:block font-light">Updates</span>
             </Link>
           </div>
-          <p className="mt-4 text-balance max-w-[550px] md:max-w-[700px] tracking-tight lg:mt-6 sm:mt-3 text-muted-foreground text-base md:text-lg font-light">
+          <p className="mt-4 text-balance max-w-[550px] md:max-w-[700px] tracking-tight text-sidebar-muted-foreground text-[15px]">
             Welcome to our blog, where we share tips on enhancing your website's
             aesthetics, improving your landing page, and much more...
           </p>
@@ -113,16 +109,16 @@ export default async function BlogPage() {
                     />
                   )}
                   <div className="pt-2.5 p-1">
-                    <h2 className="group-hover/article:text-foreground text-lg mt-2 font-medium text-foreground/70 transition-colors duration-300">
+                    <h2 className="group-hover/article:text-foreground mt-2 font-medium transition-colors duration-300 text-xl text-sidebar-foreground font-gilroy">
                       {post.title}
                     </h2>
                     {post.date && (
-                      <p className="text-xs text-muted-foreground mt-1.5">
+                      <p className="text-xs text-sidebar-muted-foreground mt-1.5">
                         {formatDate(post.date)}
                       </p>
                     )}
                     {post.description && (
-                      <p className="mt-3 text-sm text-muted-foreground text-prose font-light">
+                      <p className="mt-3 text-sm text-sidebar-muted-foreground text-prose">
                         {post.description.length > 140
                           ? `${post.description.slice(0, 140)}...`
                           : post.description}
@@ -137,7 +133,7 @@ export default async function BlogPage() {
                         height={20}
                         className="rounded-full bg-secondary shrink-0 h-5 w-5 invert dark:invert-[0]"
                       />
-                      <p className="font-light text-sm text-thin text-muted-foreground">
+                      <p className="text-sm text-sidebar-muted-foreground">
                         Badtz
                       </p>
                     </div>
