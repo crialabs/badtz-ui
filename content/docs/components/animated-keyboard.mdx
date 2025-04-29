@@ -441,6 +441,8 @@ description: Displays an animated keyboard with keycaps that can be customized w
       <ComponentSource name="animated-keyboard">
         <Highlighter slot="javascript">
           ```jsx
+          "use client";
+
           import { cn } from "@/lib/utils";
           import { cva } from "class-variance-authority";
           import { memo, useEffect, useState } from "react";
@@ -624,6 +626,7 @@ description: Displays an animated keyboard with keycaps that can be customized w
         </Highlighter>
         <Highlighter slot="typescript">
           ```tsx
+          "use client";
           import { cn } from "@/lib/utils";
           import { cva, type VariantProps } from "class-variance-authority";
           import { memo, useEffect, useState } from "react";
