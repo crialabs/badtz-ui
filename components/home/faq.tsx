@@ -24,7 +24,7 @@ export default function FAQ() {
               value="item-1"
               className="px-4 border border-[#7876c5]/20 hover:border-[#7876c5]/30 transition-colors duration-200 rounded-xl accent-shadow overflow-hidden mb-3 bg-doc-background/50 backdrop-blur-sm"
             >
-              <AccordionTrigger className="text-[15px] gap-4 text-left">
+              <AccordionTrigger className="text-[15px] gap-4 text-left text-foreground">
                 What are UI components and how can they enhance my landing page?
               </AccordionTrigger>
               <AccordionContent className="text-[15px] text-sidebar-muted-foreground text-left">
@@ -42,7 +42,7 @@ export default function FAQ() {
               value="item-2"
               className="px-4 border border-[#7876c5]/20 hover:border-[#7876c5]/30 transition-colors duration-200  rounded-xl accent-shadow overflow-hidden mb-3 bg-doc-background/70 backdrop-blur-sm"
             >
-              <AccordionTrigger className="text-[15px] gap-4 text-left">
+              <AccordionTrigger className="text-[15px] gap-4 text-left text-foreground">
                 Is this UI component library free and open source?
               </AccordionTrigger>
               <AccordionContent className="text-[15px] text-sidebar-muted-foreground text-left">
@@ -59,7 +59,7 @@ export default function FAQ() {
               value="item-3"
               className="px-4 border border-[#7876c5]/20 hover:border-[#7876c5]/30 transition-colors duration-200  rounded-xl accent-shadow overflow-hidden mb-3 bg-doc-background/50 backdrop-blur-sm"
             >
-              <AccordionTrigger className="text-[15px] gap-4 text-left">
+              <AccordionTrigger className="text-[15px] gap-4 text-left text-foreground">
                 How customizable are these landing page UI components?
               </AccordionTrigger>
               <AccordionContent className="text-[15px] text-sidebar-muted-foreground text-left">
@@ -76,7 +76,7 @@ export default function FAQ() {
               value="item-4"
               className="px-4 border border-[#7876c5]/20 hover:border-[#7876c5]/30 transition-colors duration-200  rounded-xl accent-shadow overflow-hidden mb-3 bg-doc-background/50 backdrop-blur-sm"
             >
-              <AccordionTrigger className="text-[15px] gap-4 text-left">
+              <AccordionTrigger className="text-[15px] gap-4 text-left text-foreground">
                 Are these UI components optimized for performance and SEO?
               </AccordionTrigger>
               <AccordionContent className="text-[15px] text-sidebar-muted-foreground text-left">
@@ -93,7 +93,7 @@ export default function FAQ() {
               value="item-5"
               className="px-4 border border-[#7876c5]/20 hover:border-[#7876c5]/30 transition-colors duration-200  rounded-xl accent-shadow overflow-hidden mb-3 bg-doc-background/50 backdrop-blur-sm"
             >
-              <AccordionTrigger className="text-[15px] gap-4 text-left">
+              <AccordionTrigger className="text-[15px] gap-4 text-left text-foreground">
                 How do I get started with these landing page UI components?
               </AccordionTrigger>
               <AccordionContent className="text-[15px] text-sidebar-muted-foreground text-left">

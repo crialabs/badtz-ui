@@ -150,6 +150,7 @@ export function DocsSidebarNavItems({
 export default function Header(): JSX.Element {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = React.useState(false);
+  const isHomePage = pathname === "/";
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-sidebar-border/80 backdrop-blur-md bg-code-background/70 px-6 lg:px-8">
@@ -306,7 +307,9 @@ export default function Header(): JSX.Element {
             <DocGithubButton className="h-[30px]" />
             {!pathname?.startsWith("/docs") && (
               <div className="flex items-center gap-0">
-                <DocModeToggle className="border-0 hover:bg-sidebar-accent bg-transparent" />
+                {!isHomePage && (
+                  <DocModeToggle className="border-0 hover:bg-sidebar-accent bg-transparent" />
+                )}
                 <SocialButton
                   srOnly="Twitter Link"
                   src="https://x.com/badtz_ui"

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
+import { ThemeController } from "@/components/layout/theme-controller";
 import localFont from "next/font/local";
 import { Toaster } from "@/components/ui/toaster";
 import PlausibleProvider from "next-plausible";
@@ -57,7 +57,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </head>
       <body className={`${GeistSans.className} ${Gilroy.variable}`}>
-        <ThemeProvider
+        <ThemeController
           attribute="class"
           defaultTheme="dark"
           enableSystem
@@ -65,7 +65,7 @@ export default function RootLayout({
         >
           {children}
           <Toaster />
-        </ThemeProvider>
+        </ThemeController>
       </body>
     </html>
   );

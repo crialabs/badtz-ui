@@ -4,9 +4,13 @@ import * as React from "react";
 import { useTheme } from "next-themes";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 export function ModeToggle({ className }: { className?: string }) {
   const { theme, setTheme } = useTheme();
+  const pathname = usePathname();
+
+  const isHomePage = pathname === "/";
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -15,8 +19,10 @@ export function ModeToggle({ className }: { className?: string }) {
   return (
     <button
       onClick={toggleTheme}
+      disabled={isHomePage}
       className={cn(
         "h-8 w-8 hover:bg-sidebar-accent transition-colors flex items-center justify-center rounded-md [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 border border-sidebar-border text-foreground bg-transparent",
+        isHomePage && "opacity-50 cursor-not-allowed",
         className
       )}
     >

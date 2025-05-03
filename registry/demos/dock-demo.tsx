@@ -1,5 +1,5 @@
 import { Dock, DockIcon } from "@/registry/components/dock";
-import { useBreakpoint } from "@/hooks/use-brakpoints";
+import { useBreakpoint } from "@/hooks/use-breakpoints";
 
 export default function DockDemo() {
   const breakpoint = useBreakpoint();

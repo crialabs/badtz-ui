@@ -35,9 +35,9 @@ export default async function Home() {
       <Marketing
         href="https://pro.badtz-ui.com"
         plausibleEvent="Clicked on Pro"
+        className="text-white"
       >
-        🎉&nbsp;Introducing Badtz UI Pro +70 expected templates, blocks, and
-        much more!
+        🎉&nbsp;Go Pro! Unlock Premium Badtz UI Templates, Blocks & More.
       </Marketing>
       <Header />
       <main className="max-w-5xl mx-auto">
