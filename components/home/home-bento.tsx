@@ -1,14 +1,14 @@
 "use client";
 
 import { BentoGrid, BentoCell } from "@/components/home/bento/bento-grid";
-import {
-  Cell1Visual,
-  Cell2Visual,
-  Cell3Visual,
-  Cell4Visual,
-} from "@/components/home/bento/visual";
 import { cn } from "@/lib/utils";
 import { BentoNav } from "@/components/home/bento/bento-nav";
+import {
+  Visual1,
+  Visual2,
+  Visual3,
+  Visual4,
+} from "@/components/home/bento/new-visuals";
 
 const navOptions = [
   {
@@ -33,66 +33,54 @@ const features = [
   {
     title: "Lightning-Fast React Components.",
     description:
-      "Production-optimized. Fits any stack - from fresh Next.js apps to legacy React setups.",
-    visual: <Cell1Visual />,
+      "Production-optimized. Fits any stack - from fresh Next.js apps to legacy React.",
+    visual: <Visual1 />,
   },
   {
     title: "Copy. Paste. Ship.",
     description:
       "Build React apps faster: integrate components via CLI or code snippets. No setup headaches - just plug-and-play components.",
-    visual: <Cell2Visual />,
+    visual: <Visual2 />,
   },
   {
     title: "Your Design, Your Rules.",
     description:
       "Tailwind-first components with customizable animations. Style every state and breakpoint to match your brand identity.",
-    visual: <Cell3Visual />,
+    visual: <Visual3 />,
   },
   {
     title: "Scale with BadtzUI Pro",
     description:
-      "Over 70 expected ready-to-use components, blocks and templates for your apps, SaaS, AI tools...",
-    visual: <Cell4Visual />,
-    link: {
-      src: "https://pro.badtz-ui.com",
-      text: "BadtzUI Pro",
-    },
+      "Ready-to-use blocks and templates for your apps, SaaS, AI tools...",
+    visual: <Visual4 />,
   },
 ];
 
 export default function HomeBento() {
   return (
-    <section className="w-full h-full bg-third border-b">
+    <section className="w-full h-full px-6 lg:px-8 pt-32 md:pb-36 pb-24">
       <div className="lg:max-w-5xl mx-auto">
-        <div className="flex flex-col md:flex-row px-6 lg:px-12 py-12">
+        <div className="flex flex-col md:flex-row pb-12">
           <div className="w-full md:w-1/2 flex md:items-center">
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tighter text-foreground text-balance max-w-[605px] font-gilroy">
-              Highlight your <br />
-              website in a second
+            <h2 className="text-4xl md:text-[44px]/[40px] font-semibold tracking-tighter bg-gradient-to-b from-white/80 via-white to-white/60 inline-block text-transparent bg-clip-text text-balance max-w-[605px] font-gilroy">
+              Highlight your website in a second
             </h2>
           </div>
           <div className="w-full md:w-1/2 flex items-start justify-start">
             <BentoNav className="md:mt-0 mt-6" options={navOptions} />
           </div>
         </div>
-        <BentoGrid className="md:px-0 px-4">
+        <BentoGrid>
           {features.map((feature, index) => (
             <BentoCell
               key={index}
               title={feature.title}
               description={feature.description}
               visual={feature.visual}
-              link={feature.link}
               className={cn(
                 index === 1 || index === 2 ? "md:col-span-3 " : "",
-                index === 0 &&
-                  "border-r border-b border-t md:border-l-0 border-l",
-                index === 1 &&
-                  "border-l border-b border-t md:border-r-0 border-r max-md:h-[380px]",
-                index === 2 &&
-                  "border-r border-t md:border-l-0 border-l md:border-b-0 border-b",
-                index === 3 && "border-l border-t md:border-r-0 border-r",
-                "max-md:max-w-[400px] w-full edge-t overflow-hidden"
+                index === 1 && "max-md:h-[380px]",
+                index === 3 && "max-md:max-w-[400px] w-full overflow-hidden"
               )}
             />
           ))}

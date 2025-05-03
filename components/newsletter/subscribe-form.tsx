@@ -137,7 +137,10 @@ export default function NewsletterForm({ className }: { className?: string }) {
       <Input
         type="email"
         required
-        className={cn("pr-10 h-10 bg-background", className)}
+        className={cn(
+          "pr-10 h-10 md:h-9 placeholder:text-sidebar-muted-foreground placeholder:text-[13.5px] rounded-lg",
+          className
+        )}
         placeholder="Enter your email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -153,7 +156,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
           }
         }}
         className={cn(
-          "aspect-square flex-items-center justify-center rounded absolute inset-y-1.5 right-1.5 bg-gradient-to-t from-blue-600 to-blue-500 shadow-[0_0px_8px_rgba(37,_99,_235,_0.7)] text-white flex items-center before:absolute before:inset-0 before:shadow-[0_0px_20px_rgba(37,_99,_235,_0.5)] before:opacity-0 transition-opacity duration-300 hover:before:opacity-100 before:rounded-[inherit] before:pointer-events-none before:transition-opacity before:duration-300 before:will-change-opacity after:inset-0 after:absolute after:shadow-[rgba(255,_255,_255,_0.2)_0px_1px_0px_inset] after:rounded-[inherit] [&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0",
+          "aspect-square flex-items-center justify-center rounded-md absolute inset-y-1.5 right-1.5 bg-gradient-to-t from-[#575BC7] to-accent shadow-[0_0px_8px_rgba(37,_99,_235,_0.7)] text-white flex items-center before:absolute before:inset-0 before:shadow-[0_0px_20px_rgba(37,_99,_235,_0.5)] before:opacity-0 transition-opacity duration-300 hover:before:opacity-100 before:rounded-[inherit] before:pointer-events-none before:transition-opacity before:duration-300 before:will-change-opacity after:inset-0 after:absolute after:shadow-[rgba(255,_255,_255,_0.2)_0px_1px_0px_inset] after:rounded-[inherit] [&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0",
           isLoading && "cursor-not-allowed"
         )}
       >

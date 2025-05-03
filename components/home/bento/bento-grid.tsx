@@ -42,14 +42,16 @@ export function BentoCell({
   return (
     <div
       className={cn(
-        "row-span-1 md:col-span-2 flex flex-col items-center justify-center relative overflow-hidden max-md:h-[460px]",
+        "row-span-1 md:col-span-2 border border-[#7876c5]/20 rounded-xl flex flex-col items-center justify-end relative overflow-hidden  max-md:h-[460px] bg-sidebar/50 p-1.5 large-accent-shadow  ",
         className
       )}
     >
-      <div className="h-full w-full overflow-hidden">{visual}</div>
-      <div className="p-6 pt-2 absolute rounded-b-xl inset-x-0 bottom-0 bg-third z-20 before:bg-gradient-to-t before:from-secondary before:dark:from-third before:to-transparent before:inset-x-0 before:-top-[50px] before:absolute before:h-[50px] before:pointer-events-none">
-        <span className="relative text-balance text-muted-foreground">
-          <h3 className="font-medium mb-2 text-foreground inline">{title} </h3>
+      <div className="h-full w-full overflow-hidden absolute inset-0">
+        {visual}
+      </div>
+      <div className="p-4 bg-sidebar/50 backdrop-blur-md border rounded-xl z-20 accent-shadow overflow-hidden">
+        <span className="relative text-balance text-sidebar-muted-foreground">
+          <h3 className="mb-2 text-foreground inline">{title} </h3>
           {description}
         </span>
         {link && (
@@ -57,7 +59,7 @@ export function BentoCell({
             target="_blank"
             href={link.src}
             aria-label="Learn more about Badtz UI Pro"
-            className="text-blue-500 text-sm mt-2 block hover:underline underline-offset-2 font-medium"
+            className="text-accent text-sm mt-2 block hover:underline underline-offset-2 font-medium"
           >
             <PlausibleButton
               eventName="Clicked on Pro"

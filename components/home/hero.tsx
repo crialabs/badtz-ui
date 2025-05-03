@@ -4,14 +4,12 @@ import * as React from "react";
 import { HeroImage } from "@/components/home/hero/hero-image";
 import { HeroBadge } from "@/components/home/hero/hero-badge";
 import { PlausibleButton } from "@/components/plausible-button";
-import BunnyImage from "@/components/bunny-image";
 import {
   NextIcon,
   ShadcnIcon,
   TailwindIcon,
   MotionIcon,
   TypeScriptIcon,
-  JavaScriptIcon,
   ReactIcon,
 } from "@/components/home/hero/hero-icons";
 
@@ -61,42 +59,35 @@ const tags = [
   { name: "Shadcn UI", icon: <ShadcnIcon /> },
   { name: "Motion", icon: <MotionIcon /> },
   { name: "TypeScript", icon: <TypeScriptIcon /> },
-  { name: "JavaScript", icon: <JavaScriptIcon /> },
 ];
 
 export default function Hero() {
   return (
-    <section className="w-full h-full pt-10 md:pt-20 overflow-hidden bg-third relative border-b">
-      <BunnyImage
-        src="/images/home-hero/halo.webp"
-        alt="Badtz UI"
-        fill
-        className="object-cover top-0 left-0 hidden dark:block z-0 opacity-50"
-      />
+    <section className="w-full h-full pt-10 md:pt-20 overflow-hidden relative">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }}
       />
-      <div className="px-6 lg:px-8 lg:max-w-6xl mx-auto z-10 relative">
-        <div className="md:text-center text-left flex flex-col items-start md:items-center justify-center">
-          <p className="max-w-[700px] text-5xl md:text-6xl lg:text-6xl font-semibold tracking-tighter text-foreground font-gilroy mt-8 md:mt-10 text-balance">
+      <div className="lg:max-w-6xl mx-auto z-10 relative">
+        <div className="lg:text-center text-left flex flex-col items-start lg:items-center justify-center px-6 lg:px-8 ">
+          <p className="max-w-[400px] md:max-w-[700px] text-4xl md:text-6xl lg:text-6xl font-semibold tracking-tighter font-gilroy mt-8 md:mt-10 text-balance bg-gradient-to-b from-white/80 via-white to-white/60 inline-block text-transparent bg-clip-text pb-2">
             Build Stunning Websites at Lightning Speed
           </p>
-          <h1 className="mt-6 text-balance tracking-tight lg:mt-5 sm:mt-3 max-w-[680px] text-muted-foreground text-base md:text-lg">
+          <h1 className="mt-4 text-balance tracking-tight sm:mt-3 max-w-[680px] text-sidebar-muted-foreground text-base md:text-lg">
             An open-source React UI library with production-ready animations.
             Weekly updates. Built with React, Tailwind, TypeScript & JavaScript.
           </h1>
           <div className="mt-8 flex gap-3.5">
             <Link
               href="/docs"
-              className="h-9 sm:h-10 px-5 shadow-sm font-medium text-sm rounded-xl bg-foreground text-background hover:bg-foreground/85 flex items-center relative transition-colors duration-300"
+              className="h-9 px-5 shadow-sm font-medium text-sm rounded-xl bg-foreground text-background hover:bg-foreground/85 flex items-center relative transition-colors duration-300"
             >
               View Docs
             </Link>
             <Link
               target="_blank"
               href="https://pro.badtz-ui.com"
-              className="h-9 sm:h-10 px-5 shadow-sm font-medium text-sm rounded-xl flex items-center relative gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 after:inset-0 after:absolute after:shadow-[rgba(255,_255,_255,_0.2)_0px_1px_0px_inset] after:rounded-[inherit] bg-gradient-to-t from-blue-600 to-blue-500 text-white before:bg-gradient-to-t before:from-blue-700 before:to-blue-500 before:inset-0 before:absolute before:rounded-[inherit] before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:z-[1] before:shadow-[rgba(255,_255,_255,_0.2)_0px_1px_0px_inset]"
+              className="h-[38px] px-5 shadow-sm font-medium text-sm rounded-xl bg-[#111113] hover:bg-[#111113]/20 text-white border border-[#7876c5]/30 hover:border-[#7876c5]/40 flex items-center relative transition-colors duration-300 accent-shadow overflow-hidden"
             >
               <PlausibleButton
                 eventName="Clicked on Pro"
@@ -106,7 +97,7 @@ export default function Hero() {
               </PlausibleButton>
             </Link>
           </div>
-          <div className="flex items-center gap-2 flex-wrap max-w-lg md:justify-center justify-start mt-10">
+          <div className="flex items-center gap-2 flex-wrap max-w-lg lg:justify-center justify-start mt-10">
             {tags.map((tag) => (
               <HeroBadge key={tag.name} icon={tag.icon}>
                 {tag.name}
@@ -114,15 +105,6 @@ export default function Hero() {
             ))}
           </div>
         </div>
-        <noscript>
-          <img
-            src="/images/home-hero/badtz-ui-documentation-dark.svg"
-            alt="Badtz UI interface in light"
-            height={600}
-            width={960}
-            className="border border-border rounded-xl"
-          />
-        </noscript>
         <HeroImage />
       </div>
     </section>

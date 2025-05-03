@@ -50,14 +50,14 @@ const LinkSection: React.FC<LinkSectionProps> = ({ title, links }) => {
                   <TrackedLink
                     href={href}
                     label={label}
-                    className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                    className="text-sidebar-muted-foreground hover:text-foreground transition-colors duration-200"
                   />
                 ) : (
                   <Link
                     href={href}
                     target={isExternal || isSocial ? "_blank" : undefined}
                     rel={isSocial ? "noopener noreferrer" : undefined}
-                    className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                    className="text-sidebar-muted-foreground hover:text-foreground transition-colors duration-200"
                   >
                     {label}
                   </Link>
@@ -106,7 +106,7 @@ const FOOTER_SECTIONS: { title: string; links: LinkType[] }[] = [
 export default function Footer() {
   return (
     <footer
-      className="border-t border-border w-full bg-third"
+      className="border-t border-sidebar-border/50 w-full"
       aria-label="Footer"
       itemScope
       itemType="https://schema.org/WPFooter"
@@ -125,7 +125,7 @@ export default function Footer() {
           <div className="flex flex-col space-y-4">
             <LargeLogo />
             <p
-              className="md:text-sm text-muted-foreground"
+              className="md:text-sm text-sidebar-muted-foreground"
               itemProp="description"
             >
               Built in public by{" "}
@@ -143,13 +143,13 @@ export default function Footer() {
               <span
                 aria-label="Component library"
                 data-tooltip="Custom React components"
-                className="cursor-default py-0.5 px-1 text-xs bg-muted border border-border rounded-md"
+                className="cursor-default py-0.5 px-1 text-xs bg-sidebar border border-sidebar-border rounded-md font-mono"
               >
                 BadtzUI
               </span>
             </p>
             <p
-              className="md:text-sm text-muted-foreground mt-2"
+              className="md:text-sm text-sidebar-muted-foreground mt-2"
               itemProp="slogan"
             >
               Here you can subscribe
@@ -186,7 +186,7 @@ export default function Footer() {
           </div>
         </div>
         <p
-          className="text-xs text-muted-foreground mt-10"
+          className="text-xs text-sidebar-muted-foreground mt-10"
           itemScope
           itemType="https://schema.org/CreativeWork"
         >
