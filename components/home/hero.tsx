@@ -70,8 +70,8 @@ export default function Hero() {
       />
       <div className="lg:max-w-6xl mx-auto z-10 relative">
         <div className="lg:text-center text-left flex flex-col items-start lg:items-center justify-center px-6 lg:px-8 ">
-          <p className="max-w-[400px] md:max-w-[700px] text-4xl md:text-6xl lg:text-6xl font-semibold tracking-tighter font-gilroy mt-8 md:mt-10 text-balance bg-gradient-to-b from-white/80 via-white to-white/60 inline-block text-transparent bg-clip-text pb-2">
-            Build Stunning Websites at Lightning Speed
+          <p className="md:max-w-[700px] text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tighter font-gilroy mt-8 md:mt-10 text-balance bg-gradient-to-b from-white/80 via-white to-white/60 inline-block text-transparent bg-clip-text pb-2">
+            The UI library for React developers
           </p>
           <h1 className="mt-4 text-balance tracking-tight sm:mt-3 max-w-[680px] text-sidebar-muted-foreground text-base md:text-lg">
             An open-source React UI library with production-ready animations.
