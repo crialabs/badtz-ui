@@ -14,7 +14,7 @@ export function HeroBadge({
   return (
     <div
       className={cn(
-        "flex items-center gap-2 border border-sidebar-border px-4 h-8 rounded-full text-sm font-mono shadow-sm bg-doc-background/50 backdrop-blur-sm relative z-10",
+        "flex items-center gap-2 border border-sidebar-border px-4 h-8 rounded-full text-sm font-mono shadow-sm bg-doc-background/50 text-foreground backdrop-blur-sm relative z-10",
         className
       )}
     >

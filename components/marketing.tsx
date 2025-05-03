@@ -23,7 +23,7 @@ export default function Marketing({
       href={href}
       target="_blank"
       className={cn(
-        "bg-sidebar text-center text-[13.5px] relative w-full flex items-center justify-center border-b border-sidebar-border/70",
+        "xtext-center text-[13.5px] relative w-full flex items-center justify-center border-b border-sidebar-border/70 accent-shadow",
         className
       )}
     >
