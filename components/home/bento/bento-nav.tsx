@@ -38,7 +38,7 @@ export function BentoNav({ className, options }: BentoNavProps) {
     <div className="flex flex-col gap-6">
       <nav
         className={cn(
-          "relative flex w-fit items-center rounded-full border",
+          "relative flex w-fit items-center rounded-full border border-sidebar-border bg-sidebar",
           className
         )}
       >
@@ -53,7 +53,7 @@ export function BentoNav({ className, options }: BentoNavProps) {
             {activeTab === option.name && (
               <motion.div
                 layoutId="active-tab"
-                className="absolute inset-0 rounded-full bg-white dark:bg-black outline outline-1 outline-border"
+                className="absolute inset-0 rounded-full bg-doc-background outline outline-1 overflow-hidden abs-accent-shadow outline-[#7876c5]/30"
                 transition={{
                   duration: 0.2,
                   type: "spring",
@@ -68,7 +68,7 @@ export function BentoNav({ className, options }: BentoNavProps) {
                 "relative block text-sm transition-colors duration-200 tracking-tight",
                 activeTab === option.name
                   ? "text-foreground"
-                  : "text-muted-foreground"
+                  : "text-sidebar-muted-foreground"
               )}
             >
               {option.name}
@@ -83,7 +83,7 @@ export function BentoNav({ className, options }: BentoNavProps) {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -20, opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="tracking-tight text-muted-foreground text-base min-h-[72px]"
+          className="tracking-tight text-sidebar-muted-foreground text-base min-h-[72px]"
         >
           {options.find((option) => option.name === activeTab)?.text}
         </motion.p>

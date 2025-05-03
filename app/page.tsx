@@ -8,6 +8,9 @@ import FAQ from "@/components/home/faq";
 import type { Metadata } from "next";
 import Marketing from "@/components/marketing";
 
+// TODO: Clean up the home page
+// TODO: Refactor the everything
+
 export const metadata: Metadata = {
   title: "BadtzUI • UI Components for React JS",
   description:
@@ -28,7 +31,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   return (
-    <div className="bg-third">
+    <div className="bg-doc-background">
       <Marketing
         href="https://pro.badtz-ui.com"
         plausibleEvent="Clicked on Pro"
@@ -36,18 +39,14 @@ export default async function Home() {
         🎉&nbsp;Introducing Badtz UI Pro +70 expected templates, blocks, and
         much more!
       </Marketing>
-
       <Header />
-      <div className="px-4 md:px-0 relative">
-        <main className="border-x bg-background border-sidebar-border max-w-5xl mx-auto">
-          <Hero />
-          <HomeBento />
-          <WallOfLove />
-          <FAQ />
-          <CallToAction />
-        </main>
-      </div>
-
+      <main className="max-w-5xl mx-auto">
+        <Hero />
+        <HomeBento />
+        <WallOfLove />
+        <FAQ />
+        <CallToAction />
+      </main>
       <Footer />
     </div>
   );

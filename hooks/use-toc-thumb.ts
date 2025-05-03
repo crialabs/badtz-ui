@@ -1,16 +1,18 @@
+"use client";
+
 import { type RefObject, useLayoutEffect, useState } from "react";
 
 export type TOCThumb = [top: number, height: number];
 
 export function useTocThumb(
   containerRef: RefObject<HTMLElement>,
-  activeItem: string | null
+  activeItem?: string | null
 ): TOCThumb {
   const [pos, setPos] = useState<TOCThumb>([0, 0]);
 
   useLayoutEffect(() => {
     const container = containerRef.current;
-    if (!activeItem || !container || container.clientHeight === 0) {
+    if (!container || !activeItem) {
       setPos([0, 0]);
       return;
     }
@@ -25,12 +27,12 @@ export function useTocThumb(
 
     const styles = getComputedStyle(element);
     const top = element.offsetTop + parseFloat(styles.paddingTop);
-    const height =
+    const bottom =
+      element.offsetTop +
       element.clientHeight -
-      parseFloat(styles.paddingTop) -
       parseFloat(styles.paddingBottom);
 
-    setPos([top, height]);
+    setPos([top, bottom - top]);
   }, [activeItem, containerRef]);
 
   return pos;

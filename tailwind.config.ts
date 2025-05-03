@@ -160,6 +160,10 @@ const config: Config = {
           "0%": { "offset-distance": "0%" },
           "100%": { "offset-distance": "100%" },
         },
+        "border-beam-reverse": {
+          "0%": { "offset-distance": "100%" },
+          "100%": { "offset-distance": "0%" },
+        },
         "cloud-orbit": {
           "0%": {
             transform:
@@ -221,8 +225,17 @@ const config: Config = {
             "background-position": "right center",
           },
         },
+        meteor: {
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
+          "70%": { opacity: "1" },
+          "100%": {
+            transform: "rotate(215deg) translateX(-500px)",
+            opacity: "0",
+          },
+        },
       },
       animation: {
+        "meteor-effect": "meteor 5s linear infinite",
         "star-btn": "star-btn calc(var(--duration)*1s) linear infinite",
         "infinite-ribbon":
           "infinite-ribbon var(--ribbon-duration) linear infinite",
@@ -230,6 +243,8 @@ const config: Config = {
           "infinite-ribbon-reverse var(--ribbon-duration) linear infinite",
         "cloud-orbit": "cloud-orbit calc(var(--speed)*1s) linear infinite",
         "border-beam": "border-beam calc(var(--duration)*1s) linear infinite",
+        "border-beam-reverse":
+          "border-beam-reverse calc(var(--duration)*1s) linear infinite",
         spotlight: "spotlight var(--duration, 8s) infinite",
         "vertical-scroll": "vertical-scroll var(--duration) linear infinite",
         "collapsible-down": "collapsible-down 0.2s ease-out",

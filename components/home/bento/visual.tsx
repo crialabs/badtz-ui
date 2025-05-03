@@ -17,6 +17,7 @@ import {
   Link2Icon,
   UnderlineIcon,
 } from "@radix-ui/react-icons";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
@@ -196,27 +197,27 @@ export function Cell2Visual() {
 
 export function Cell3Visual() {
   const [activeColor, setActiveColor] = useState({
-    vibrant: "#155dfc",
+    vibrant: "#5C67C7",
   });
 
   const colors = [
-    { vibrant: "#fb2c36" },
-    { vibrant: "#f54900" },
-    { vibrant: "#fe9a00" },
-    { vibrant: "#00c950" },
-    { vibrant: "#00bc7d" },
-    { vibrant: "#155dfc" },
-    { vibrant: "#7008e7" },
-    { vibrant: "#8200db" },
-    { vibrant: "#e60076" },
-    { vibrant: "#ec003f" },
+    { vibrant: "#6C79FF" },
+    { vibrant: "#7477F0" },
+    { vibrant: "#6E79D6" },
+    { vibrant: "#5E6AD2" },
+    { vibrant: "#666BE2" },
+    { vibrant: "#5C67C7" },
+    { vibrant: "#575BC7" },
+    { vibrant: "#37466C" },
+    { vibrant: "#2A2B51" },
+    { vibrant: "#222342" },
   ];
 
   return (
-    <div className="h-full w-full cell3-bg">
+    <div className={cn("h-full w-full cell3-bg")}>
       <Link
         href="/docs/components/animated-cards/animated-card-3"
-        className="absolute z-30 top-6 right-6 bg-[#FAFAFC] dark:bg-muted text-xs pl-2 pr-3 py-1 rounded-full flex items-center gap-2 border border-secondary-border"
+        className="absolute z-30 top-6 right-6 bg-sidebar text-xs pl-2 pr-3 py-1.5 rounded-full flex items-center gap-2 border border-[#7876c5]/20 text-muted-foreground abs-accent-shadow overflow-hidden"
       >
         <span
           className="h-2.5 w-2.5 rounded-full transition-colors"
@@ -229,12 +230,12 @@ export function Cell3Visual() {
       </div>
       <div
         aria-hidden
-        className="absolute z-20 top-6 left-6 rounded-lg dark:bg-[#171717] bg-secondary backdrop-blur-sm border border-secondary-border/70 text-sm text-muted-foreground font-light"
+        className="absolute z-20 top-6 left-6 rounded-lg bg-sidebar backdrop-blur-sm border border-[#7876c5]/20 text-sm text-sidebar-muted-foreground font-light abs-accent-shadow overflow-hidden"
       >
-        <div className="py-2 px-3  border-b border-secondary-border/70">
+        <div className="py-2 px-3  border-b border-[#7876c5]/20">
           <span className="text-foreground">Customize</span>
         </div>
-        <div className="flex justify-between items-center px-3 py-2 gap-2 border-b border-secondary-border/70">
+        <div className="flex justify-between items-center px-3 py-2 gap-2 border-b border-[#7876c5]/20">
           <span className="text-foreground">Text</span>
           <div className="flex items-center [&>svg]:size-3 gap-1">
             <div className="p-0.5 rounded">
@@ -272,11 +273,14 @@ export function Cell3Visual() {
 
 export function Cell4Visual() {
   return (
-    <div className="relative h-full w-full cell4-bg overflow-x-auto">
-      <span className="absolute top-6 left-6 text-xs py-1 px-3 z-10 bg-gradient-to-b from-blue-500 to-blue-600 border border-blue-500 rounded-full font-medium shadow-[0_0px_100px_rgba(37,_99,_235,_0.9)] before:shadow-[0_0px_20px_rgba(37,_99,_235,_0.9)] before:inset-0 before:absolute before:z-[-1] before:rounded-[inherit] opacity-100 transition-opacity duration-300 group-hover:opacity-0 text-white">
-        Beta
-      </span>
-      <div className="absolute inset-x-6 lg:inset-x-12 top-6 grid grid-cols-5 grid-rows-6 gap-1 w-[274px] h-[320px] mx-auto">
+    <div className="relative h-full w-full">
+      <Link
+        href="https://pro.badtz-ui.com"
+        className="absolute top-6 left-6 text-xs py-1 pl-3 pr-2 z-10 bg-gradient-to-b from-[#6d77d5] to-[#5c67c7] border border-[#6d77d5] rounded-full font-medium shadow-[0_0px_100px_rgba(109,_119,_213,_0.9)] before:shadow-[0_0px_20px_rgba(109,_119,_213,_0.9)] before:inset-0 before:absolute before:z-[-1] before:rounded-[inherit] opacity-100 transition-opacity duration-300 group-hover:opacity-0 text-white flex items-center gap-0.5 [&_svg]:size-3"
+      >
+        Explore <ArrowUpRight />
+      </Link>
+      <div className="absolute inset-x-4 lg:inset-x-12 top-[50px] md:top-6 grid grid-cols-5 grid-rows-6 gap-1 w-[274px] h-[320px] mx-auto">
         {Array.from({ length: 25 }).map((_, index) => (
           <div
             key={index}
@@ -294,13 +298,13 @@ export function Cell4Visual() {
                 index === 18 ||
                 index === 20 ||
                 index === 21
-                ? "border border-border dark:border-secondary-border/50 bg-background/50 dark:bg-transparent backdrop-blur-lg"
+                ? "border border-sidebar-border/70"
                 : "",
-              index === 8 || index === 14 || index === 15
-                ? "shadow-sm shadow-muted dark:secondary-border/50"
+              index === 2 || index === 14 || index === 15 || index === 21
+                ? "border-sidebar-border/70 shadow-[0px_2px_30px_0px_#7876c540]"
                 : "",
               index === 8 || index === 12 || index === 14 || index === 15
-                ? "border border-border dark:border-secondary-border/50 bg-background dark:bg-[#21222550] backdrop-blur-lg"
+                ? "border border-sidebar-border/70 bg-[#21222550]"
                 : "",
               index === 12 &&
                 "flex flex-col items-center justify-center text-foreground"
@@ -655,9 +659,9 @@ const SvgChart: React.FC<LayerProps> = ({ color, hovered }) => {
   return (
     <div
       className={cn(
-        "w-[606px] h-[306px] absolute left-1/2 -translate-x-1/2 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.6, 0.6, 0, 1)] z-[8] dark:text-neutral-800 text-[#FAFAFC] scale-[0.6] md:scale-[0.8] lg:scale-100",
-        "top-[30px] md:top-[-15px] lg:top-0",
-        hovered && "scale-[0.75] md:scale-[0.95] lg:scale-[1.25] translate-y-6 "
+        "w-[606px] h-[306px] absolute left-[53%] -translate-x-1/2 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.6, 0.6, 0, 1)] z-[8] dark:text-[#292A35] text-[#FAFAFC] scale-[0.6] md:scale-[0.8] lg:scale-100",
+        "top-[30px] md:top-[-15px] lg:top-0 rect-shadow",
+        hovered && "scale-[0.75] md:scale-[0.95] lg:scale-[1.25] translate-y-6"
       )}
     >
       <svg
@@ -674,8 +678,8 @@ const SvgChart: React.FC<LayerProps> = ({ color, hovered }) => {
             x={rect.x}
             y={hovered ? rect.hoverY : rect.y}
             fill={hovered ? rect.hoverFill : rect.fill}
-            rx="3"
-            ry="3"
+            rx="5"
+            ry="5"
             className="transition-all duration-500 ease-[cubic-bezier(0.6, 0.6, 0, 1)]"
           />
         ))}

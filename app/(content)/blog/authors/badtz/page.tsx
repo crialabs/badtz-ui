@@ -25,26 +25,26 @@ export default function AuthorPage() {
   return (
     <>
       <div className="w-full h-full pb-16 sm:pb-28 min-h-[80dvh]">
-        <div className="px-6 lg:px-8 lg:max-w-5xl mx-auto pt-10 md:pt-20 relative">
+        <div className="px-6 lg:px-8 lg:max-w-5xl mx-auto pt-10 md:pt-16 relative">
           <Link
             href="/blog"
-            className="flex [&_svg]:size-3 text-foreground items-center gap-2 rounded-lg pl-3 pr-4 h-9 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0 w-min"
+            className="pl-3 pr-4 text-sm w-min mr-auto gap-2 px-2 md:pl-3 h-8 text-[13.5px] border hover:border-foreground/10 duration-300 whitespace-nowrap shrink-0 hover:bg-sidebar-accent transition-colors flex items-center justify-center rounded [&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0 text-foreground bg-transparent mb-8"
           >
             <ChevronLeft />
             Back
           </Link>
-          <div className="mt-8 text-center flex items-center flex-col">
+          <div className="mt-8 flex items-start flex-col">
             <BunnyImage
               src="/images/badtz-author.webp"
               alt="Badtz"
-              width={100}
-              height={100}
-              className="rounded-full mx-auto border-border border"
+              width={80}
+              height={80}
+              className="rounded-full mr-auto border-border border"
             />
-            <h1 className="text-4xl md:text-5xl font-semibold tracking-tighter text-foreground font-gilroy mt-4">
+            <h1 className="text-3xl font-semibold tracking-tighter text-foreground text-balance max-w-[605px] font-gilroy mt-6">
               Badtz
             </h1>
-            <p className="text-balance font-light tracking-tight lg:mt-4 mt-3 max-w-[680px] text-muted-foreground text-base md:text-lg">
+            <p className="mt-4 text-balance md:max-w-[400px] tracking-tight text-sidebar-muted-foreground text-[15px]">
               Founder of BadtzUI – Crafting high-quality, accessible UI
               components for React developers.
             </p>
@@ -53,7 +53,7 @@ export default function AuthorPage() {
                 href={`https://twitter.com/badtz_ui`}
                 target="_blank"
                 title={`View badtz's Twitter profile`}
-                className="flex [&_svg]:size-3.5 items-center gap-2 rounded-lg px-2 aspect-square justify-center h-10 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0 w-min"
+                className="flex [&_svg]:size-3.5 items-center gap-2 rounded-md px-2 aspect-square justify-center h-8 w-8 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0"
               >
                 <Icons.twitter />
               </Link>
@@ -61,7 +61,7 @@ export default function AuthorPage() {
                 href="https://github.com/badtzx0"
                 target="_blank"
                 title={`View badtz's Github profile`}
-                className="flex [&_svg]:size-4 items-center gap-2 rounded-lg px-2 aspect-square justify-center h-10 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0 w-min"
+                className="flex [&_svg]:size-3.5 items-center gap-2 rounded-md px-2 aspect-square justify-center h-8 w-8 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0"
               >
                 <Icons.gitHub />
               </Link>
@@ -72,7 +72,7 @@ export default function AuthorPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4">
               {articles.map((post, index) => (
                 <Link href={`/blog/${post.slugAsParams}`} key={post._id}>
-                  <article className="flex flex-col w-full p-2 border border-transparent hover:border-border rounded-xl transition-colors duration-200 shadow-none hover:shadow-sm">
+                  <article className="flex flex-col w-full p-2 rounded-xl transition-colors duration-200 group/article">
                     {post.image && (
                       <BunnyImage
                         src={post.image}
@@ -84,14 +84,16 @@ export default function AuthorPage() {
                       />
                     )}
                     <div className="pt-2.5 p-1">
-                      <h2 className="text-xl font-gilroy">{post.title}</h2>
+                      <h2 className="group-hover/article:text-foreground mt-2 font-medium transition-colors duration-300 text-xl text-sidebar-foreground font-gilroy">
+                        {post.title}
+                      </h2>
                       {post.date && (
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-xs text-sidebar-muted-foreground mt-1.5">
                           {formatDate(post.date)}
                         </p>
                       )}
                       {post.description && (
-                        <p className="mt-2 text-sm text-muted-foreground text-justify font-light">
+                        <p className="mt-3 text-sm text-sidebar-muted-foreground text-prose">
                           {post.description.length > 140
                             ? `${post.description.slice(0, 140)}...`
                             : post.description}
@@ -106,7 +108,7 @@ export default function AuthorPage() {
                           height={20}
                           className="rounded-full bg-secondary shrink-0 h-5 w-5 invert dark:invert-[0]"
                         />
-                        <p className="font-light text-sm text-thin text-muted-foreground">
+                        <p className="text-sm text-sidebar-muted-foreground">
                           Badtz
                         </p>
                       </div>
