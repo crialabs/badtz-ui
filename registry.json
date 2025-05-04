@@ -451,6 +451,19 @@
       ]
     },
     {
+      "name": "animated-list",
+      "type": "registry:ui",
+      "title": "Animated List",
+      "description": "A sophisticated animation component that creates dynamic column-based transitions with scaling effects. Perfect for showcasing notifications, messages, or any sequential content with smooth formation, scrolling, and reset animations.",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "registry/components/animated-list.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "shuffle-button",
       "type": "registry:ui",
       "title": "Shuffle Button",
