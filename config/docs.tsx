@@ -65,61 +65,6 @@ export const docsConfig: DocCategory[] = [
     ],
   },
   {
-    title: "3d & Shaders",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-        <path d="M2 12h20" />
-      </svg>
-    ),
-    items: [
-      {
-        title: "Pixel Distorsion",
-        href: "/docs/components/shaders/pixel-distorsion-shader",
-        items: [],
-      },
-      {
-        title: "Pulse Shader",
-        href: "/docs/components/shaders/pulse-shader",
-        items: [],
-      },
-      {
-        title: "Mouse Wave Shader",
-        href: "/docs/components/shaders/mouse-wave-shader",
-        items: [],
-      },
-      {
-        title: "Glass Distortion",
-        href: "/docs/components/glass-text",
-        label: "soon",
-        items: [],
-      },
-      {
-        title: "Globe",
-        href: "/docs/components/globe/",
-        label: "soon",
-        items: [],
-      },
-      {
-        title: "Liquid shader",
-        href: "/docs/components/liquid-shader",
-        label: "soon",
-        items: [],
-      },
-    ],
-  },
-  {
     title: "Components",
     icon: (
       <svg
@@ -142,6 +87,12 @@ export const docsConfig: DocCategory[] = [
       {
         title: "Keyboard",
         href: "/docs/components/animated-keyboard",
+        items: [],
+        label: "new",
+      },
+      {
+        title: "Animated List",
+        href: "/docs/components/animated-list",
         items: [],
         label: "new",
       },
@@ -225,6 +176,61 @@ export const docsConfig: DocCategory[] = [
       {
         title: "3D Wrapper",
         href: "/docs/components/wrapper-3d",
+        items: [],
+      },
+    ],
+  },
+  {
+    title: "3d & Shaders",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+        <path d="M2 12h20" />
+      </svg>
+    ),
+    items: [
+      {
+        title: "Pixel Distorsion",
+        href: "/docs/components/shaders/pixel-distorsion-shader",
+        items: [],
+      },
+      {
+        title: "Pulse Shader",
+        href: "/docs/components/shaders/pulse-shader",
+        items: [],
+      },
+      {
+        title: "Mouse Wave Shader",
+        href: "/docs/components/shaders/mouse-wave-shader",
+        items: [],
+      },
+      {
+        title: "Glass Distortion",
+        href: "/docs/components/glass-text",
+        label: "soon",
+        items: [],
+      },
+      {
+        title: "Globe",
+        href: "/docs/components/globe/",
+        label: "soon",
+        items: [],
+      },
+      {
+        title: "Liquid shader",
+        href: "/docs/components/liquid-shader",
+        label: "soon",
         items: [],
       },
     ],

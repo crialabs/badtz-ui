@@ -111,6 +111,18 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
+  },"animated-list": {
+    name: "animated-list",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/components/animated-list")),
+    source: "",
+    files: [
+  "__registry__/components/components/animated-list.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
   },"hyperspace-background": {
     name: "hyperspace-background",
     type: "components:ui",
@@ -551,6 +563,18 @@ export const Index: Record<string, RegistryItem> = {
     source: "",
     files: [
   "__registry__/components/demos/animated-card-3-demo.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"animated-list-demo": {
+    name: "animated-list-demo",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/animated-list-demo")),
+    source: "",
+    files: [
+  "__registry__/components/demos/animated-list-demo.js"
 ],
     category: "undefined",
     subcategory: "undefined",
