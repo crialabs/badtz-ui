@@ -153,7 +153,7 @@ export default function WallOfLove() {
   return (
     <section className="w-full h-full py-12 relative after:absolute after:inset-x-6 after:-inset-y-10 after:bg-accent/[0.05] after:[mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)] z-[5] after:pointer-events-none">
       <div className="mx-auto flex flex-col items-center justify-center text-center relative z-10">
-        <div className="flex flex-col items-center justify-center px-6 w-full relative after:absolute after:inset-x-0 after:bottom-[-115px] after:h-20 after:bg-gradient-to-b after:from-transparent  after:via-doc-background after:to-transparent after:pointer-events-none md:after:block after:hidden">
+        <div className="flex flex-col items-center justify-center px-6 w-full relative after:absolute after:inset-x-0 after:bottom-[-115px] after:h-20 after:bg-gradient-to-b after:from-transparent after:via-doc-background after:to-transparent after:pointer-events-none md:after:block after:hidden">
           <SectionTitle />
           <DescriptionWithDecorations />
           <GitHubButton />

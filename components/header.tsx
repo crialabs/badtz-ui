@@ -22,7 +22,6 @@ import { LargeLogo, Logo } from "@/components/logo";
 import { DocGithubButton } from "@/components/docs/doc-github-button";
 import { DocModeToggle } from "@/components/docs/doc-mode-toggle";
 import Link from "next/link";
-import { HomeSearchbar } from "@/components/home/home-searchbar";
 import { Badge } from "@/components/ui/badge";
 import { docsConfig, type DocCategory, type DocItem } from "@/config/docs";
 import { ScrollArea } from "@/components/ui/scroll-area";
