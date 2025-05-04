@@ -183,7 +183,7 @@ export default function AnimatedListDemo() {
     <AnimatedList
       stackGap={20}
       columnGap={85}
-      scaleFactor={0.05}
+      scaleFactor={0.025}
       scrollDownDuration={5}
       formationDuration={1}
     >
