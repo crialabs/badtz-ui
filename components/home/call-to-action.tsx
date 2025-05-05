@@ -120,7 +120,7 @@ export default function CallToAction() {
             </Link>
           </div>
         </div>
-        <div className="h-[500px] absolute -bottom-1/3 inset-x-0 bg-[radial-gradient(circle_at_bottom_center,#6d77d590,transparent_65%_50%)] [mask-image:radial-gradient(circle_at_50%_65%,white,transparent)] z-10">
+        <div className="h-[500px] absolute -bottom-1/3 inset-x-0 bg-[radial-gradient(circle_at_bottom_center,#6d77d590,transparent_65%_50%)] [mask-image:radial-gradient(circle_at_50%_65%,white,transparent)] z-10 pointer-events-none">
           <Particles customOptions={customParticleOptions} className="w-full" />
           <Meteors number={5} />
         </div>

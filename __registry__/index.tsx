@@ -495,6 +495,18 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
+  },"stagger-blur-effect": {
+    name: "stagger-blur-effect",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/components/stagger-blur-effect")),
+    source: "",
+    files: [
+  "__registry__/components/components/stagger-blur-effect.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
   },"blur-reveal": {
     name: "blur-reveal",
     type: "components:ui",
@@ -911,6 +923,18 @@ export const Index: Record<string, RegistryItem> = {
     source: "",
     files: [
   "__registry__/components/demos/spaceship-scrollbar-demo.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"stagger-blur-effect-demo": {
+    name: "stagger-blur-effect-demo",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/stagger-blur-effect-demo")),
+    source: "",
+    files: [
+  "__registry__/components/demos/stagger-blur-effect-demo.js"
 ],
     category: "undefined",
     subcategory: "undefined",

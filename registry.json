@@ -358,6 +358,19 @@
       ]
     },
     {
+      "name": "stagger-blur-effect",
+      "type": "registry:ui",
+      "title": "Stagger Blur Effect",
+      "description": "Inspired by Vercel's homepage, this text component creates a 3D rotation effect with blur on hover, revealing text with a staggered animation.",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "registry/components/text-animations/stagger-blur-effect.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "gradient-slide-button",
       "type": "registry:ui",
       "title": "Gradient Slide Button",

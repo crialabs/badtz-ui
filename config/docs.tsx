@@ -352,6 +352,11 @@ export const docsConfig: DocCategory[] = [
         href: "/docs/components/text-animations/fade-up-word",
         items: [],
       },
+      {
+        title: "Stagger Blur Effect",
+        href: "/docs/components/text-animations/stagger-blur-effect",
+        items: [],
+      },
     ],
   },
   {
