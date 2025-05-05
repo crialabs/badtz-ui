@@ -1,4 +1,4 @@
-import { StaggerBlurEffect } from "@/registry/components/stagger-blur-effect";
+import { StaggerBlurEffect } from "@/registry/components/text-animations/stagger-blur-effect";
 
 export default function StaggerBlurEffectDemo() {
   return (

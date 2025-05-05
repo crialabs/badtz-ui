@@ -499,10 +499,10 @@ export const Index: Record<string, RegistryItem> = {
     name: "stagger-blur-effect",
     type: "components:ui",
     registryDependencies: undefined,
-    component: React.lazy(() => import("@/__registry__/components/components/stagger-blur-effect")),
+    component: React.lazy(() => import("@/__registry__/components/components/text-animations/stagger-blur-effect")),
     source: "",
     files: [
-  "__registry__/components/components/stagger-blur-effect.js"
+  "__registry__/components/components/text-animations/stagger-blur-effect.js"
 ],
     category: "undefined",
     subcategory: "undefined",
