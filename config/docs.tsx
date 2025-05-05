@@ -356,6 +356,7 @@ export const docsConfig: DocCategory[] = [
         title: "Stagger Blur Effect",
         href: "/docs/components/text-animations/stagger-blur-effect",
         items: [],
+        label: "new",
       },
     ],
   },
