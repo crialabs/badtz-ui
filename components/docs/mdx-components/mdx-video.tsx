@@ -26,8 +26,6 @@ export function MdxVideo({
         className
       )}
     >
-      <div className="absolute inset-y right-0 w-[20%] h-full bg-[#030303] z-10 pointer-events-none"></div>
-      <div className="absolute inset-y left-0 w-[20%] h-full bg-[#030303] z-10 pointer-events-none"></div>
       <video
         src={url}
         autoPlay={autoplay}

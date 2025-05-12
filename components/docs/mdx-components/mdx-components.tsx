@@ -43,6 +43,7 @@ import {
 } from "@/components/docs/mdx-components/mdx-emoji";
 import { TemplateLinks } from "@/components/docs/mdx-components/template-links";
 import { Kbd } from "@/components/docs/mdx-components/kbd";
+import { ModularPreviewLink } from "@/components/docs/mdx-components/modular-preview-link";
 
 const components = {
   Accordion,
@@ -62,6 +63,7 @@ const components = {
   MdxLink,
   MdxVideo,
   TemplateLinks,
+  ModularPreviewLink,
   Kbd,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1

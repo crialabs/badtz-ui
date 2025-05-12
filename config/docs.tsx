@@ -57,6 +57,12 @@ export const docsConfig: DocCategory[] = [
     ),
     items: [
       {
+        title: "Modular SaaS Template",
+        href: "/docs/templates/modular-saas-template",
+        items: [],
+        label: "pro",
+      },
+      {
         title: "SaaS Template",
         href: "/docs/templates/mappl-saas-template",
         items: [],

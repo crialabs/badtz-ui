@@ -39,7 +39,7 @@ const links: Link[] = [
     label: "Components",
   },
   {
-    href: "/docs/templates/mappl-saas-template",
+    href: "/docs/templates/modular-saas-template",
     label: "Templates",
   },
   {
