@@ -279,6 +279,18 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
+  },"flipping-card": {
+    name: "flipping-card",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/components/flipping-card")),
+    source: "",
+    files: [
+  "__registry__/components/components/flipping-card.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
   },"image-split": {
     name: "image-split",
     type: "components:ui",
@@ -671,6 +683,18 @@ export const Index: Record<string, RegistryItem> = {
     source: "",
     files: [
   "__registry__/components/demos/fade-up-word-demo.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"flipping-card-demo": {
+    name: "flipping-card-demo",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/flipping-card-demo")),
+    source: "",
+    files: [
+  "__registry__/components/demos/flipping-card-demo.js"
 ],
     category: "undefined",
     subcategory: "undefined",

@@ -371,6 +371,18 @@
       ]
     },
     {
+      "name": "flipping-card",
+      "type": "registry:ui",
+      "title": "Flipping Card",
+      "description": "A flipping card component that can showcase anything.",
+      "files": [
+        {
+          "path": "registry/components/flipping-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "gradient-slide-button",
       "type": "registry:ui",
       "title": "Gradient Slide Button",

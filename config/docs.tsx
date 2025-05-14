@@ -97,6 +97,12 @@ export const docsConfig: DocCategory[] = [
         label: "new",
       },
       {
+        title: "Flipping Card",
+        href: "/docs/components/flipping-card",
+        items: [],
+        label: "new",
+      },
+      {
         title: "Animated List",
         href: "/docs/components/animated-list",
         items: [],
