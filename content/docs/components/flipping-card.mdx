@@ -268,10 +268,16 @@ description: A two-sided card component that flips on hover, revealing content o
             width = 350,
           }) {
             return (
-              <div className="group/flipping-card [perspective:1000px]">
+              <div
+                className="group/flipping-card [perspective:1000px]"
+                style={{
+                  "--height": `${height}px`,
+                  "--width": `${width}px`,
+                }}
+              >
                 <div
                   className={cn(
-                    `relative h-[${height}px] w-[${width}px] rounded-xl border border-neutral-200 bg-white shadow-lg transition-all duration-700 [transform-style:preserve-3d] group-hover/flipping-card:[transform:rotateY(180deg)] dark:border-neutral-800 dark:bg-neutral-950`,
+                    "relative h-[--height] w-[--width] rounded-xl border border-neutral-200 bg-white shadow-lg transition-all duration-700 [transform-style:preserve-3d] group-hover/flipping-card:[transform:rotateY(180deg)] dark:border-neutral-800 dark:bg-neutral-950",
                     className
                   )}
                 >
@@ -314,10 +320,18 @@ description: A two-sided card component that flips on hover, revealing content o
             width = 350,
           }: FlippingCardProps) {
             return (
-              <div className="group/flipping-card [perspective:1000px]">
+              <div
+                className="group/flipping-card [perspective:1000px]"
+                style={
+                  {
+                    "--height": `${height}px`,
+                    "--width": `${width}px`,
+                  } as React.CSSProperties
+                }
+              >
                 <div
                   className={cn(
-                    `relative h-[${height}px] w-[${width}px] rounded-xl border border-neutral-200 bg-white shadow-lg transition-all duration-700 [transform-style:preserve-3d] group-hover/flipping-card:[transform:rotateY(180deg)] dark:border-neutral-800 dark:bg-neutral-950`,
+                    "relative h-[--height] w-[--width] rounded-xl border border-neutral-200 bg-white shadow-lg transition-all duration-700 [transform-style:preserve-3d] group-hover/flipping-card:[transform:rotateY(180deg)] dark:border-neutral-800 dark:bg-neutral-950",
                     className
                   )}
                 >
