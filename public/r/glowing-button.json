@@ -4,9 +4,6 @@
   "type": "registry:ui",
   "title": "Glowing Button",
   "description": "A glowing button component.",
-  "dependencies": [
-    "shadcn@latest add button"
-  ],
   "files": [
     {
       "path": "registry/components/buttons/glowing-button.tsx",
