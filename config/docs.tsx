@@ -393,6 +393,12 @@ export const docsConfig: DocCategory[] = [
     ),
     items: [
       {
+        title: "Glowing Button",
+        href: "/docs/components/buttons/glowing-button",
+        items: [],
+        label: "new",
+      },
+      {
         title: "Swipe Button",
         href: "/docs/components/buttons/swipe-button",
         items: [],

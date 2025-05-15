@@ -171,6 +171,18 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
+  },"glowing-button": {
+    name: "glowing-button",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/components/buttons/glowing-button")),
+    source: "",
+    files: [
+  "__registry__/components/components/buttons/glowing-button.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
   },"gradient-slide-button": {
     name: "gradient-slide-button",
     type: "components:ui",
@@ -695,6 +707,18 @@ export const Index: Record<string, RegistryItem> = {
     source: "",
     files: [
   "__registry__/components/demos/flipping-card-demo.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"glowing-button-demo": {
+    name: "glowing-button-demo",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/glowing-button-demo")),
+    source: "",
+    files: [
+  "__registry__/components/demos/glowing-button-demo.js"
 ],
     category: "undefined",
     subcategory: "undefined",
