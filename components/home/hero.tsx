@@ -87,7 +87,7 @@ export default function Hero() {
             <Link
               target="_blank"
               href="https://pro.badtz-ui.com"
-              className="h-[38px] px-5 shadow-sm font-medium text-sm rounded-xl bg-[#111113] hover:bg-[#111113]/20 text-white border border-[#7876c5]/30 hover:border-[#7876c5]/40 flex items-center relative transition-colors duration-300 accent-shadow overflow-hidden"
+              className="h-[38px] px-5 font-medium text-sm rounded-xl bg-[#111113] text-white border border-[#7876c5]/30 hover:border-[#7876c5]/40 flex items-center relative transition-colors duration-300 accent-shadow overflow-hidden"
             >
               <PlausibleButton
                 eventName="Clicked on Pro"

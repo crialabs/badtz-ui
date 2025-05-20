@@ -228,45 +228,15 @@ strong {
 */
 
 .accent-shadow {
-  position: relative;
-}
-
-.accent-shadow:before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  pointer-events: none;
   box-shadow: inset 0 0 20px 4px #6d77d520;
-  border-radius: inherit;
 }
 
 .large-accent-shadow {
-  position: relative;
-}
-
-.large-accent-shadow:before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  pointer-events: none;
   box-shadow: inset 0 0 50px 5px #6d77d515;
-  border-radius: inherit;
 }
 
 .abs-accent-shadow {
-  position: absolute;
-}
-
-.abs-accent-shadow:before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  pointer-events: none;
   box-shadow: inset 0 0 20px 4px #6d77d520;
-  border-radius: inherit;
 }
 
 .rect-shadow {

@@ -60,7 +60,7 @@ export default function HomeBento() {
   return (
     <section className="w-full h-full px-6 lg:px-8 pt-32 md:pb-36 pb-24">
       <div className="lg:max-w-5xl mx-auto">
-        <div className="flex flex-col md:flex-row pb-12">
+        <div className="flex flex-col md:flex-row pb-12 md:gap-8">
           <div className="w-full md:w-1/2 flex md:items-center">
             <h2 className="text-4xl md:text-[44px]/[46px] font-semibold tracking-tighter bg-gradient-to-b from-white/80 via-white to-white/60 inline-block text-transparent bg-clip-text text-balance max-w-[605px] font-gilroy">
               Highlight your website in a second

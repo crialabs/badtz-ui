@@ -56,7 +56,9 @@ export function DocNav({ items, children }: DocNavProps) {
               <LargeLogo />
             </Link>
           </div>
-          <ScrollArea className="flex-1 overflow-auto w-[246px]">
+          <ScrollArea className="flex-1 overflow-auto w-[246px] relative">
+            <div className="absolute top-0 h-6 inset-x-0 bg-gradient-to-t from-transparent to-sidebar z-20 pointer-events-none" />
+            <div className="absolute bottom-0 h-6 inset-x-0 bg-gradient-to-b from-transparent to-sidebar z-20 pointer-events-none" />
             <div className="pb-6 pt-4 pr-6 pl-3">
               <nav aria-label="Documentation navigation">
                 <BookmarksNav />

@@ -51,7 +51,7 @@ function DescriptionWithDecorations() {
         UI library!
       </p>
       <div
-        className="absolute top-[10px] left-[10px] w-[195px] h-[200px] md:block hidden"
+        className="absolute top-[10px] left-[10px] w-[195px] h-[200px] md:block hidden pointer-events-none"
         aria-hidden="true"
       >
         <SvgLines
@@ -65,7 +65,7 @@ function DescriptionWithDecorations() {
         />
       </div>
       <div
-        className="absolute top-[10px] left-[-20px] w-[195px] h-[200px] md:block hidden"
+        className="absolute top-[10px] left-[-20px] w-[195px] h-[200px] md:block hidden pointer-events-none"
         aria-hidden="true"
       >
         <SvgLines
@@ -79,7 +79,7 @@ function DescriptionWithDecorations() {
         />
       </div>
       <div
-        className="absolute top-[10px] right-[10px] w-[195px] h-[200px] md:block hidden"
+        className="absolute top-[10px] right-[10px] w-[195px] h-[200px] md:block hidden pointer-events-none"
         aria-hidden="true"
       >
         <SvgLines
@@ -93,7 +93,7 @@ function DescriptionWithDecorations() {
         />
       </div>
       <div
-        className="absolute top-[10px] right-[-20px] w-[195px] h-[200px] md:block hidden"
+        className="absolute top-[10px] right-[-20px] w-[195px] h-[200px] md:block hidden pointer-events-none"
         aria-hidden="true"
       >
         <SvgLines

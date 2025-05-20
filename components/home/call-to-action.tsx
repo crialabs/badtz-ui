@@ -59,7 +59,7 @@ const customParticleOptions = {
 export default function CallToAction() {
   return (
     <section className="px-6 md:px-8 md:pt-48 pt-24">
-      <div className="max-w-5xl mx-auto w-full overflow-hidden border border-[#7876c5]/20 border-b-0 large-accent-shadow rounded-t-2xl">
+      <div className="max-w-5xl mx-auto w-full overflow-hidden border border-[#7876c5]/20 border-b-0 large-accent-shadow rounded-t-2xl relative">
         <div className="text-center flex flex-col items-center md:pt-20 pt-16 pb-24">
           <div className="h-20 w-20 bg-doc-background rounded-xl border border-[#7876c5]/30 accent-shadow overflow-hidden p-4 rect-shadow">
             <svg
