@@ -52,7 +52,7 @@ const cardsData: CardData[] = [
 export default function FlippingCardDemo() {
   return (
     <div className="flex gap-4">
-      {cardsData.map((card) => (
+      {cardsData.slice(0, 1).map((card) => (
         <FlippingCard
           key={card.id}
           width={300}
@@ -60,6 +60,13 @@ export default function FlippingCardDemo() {
           backContent={<GenericCardBack data={card.back} />}
         />
       ))}
+      <div className="hidden md:block">
+        <FlippingCard
+          width={300}
+          frontContent={<GenericCardFront data={cardsData[1].front} />}
+          backContent={<GenericCardBack data={cardsData[1].back} />}
+        />
+      </div>
     </div>
   );
 }

@@ -67,7 +67,7 @@ function useMousePosition(proximityRange: number) {
 }
 
 function useCardActivation(
-  elementRef: React.RefObject<HTMLDivElement>,
+  elementRef: React.RefObject<HTMLDivElement | null>,
   globalMouseX: number,
   globalMouseY: number,
   isWithinRange: boolean,
