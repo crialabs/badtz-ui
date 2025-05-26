@@ -91,6 +91,12 @@ export const docsConfig: DocCategory[] = [
     ),
     items: [
       {
+        title: "Cursor Card",
+        href: "/docs/components/cursor-card",
+        items: [],
+        label: "new",
+      },
+      {
         title: "Keyboard",
         href: "/docs/components/animated-keyboard",
         items: [],

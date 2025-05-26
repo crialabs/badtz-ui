@@ -267,6 +267,18 @@ export const Index: Record<string, RegistryItem> = {
     category: "undefined",
     subcategory: "undefined",
     chunks: []
+  },"cursor-cards": {
+    name: "cursor-cards",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/components/cursor-cards")),
+    source: "",
+    files: [
+  "__registry__/components/components/cursor-cards.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
   },"dock": {
     name: "dock",
     type: "components:ui",
@@ -659,6 +671,18 @@ export const Index: Record<string, RegistryItem> = {
     source: "",
     files: [
   "__registry__/components/demos/confetti-button-demo.js"
+],
+    category: "undefined",
+    subcategory: "undefined",
+    chunks: []
+  },"cursor-card-demo": {
+    name: "cursor-card-demo",
+    type: "components:ui",
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/__registry__/components/demos/cursor-card-demo")),
+    source: "",
+    files: [
+  "__registry__/components/demos/cursor-card-demo.js"
 ],
     category: "undefined",
     subcategory: "undefined",

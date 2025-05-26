@@ -383,6 +383,19 @@
       ]
     },
     {
+      "name": "cursor-cards",
+      "type": "registry:ui",
+      "title": "Cursor Card",
+      "description": "A card component that can showcase anything.",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/components/cursor-cards.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "glowing-button",
       "type": "registry:ui",
       "title": "Glowing Button",
