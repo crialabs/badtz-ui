@@ -1,5 +1,9 @@
 const { withContentlayer } = require("next-contentlayer2");
 const { withPlausibleProxy } = require("next-plausible");
+import createNextIntlPlugin from "next-intl/plugin";
+
+
+
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -15,6 +19,8 @@ const nextConfig = {
   experimental: {
     scrollRestoration: false,
   },
+  const withNextIntl = createNextIntlPlugin();
+  export default withNextIntl(nextConfig);
 };
 
 module.exports = withPlausibleProxy()(withContentlayer(nextConfig));

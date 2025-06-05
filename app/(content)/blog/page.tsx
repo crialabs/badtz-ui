@@ -8,12 +8,13 @@ priority-2
 */
 
 import Link from "next/link";
-import { allPosts } from "@/.contentlayer/generated";
 import { compareDesc } from "date-fns";
 import { formatDate } from "@/lib/utils";
 import { Metadata } from "next";
 import { Icons } from "@/components/icons";
 import BunnyImage from "@/components/bunny-image";
+import { getAllPosts, getPostCategories, getPostFeaturedImage, getPostAuthor } from "@/lib/wordpress";
+import { notFound } from "next/navigation";
 export const metadata: Metadata = {
   title: "BadtzUI • Blog",
   description:
@@ -30,41 +31,46 @@ export const metadata: Metadata = {
   },
 };
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // Revalidar a cada hora
+
 export default async function BlogPage() {
-  const posts = allPosts
-    .filter((post) => post.published)
-    .sort((a, b) => {
+  try {
+    // Buscar posts do WordPress
+    const posts = await getAllPosts();
+    
+    // Ordenar posts por data (mais recentes primeiro)
+    const sortedPosts = [...posts].sort((a, b) => {
       return compareDesc(new Date(a.date), new Date(b.date));
     });
 
-  const jsonLdBlog = {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    name: "BadtzUI Blog",
-    description:
-      "A blog where we share tips on enhancing website aesthetics, improving landing pages, and more...",
-    publisher: {
-      "@type": "Organization",
-      name: "BadtzUI",
-      logo: {
-        "@type": "ImageObject",
-        url: "/logo.png",
+    const jsonLdBlog = {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      name: "BadtzUI Blog",
+      description:
+        "A blog where we share tips on enhancing website aesthetics, improving landing pages, and more...",
+      publisher: {
+        "@type": "Organization",
+        name: "BadtzUI",
+        logo: {
+          "@type": "ImageObject",
+          url: "/logo.png",
+        },
       },
-    },
-    url: "https://badtz-ui.com/blog",
-  };
+      url: "https://badtz-ui.com/blog",
+    };
 
-  const jsonLdPosts = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Blog Posts",
-    itemListElement: posts.map((post, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      url: `https://badtz-ui.com/blog/${post.slugAsParams}`,
-    })),
-  };
-
+    const jsonLdPosts = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "Blog Posts",
+      itemListElement: sortedPosts.map((post, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `https://badtz-ui.com/blog/${post.slug}`,
+      })),
+    };
   return (
     <div className="w-full h-full pb-16 sm:pb-28 pt-10 md:pt-16">
       <div className="px-6 lg:px-8 lg:max-w-5xl mx-auto">
@@ -86,61 +92,65 @@ export default async function BlogPage() {
             Welcome to our blog, where we share tips on enhancing your website's
             aesthetics, improving your landing page, and much more...
           </p>
-        </div>
-
-        <hr className="my-3 border-none" />
-        {posts?.length ? (
+        </div><hr className="my-3 border-none" />
+        {sortedPosts?.length ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-4">
-            {posts.map((post, index) => (
-              <Link href={post.slug}>
-                <article
-                  key={post._id}
-                  className="flex flex-col w-full p-2 rounded-xl transition-colors duration-200 group/article"
-                >
-                  {post.image && (
-                    <BunnyImage
-                      src={post.image}
-                      alt={post.title}
-                      width={760}
-                      height={400}
-                      className="aspect-video object-cover bg-secondary border-border border rounded-lg"
-                      priority={index <= 1}
-                      quality={100}
-                    />
-                  )}
-                  <div className="pt-2.5 p-1">
-                    <h2 className="group-hover/article:text-foreground mt-2 font-medium transition-colors duration-300 text-xl text-sidebar-foreground font-gilroy">
-                      {post.title}
-                    </h2>
-                    {post.date && (
-                      <p className="text-xs text-sidebar-muted-foreground mt-1.5">
-                        {formatDate(post.date)}
-                      </p>
-                    )}
-                    {post.description && (
-                      <p className="mt-3 text-sm text-sidebar-muted-foreground text-prose">
-                        {post.description.length > 140
-                          ? `${post.description.slice(0, 140)}...`
-                          : post.description}
-                      </p>
-                    )}
-
-                    <div className="flex items-center space-x-1.5 text-sm mt-4">
+            {sortedPosts.map((post, index) => {
+              const featuredImage = getPostFeaturedImage(post);
+              const author = getPostAuthor(post);
+              
+              return (
+                <Link key={post.id} href={`/blog/${post.slug}`}>
+                  <article
+                    className="flex flex-col w-full p-2 rounded-xl transition-colors duration-200 group/article"
+                  >
+                    {featuredImage && (
                       <BunnyImage
-                        src="/images/badtz-avatar-small.webp"
-                        alt="Twitter Logo"
-                        width={20}
-                        height={20}
-                        className="rounded-full bg-secondary shrink-0 h-5 w-5 invert dark:invert-[0]"
+                        src={featuredImage.source_url}
+                        alt={post.title.rendered}
+                        width={760}
+                        height={400}
+                        className="aspect-video object-cover bg-secondary border-border border rounded-lg"
+                        priority={index <= 1}
+                        quality={100}
                       />
-                      <p className="text-sm text-sidebar-muted-foreground">
-                        Badtz
-                      </p>
+                    )}
+                    <div className="pt-2.5 p-1">
+                      <h2 className="group-hover/article:text-foreground mt-2 font-medium transition-colors duration-300 text-xl text-sidebar-foreground font-gilroy">
+                        <span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                      </h2>
+                      {post.date && (
+                        <p className="text-xs text-sidebar-muted-foreground mt-1.5">
+                          {formatDate(post.date)}
+                        </p>
+                      )}
+                      {post.excerpt?.rendered && (
+                        <p className="mt-3 text-sm text-sidebar-muted-foreground text-prose">
+                          <span dangerouslySetInnerHTML={{ 
+                            __html: post.excerpt.rendered.length > 140
+                              ? `${post.excerpt.rendered.substring(0, 140)}...`
+                              : post.excerpt.rendered 
+                          }} />
+                        </p>
+                      )}
+
+                      <div className="flex items-center space-x-1.5 text-sm mt-4">
+                        <BunnyImage
+                          src={author?.avatar_urls?.['96'] || "/images/badtz-avatar-small.webp"}
+                          alt={author?.name || "Autor"}
+                          width={20}
+                          height={20}
+                          className="rounded-full bg-secondary shrink-0 h-5 w-5 invert dark:invert-[0]"
+                        />
+                        <p className="text-sm text-sidebar-muted-foreground">
+                          {author?.name || "Badtz"}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              </Link>
-            ))}
+                  </article>
+                </Link>
+              );
+            })}
           </div>
         ) : (
           <p>No posts published.</p>
@@ -150,12 +160,14 @@ export default async function BlogPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBlog) }}
-      />
-
-      <script
+      />      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdPosts) }}
       />
     </div>
   );
+  } catch (error) {
+    console.error("Erro ao carregar posts do WordPress:", error);
+    return notFound();
+  }
 }

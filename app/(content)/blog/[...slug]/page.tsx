@@ -1,8 +1,6 @@
-//TODO: Rework the Author (BAD) + Add "related articles"
+//TODO: Implementado WordPress API em modo serverless
 
 import { notFound } from "next/navigation";
-import { allAuthors, allPosts, type Post } from "@/.contentlayer/generated";
-import { Mdx } from "@/components/docs/mdx-components/mdx-components";
 import Link from "next/link";
 import { absoluteUrl, formatDate } from "@/lib/utils";
 import { ChevronLeft } from "lucide-react";
@@ -19,16 +17,8 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import BunnyImage from "@/components/bunny-image";
-
-type Params = {
-  slug: string[];
-};
-
-type Author = {
-  _id: string;
-  slug: string;
-  title: string;
-  avatar: string;
+import { getPostBySlug, getRelatedPosts, getAllPosts, getPostFeaturedImage, getPostAuthor, getPostCategories } from "@/lib/wordpress";
+import { Metadata } from "next";
   twitter: string;
 };
 

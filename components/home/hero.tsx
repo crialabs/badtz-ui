@@ -13,6 +13,9 @@ import {
   ReactIcon,
 } from "@/components/home/hero/hero-icons";
 
+
+
+
 const homeSchema = {
   "@context": "https://schema.org",
   "@type": ["WebSite", "SoftwareApplication"],
@@ -63,37 +66,30 @@ const tags = [
 
 export default function Hero() {
   return (
-    <section className="w-full h-full pt-10 md:pt-20 overflow-hidden relative">
+    <section className="w-full h- pt-10 md:pt-20 overflow-hidden relative">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }}
       />
       <div className="lg:max-w-6xl mx-auto z-10 relative">
         <div className="lg:text-center text-left flex flex-col items-start lg:items-center justify-center px-6 lg:px-8 ">
-          <p className="md:max-w-[700px] text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tighter font-gilroy mt-8 md:mt-10 text-balance bg-gradient-to-b from-white/80 via-white to-white/60 inline-block text-transparent bg-clip-text pb-2">
-            UI library for React developers
+          <p className="md:max-w-[40px] text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tighter font-gilroy mt-8 md:mt-10 text-balance bg-gradient-to-b from-white/80 via-white to-white/60 inline-block text-transparent bg-clip-text pb-2">
+            {t('hero.main_title')}
           </p>
           <h1 className="mt-4 text-balance tracking-tight sm:mt-3 max-w-[680px] text-sidebar-muted-foreground text-base md:text-lg">
-            An open-source React UI library with production-ready animations.
-            Weekly updates. Built with React, Tailwind, TypeScript & JavaScript.
+            {t('hero.sub_title')}
           </h1>
           <div className="mt-8 flex gap-3.5">
             <Link
-              href="/docs"
-              className="h-9 px-5 shadow-sm font-medium text-sm rounded-xl bg-foreground text-background hover:bg-foreground/85 flex items-center relative transition-colors duration-300"
-            >
-              View Docs
-            </Link>
-            <Link
               target="_blank"
-              href="https://pro.badtz-ui.com"
+              href="{links.home}"
               className="h-[38px] px-5 font-medium text-sm rounded-xl bg-[#111113] text-white border border-[#7876c5]/30 hover:border-[#7876c5]/40 flex items-center relative transition-colors duration-300 accent-shadow overflow-hidden"
             >
               <PlausibleButton
                 eventName="Clicked on Pro"
                 className="flex items-center justify-center gap-2 relative z-10"
               >
-                BadtzUI Pro <ExternalLinkIcon />
+                {t('hero.cta')} <ExternalLinkIcon />
               </PlausibleButton>
             </Link>
           </div>

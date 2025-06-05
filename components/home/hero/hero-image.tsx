@@ -60,13 +60,13 @@ export function HeroImage() {
 
   return (
     <div className="relative">
-      <div className=" h-[600px] absolute -top-[300px] inset-x-0 bg-[radial-gradient(circle_at_bottom_center,#6d77d5,transparent_75%)] [mask-image:radial-gradient(circle_at_50%_65%,white,transparent)] z-[-1]">
+      <div className=" h-[400px] absolute -top-[300px] inset-x-0 bg-[radial-gradient(circle_at_bottom_center,#6d77d5,transparent_75%)] [mask-image:radial-gradient(circle_at_50%_65%,white,transparent)] z-[-1]">
         <Particles customOptions={customParticleOptions} className="w-full" />
         <Meteors number={5} />
       </div>
       <div
         className={cn(
-          "mt-16 md:mt-20 relative h-[300px] sm:h-[400px] md:h-[600px] before:inset-x-[-200px] before:pointer-events-none before:inset-y-0 before:absolute before:z-20 before:bg-doc-background before:[mask-image:radial-gradient(ellipse_100%_75%_at_40%_20%,transparent_50%,#000_100%)] z-[1]"
+          "mt-16 md:mt-20 relative h-[250px] sm:h-[320px] md:h-[450px] before:inset-x-[-200px] before:pointer-events-none before:inset-y-0 before:absolute before:z-20 before:bg-doc-background before:[mask-image:radial-gradient(ellipse_100%_75%_at_40%_20%,transparent_50%,#000_100%)] z-[1]"
         )}
       >
         <div className="absolute top-[50px] md:-top-[20px] lg:-top-[50px] left-1/2 -translate-x-1/2 w-full h-full flex items-start justify-center md:max-h-[400px] max-h-[450px] overflow-hidden">
@@ -101,8 +101,12 @@ export function HeroImage() {
             </svg>
           </div>
         </div>
+        {/* Left gradient overlay for desktop */}
         <div className="hidden md:block absolute left-0 inset-y-0 w-10 bg-gradient-to-r from-doc-background to-transparent z-5"></div>
+        {/* Right gradient overlay for desktop */}
         <div className="hidden md:block absolute right-0 inset-y-0 w-10 bg-gradient-to-l from-doc-background z-5"></div>
+        {/* Main hero image for large screens */}
+        {/* 
         <div className="hidden lg:block mx-auto border border-[#7876c5]/20 p-2 rounded-xl backdrop-blur-sm relative z-10 accent-shadow overflow-hidden">
           <BunnyImage
             src="/images/home-hero/hero-image-bui.png"
@@ -113,7 +117,8 @@ export function HeroImage() {
             priority
             quality={100}
           />
-        </div>
+        </div>*/}
+        {/* Responsive hero image for mobile and tablet
         <div
           className={cn(
             "block lg:hidden absolute inset-0 lg:left-0 md:left-10 md:h-[600px] md:w-[960px] h-[400px] w-[760px] pointer-events-none z-10"
@@ -128,7 +133,9 @@ export function HeroImage() {
             priority
             className="overflow-hidden object-contain object-left ml-6 opacity-90"
           />
-        </div>
+        </div> */}
+        {/* Background image for large screens */}
+        
       </div>
     </div>
   );
